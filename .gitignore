@@ -3,3 +3,4 @@
 .wrangler/
 .vercel/
 node_modules/
+.tmp-pdf/
