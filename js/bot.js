@@ -1,0 +1,206 @@
+(() => {
+  const ITEMS = [
+    {
+      keys: ["powershell", "パワーシェル", "ps", "開かない", "コマンドプロンプト", "cmd", "黒い画面", "スタート"],
+      answer:
+        "Windows ではスタートボタンから「PowerShell」と検索します。「コマンドプロンプト」は違います。行頭に PS があれば正解です。管理者として実行は、教室の1行では通常不要です。Mac の人は PowerShell を使いません。",
+      href: "#/course/faq/ps",
+      link: "PowerShellが開かない"
+    },
+    {
+      keys: ["貼", "コピー", "ctrl", "ペースト", "⌘", "command", "貼り付け"],
+      answer:
+        "教室の「コピー」を押したあと、貼る場所（PowerShell・ターミナル・チャットの入力欄）を一度クリックしてから貼ります。Windows は右クリックまたは Ctrl＋V、Mac は ⌘＋V です。",
+      href: "#/course/faq/paste",
+      link: "貼り付けできない"
+    },
+    {
+      keys: ["not found", "認識", "command not found", "claudeが", "見つから", "doctor"],
+      answer:
+        "インストールした直後は、PowerShell やターミナルを全部閉じて、新しく開き直してから claude と打ってください。まだなら、Windows編または Mac編の1行をもう一度貼ります。確認は claude doctor です。",
+      href: "#/course/faq/notfound",
+      link: "claude が認識されない"
+    },
+    {
+      keys: ["ログイン", "login", "入れない", "無料", "プラン", "pro", "有料", "アカウント", "claude.ai"],
+      answer:
+        "先にブラウザで claude.ai に、いつも使うメールで入れるか確認します。Claude Code は無料プランでは使えません。設定→プランが Free のままになっていないか見てください。会社のGoogleと個人Gmailの取り違えもよくあります。",
+      href: "#/course/faq/login",
+      link: "ログインできない"
+    },
+    {
+      keys: ["mac", "マック", "ターミナル", "spotlight", "パスワードが見え"],
+      answer:
+        "Mac はテキストエディット（メモ）ではなく、赤い・黄色い・緑の丸がある「ターミナル」です。⌘＋スペースで「ターミナル」と検索します。パスワード入力中は文字が見えません。打ち終わって Enter です。",
+      href: "#/course/codemac",
+      link: "Mac編"
+    },
+    {
+      keys: ["cowork", "コワーク", "見当たら", "メニュー", "アプリ"],
+      answer:
+        "ブラウザのただのチャットには、Cowork が無いことがあります。デスクトップ用の Claude アプリを開き、左の一覧から Cowork を選びます。チャットは相談、Cowork はファイルまで仕上げる作業係です。",
+      href: "#/course/faq/coworkmiss",
+      link: "Coworkが見当たらない"
+    },
+    {
+      keys: ["会社", "社内", "ネット", "セキュリティ", "止まる", "制限", "wifi"],
+      answer:
+        "会社のパソコンでは、インストールやログインが許可されていないことがあります。制限を無断で外さないでください。情報システムの担当者に「教室で claude.ai / Claude Code を使いたい」と相談するか、許可された環境でやり直します。",
+      href: "#/course/faq/net",
+      link: "会社のネットで止まる"
+    },
+    {
+      keys: ["チャット", "相談", "文章", "ブラウザ"],
+      answer:
+        "入り口は3つです。チャットは文章で答える相談相手。Cowork は事務でファイルまで作る作業係。Claude Code は黒い画面から道具をつくる相棒です。迷ったらチャット入門からどうぞ。",
+      href: "#/course/webchat",
+      link: "チャット入門"
+    },
+    {
+      keys: ["code", "コード", "道具", "インストール", "1行"],
+      answer:
+        "Claude Code はターミナル（Windows は PowerShell）に1行貼って使います。事務作業は Cowork、道具づくりが Code です。無料プランでは使えません。Windows と Mac で手順が違います。",
+      href: "#/code",
+      link: "Claude Codeの一覧"
+    },
+    {
+      keys: ["ポスター", "求人", "デザイン"],
+      answer:
+        "いちばんやさしい入口は求人ポスターです。お手本を見ながら、A4縦を1枚つくります。デザインが苦手でも大丈夫です。",
+      href: "#/course/poster",
+      link: "ポスター講座"
+    },
+    {
+      keys: ["パスワード", "口座", "個人情報", "カード", "安全", "api"],
+      answer:
+        "パスワード・口座・カード番号・APIキーは、チャットにも教室にも書かないでください。出てきた金額や宛名は、元データと必ず見比べます。送信・削除・公開の最終判断は自分です。",
+      href: "#/safety",
+      link: "安全の約束"
+    },
+    {
+      keys: ["先生", "講師", "宮田", "塾", "質問", "相談"],
+      answer:
+        "宮田先生へのご質問は、原則24時間以内に返信します。パスワード・口座は書かないでください。AIチャットは、この画面ですぐ返します。",
+      href: "#/chat",
+      link: "先生に直接聞く"
+    },
+    {
+      keys: ["迷", "進み方", "どっち", "どちら", "道", "説明資料", "順番"],
+      answer:
+        "道は1本だけ選びます。事務なら Cowork（アカウント→チャット→ポスター→Cowork）。道具なら Claude Code（自分のパソコンの準備→投稿文→かんたん順）。混ぜなくて大丈夫です。",
+      href: "#/guide",
+      link: "進み方"
+    },
+    {
+      keys: ["画面編集", "画面を直", "見出しを変", "ボタンの色"],
+      answer:
+        "作ったアプリの画面は、日本語で「〜を〜に」と頼めば直せます。小さく直して、画面で確かめて、よければ保存です。",
+      href: "#/course/appedit",
+      link: "アプリ画面の編集"
+    },
+    {
+      keys: ["契約", "期間", "転載", "複製", "禁止", "閲覧できない"],
+      answer:
+        "この学習アプリは、ご契約期間中のみ閲覧できます。教材・画面・文章の無断転載・複製・配布・公開は禁止です。先生への返信は原則24時間以内です。",
+      href: "#/safety",
+      link: "ご利用上の注意"
+    },
+    {
+      keys: ["付箋", "メモ", "お気に入り", "星"],
+      answer: "画面の右上「お気に入り追加」を押すと入ります。もう一度押すと外れます。一覧はメニューの「お気に入り」です。この端末にだけ残ります。",
+      href: "#/notes",
+      link: "お気に入り"
+    },
+    {
+      keys: ["進度", "ハンコ", "マイページ", "名前"],
+      answer:
+        "レッスンの下の「このページを読んだ」で進度が色づきます。名前と進度はマイページで見られます。この端末にだけ残ります。",
+      href: "#/me",
+      link: "マイページ"
+    }
+  ];
+
+  const score = (q, item) => {
+    const t = q.toLowerCase();
+    return item.keys.reduce((n, k) => n + (t.includes(k.toLowerCase()) ? (k.length > 2 ? 2 : 1) : 0), 0);
+  };
+
+  const ask = (raw) => {
+    const q = String(raw || "").trim();
+    if (!q) {
+      return {
+        text: "困っていることを、短い言葉で書いてください。例：貼れない、ログインできない、Coworkが見当たらない。",
+        href: "#/course/faq",
+        link: "つまずき一覧"
+      };
+    }
+    let best = null;
+    let n = 0;
+    ITEMS.forEach((item) => {
+      const s = score(q, item);
+      if (s > n) {
+        n = s;
+        best = item;
+      }
+    });
+    if (!best || n < 1) {
+      return {
+        text: "教室のつまずき一覧から近い症状を選ぶと早いです。個別の仕事の判断は、宮田先生へいつもの連絡でどうぞ。パスワードは書かないでください。",
+        href: "#/course/faq",
+        link: "つまずき一覧"
+      };
+    }
+    return { text: best.answer, href: best.href, link: best.link };
+  };
+
+  const talk = (raw) => {
+    const q = String(raw || "").trim();
+    if (!q) {
+      return {
+        text: "この画面の中で答えます。やりたいことや、困っていることを書いてください。"
+      };
+    }
+    const t = q.toLowerCase();
+    const extra = [
+      {
+        keys: ["請求書", "見積", "みつもり"],
+        text: "見積書は「この内容・この金額で仕事しますよ」という案内です。請求書は「仕事が終わったので、この金額を払ってください」という請求です。先に見積、あとに請求、がよくある流れです。"
+      },
+      {
+        keys: ["短く", "やさしく", "小学生"],
+        text: "短いお願いの型です。「相手：初心者。目的：〔やりたいこと〕を、手順3つと注意1つで教えて。専門用語は言い換えて。」〔　〕だけ書き換えて送ってみてください。"
+      },
+      {
+        keys: ["例", "サンプル", "ひな形"],
+        text: "例は1つだけ頼むと読みやすいです。「例を1つ、手順つきで。失敗しやすい点も1つ。」と書いてください。数字や宛名は、あとで必ず自分で確認します。"
+      },
+      {
+        keys: ["下書き", "文章", "メール", "投稿"],
+        text: "文章づくりは、①誰に向けか ②何をしたいか ③長さ、の3つを先に書くと上手くいきます。できた文は、送る前に声に出して読んでください。パスワードや口座は入れないでください。"
+      }
+    ];
+    let best = null;
+    let n = 0;
+    extra.forEach((item) => {
+      const s = item.keys.reduce((x, k) => x + (t.includes(k.toLowerCase()) ? 2 : 0), 0);
+      if (s > n) {
+        n = s;
+        best = item;
+      }
+    });
+    if (best) return { text: best.text };
+    const hit = ask(q);
+    if (hit && !/つまずき一覧から近い/.test(hit.text)) return hit;
+    return {
+      text: `この教室の中でお答えします。「${q.slice(0, 40)}」について、まず安全に：パスワードや口座は書かないでください。次の一歩は、①やりたいことを1文にする ②教室のつまずき一覧で近い症状を見る ③まだなら宮田先生へ画面の文言を送る、です。`,
+      href: "#/course/faq",
+      link: "つまずき一覧"
+    };
+  };
+
+  window.CLASSROOM_BOT = {
+    ask,
+    talk,
+    chips: ["貼れない", "ログインできない", "PowerShellが開かない", "Coworkが見当たらない", "チャットとCodeの違い"]
+  };
+})();

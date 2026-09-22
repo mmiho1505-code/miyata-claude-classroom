@@ -1,0 +1,23 @@
+{
+  "name": "はじめてのClaude 教室",
+  "short_name": "宮田財務教室",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff7ef",
+  "theme_color": "#ff7a59",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

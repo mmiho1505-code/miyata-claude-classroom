@@ -1,0 +1,390 @@
+.pic,
+.pic-easy,
+.op .pic,
+.points .pic,
+.vs-card .pic,
+.page > .pic,
+.lesson-body .pic,
+.lesson-body > .pic,
+.quiz-card + * .pic {
+  display: block !important;
+}
+
+.pic-easy {
+  position: relative;
+  background: #fffdf9;
+  border: 2px solid #ffe1cf;
+  border-radius: 16px;
+  padding: 18px 10px 6px;
+  margin: 8px 0 12px;
+  box-shadow: 0 4px 0 #f3ddd0;
+}
+
+.pic-badge {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  background: #ffc85c;
+  color: #3d342c;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.pic-easy figcaption,
+.pic figcaption {
+  display: block !important;
+  font-weight: 700;
+  color: #3d342c;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 4px 0 4px;
+}
+
+.pic-easy svg,
+.lesson-body .pic svg {
+  max-width: min(260px, 100%);
+  max-height: 110px;
+}
+
+.pic-compact {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  padding: 6px 12px !important;
+  margin: 8px 0 8px !important;
+  border-width: 2px !important;
+  border-radius: 14px !important;
+  box-shadow: 0 3px 0 #f3ddd0 !important;
+}
+
+.pic-compact .pic-badge {
+  position: static;
+  flex: 0 0 auto;
+}
+
+.pic-compact svg,
+.lesson-body .pic-compact svg {
+  max-width: min(200px, 100%);
+  max-height: 48px;
+  width: auto;
+  flex: 1 1 160px;
+}
+
+.pic-compact figcaption {
+  flex: 1 1 140px;
+  margin: 0 !important;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.list-art {
+  width: 32px;
+}
+
+.list-art svg {
+  max-width: 32px;
+  max-height: 28px;
+}
+
+.lesson-list a {
+  padding: 8px 2px !important;
+  gap: 8px !important;
+}
+
+.lesson-list a > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+}
+
+.course-overview > .card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.easy-hero {
+  margin-bottom: 8px;
+}
+
+.level-gates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 8px 0 12px;
+}
+
+.level-gate {
+  display: grid;
+  gap: 8px;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 28px;
+  padding: 22px 20px 18px;
+  box-shadow: 0 12px 0 #f3ddd0;
+  border: 3px solid #ffe1cf;
+  min-height: 220px;
+  transition: transform 0.2s ease;
+}
+
+.level-gate:hover {
+  transform: translateY(-6px);
+}
+
+.level-gate.is-beginner {
+  background: linear-gradient(180deg, #fff8e8, #fff);
+}
+
+.level-gate.is-cowork {
+  background: linear-gradient(180deg, #fff5f3, #fff);
+  border-color: #ffc4b0;
+}
+
+.level-gate.is-code {
+  background: linear-gradient(180deg, #e8f1ff, #fff);
+  border-color: #b7d0f5;
+  box-shadow: 0 12px 0 #d5e4f7;
+}
+
+.level-gate.is-code .level-tag {
+  background: #3d6fd8;
+  color: #fff;
+}
+
+.site-header,
+body.is-home .site-header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.16));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 10px 28px rgba(61, 52, 44, 0.05);
+  backdrop-filter: blur(18px) saturate(1.35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+}
+
+.brand-logo {
+  mix-blend-mode: normal;
+  background: transparent;
+}
+
+.footer-brand img {
+  mix-blend-mode: normal;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.header-progress {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.compare-banner {
+  padding: 8px 0 4px;
+}
+
+.compare-banner .pic,
+.compare-banner .pic-easy {
+  margin: 0 auto 8px;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 16px 40px rgba(61, 52, 44, 0.06) !important;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.compare-banner .pic-badge {
+  background: rgba(255, 200, 92, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.ticker {
+  background: rgba(61, 52, 44, 0.28) !important;
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+
+.desk-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.desk-catalog .lane {
+  margin: 0;
+  padding: 22px 18px 20px;
+  overflow: visible;
+}
+
+.desk-catalog .section-head {
+  margin: 0 0 16px;
+  scroll-margin-top: 96px;
+}
+
+.desk-catalog .course-grid + .section-head,
+.track-page .course-grid + .section-head,
+.track-page .stamp-grid + .section-head {
+  margin-top: 36px;
+  padding-top: 8px;
+}
+
+.lane .section-head h2 {
+  margin: 0;
+}
+
+.is-cowork-page {
+  border-top: 8px solid #ff7a59;
+}
+
+.tool-chip {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.tool-chip.is-cowork {
+  background: #ffe1d6;
+  color: #c44520;
+}
+
+.tool-chip.is-code {
+  background: #d9e6ff;
+  color: #1f4fb0;
+}
+
+.tool-chip.is-starter {
+  background: #ffe9b8;
+  color: #8a5a00;
+}
+
+.level-gate.is-advanced {
+  background: linear-gradient(180deg, #eefaf3, #fff);
+  border-color: #cde8d8;
+  box-shadow: 0 12px 0 #d7eee2;
+}
+
+.level-tag {
+  display: inline-flex;
+  width: fit-content;
+  background: #ffc85c;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.level-gate.is-advanced .level-tag {
+  background: #5bb58a;
+  color: #fff;
+}
+
+.level-gate h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.level-gate p {
+  margin: 0;
+  color: #6b5d52;
+}
+
+.level-gate .meter {
+  display: block;
+  height: 8px;
+  background: #ffe8dc;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.track-page .meter {
+  max-width: 320px;
+  margin: 0 0 16px;
+}
+
+.stamp-grid {
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+}
+
+@media (max-width: 900px) {
+  .level-gates {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .class-card {
+    grid-template-columns: 72px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 10px 12px 10px 8px !important;
+  }
+
+  .class-card.course-lead {
+    display: flex !important;
+    flex-direction: column;
+    grid-template-columns: none !important;
+    gap: 12px !important;
+    padding: 16px !important;
+    overflow: hidden;
+  }
+
+  .class-card .cover {
+    min-height: 64px !important;
+    height: 64px !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .class-card.course-lead .cover {
+    width: 96px;
+    height: 72px !important;
+    min-height: 72px !important;
+  }
+
+  .class-card .cover-art {
+    display: flex !important;
+  }
+
+  .class-card .cover-art svg {
+    display: block !important;
+    max-height: 56px !important;
+    max-width: 64px;
+  }
+
+  .class-card .cover strong {
+    display: none;
+  }
+
+  .op .pic,
+  .points .pic,
+  .page > .pic,
+  .vs-card .pic,
+  .lesson-body > .pic,
+  .lesson-body .pic {
+    display: block !important;
+    max-width: none;
+    margin: 10px auto 16px;
+    padding: 12px 8px 6px;
+  }
+
+  .lesson-body > .pic svg,
+  .lesson-body .pic svg,
+  .op .pic svg {
+    max-width: min(280px, 100%) !important;
+  }
+}
