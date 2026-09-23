@@ -230,6 +230,18 @@ window.ILLUSTRATIONS = {
       <rect x="36" y="128" width="180" height="20" rx="10" fill="#fff" stroke="#ddd"/>
       <text x="48" y="142" font-size="10" fill="#888">ここに貼って送る</text>
     </svg>`,
+  coworkask: `
+    <svg viewBox="0 0 280 180" role="img" aria-label="Coworkの質問に答える">
+      <rect x="16" y="12" width="248" height="156" rx="10" fill="#f6efe6"/>
+      <rect x="16" y="12" width="248" height="28" rx="10" fill="#1f1f1f"/>
+      <rect x="16" y="30" width="248" height="10" fill="#1f1f1f"/>
+      <text x="32" y="32" font-size="12" fill="#fff" font-weight="700">Cowork</text>
+      <rect x="32" y="54" width="196" height="36" rx="8" fill="#fff"/>
+      <text x="42" y="76" font-size="11">色は緑と青、どちらにしますか？</text>
+      <rect x="52" y="100" width="180" height="36" rx="8" fill="#e8f3ea"/>
+      <text x="62" y="122" font-size="11">おまかせで進めて</text>
+      <text x="32" y="154" font-size="11" fill="#6b6b6b">分からなければ「おまかせ」で大丈夫</text>
+    </svg>`,
   canva: `
     <svg viewBox="0 0 280 180" role="img" aria-label="Canvaで仕上げる">
       <rect x="16" y="16" width="248" height="148" rx="10" fill="#ebf3ff"/>
