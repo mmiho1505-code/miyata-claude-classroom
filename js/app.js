@@ -2582,6 +2582,10 @@ ${q}
       hint.textContent = "下の「コピー」を押して、自分のClaudeに貼ります。";
       wrap.parentNode.insertBefore(hint, wrap);
     });
+    document.querySelectorAll(".code-wrap pre").forEach((pre) => {
+      pre.setAttribute("tabindex", "0");
+      pre.setAttribute("title", "クリックまたは長押しでコピーできます");
+    });
     document.querySelectorAll(".copy").forEach((btn) => {
       btn.onclick = async () => {
         const pre = btn.parentElement.querySelector("pre");
@@ -2620,6 +2624,10 @@ ${q}
           }
         }
       };
+      const pre = btn.parentElement && btn.parentElement.querySelector("pre");
+      if (pre) {
+        pre.addEventListener("click", () => btn.click());
+      }
     });
   };
 
@@ -3339,6 +3347,6 @@ ${q}
   window.addEventListener("hashchange", render);
   render();
   if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js?v=cache4", { updateViaCache: "none" }).catch(() => {});
+    navigator.serviceWorker.register("sw.js?v=copy1", { updateViaCache: "none" }).catch(() => {});
   }
 })();
