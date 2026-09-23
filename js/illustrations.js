@@ -133,6 +133,24 @@ window.ILLUSTRATIONS = {
       <rect x="92" y="96" width="96" height="14" rx="4" fill="#e8e8e8"/>
       <rect x="92" y="116" width="96" height="16" rx="8" fill="#e29447"/>
     </svg>`,
+  portalpage: `
+    <svg viewBox="0 0 280 180" role="img" aria-label="社内ポータルを見てリンクを渡す">
+      <rect x="16" y="12" width="248" height="156" rx="10" fill="#fff" stroke="#ececec"/>
+      <rect x="16" y="12" width="248" height="28" rx="10" fill="#1f4e79"/>
+      <rect x="16" y="30" width="248" height="10" fill="#1f4e79"/>
+      <text x="30" y="32" font-size="11" fill="#fff" font-weight="700">宮田財務 社内ポータル</text>
+      <rect x="28" y="50" width="150" height="46" rx="6" fill="#f3e6d4"/>
+      <text x="38" y="68" font-size="10" font-weight="700" fill="#1f1f1f">お知らせ</text>
+      <text x="38" y="84" font-size="9" fill="#5a5a5a">9/20 棚卸しのため午後休業</text>
+      <rect x="186" y="50" width="64" height="46" rx="6" fill="#e5f3ef"/>
+      <text x="218" y="70" text-anchor="middle" font-size="10" font-weight="700">リンク</text>
+      <text x="218" y="86" text-anchor="middle" font-size="8" fill="#3d8b6e">勤怠・メール</text>
+      <rect x="28" y="104" width="224" height="22" rx="4" fill="#f5f5f5"/>
+      <text x="38" y="119" font-size="9" fill="#444">社名・日付・リンクを自分の目で確認</text>
+      <rect x="28" y="134" width="88" height="20" rx="10" fill="#e29447"/>
+      <text x="72" y="148" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">リンクをコピー</text>
+      <text x="128" y="148" font-size="10" fill="#6b6b6b">→ 社員に渡す</text>
+    </svg>`,
   check: `
     <svg viewBox="0 0 280 180" role="img" aria-label="数字と宛名を確認">
       <rect x="36" y="24" width="208" height="132" rx="8" fill="#fff" stroke="#ececec"/>

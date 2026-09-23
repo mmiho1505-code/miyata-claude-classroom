@@ -327,6 +327,7 @@ ${q}
     "cowork",
     "portalmake",
     "portalfix",
+    "attend",
     "code",
     "codemac",
     "snspost",
@@ -343,7 +344,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["account", "webchat", "poster", "cowork", "portalmake", "portalfix", "code", "codemac"];
+  const BEGINNER_IDS = ["account", "webchat", "poster", "cowork", "portalmake", "portalfix", "attend", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -357,7 +358,7 @@ ${q}
     "appedit",
     "applied"
   ];
-  const COWORK_IDS = ["webchat", "cowork", "portalmake", "portalfix"];
+  const COWORK_IDS = ["webchat", "cowork", "portalmake", "portalfix", "attend"];
   const CODE_SETUP_IDS = ["code", "codemac"];
   const CODE_MAKE_IDS = ADVANCED_IDS.slice();
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -375,7 +376,7 @@ ${q}
 
   const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq"];
   const GATE_PACKS = {
-    jimu: { label: "事務（Cowork）", ids: ["cowork", "portalmake", "portalfix"] },
+    jimu: { label: "事務（Cowork）", ids: ["cowork", "portalmake", "portalfix", "attend"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
     zenbu: { label: "全部", ids: HOME_ORDER.slice() }
   };
@@ -496,6 +497,7 @@ ${q}
     cowork: ["cover-cowork", "Cowork", "やり方ガイドつき。資料・整理・連携から請求書と経費まで。", "cowork"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
     portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
+    attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "calendar"],
     intro: ["cover-intro", "勉強会", "日本語でお願いして、作って・見て・直す感覚。", "desktop"],
     code: ["cover-code", "Code", "黒い画面に1行貼って、使える状態まで。", "powershell"],
     codemac: ["cover-mac", "Mac", "ターミナルに1行貼って、使える状態まで。", "terminal"],
@@ -520,6 +522,7 @@ ${q}
     cowork: ["Cowork", "💬"],
     portalmake: ["ポータル作る", "🏠"],
     portalfix: ["ポータル直す", "🔧"],
+    attend: ["出退勤", "⏰"],
     intro: ["勉強会", "📘"],
     code: ["Code", "💻"],
     codemac: ["Mac", ""],
@@ -1045,7 +1048,8 @@ ${q}
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    portalfix: ["mouse", "同じ会話の続きで直す"]
+    portalfix: ["mouse", "同じ会話の続きで直す"],
+    attend: ["calendar", "ボタンを押すだけの出退勤"]
   };
 
   const LESSON_ART = {
@@ -1173,13 +1177,13 @@ ${q}
       const t = {
         goal: ["cowork", "作る・確かめる・見せる"],
         what: ["compare", "チャットは相談、Coworkは作業"],
-        image: ["site", "お知らせ・予定・リンク・連絡先"],
+        image: ["portalpage", "お知らせ・予定・リンク・連絡先"],
         flow: ["desktop", "開く → 頼む → 確かめる → 渡す"],
         open: ["cowork", "パソコンのアプリで Cowork"],
         ask: ["copy", "見本文を貼って送る"],
         tips: ["copy", "誰が・何を・どんな感じで"],
         answer: ["chat", "分からなければおまかせ"],
-        share: ["check", "見てからリンクを渡す"],
+        share: ["portalpage", "見てからリンクを渡す"],
         trouble: ["quiz", "アプリ側か、文を貼り直すか"],
         safety: ["safety", "個人情報は載せない"],
         practice: ["cowork", "20分で1ページ"],
@@ -1202,6 +1206,25 @@ ${q}
         summary: ["check", "続き・具体・再読み込み"]
       };
       return t[lessonId] || COURSE_ART.portalfix;
+    }
+    if (courseId === "attend") {
+      const t = {
+        goal: ["calendar", "作る・記録する・集計する"],
+        image: ["site", "名前を選んでボタンを押す"],
+        vs: ["compare", "みんなで書き込むから保存が大事"],
+        flow: ["desktop", "作って、試して、使い始める"],
+        prep: ["folder", "誰が・何を押す・月末に何が欲しい"],
+        ask: ["copy", "全員分を保存して消えないように"],
+        answer: ["chat", "分からなければおまかせ"],
+        check: ["check", "押し直しても記録が残るか"],
+        share: ["browser", "共有して、最初は並行運用"],
+        excel: ["excel", "月末は話しかけるか、Excelで出す"],
+        tips: ["copy", "名前の追加も押し忘れも一文で"],
+        safety: ["safety", "名前だけ。控えは社内に"],
+        practice: ["calendar", "作る・テスト・直す・集計"],
+        summary: ["check", "保存・テスト・Excel"]
+      };
+      return t[lessonId] || COURSE_ART.attend;
     }
     if (courseId === "appedit") {
       const t = {
@@ -1525,20 +1548,21 @@ ${q}
       ["cowork", "04", "Cowork", "事務"],
       ["portalmake", "05", "ポータル", "作る"],
       ["portalfix", "06", "直す", "Cowork"],
-      ["code", "07", "Windows", "準備"],
-      ["codemac", "08", "Mac", "準備"],
-      ["snspost", "09", "投稿文", "やさしい"],
-      ["survey", "10", "集計", "やさしい"],
-      ["expense", "11", "経費", "作る"],
-      ["invoice", "12", "請求書", "作る"],
-      ["abc", "13", "ABC", "分析"],
-      ["sns", "14", "SNS", "分析"],
-      ["crm", "15", "CRM", "作る"],
-      ["shop", "16", "店舗", "公開"],
-      ["secretary", "17", "秘書", "実践"],
-      ["appedit", "18", "画面", "直す"],
-      ["applied", "19", "使いこなし", "中級"],
-      ["faq", "20", "つまずき", "補助"]
+      ["attend", "07", "出退勤", "作る"],
+      ["code", "08", "Windows", "準備"],
+      ["codemac", "09", "Mac", "準備"],
+      ["snspost", "10", "投稿文", "やさしい"],
+      ["survey", "11", "集計", "やさしい"],
+      ["expense", "12", "経費", "作る"],
+      ["invoice", "13", "請求書", "作る"],
+      ["abc", "14", "ABC", "分析"],
+      ["sns", "15", "SNS", "分析"],
+      ["crm", "16", "CRM", "作る"],
+      ["shop", "17", "店舗", "公開"],
+      ["secretary", "18", "秘書", "実践"],
+      ["appedit", "19", "画面", "直す"],
+      ["applied", "20", "使いこなし", "中級"],
+      ["faq", "21", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
