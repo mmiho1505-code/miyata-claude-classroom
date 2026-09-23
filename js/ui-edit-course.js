@@ -97,7 +97,7 @@
         body: `
             <p class="kicker">PATTERN 2</p>
             <h1>よく使う編集（2）</h1>
-            <div data-pic="check" data-cap="部品の追加も、不具合も、お願いするだけ"></div>
+            <div data-pic="mouse" data-cap="部品の追加も、不具合も、お願いするだけ"></div>
             <h2>部品を足す／消す</h2>
             ${box("日付の下に『天気』を選ぶ欄を追加して。晴れ・くもり・雨の3択で。")}
             <h2>スマホ対応にする</h2>

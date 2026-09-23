@@ -151,6 +151,31 @@ window.ILLUSTRATIONS = {
       <text x="72" y="148" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">リンクをコピー</text>
       <text x="128" y="148" font-size="10" fill="#6b6b6b">→ 社員に渡す</text>
     </svg>`,
+  eyecheck: `
+    <svg viewBox="0 0 280 180" role="img" aria-label="自分の目で確かめる">
+      <rect x="36" y="20" width="208" height="140" rx="10" fill="#fff" stroke="#ececec"/>
+      <rect x="52" y="36" width="120" height="10" rx="4" fill="#ead9c4"/>
+      <rect x="52" y="54" width="176" height="8" rx="4" fill="#f0e6d8"/>
+      <rect x="52" y="70" width="152" height="8" rx="4" fill="#f0e6d8"/>
+      <rect x="52" y="86" width="96" height="8" rx="4" fill="#f0e6d8"/>
+      <circle cx="200" cy="128" r="26" fill="#e8f3ea"/>
+      <path d="M188 128 l8 8 16-18" fill="none" stroke="#3d8b6e" stroke-width="4" stroke-linecap="round"/>
+      <text x="140" y="150" text-anchor="middle" font-size="12" fill="#3d8b6e">自分の目で確かめる</text>
+    </svg>`,
+  attendapp: `
+    <svg viewBox="0 0 280 180" role="img" aria-label="出退勤ボタンの画面">
+      <rect x="24" y="16" width="232" height="148" rx="12" fill="#fff" stroke="#ececec"/>
+      <rect x="24" y="16" width="232" height="28" rx="12" fill="#1f4e79"/>
+      <rect x="24" y="32" width="232" height="12" fill="#1f4e79"/>
+      <text x="40" y="36" font-size="12" fill="#fff" font-weight="700">宮田財務 出退勤</text>
+      <rect x="40" y="56" width="200" height="28" rx="8" fill="#f5f5f5"/>
+      <text x="52" y="74" font-size="11" fill="#555">名前を選ぶ：山田 花子</text>
+      <rect x="40" y="96" width="92" height="32" rx="8" fill="#2f7d62"/>
+      <text x="86" y="116" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">出勤</text>
+      <rect x="148" y="96" width="92" height="32" rx="8" fill="#d89a56"/>
+      <text x="194" y="116" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">退勤</text>
+      <text x="40" y="148" font-size="11" fill="#444">今日の記録：出勤 8:58 ／ 退勤 17:32</text>
+    </svg>`,
   check: `
     <svg viewBox="0 0 280 180" role="img" aria-label="数字と宛名を確認">
       <rect x="36" y="24" width="208" height="132" rx="8" fill="#fff" stroke="#ececec"/>

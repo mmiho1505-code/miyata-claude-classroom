@@ -328,6 +328,7 @@ ${q}
     "portalmake",
     "portalfix",
     "attend",
+    "salary",
     "code",
     "codemac",
     "snspost",
@@ -344,7 +345,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["account", "webchat", "poster", "cowork", "portalmake", "portalfix", "attend", "code", "codemac"];
+  const BEGINNER_IDS = ["account", "webchat", "poster", "cowork", "portalmake", "portalfix", "attend", "salary", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -358,13 +359,13 @@ ${q}
     "appedit",
     "applied"
   ];
-  const COWORK_IDS = ["webchat", "cowork", "portalmake", "portalfix", "attend"];
+  const COWORK_IDS = ["webchat", "cowork", "portalmake", "portalfix", "attend", "salary"];
   const CODE_SETUP_IDS = ["code", "codemac"];
   const CODE_MAKE_IDS = ADVANCED_IDS.slice();
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
 
   const toolOf = (courseId) => {
-    if (courseId === "cowork" || courseId === "webchat") return "cowork";
+    if (COWORK_IDS.includes(courseId)) return "cowork";
     if (["poster", "account", "faq"].includes(courseId)) return "starter";
     return "code";
   };
@@ -376,7 +377,7 @@ ${q}
 
   const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq"];
   const GATE_PACKS = {
-    jimu: { label: "事務（Cowork）", ids: ["cowork", "portalmake", "portalfix", "attend"] },
+    jimu: { label: "事務（Cowork）", ids: ["cowork", "portalmake", "portalfix", "attend", "salary"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
     zenbu: { label: "全部", ids: HOME_ORDER.slice() }
   };
@@ -497,7 +498,8 @@ ${q}
     cowork: ["cover-cowork", "Cowork", "やり方ガイドつき。資料・整理・連携から請求書と経費まで。", "cowork"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
     portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
-    attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "calendar"],
+    attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "attendapp"],
+    salary: ["cover-invoice", "給料", "出退勤の記録から支給額まで。電卓で検算してから渡す。", "expense"],
     intro: ["cover-intro", "勉強会", "日本語でお願いして、作って・見て・直す感覚。", "desktop"],
     code: ["cover-code", "Code", "黒い画面に1行貼って、使える状態まで。", "powershell"],
     codemac: ["cover-mac", "Mac", "ターミナルに1行貼って、使える状態まで。", "terminal"],
@@ -523,6 +525,7 @@ ${q}
     portalmake: ["ポータル作る", "🏠"],
     portalfix: ["ポータル直す", "🔧"],
     attend: ["出退勤", "⏰"],
+    salary: ["給料", "💴"],
     intro: ["勉強会", "📘"],
     code: ["Code", "💻"],
     codemac: ["Mac", ""],
@@ -1048,8 +1051,9 @@ ${q}
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    portalfix: ["mouse", "同じ会話の続きで直す"],
-    attend: ["calendar", "ボタンを押すだけの出退勤"]
+    portalfix: ["copy", "同じ会話の続きで直す"],
+    attend: ["attendapp", "ボタンを押すだけの出退勤"],
+    salary: ["expense", "時間×時給を表にする"]
   };
 
   const LESSON_ART = {
@@ -1071,7 +1075,7 @@ ${q}
     tips: ["copy", "ゴール・素材・形式を伝える"],
     safety: ["safety", "送る前は自分の目で確認"],
     trouble: ["chat", "エラー文をそのまま伝える"],
-    summary: ["check", "小さく試してから広げる"],
+    summary: ["eyecheck", "小さく試してから広げる"],
     words: ["folder", "ひな形・差し込み・リスト"],
     setup: ["desktop", "パソコンでフォルダを接続"],
     flow: ["desktop", "順番にひとつずつ"],
@@ -1085,7 +1089,7 @@ ${q}
     vibe: ["desktop", "作って → 見て → 直す"],
     talk: ["chat", "ゴールを先に、具体的に"],
     modes: ["compare", "チャット・Cowork・Code"],
-    recap: ["check", "次の一歩は小さく"],
+    recap: ["eyecheck", "次の一歩は小さく"],
     aim: ["desktop", "自分仕様に育てる"],
     themes: ["compare", "6つのテーマ"],
     claudemd: ["docs", "取扱説明書を1枚"],
@@ -1098,7 +1102,7 @@ ${q}
     deepen: ["chat", "役割・制約・形式を添える"],
     stuck: ["chat", "エラー文をそのまま伝える"],
     guard: ["safety", "送る・消す・公開は確認してから"],
-    wrap: ["check", "まずは CLAUDE.md から"],
+    wrap: ["eyecheck", "まずは CLAUDE.md から"],
     make: ["desktop", "日本語でお願いして作る"],
     job: ["secretary", "自分の仕事に置き換える"],
     tools: ["powershell", "黒い画面が作業場"],
@@ -1107,7 +1111,7 @@ ${q}
     step4: ["browser", "ブラウザでログイン・公開"],
     step5: ["canva", "保存してから仕上げ"],
     step6: ["browser", "公開してスマホで見る"],
-    step9: ["check", "誤字・電話・住所を確認"]
+    step9: ["poster", "誤字・電話・住所を確認"]
   };
 
   const GENERIC_LESSON = {
@@ -1143,7 +1147,7 @@ ${q}
         signup: ["signup", "Google かメールで続ける"],
         free: ["webchat", "無料でも会話は始められる"],
         plan: ["plan", "設定からプランを開く"],
-        check: ["check", "Pro などと出ていればOK"],
+        check: ["plan", "Pro などと出ていればOK"],
         summary: ["webchat", "次はチャット入門"]
       };
       return t[lessonId] || COURSE_ART.account;
@@ -1164,11 +1168,11 @@ ${q}
       const t = {
         goal: ["mac", "Macの人向けです"],
         what: ["terminal", "赤い丸・黄・緑があればターミナル"],
-        prep: ["check", "有料プランとネット"],
+        prep: ["plan", "有料プランとネット"],
         open: ["mac", "⌘＋スペースでターミナル"],
         install: ["copy", "1行貼って Enter"],
         login: ["terminal", "claude と打つ"],
-        check: ["check", "version が出れば成功"],
+        check: ["terminal", "version が出れば成功"],
         summary: ["compare", "WindowsはPowerShellへ"]
       };
       return t[lessonId] || COURSE_ART.codemac;
@@ -1187,64 +1191,83 @@ ${q}
         trouble: ["quiz", "アプリ側か、文を貼り直すか"],
         safety: ["safety", "個人情報は載せない"],
         practice: ["cowork", "20分で1ページ"],
-        summary: ["check", "Cowork・貼る・見てから渡す"]
+        summary: ["portalpage", "Cowork・貼る・見てから渡す"]
       };
       return t[lessonId] || COURSE_ART.portalmake;
     }
     if (courseId === "portalfix") {
       const t = {
         prep: ["folder", "リンクと、作ったときの会話"],
-        goal: ["mouse", "足す・変える・消す／戻す"],
-        what: ["chat", "話しかけるだけで直る"],
+        goal: ["copy", "足す・変える・消す／戻す"],
+        what: ["cowork", "話しかけるだけで直る"],
         flow: ["copy", "同じ会話の続きに書く"],
         promptwork: ["copy", "やりたいことを一文で"],
         tips: ["copy", "どこを・前と後をはっきり"],
-        later: ["site", "見つからなければリンクを貼る"],
+        later: ["portalpage", "見つからなければリンクを貼る"],
         trouble: ["quiz", "再読み込みしてから言い直す"],
         safety: ["safety", "直したら自分の目で"],
-        practice: ["mouse", "足す・変える・見た目・戻す"],
-        summary: ["check", "続き・具体・再読み込み"]
+        practice: ["portalpage", "足す・変える・見た目・戻す"],
+        summary: ["eyecheck", "続き・具体・再読み込み"]
       };
       return t[lessonId] || COURSE_ART.portalfix;
     }
     if (courseId === "attend") {
       const t = {
-        goal: ["calendar", "作る・記録する・集計する"],
-        image: ["site", "名前を選んでボタンを押す"],
-        vs: ["compare", "みんなで書き込むから保存が大事"],
+        goal: ["attendapp", "作る・記録する・集計する"],
+        image: ["attendapp", "名前を選んでボタンを押す"],
+        vs: ["folder", "みんなで書き込むから保存が大事"],
         flow: ["desktop", "作って、試して、使い始める"],
         prep: ["folder", "誰が・何を押す・月末に何が欲しい"],
         ask: ["copy", "全員分を保存して消えないように"],
         answer: ["chat", "分からなければおまかせ"],
-        check: ["check", "押し直しても記録が残るか"],
-        share: ["browser", "共有して、最初は並行運用"],
+        check: ["attendapp", "押し直しても記録が残るか"],
+        share: ["phone", "共有して、最初は並行運用"],
         excel: ["excel", "月末は話しかけるか、Excelで出す"],
         tips: ["copy", "名前の追加も押し忘れも一文で"],
         safety: ["safety", "名前だけ。控えは社内に"],
-        practice: ["calendar", "作る・テスト・直す・集計"],
-        summary: ["check", "保存・テスト・Excel"]
+        practice: ["attendapp", "作る・テスト・直す・集計"],
+        summary: ["eyecheck", "保存・テスト・Excel"]
       };
       return t[lessonId] || COURSE_ART.attend;
+    }
+    if (courseId === "salary") {
+      const t = {
+        goal: ["expense", "そろえる・計算する・確かめる"],
+        scope: ["safety", "支給額まで。税は今まで通り"],
+        flow: ["folder", "取り出して、表にして、確かめる"],
+        prep: ["excel", "記録・条件・会社のルール"],
+        rules: ["check", "割増は法律の最低ライン"],
+        ask: ["copy", "計算式が見えるExcelで"],
+        files: ["folder", "入力欄にドラッグして渡す"],
+        result: ["excel", "一人1行の支給額の表"],
+        check: ["check", "電卓で1人分を検算する"],
+        pitfalls: ["quiz", "休憩・端数・月給・夜勤"],
+        nextmonth: ["copy", "先月と同じ方法で"],
+        safety: ["safety", "名前・時間・時給だけ"],
+        practice: ["expense", "架空のデータで練習"],
+        summary: ["check", "支給額・式・電卓"]
+      };
+      return t[lessonId] || COURSE_ART.salary;
     }
     if (courseId === "appedit") {
       const t = {
         goal: ["mouse", "コードを書かず、対話で直す"],
         cando: ["desktop", "文字・見た目・部品"],
-        words: ["check", "見て・頼んで・戻せる"],
+        words: ["eyecheck", "見て・頼んで・戻せる"],
         flow: ["copy", "小さく直して確認する"],
         text: ["copy", "〜を〜に、と頼む"],
-        parts: ["check", "部品もスマホもお願いだけ"],
+        parts: ["mouse", "部品もスマホもお願いだけ"],
         where: ["mouse", "画面の言葉で指す"],
         tips: ["copy", "違ったら戻せばいい"],
         safety: ["safety", "直す前に保存する"],
         trouble: ["quiz", "状況をそのまま渡す"],
-        summary: ["check", "まずは文字をひとつ"]
+        summary: ["eyecheck", "まずは文字をひとつ"]
       };
       return t[lessonId] || COURSE_ART.appedit;
     }
     if (lessonId === "safety") return ["safety", "送る・消す・公開の前は、自分の目で"];
     if (lessonId === "trouble") return ["chat", "エラー文をそのまま伝える"];
-    if (lessonId === "summary" || lessonId === "recap" || lessonId === "wrap") return ["check", "できたことを確認して、次は小さく"];
+    if (lessonId === "summary" || lessonId === "recap" || lessonId === "wrap") return ["eyecheck", "できたことを確認して、次は小さく"];
     if (lessonId === "setup" || lessonId === "prep") return ["desktop", "まずは自分のパソコンで準備"];
     if (lessonId === "flow") return ["site", "上から順に、ひとつずつ"];
     if (courseId === "code" && lessonId === "step1") return ["start", "スタートから PowerShell"];
@@ -1273,38 +1296,40 @@ ${q}
   };
 
   const pickOpPic = (text) => {
+    if (/出退勤|出勤|退勤/.test(text)) return "attendapp";
+    if (/ポータル|お知らせ/.test(text)) return "portalpage";
     if (/ターミナル|Mac|Spotlight/.test(text)) return "terminal";
     if (/プラン|有料|Upgrade/.test(text)) return "plan";
     if (/アカウント|登録|Google で/.test(text)) return "signup";
     if (/チャット|入力欄/.test(text)) return "webchat";
     if (/コピー|貼/.test(text)) return "copy";
     if (/フォルダ|材料|リスト|ひな形/.test(text)) return "folder";
-    if (/確認|金額|検品|指差/.test(text)) return "check";
-    if (/ログイン|ブラウザ|公開/.test(text)) return "browser";
+    if (/金額|宛名|検品|指差/.test(text)) return "check";
+    if (/自分の目|開き直|残って/.test(text)) return "eyecheck";
+    if (/ログイン/.test(text)) return "browser";
     if (/Git/.test(text)) return "git";
     if (/Cowork/.test(text)) return "cowork";
     if (/クイズ/.test(text)) return "quiz";
-    if (/安全|機密|渡さ/.test(text)) return "safety";
-    if (/カレンダー|毎月|予約/.test(text)) return "calendar";
-    if (/メール|下書き/.test(text)) return "mail";
-    if (/Excel|表|CSV/.test(text)) return "excel";
+    if (/パスワード|個人情報|機密/.test(text)) return "safety";
+    if (/カレンダー|毎月1日/.test(text)) return "calendar";
+    if (/下書き/.test(text)) return "mail";
+    if (/Excel|CSV|スプレッド/.test(text)) return "excel";
     if (/Canva/.test(text)) return "canva";
     if (/Pinterest/.test(text)) return "pinterest";
     if (/ポスター/.test(text)) return "poster";
     if (/請求/.test(text)) return "invoice";
     if (/経費|レシート/.test(text)) return "expense";
-    if (/手順|流れ|ステップ|上から|順/.test(text)) return "steps";
+    if (/手順|流れ|ステップ/.test(text)) return "steps";
     if (/読んだ|完了|ハンコ/.test(text)) return "done";
-    if (/お願い|プロンプト|ことば|話す|頼み/.test(text)) return "chat";
-    if (/全体|地図|テーマ|くらべ/.test(text)) return "compare";
-    if (/まとめ|ふりかえ|できた/.test(text)) return "check";
+    if (/お願い|プロンプト|ことば/.test(text)) return "chat";
+    if (/くらべ|チャットと/.test(text)) return "compare";
     if (/秘書/.test(text)) return "secretary";
     if (/SNS|投稿/.test(text)) return "sns";
-    if (/店舗|予約/.test(text)) return "shop";
-    if (/集計|グラフ/.test(text)) return "survey";
+    if (/店舗サイト|予約フォーム/.test(text)) return "shop";
+    if (/グラフ/.test(text)) return "survey";
     if (/ABC/.test(text)) return "abc";
     if (/CRM|顧客/.test(text)) return "crm";
-    return "mouse";
+    return "eyecheck";
   };
 
   const coverArt = (name) => {
@@ -1549,20 +1574,21 @@ ${q}
       ["portalmake", "05", "ポータル", "作る"],
       ["portalfix", "06", "直す", "Cowork"],
       ["attend", "07", "出退勤", "作る"],
-      ["code", "08", "Windows", "準備"],
-      ["codemac", "09", "Mac", "準備"],
-      ["snspost", "10", "投稿文", "やさしい"],
-      ["survey", "11", "集計", "やさしい"],
-      ["expense", "12", "経費", "作る"],
-      ["invoice", "13", "請求書", "作る"],
-      ["abc", "14", "ABC", "分析"],
-      ["sns", "15", "SNS", "分析"],
-      ["crm", "16", "CRM", "作る"],
-      ["shop", "17", "店舗", "公開"],
-      ["secretary", "18", "秘書", "実践"],
-      ["appedit", "19", "画面", "直す"],
-      ["applied", "20", "使いこなし", "中級"],
-      ["faq", "21", "つまずき", "補助"]
+      ["salary", "08", "給料", "計算"],
+      ["code", "09", "Windows", "準備"],
+      ["codemac", "10", "Mac", "準備"],
+      ["snspost", "11", "投稿文", "やさしい"],
+      ["survey", "12", "集計", "やさしい"],
+      ["expense", "13", "経費", "作る"],
+      ["invoice", "14", "請求書", "作る"],
+      ["abc", "15", "ABC", "分析"],
+      ["sns", "16", "SNS", "分析"],
+      ["crm", "17", "CRM", "作る"],
+      ["shop", "18", "店舗", "公開"],
+      ["secretary", "19", "秘書", "実践"],
+      ["appedit", "20", "画面", "直す"],
+      ["applied", "21", "使いこなし", "中級"],
+      ["faq", "22", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -1825,6 +1851,8 @@ ${q}
       abc: "cover-abc",
       sns: "cover-sns",
       snspost: "cover-snspost",
+      attend: "cover-expense",
+      salary: "cover-invoice",
       faq: "cover-faq"
     };
     const labels = {
@@ -1846,6 +1874,8 @@ ${q}
       abc: "ABC",
       sns: "SNS",
       snspost: "投稿文",
+      attend: "出退勤",
+      salary: "給料",
       faq: "つまずき"
     };
     const cover = covers[courseId] || "cover-cowork";
@@ -2490,16 +2520,21 @@ ${q}
       el.outerHTML = figureHTML(el.dataset.pic, el.dataset.cap || "絵で見てください");
     });
     document.querySelectorAll(".op").forEach((el) => {
-      if (el.querySelector(".pic")) return;
+      if (el.querySelector(".pic") || el.querySelector("[data-pic]")) return;
+      const body = el.closest(".lesson-body");
+      if (body && body.querySelector(":scope > .pic-hero")) return;
       const h3 = el.querySelector("h3");
       const pic = pickOpPic(el.textContent || "");
+      if (!pic || pic === "eyecheck") return;
       const html = figureHTML(pic, h3 ? `${h3.textContent}のイメージ` : "絵で見てください");
       if (h3) h3.insertAdjacentHTML("afterend", html);
       else el.insertAdjacentHTML("afterbegin", html);
     });
+    const hasHero = !!document.querySelector(".lesson-body > .pic-hero");
     const heads = document.querySelectorAll(".lesson-body h2");
     let added = 0;
     heads.forEach((h) => {
+      if (hasHero) return;
       if (added >= 4) return;
       if (h.closest(".course-overview")) return;
       if (/一覧|もくじ|目次|付箋|お気に入り/.test(h.textContent || "")) return;

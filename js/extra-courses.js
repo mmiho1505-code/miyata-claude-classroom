@@ -96,7 +96,7 @@
         body: `
             <p class="kicker">CHECK</p>
             <h1>プラン名が出ていればOK</h1>
-            <div data-pic="check" data-cap="設定のプラン欄に Pro などと出ていれば成功"></div>
+            <div data-pic="plan" data-cap="設定のプラン欄に Pro などと出ていれば成功"></div>
             <p>設定 → プラン に、今のプラン名が出ます。Free のままだと、Claude Code のログインで止まりやすいです。</p>
             <p>うまくいかないときは <a href="#/course/faq" data-link>つまずき一覧</a> の「ログインできない」へ。</p>
           `
@@ -277,7 +277,7 @@
         body: `
             <p class="kicker">CHECK</p>
             <h1>始める前に揃えるもの</h1>
-            <div data-pic="check" data-cap="ネットにつながった Mac と、有料プラン"></div>
+            <div data-pic="plan" data-cap="ネットにつながった Mac と、有料プラン"></div>
             <ul>
               <li>Mac（管理者のパスワードを知っていること）</li>
               <li>インターネット</li>
@@ -338,7 +338,7 @@
         body: `
             <p class="kicker">CHECK</p>
             <h1>version と doctor</h1>
-            <div data-pic="check" data-cap="数字が出ればインストール成功"></div>
+            <div data-pic="terminal" data-cap="数字が出ればインストール成功"></div>
             ${box("claude --version")}
             <p>次も試せます。</p>
             ${box("claude doctor")}
