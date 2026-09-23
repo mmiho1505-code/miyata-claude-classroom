@@ -3339,6 +3339,6 @@ ${q}
   window.addEventListener("hashchange", render);
   render();
   if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js?v=compare22", { updateViaCache: "none" }).catch(() => {});
+    navigator.serviceWorker.register("sw.js?v=cache4", { updateViaCache: "none" }).catch(() => {});
   }
 })();

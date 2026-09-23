@@ -224,6 +224,7 @@
               <article class="op"><span class="num">3</span><h3>月末は Excel</h3><p>取り出して、控えを保存する</p></article>
             </div>
             <p>最初はタイムカードと並行して、安心してから切り替えましょう。</p>
+            <p>月末の給料計算は <a href="#/course/salary" data-link>給料計算編</a> です。</p>
             <p><a href="materials/attend.pdf" download>スライドPDF（出退勤管理編）</a></p>
             <p><a class="btn-dark" href="#/" data-link>ホームへ</a></p>
           `

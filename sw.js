@@ -1,4 +1,4 @@
-const CACHE = "miyata-classroom-v3";
+const CACHE = "miyata-classroom-v4";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
