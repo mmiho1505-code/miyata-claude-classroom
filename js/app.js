@@ -1228,6 +1228,7 @@ ${q}
         share: ["phone", "共有して、最初は並行運用"],
         excel: ["excel", "月末は話しかけるか、Excelで出す"],
         tips: ["copy", "名前の追加も押し忘れも一文で"],
+        addfeat: ["copy", "ポータルに出退勤を足すお願い文"],
         safety: ["safety", "名前だけ。控えは社内に"],
         practice: ["attendapp", "作る・テスト・直す・集計"],
         summary: ["eyecheck", "保存・テスト・Excel"]
@@ -3347,6 +3348,6 @@ ${q}
   window.addEventListener("hashchange", render);
   render();
   if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js?v=copy1", { updateViaCache: "none" }).catch(() => {});
+    navigator.serviceWorker.register("sw.js?v=addfeat1", { updateViaCache: "none" }).catch(() => {});
   }
 })();
