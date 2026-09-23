@@ -2764,7 +2764,7 @@ ${q}
 
         <div class="card">
           <h2>ほかの人に送る</h2>
-          <p class="easy-meta">LINEやメールに貼るリンクです。このパソコンが動いているあいだ、相手の携帯でも開けます。</p>
+          <p class="easy-meta">携帯では、下のリンクを使ってください。GitHub に公開してあるページです。パソコンの「localhost」や Cursor のプレビューは、携帯から開けません。</p>
           <ul class="hub-files invite-list">
             ${inviteLinks()
               .map(
@@ -3133,13 +3133,25 @@ ${q}
     set('meta[name="twitter:description"]', desc);
   };
 
+  const PUBLIC_SITE = "https://mmiho1505-code.github.io/miyata-claude-classroom/";
+
+  const siteBase = () => {
+    const origin = String(location.origin || "");
+    const local =
+      origin === "null" ||
+      origin.startsWith("file:") ||
+      /localhost|127\.0\.0\.1|\[::1\]|192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\./i.test(origin);
+    if (local) return PUBLIC_SITE;
+    return `${origin}${location.pathname.replace(/[^/]*$/, "")}`.replace(/\/?$/, "/");
+  };
+
   const inviteLinks = () => {
-    const base = `${location.origin}${location.pathname.replace(/[^/]*$/, "")}`.replace(/\/?$/, "/");
+    const base = siteBase();
     return [
       ["教室の入口（準備だけ）", base],
-      ["事務コース（Cowork）", `${base}?key=${encodeURIComponent("じむ")}`],
-      ["道具コース（Claude Code）", `${base}?key=${encodeURIComponent("どうぐ")}`],
-      ["全部開ける", `${base}?key=${encodeURIComponent("ぜんぶ")}`]
+      ["事務コース（Cowork）", `${base}?key=jimu`],
+      ["道具コース（Claude Code）", `${base}?key=dougu`],
+      ["全部開ける", `${base}?key=zenbu`]
     ];
   };
 
@@ -3162,7 +3174,7 @@ ${q}
     if (btn) {
       btn.onclick = () => {
         const id = btn.getAttribute("data-share") || "";
-        const base = `${location.origin}${location.pathname.replace(/[^/]*$/, "")}`;
+        const base = siteBase();
         const url = id.startsWith("course:")
           ? `${base}share/course-${id.slice(7)}.html`
           : `${base}share/${id || "home"}.html`;
@@ -3348,6 +3360,6 @@ ${q}
   window.addEventListener("hashchange", render);
   render();
   if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js?v=addfeat1", { updateViaCache: "none" }).catch(() => {});
+    navigator.serviceWorker.register("sw.js?v=phone1", { updateViaCache: "none" }).catch(() => {});
   }
 })();
