@@ -329,6 +329,7 @@ ${q}
     "portalfix",
     "attend",
     "salary",
+    "invoicemake",
     "code",
     "codemac",
     "snspost",
@@ -345,7 +346,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["account", "webchat", "poster", "cowork", "portalmake", "portalfix", "attend", "salary", "code", "codemac"];
+  const BEGINNER_IDS = ["account", "webchat", "poster", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -359,7 +360,7 @@ ${q}
     "appedit",
     "applied"
   ];
-  const COWORK_IDS = ["webchat", "cowork", "portalmake", "portalfix", "attend", "salary"];
+  const COWORK_IDS = ["webchat", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake"];
   const CODE_SETUP_IDS = ["code", "codemac"];
   const CODE_MAKE_IDS = ADVANCED_IDS.slice();
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -377,7 +378,7 @@ ${q}
 
   const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq"];
   const GATE_PACKS = {
-    jimu: { label: "事務（Cowork）", ids: ["cowork", "portalmake", "portalfix", "attend", "salary"] },
+    jimu: { label: "事務（Cowork）", ids: ["cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
     zenbu: { label: "全部", ids: HOME_ORDER.slice() }
   };
@@ -500,6 +501,7 @@ ${q}
     portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
     attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "attendapp"],
     salary: ["cover-invoice", "給料", "出退勤の記録から支給額まで。電卓で検算してから渡す。", "expense"],
+    invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
     intro: ["cover-intro", "勉強会", "日本語でお願いして、作って・見て・直す感覚。", "desktop"],
     code: ["cover-code", "Code", "黒い画面に1行貼って、使える状態まで。", "powershell"],
     codemac: ["cover-mac", "Mac", "ターミナルに1行貼って、使える状態まで。", "terminal"],
@@ -526,6 +528,7 @@ ${q}
     portalfix: ["ポータル直す", "🔧"],
     attend: ["出退勤", "⏰"],
     salary: ["給料", "💴"],
+    invoicemake: ["請求書", "📄"],
     intro: ["勉強会", "📘"],
     code: ["Code", "💻"],
     codemac: ["Mac", ""],
@@ -1053,7 +1056,8 @@ ${q}
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
     portalfix: ["copy", "同じ会話の続きで直す"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
-    salary: ["expense", "時間×時給を表にする"]
+    salary: ["expense", "時間×時給を表にする"],
+    invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"]
   };
 
   const LESSON_ART = {
@@ -1248,6 +1252,25 @@ ${q}
         summary: ["check", "支給額・式・電卓"]
       };
       return t[lessonId] || COURSE_ART.salary;
+    }
+    if (courseId === "invoicemake") {
+      const t = {
+        goal: ["invoice", "ひな形・毎月作る・確かめて送る"],
+        flow: ["folder", "最初だけ準備、あとは毎月"],
+        prep: ["folder", "自社情報・取引先・今月の明細"],
+        rules: ["docs", "インボイスの記載事項6つ"],
+        ask: ["copy", "ひな形をExcelで一度作る"],
+        monthly: ["copy", "宛先と明細を伝えるだけ"],
+        image: ["invoice", "数量×単価で自動計算"],
+        check: ["check", "宛名・金額・税率・日付・番号"],
+        batch: ["invoice", "一覧からまとめてPDF"],
+        send: ["folder", "PDFで送って、決まった場所に保存"],
+        tips: ["copy", "品目追加も値引きも一文で"],
+        safety: ["safety", "送るのは人。番号は原本で"],
+        practice: ["invoice", "架空の会社で20分"],
+        summary: ["check", "ひな形・明細・電卓してPDF"]
+      };
+      return t[lessonId] || COURSE_ART.invoicemake;
     }
     if (courseId === "appedit") {
       const t = {
@@ -1575,20 +1598,21 @@ ${q}
       ["portalfix", "06", "直す", "Cowork"],
       ["attend", "07", "出退勤", "作る"],
       ["salary", "08", "給料", "計算"],
-      ["code", "09", "Windows", "準備"],
-      ["codemac", "10", "Mac", "準備"],
-      ["snspost", "11", "投稿文", "やさしい"],
-      ["survey", "12", "集計", "やさしい"],
-      ["expense", "13", "経費", "作る"],
-      ["invoice", "14", "請求書", "作る"],
-      ["abc", "15", "ABC", "分析"],
-      ["sns", "16", "SNS", "分析"],
-      ["crm", "17", "CRM", "作る"],
-      ["shop", "18", "店舗", "公開"],
-      ["secretary", "19", "秘書", "実践"],
-      ["appedit", "20", "画面", "直す"],
-      ["applied", "21", "使いこなし", "中級"],
-      ["faq", "22", "つまずき", "補助"]
+      ["invoicemake", "09", "請求書", "Cowork"],
+      ["code", "10", "Windows", "準備"],
+      ["codemac", "11", "Mac", "準備"],
+      ["snspost", "12", "投稿文", "やさしい"],
+      ["survey", "13", "集計", "やさしい"],
+      ["expense", "14", "経費", "作る"],
+      ["invoice", "15", "請求書", "Code"],
+      ["abc", "16", "ABC", "分析"],
+      ["sns", "17", "SNS", "分析"],
+      ["crm", "18", "CRM", "作る"],
+      ["shop", "19", "店舗", "公開"],
+      ["secretary", "20", "秘書", "実践"],
+      ["appedit", "21", "画面", "直す"],
+      ["applied", "22", "使いこなし", "中級"],
+      ["faq", "23", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -1853,6 +1877,7 @@ ${q}
       snspost: "cover-snspost",
       attend: "cover-expense",
       salary: "cover-invoice",
+      invoicemake: "cover-invoice",
       faq: "cover-faq"
     };
     const labels = {
@@ -1876,6 +1901,7 @@ ${q}
       snspost: "投稿文",
       attend: "出退勤",
       salary: "給料",
+      invoicemake: "請求書",
       faq: "つまずき"
     };
     const cover = covers[courseId] || "cover-cowork";
