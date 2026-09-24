@@ -127,7 +127,7 @@
               <article class="op"><span class="num">3</span><h3>つなぐ</h3><p>パソコンのフォルダ。Gmail やカレンダーにつながることもある</p></article>
               <article class="op"><span class="num">4</span><h3>同じ会話で直す</h3><p>「〇〇を△△に」と続ける。手順を残して毎月くり返すこともできる</p></article>
             </div>
-            <div class="callout">今日のポータル作りで使うのは 1 と 4 です。Gmail・カレンダー・ドライブは次のページ。つながると便利です。ポータルには必須ではありません。</div>
+            <div class="callout">今日のポータル作りで使うのは 1 と 4 です。Gmail・カレンダー・ドライブは次のページ（つながると、メール・予定・資料をいちいち貼らなくてよい）。ポータルには必須ではありません。</div>
             <p>詳しい事務の例は <a href="#/course/cowork" data-link>はじめての Cowork</a> にあります。</p>
           `
       },
@@ -167,7 +167,13 @@
         body: `
             <p class="kicker">設定　できれば　5〜10分　練習</p>
             <h1>お願い文を貼って、Google をつなぐ</h1>
-            <p>Gmail・カレンダー・ドライブの3つです。メニューは探しません。下から1つコピーして貼ります。ポータルを作るには、<strong>やらなくてよい</strong>です。</p>
+            <p>つながると、Claude が<strong>会社のメール・予定・資料</strong>を見て答えられます。毎回コピーして貼らなくてよくなります。送る・消す・予定の変更は、これまでどおり人の仕事です。</p>
+            <div class="ops">
+              <article class="op"><span class="num">G</span><h3>Gmail</h3><p>未読の要点を短くまとめる。返信の下書きまで。送信はしない</p></article>
+              <article class="op"><span class="num">C</span><h3>カレンダー</h3><p>来週の予定、空いている時間を聞く。予定の追加・削除はしない</p></article>
+              <article class="op"><span class="num">D</span><h3>ドライブ</h3><p>最近使った資料の名前を探す。ファイルは消さない・共有は変えない</p></article>
+            </div>
+            <p>メニューは探しません。下から1つコピーして貼ります。ポータルを作るには、<strong>やらなくてよい</strong>です。</p>
             <ol>
               <li>パソコンの Claude アプリ、または <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> を開く</li>
               <li>下から1つ選んでコピーし、入力欄に貼って送る</li>
