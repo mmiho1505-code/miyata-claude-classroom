@@ -43,7 +43,7 @@
               <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書く</p></article>
             </div>
             <div class="callout">今日の成功は、ポータルを1枚作って、お知らせを1件足せることです。申請や給与は余ったらで構いません。</div>
-            <p>サイトの例（別タブで開く）：${sampleLink("社内ポータルの見本")}</p>
+            <p>${sampleLink("社内ポータルの見本")}</p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
       },
@@ -215,7 +215,7 @@
 できたら、社員が開けるリンクをください。`)}
             <p>分からないことを聞かれたら、短く答えるか「おまかせで進めて」で大丈夫です。</p>
             <p>送れたら次の「待ち時間」へ。送れなければ、先生と一緒にコピーを押します。</p>
-            <p>先に見本を見たい人は <a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a> を開いてください。</p>
+            <p>先に見たい人は ${sampleLink("社内ポータルの見本")} を開いてください。</p>
           `
       },
       {
@@ -231,7 +231,7 @@
               <li>本物のデータはまだ渡さない、と自分に言い聞かせる</li>
             </ol>
             <div class="callout">リンクが出たら、お気に入りに保存してから確認リストを試します。リンクがまだなら、機能追加には進みません。</div>
-            <p>待ち時間に見本を見る：<a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a></p>
+            <p>待ち時間に見る：${sampleLink("社内ポータルの見本")}</p>
           `
       },
       {
@@ -247,7 +247,7 @@
               <li>スマホでも文字が読めるか</li>
             </ol>
             <p>よければリンクをお気に入りに保存し、社員に渡します。あとから中身を直しても、アドレスは変わりません。</p>
-            <p>実際に作った例：<a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a></p>
+            <p>${sampleLink("社内ポータルの見本")}</p>
             <div class="callout">本物のお知らせや名簿は、ページができてから渡します。今はサンプルのままで進めて構いません。</div>
           `
       },
@@ -444,7 +444,7 @@
             <p class="kicker">見た目　110〜115分</p>
             <h1>タイル型にまとめて直す</h1>
             <p>機能が増えるたびに並びが変わるので、デザインはここでまとめて行います。先に雰囲気を決めてから、下の文を送ります。</p>
-            <p>サイトの例：${sampleLink("社内ポータルの見本")} を別タブで開く。この雰囲気を参考にします。</p>
+            <p>${sampleLink("社内ポータルの見本")} を別タブで開く。この雰囲気を参考にします。</p>
             ${box(`この見本の雰囲気を参考に、トップを整えてください。白を基調に、落ち着いた社内向けにしてください。
 見本：https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu`)}
             ${box(`トップページをグループウェアのようなタイル型にしてください。

@@ -178,7 +178,7 @@
               <li>リンクをコピーして、社員に渡す（メールやチャット）</li>
             </ol>
             <div class="callout">リンクは、あとから中身を直しても変わりません。毎回送り直す必要はありません。</div>
-            <p>サイトの例：<a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a></p>
+            <p><a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a></p>
           `
       },
       {
