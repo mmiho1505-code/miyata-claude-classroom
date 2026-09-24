@@ -28,7 +28,7 @@
               <tbody>
                 <tr><td>0〜10分</td><td>必須</td><td>今日の地図。ログインできるか確認</td></tr>
                 <tr><td>10〜25分</td><td>必須</td><td>チャット入門。返事を2回もらう</td></tr>
-                <tr><td>25〜50分</td><td>必須</td><td>初めての Cowork。アプリを入れて始める</td></tr>
+                <tr><td>25〜50分</td><td>必須</td><td>初めての Cowork。アプリ・Gmail接続・画面</td></tr>
                 <tr><td>50〜65分</td><td>必須</td><td>ポータルを1ページ作る。確認リスト</td></tr>
                 <tr><td>65〜70分</td><td>必須</td><td>休憩</td></tr>
                 <tr><td>70〜90分</td><td>必須</td><td>直し方。追加・移動を2つ。先生と確認</td></tr>
@@ -127,7 +127,7 @@
               <article class="op"><span class="num">3</span><h3>つなぐ</h3><p>パソコンのフォルダ。Gmail やカレンダーにつながることもある</p></article>
               <article class="op"><span class="num">4</span><h3>同じ会話で直す</h3><p>「〇〇を△△に」と続ける。手順を残して毎月くり返すこともできる</p></article>
             </div>
-            <div class="callout">今日使うのは 1 と 4 です。ポータルを作って、同じ会話で直します。フォルダ接続は、請求書や経費のときに特に大事です。</div>
+            <div class="callout">今日のポータル作りで使うのは 1 と 4 です。Gmail 接続は次のページ。つながるとメールの要約が頼めます。ポータルには必須ではありません。</div>
             <p>詳しい事務の例は <a href="#/course/cowork" data-link>はじめての Cowork</a> にあります。</p>
           `
       },
@@ -161,6 +161,30 @@
           `
       },
       {
+        id: "gmail",
+        title: "Gmailとつなぐ",
+        body: `
+            <p class="kicker">設定　できれば　5分</p>
+            <h1>Claude と Gmail を、一度つなぐ</h1>
+            <p>つながると、メールの要約や返信の下書きを頼めます。今日のポータル作りには必須ではありません。会社の Google が使える人だけ、先生と一緒にやります。</p>
+            <ol>
+              <li>パソコンの <strong>Claude アプリ</strong>を開く</li>
+              <li>設定（歯車）を開き、<strong>接続</strong>・コネクタ・Integrations など、アプリをつなぐ場所を探す</li>
+              <li><strong>Gmail</strong> を選んでつなぐ（カレンダーやドライブが出たら、使いたいものだけ）</li>
+              <li>Google の画面が出たら、<strong>いつも使う会社のメール</strong>で許可する</li>
+              <li>「送信してよいですか」と聞かれたら、今日は送らない。下書きまでにする</li>
+            </ol>
+            <div class="ops">
+              <article class="op"><span class="num">1</span><h3>パスワード</h3><p>Google の画面に、自分で入れる。Claude の入力欄には書かない</p></article>
+              <article class="op"><span class="num">2</span><h3>アカウント</h3><p>会社の Google と、個人の Gmail を取り違えない</p></article>
+              <article class="op"><span class="num">3</span><h3>送れないとき</h3><p>会社が接続を禁止していることがある。無理に突破しない</p></article>
+            </div>
+            <p>つながったら、下をコピーして送ってみます。送れなければ、次の「止まったとき」か「ポータルを作る」へ。</p>
+            ${box(`今日の未読メールを、大事そうな順に3行でまとめてください。返信が要りそうなものは下書きまで。送信はしないでください。`)}
+            <div class="callout">メールの中身に、パスワード・口座・マイナンバーがあったら、そのままコピーして渡さない。</div>
+          `
+      },
+      {
         id: "stuck",
         title: "止まったとき",
         body: `
@@ -186,6 +210,10 @@
             <div class="qa">
               <p class="qa-q">会社のネットで止まる</p>
               <p>無理に突破しない。<a href="#/course/faq/net" data-link>社内ルール</a></p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">Gmail がつながらない</p>
+              <p>会社の Google か確認。個人の Gmail と取り違えていないか見る。禁止なら無理に突破しない</p>
             </div>
             <div class="callout">どれも違うときは、画面を先生に見せます。次の「ポータルを作る」へ進んで、お願い文だけ先に読んでも構いません。</div>
           `
@@ -518,6 +546,12 @@
         choices: ["スマホのブラウザで開く", "パソコンに Claude アプリを入れ、同じメールでログインする", "黒い画面でコマンドを打つ"],
         a: 1,
         explain: "Cowork はパソコンのアプリです。claude.ai と同じアカウントで入ります。"
+      },
+      {
+        q: "Gmail とつなぐとき、パスワードは？",
+        choices: ["Claude の入力欄に書いて送る", "Google の画面に自分で入れる。送信はしない", "社員にお知らせとして載せる"],
+        a: 1,
+        explain: "つなぐ操作は Google の画面で自分で行います。メールの送信は人の仕事です。"
       },
       {
         q: "ポータルの中身を直す基本は？",
