@@ -1388,7 +1388,7 @@ ${q}
         install: ["desktop", "アプリを入れて同じメールでログイン"],
         cando: ["cowork", "作る・読む・つなぐ・同じ会話で直す"],
         screen: ["coworkask", "左メニュー・入力欄・できたリンク"],
-        gmail: ["copy", "お願い文を貼って、Gmailをつなぐ"],
+        gmail: ["copy", "お願い文でGmail・カレンダー・ドライブ"],
         stuck: ["desktop", "開けないときは当てはまる行だけ"],
         one: ["portalpage", "土台の1ページを作る"],
         wait: ["cowork", "できあがるまで確認リスト"],
