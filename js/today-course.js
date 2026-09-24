@@ -8,34 +8,78 @@
   CLASSROOM.courses.today = {
     id: "today",
     title: "今日の講義",
-    subtitle: "同じ会話で、社内ポータルを土台から管理画面まで一気に作る",
+    subtitle: "チャット入門から、社内ポータルの作り方・直し方までを一本で",
     duration: "約90分",
-    audience: "Coworkを使う人／今日の勉強会",
+    audience: "今日の勉強会／はじめての人からポータル担当まで",
     lessons: [
       {
         id: "goal",
-        title: "今日の流れ",
+        title: "今日の地図",
         body: `
             <p class="kicker">GOAL</p>
-            <h1>同じ会話に、①から⑨まで順番に貼る</h1>
-            <p>パソコンの Claude アプリで <strong>Cowork</strong> を開き、新しいタスクを1つ始めます。途中で会話を切り替えないでください。</p>
+            <h1>チャット → Cowork → 作る → 直す</h1>
+            <p>今日は、入口から編集までをこの順で進めます。途中の講座に飛ばなくても、この1本で一通りできます。</p>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>土台</h3><p>ポータルの1ページを作る</p></article>
-              <article class="op"><span class="num">2</span><h3>機能</h3><p>勤怠・管理・申請・給与を足す</p></article>
-              <article class="op"><span class="num">3</span><h3>見た目</h3><p>デザインは最後にまとめて直す</p></article>
+              <article class="op"><span class="num">1</span><h3>チャット</h3><p>ブラウザで日本語のお願いを1回送り、返事をもらう</p></article>
+              <article class="op"><span class="num">2</span><h3>Cowork</h3><p>パソコンのアプリで作業係を開き、ページを作ってもらう</p></article>
+              <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書いて、ポータルを直す</p></article>
             </div>
-            <div class="callout">中身はサンプルのままで進みます。本物のお知らせ・名簿は、ページができてから渡します。</div>
-            <p>作り方の基本は <a href="#/course/portalmake" data-link>ポータル作り方編</a>、直し方は <a href="#/course/portalfix" data-link>直し方編</a> です。</p>
+            <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
+          `
+      },
+      {
+        id: "chat",
+        title: "チャット入門",
+        practice: true,
+        body: `
+            <p class="kicker">入口</p>
+            <h1>まず、日本語で1回返事をもらう</h1>
+            <p>ブラウザで <strong>claude.ai</strong> を開きます。下が入力欄です。黒い画面は使いません。</p>
+            <ol>
+              <li>まだアカウントが無い人は <a href="#/course/account" data-link>アカウントと有料プラン</a></li>
+              <li>ログインしたら「新しいチャット」</li>
+              <li>下の文をコピーして貼り、送る</li>
+            </ol>
+            ${box(`小学生にも分かる言葉で、請求書と見積書の違いを5行で教えてください。専門用語が出たら、すぐ言い換えてください。`)}
+            <p>返事が来たら成功です。「もっと短く」と追加で書いて構いません。</p>
+            <div class="callout">パスワード・口座・マイナンバーは書きません。</div>
+          `
+      },
+      {
+        id: "vs",
+        title: "チャットと Cowork",
+        body: `
+            <p class="kicker">違い</p>
+            <h1>相談はチャット、作るのは Cowork</h1>
+            <div class="ops">
+              <article class="op"><span class="num">A</span><h3>チャット</h3><p>ブラウザ。答えが文章で返ってくる。相談・下書き向き</p></article>
+              <article class="op"><span class="num">B</span><h3>Cowork</h3><p>パソコンの Claude アプリ。ページやファイルまで作る。実務向き</p></article>
+            </div>
+            <p>社内ポータルは「作ってもらう仕事」なので、ここから先は <strong>Cowork</strong> です。</p>
+          `
+      },
+      {
+        id: "open",
+        title: "Cowork を開く",
+        body: `
+            <p class="kicker">準備</p>
+            <h1>パソコンのアプリで、左から Cowork</h1>
+            <ol>
+              <li>パソコンで <strong>Claude のアプリ</strong>を開く（ブラウザの claude.ai ではない）</li>
+              <li>左のメニューから <strong>Cowork</strong> を選ぶ</li>
+              <li>新しいタスク（会話）を1つ始める</li>
+            </ol>
+            <div class="callout">この先の①から直しまで、同じ会話を使います。途中で新しい会話に切り替えないでください。</div>
           `
       },
       {
         id: "one",
-        title: "① 土台：ポータルのページを作る",
+        title: "ポータルを作る",
         practice: true,
         body: `
-            <p class="kicker">STEP 1　練習</p>
-            <h1>まず1ページ作る</h1>
-            <p>下をコピーして、Cowork に貼って送ります。</p>
+            <p class="kicker">作る　練習</p>
+            <h1>土台の1ページを頼む</h1>
+            <p>誰が使うか・何を載せるか・どんな感じかを、最初に書いておくと直す回数が減ります。下をコピーして Cowork に貼ります。</p>
             ${box(`当社の社内ポータルを1ページ作ってください。社名は「株式会社 宮田財務」です。
 
 載せたいもの
@@ -51,16 +95,65 @@
 
 中身はサンプルで作り、あとで私が画面上で書き換えられるようにしてください。
 できたら、社員が開けるリンクをください。`)}
-            <div class="callout">色や載せたいものを最初に書いておくと、あとで直す回数が減ります。</div>
+            <p>分からないことを聞かれたら、短く答えるか「おまかせで進めて」で大丈夫です。</p>
+          `
+      },
+      {
+        id: "share",
+        title: "確認してから渡す",
+        body: `
+            <p class="kicker">確かめる</p>
+            <h1>自分の目で見てから、リンクを渡す</h1>
+            <ol>
+              <li>社名が「株式会社 宮田財務」か</li>
+              <li>お知らせに日付があるか</li>
+              <li>リンクを押して、行きたい場所に着くか</li>
+              <li>スマホでも文字が読めるか</li>
+            </ol>
+            <p>よければリンクをお気に入りに保存し、社員に渡します。あとから中身を直しても、アドレスは変わりません。</p>
+            <div class="callout">本物のお知らせや名簿は、ページができてから渡します。今はサンプルのままで進めて構いません。</div>
+          `
+      },
+      {
+        id: "edit",
+        title: "直し方の基本",
+        body: `
+            <p class="kicker">直す</p>
+            <h1>ページの中をいじらず、話しかける</h1>
+            <div class="ops">
+              <article class="op"><span class="num">1</span><h3>会話に戻る</h3><p>ポータルを作った Cowork の会話を開く</p></article>
+              <article class="op"><span class="num">2</span><h3>頼む</h3><p>「〇〇を△△に変えて」と送る</p></article>
+              <article class="op"><span class="num">3</span><h3>開き直す</h3><p>ページを再読み込みすると、直った状態になる</p></article>
+            </div>
+            <p>見つからないときは、新しいタスクにポータルのリンクを貼ってお願いします。</p>
+          `
+      },
+      {
+        id: "promptwork",
+        title: "よくある直し方",
+        practice: true,
+        body: `
+            <p class="kicker">編集のしかた　練習</p>
+            <h1>追加・変更・移動・戻す</h1>
+            <p>項目の場所を変えるときも、自分でドラッグしません。「何を・どこへ」と書きます。</p>
+            ${box(`お知らせに『10/20 棚卸しのため午後休業』を一番上に追加して`)}
+            ${box(`総務の内線を101から105に変えて`)}
+            ${box(`終わった9月の予定は消して`)}
+            ${box(`よく使うリンクの『勤怠』を一番上に移して`)}
+            ${box(`『今月の予定』のブロックを、『お知らせ』のすぐ下に移して`)}
+            ${box(`お知らせの2番目と3番目を入れ替えて`)}
+            ${box(`さっきの変更は取り消して、ひとつ前に戻して`)}
+            <p>1回に頼むのは1〜3個まで。あいまいな「いい感じに」より、具体的な一言のほうが早いです。</p>
           `
       },
       {
         id: "two",
-        title: "② 勤怠（打刻）",
+        title: "機能を足す：勤怠",
         practice: true,
         body: `
-            <p class="kicker">STEP 2　練習</p>
-            <h1>同じ会話の続きに、打刻を足す</h1>
+            <p class="kicker">同じ会話の続き</p>
+            <h1>打刻を足す</h1>
+            <p>作り方・直し方が分かったら、同じ会話に機能を足していきます。デザインの調整は、あとでまとめて行います。</p>
             ${box(`勤怠の打刻機能を追加してください。
 ・出勤・休憩開始・休憩終了・退勤のボタン
 ・社員はclaude.aiのアカウントで自動的に見分ける
@@ -70,11 +163,11 @@
       },
       {
         id: "three",
-        title: "③ 管理画面と社員画面を分ける",
+        title: "管理画面と社員画面",
         practice: true,
         body: `
-            <p class="kicker">STEP 3　練習</p>
-            <h1>管理者だけが見える画面を分ける</h1>
+            <p class="kicker">続き</p>
+            <h1>管理者だけが見える画面にする</h1>
             ${box(`管理者（私）だけが開ける「管理画面」と、社員用の画面を分けてください。
 管理画面には、今日の出勤状況（誰が勤務中か）と、ポータルの内容を編集するボタンを置いてください。
 社員には管理画面の存在も見えないようにしてください。`)}
@@ -82,10 +175,10 @@
       },
       {
         id: "four",
-        title: "④ 申請と承認",
+        title: "申請と承認",
         practice: true,
         body: `
-            <p class="kicker">STEP 4　練習</p>
+            <p class="kicker">続き</p>
             <h1>申請を足して、管理画面で承認する</h1>
             ${box(`社員用の「申請・休暇」を追加して、管理画面で承認・却下できるようにしてください。
 ・打刻修正の申請（日付・出勤・退勤・休憩・理由）
@@ -97,11 +190,11 @@
       },
       {
         id: "five",
-        title: "⑤ 給与計算（管理者だけ）",
+        title: "給与計算（管理者だけ）",
         practice: true,
         body: `
-            <p class="kicker">STEP 5　練習</p>
-            <h1>管理画面に、総支給額までの計算を足す</h1>
+            <p class="kicker">続き</p>
+            <h1>総支給額までの計算を足す</h1>
             ${box(`管理画面に給与計算を追加してください。私だけが見られるようにしてください。
 ・勤怠から総支給額まで計算（控除・手取りは不要）
 ・月給制と時給制の両方
@@ -109,16 +202,16 @@
 ・有給休暇分（時給の人）、欠勤控除（月給の人）、承認済みの経費を反映
 ・祝日を自動で入れるボタン
 ・CSVで保存`)}
-            <p>控除や手取りは入れません。税の最終判断は人の仕事です。詳しい流れは <a href="#/course/salary" data-link>給料計算編</a> も見てください。</p>
+            <p>控除や手取りは入れません。</p>
           `
       },
       {
         id: "six",
-        title: "⑥ 管理の仕上げ",
+        title: "管理の仕上げ",
         practice: true,
         body: `
-            <p class="kicker">STEP 6　練習</p>
-            <h1>アラート・確認・締め・名簿を足す</h1>
+            <p class="kicker">続き</p>
+            <h1>アラート・確認・締め・名簿</h1>
             ${box(`管理画面に次を追加してください。
 ・残業アラート（36協定の月45時間・年360時間に近い人を表示）
 ・お知らせの確認状況（社員に「確認しました」ボタンを付け、誰が未確認か分かるように）
@@ -128,11 +221,11 @@
       },
       {
         id: "seven",
-        title: "⑦ 社員向けの便利機能",
+        title: "社員向けの便利機能",
         practice: true,
         body: `
-            <p class="kicker">STEP 7　練習</p>
-            <h1>予約と、規程・書式集を足す</h1>
+            <p class="kicker">続き</p>
+            <h1>予約と、規程・書式集</h1>
             ${box(`社員画面に次を追加してください。
 ・会議室・社用車の予約（空き状況を見て予約、時間が重なったら断る、自分の予約だけ取り消せる）
 ・規程・書式集（就業規則や申請書のリンクをカテゴリ別に）`)}
@@ -140,12 +233,12 @@
       },
       {
         id: "eight",
-        title: "⑧ デザインの仕上げ（タイル型）",
+        title: "デザインは最後に",
         practice: true,
         body: `
-            <p class="kicker">STEP 8　練習</p>
-            <h1>見た目は、ここでまとめて直す</h1>
-            <p>機能が増えるたびに画面の並びが変わるので、デザインは最後にまとめて行います。</p>
+            <p class="kicker">見た目</p>
+            <h1>タイル型にまとめて直す</h1>
+            <p>機能が増えるたびに並びが変わるので、デザインはここでまとめて行います。</p>
             ${box(`トップページをグループウェアのようなタイル型にしてください。
 ・上に短めの青い帯（ページ名と一言）
 ・その下に、機能ごとのタイルを4列で並べる
@@ -154,18 +247,18 @@
 ・各タイルに要約（件数や直近の内容）と「詳しくはこちら」を付け、押すとそのページが開く
 ・管理画面も同じデザインでそろえる
 ・マウスカーソルに、黄色い丸がふわっと付いてくる動きを付ける`)}
-            <p>迷ったら、続きに「3案を並べて見せて」と頼むと選びやすくなります。</p>
+            <p>迷ったら「3案を並べて見せて」と頼むと選びやすくなります。</p>
           `
       },
       {
         id: "nine",
-        title: "⑨ 仕上げの確認",
+        title: "使い始める前に",
         practice: true,
         body: `
-            <p class="kicker">STEP 9　練習</p>
-            <h1>使い始める前に、足りない点を聞く</h1>
+            <p class="kicker">確認</p>
+            <h1>足りない点を聞く</h1>
             ${box(`使い始める前に、足りない点や注意点を教えてください。`)}
-            <p>出てきた注意は、自分の目で確認してから社員に渡してください。パスワード・給与の手取り・マイナンバーは載せません。</p>
+            <p>出てきた注意は、自分の目で確認してから社員に渡します。</p>
           `
       },
       {
@@ -173,12 +266,12 @@
         title: "使うときのコツ",
         body: `
             <p class="kicker">コツ</p>
-            <h1>覚えておくと、作業が速くなる4つ</h1>
+            <h1>速くなる4つ</h1>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>具体的に書く</h3><p>①は色や文字の大きさ、載せたいものを最初に書いておくと、あとで直す回数が減ります</p></article>
-              <article class="op"><span class="num">2</span><h3>デザインは最後</h3><p>機能が増えるたびに並びが変わるので、見た目の調整は⑧でまとめて行うのが効率的です</p></article>
-              <article class="op"><span class="num">3</span><h3>迷ったら比べる</h3><p>「3案を並べて見せて」と頼むと、言葉で説明されるより選びやすくなります</p></article>
-              <article class="op"><span class="num">4</span><h3>本物は後から</h3><p>お知らせ・連絡先・社員名簿などの本物のデータは、ページができてから渡すと手戻りがありません</p></article>
+              <article class="op"><span class="num">1</span><h3>具体的に書く</h3><p>色・文字の大きさ・載せたいものを最初に書いておく</p></article>
+              <article class="op"><span class="num">2</span><h3>デザインは最後</h3><p>見た目の調整は、機能を足し終わってから</p></article>
+              <article class="op"><span class="num">3</span><h3>迷ったら比べる</h3><p>「3案を並べて見せて」と頼む</p></article>
+              <article class="op"><span class="num">4</span><h3>本物は後から</h3><p>お知らせ・連絡先・名簿は、ページができてから渡す</p></article>
             </div>
           `
       },
@@ -187,14 +280,14 @@
         title: "まとめ",
         body: `
             <p class="kicker">覚えておくこと</p>
-            <h1>今日やったこと</h1>
+            <h1>チャットから、ポータルの直し方まで</h1>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>同じ会話</h3><p>①から⑨まで、途中で会話を変えずに貼る</p></article>
-              <article class="op"><span class="num">2</span><h3>機能のあとで見た目</h3><p>打刻・管理・申請を足してから、⑧でタイル型にする</p></article>
-              <article class="op"><span class="num">3</span><h3>見てから渡す</h3><p>⑨の注意を読み、サンプルのまま社員に渡さない</p></article>
+              <article class="op"><span class="num">1</span><h3>チャット</h3><p>相談はブラウザ。日本語で1回、返事をもらう</p></article>
+              <article class="op"><span class="num">2</span><h3>Coworkで作る</h3><p>パソコンのアプリ。同じ会話に貼って、ページを作る</p></article>
+              <article class="op"><span class="num">3</span><h3>続きで直す</h3><p>「何を・どこへ」と書く。移動もドラッグしない</p></article>
             </div>
-            <p><a class="btn-orange" href="#/course/portalfix" data-link>直し方編へ</a>
-            <a class="btn-dark" href="#/" data-link>ホームへ</a></p>
+            <p><a class="btn-orange" href="#/course/webchat" data-link>チャット入門</a>
+            <a class="btn-dark" href="#/course/portalfix" data-link>直し方編</a></p>
           `
       }
     ]
@@ -203,28 +296,28 @@
   Object.assign(CLASSROOM.quizzes, {
     today: [
       {
-        q: "①から⑨のお願いは、どう送りますか？",
-        choices: ["毎回新しい会話を開く", "同じ Cowork の会話の続きに、順番に貼る", "チャットにパスワードを書いて送る"],
+        q: "チャットと Cowork の役割は？",
+        choices: ["どちらも黒い画面", "チャットは相談（文章）、Coworkは作業（ページやファイル）", "Coworkはスマホ専用"],
         a: 1,
-        explain: "途中で会話を切り替えると、前のページが分からなくなります。"
+        explain: "ポータルを作る・直すのは Cowork です。"
       },
       {
-        q: "デザイン（タイル型・色）を直すタイミングは？",
-        choices: ["最初の①だけで完成させる", "機能を足し終わった⑧でまとめて直す", "給与計算の前に必ず直す"],
+        q: "ポータルの中身を直す基本は？",
+        choices: ["ページの中を自分でドラッグする", "作った会話の続きに「何を・どこへ」と書く", "毎回新しいリンクを作る"],
         a: 1,
-        explain: "機能が増えるたびに並びが変わるので、見た目は最後にまとめた方が早いです。"
+        explain: "項目の移動も、話しかけるだけです。アドレスは変わりません。"
       },
       {
-        q: "お知らせや社員名簿の本物のデータは、いつ渡す？",
-        choices: ["①のお願いと一緒に全部貼る", "ページができてから渡す", "チャットにマイナンバーも添える"],
+        q: "デザインを直すタイミングは？",
+        choices: ["最初の1ページだけで完成させる", "機能を足し終わってからまとめて直す", "チャットの時点で決める"],
         a: 1,
-        explain: "サンプルで先に作り、本物は後から。手戻りが減ります。"
+        explain: "機能が増えるたびに並びが変わるので、見た目は最後です。"
       },
       {
-        q: "管理画面は、社員からどう見えますか？",
-        choices: ["灰色のボタンで見える", "存在も見えないようにする", "誰でも給与計算を開ける"],
-        a: 1,
-        explain: "管理者だけが開けます。給与計算も管理者だけです。"
+        q: "パスワードや口座番号は？",
+        choices: ["チャットにも Cowork にも書かない", "管理画面なら書いてよい", "お知らせに載せる"],
+        a: 0,
+        explain: "秘密の数字は渡しません。"
       }
     ]
   });

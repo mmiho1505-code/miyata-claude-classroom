@@ -498,7 +498,7 @@ ${q}
     webchat: ["cover-chat", "チャット", "Coworkの前に。ブラウザで日本語のお願いを一度。", "webchat"],
     poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
     cowork: ["cover-cowork", "Cowork", "やり方ガイドつき。資料・整理・連携から請求書と経費まで。", "cowork"],
-    today: ["cover-cowork", "今日", "同じ会話で、ポータルを土台から管理画面まで作る。", "portalpage"],
+    today: ["cover-cowork", "今日", "チャット入門から、社内ポータルの作り方・直し方まで。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
     portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
     attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "attendapp"],
@@ -1057,7 +1057,7 @@ ${q}
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    today: ["portalpage", "同じ会話でポータルを育てる"],
+    today: ["portalpage", "チャットからポータルの直し方まで"],
     portalfix: ["copy", "同じ会話の続きで直す"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
     salary: ["expense", "時間×時給を表にする"],
@@ -1187,8 +1187,14 @@ ${q}
     }
     if (courseId === "today") {
       const t = {
-        goal: ["cowork", "同じ会話に①から⑨まで"],
+        goal: ["site", "チャット → Cowork → 作る → 直す"],
+        chat: ["webchat", "日本語で1回、返事をもらう"],
+        vs: ["compare", "相談はチャット、作業はCowork"],
+        open: ["cowork", "パソコンのアプリで Cowork"],
         one: ["portalpage", "土台の1ページを作る"],
+        share: ["eyecheck", "見てからリンクを渡す"],
+        edit: ["copy", "同じ会話の続きで直す"],
+        promptwork: ["copy", "追加・変更・移動・戻す"],
         two: ["attendapp", "出勤・休憩・退勤の打刻"],
         three: ["safety", "管理画面は社員に見せない"],
         four: ["copy", "申請して、管理者が承認"],
@@ -1198,7 +1204,7 @@ ${q}
         eight: ["site", "タイル型は機能のあとで"],
         nine: ["eyecheck", "足りない点を聞いてから渡す"],
         tips: ["copy", "具体・最後に見た目・本物は後"],
-        summary: ["portalpage", "同じ会話・機能のあと見た目"]
+        summary: ["portalpage", "チャットから直し方まで"]
       };
       return t[lessonId] || COURSE_ART.today;
     }
