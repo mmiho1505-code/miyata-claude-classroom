@@ -1402,7 +1402,7 @@ ${q}
         five: ["expense", "総支給額まで。控除は不要"],
         six: ["excel", "アラート・締め・名簿"],
         seven: ["calendar", "会議室と社用車の予約"],
-        eight: ["site", "タイル型は機能のあとで"],
+        eight: ["pinterest", "Pinterestで雰囲気を1つ決める"],
         nine: ["eyecheck", "足りない点を聞いてから渡す"],
         tips: ["copy", "具体・最後に見た目・本物は後"],
         summary: ["portalpage", "チャットから直し方まで"]
