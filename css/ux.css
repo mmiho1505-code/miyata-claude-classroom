@@ -1615,4 +1615,77 @@ body.is-chat .chat-fab {
   }
 }
 
+.today-spot {
+  padding: 0 16px 12px;
+  max-width: var(--max, 1120px);
+  margin: 0 auto 8px;
+}
+
+.today-spot-card {
+  display: block;
+  background: #fffdf9;
+  border: 2px solid #ffd4c4;
+  border-radius: 24px;
+  padding: 22px 24px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 12px 28px rgba(255, 122, 89, 0.12);
+}
+
+.today-spot-card:hover {
+  border-color: #ff7a59;
+}
+
+.today-spot-tag {
+  display: inline-block;
+  background: #ff7a59;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.today-spot-card h2 {
+  margin: 10px 0 8px;
+  font-size: 1.55rem;
+}
+
+.today-spot-card p {
+  margin: 0 0 10px;
+  color: #3f3a36;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.today-spot-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.today-spot-card .btn-orange {
+  display: inline-flex;
+  margin-top: 8px;
+  pointer-events: none;
+}
+
+.today-spot-card.is-locked {
+  opacity: 0.96;
+}
+
+@media (max-width: 720px) {
+  .today-spot {
+    padding: 0 12px 8px;
+  }
+
+  .today-spot-card {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+
+  .today-spot-card h2 {
+    font-size: 1.35rem;
+  }
+}
+
 

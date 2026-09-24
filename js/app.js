@@ -328,11 +328,11 @@ ${q}
   };
 
   const HOME_ORDER = [
+    "today",
     "account",
     "webchat",
     "poster",
     "cowork",
-    "today",
     "portalmake",
     "portalfix",
     "attend",
@@ -354,7 +354,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["account", "webchat", "poster", "cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -368,7 +368,7 @@ ${q}
     "appedit",
     "applied"
   ];
-  const COWORK_IDS = ["webchat", "cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"];
+  const COWORK_IDS = ["today", "webchat", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake"];
   const CODE_SETUP_IDS = ["code", "codemac"];
   const CODE_MAKE_IDS = ADVANCED_IDS.slice();
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -880,7 +880,10 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["poster"].concat(COWORK_IDS, CODE_IDS);
+    const pickOrder = ["today", "poster"].concat(
+      COWORK_IDS.filter((id) => id !== "today"),
+      CODE_IDS
+    );
     for (const id of pickOrder) {
       if (!CLASSROOM.courses[id] || !canSeeCourse(id)) continue;
       if (id === lastId) continue;
@@ -959,7 +962,7 @@ ${q}
     nav.querySelectorAll("a").forEach((a) => {
       const href = a.getAttribute("href").replace(/^#/, "") || "/";
       let active = href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
-      if (courseId && href === "/cowork" && toolOf(courseId) === "cowork") active = true;
+      if (courseId && href === "/cowork" && toolOf(courseId) === "cowork" && courseId !== "today") active = true;
       if (courseId && href === "/code" && toolOf(courseId) === "code") active = true;
       if (courseId && href === "/beginner" && BEGINNER_IDS.includes(courseId)) active = true;
       if (courseId && href === "/applied" && ADVANCED_IDS.includes(courseId)) active = true;
@@ -1768,7 +1771,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["account", "poster", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "poster", "faq"])}</div>
       </div>`;
   };
 
@@ -1820,11 +1823,11 @@ ${q}
 
   const studioPath = () => {
     const items = [
-      ["account", "01", "アカウント", "準備"],
-      ["webchat", "02", "チャット", "入門"],
-      ["poster", "03", "ポスター", "初級"],
-      ["cowork", "04", "Cowork", "事務"],
-      ["today", "05", "今日", "講義"],
+      ["today", "01", "今日", "講義"],
+      ["account", "02", "アカウント", "準備"],
+      ["webchat", "03", "チャット", "入門"],
+      ["poster", "04", "ポスター", "初級"],
+      ["cowork", "05", "Cowork", "事務"],
       ["portalmake", "06", "ポータル", "作る"],
       ["portalfix", "07", "直す", "Cowork"],
       ["attend", "08", "出退勤", "作る"],
@@ -1867,14 +1870,35 @@ ${q}
       </ol>`;
   };
 
+  const todaySpot = () => {
+    const course = CLASSROOM.courses.today;
+    if (!course) return "";
+    const open = canSeeCourse("today");
+    const p = percent("today");
+    const href = open ? "#/course/today" : "#/me";
+    const label = !open ? "受講コードを入れる" : p > 0 && p < 100 ? "続きを開く" : "今日の講義を開く";
+    return `
+      <section class="today-spot wrap">
+        <a class="today-spot-card${open ? "" : " is-locked"}" href="${href}" data-link>
+          <span class="today-spot-tag">きょうの教室</span>
+          <h2>${escapeHtml(course.title)}</h2>
+          <p>2時間。チャット → 初めての Cowork → ポータルを作る・直す。この1本で一通りできます。</p>
+          <strong>${open ? `進度 ${p}%` : "受講コードが必要です"}</strong>
+          ${open ? thinMeter(p, "meter", "今日の講義の進度") : ""}
+          <span class="btn-orange">${label}</span>
+        </a>
+      </section>`;
+  };
+
   const home = () => {
     const stats = courseStats();
     const coworkStats = courseStats(COWORK_IDS);
     const codeStats = courseStats(CODE_IDS);
     const next = nextRecommended();
     const started = continueStudy();
-    const ctaHref = started ? started.href : next.href;
-    const ctaLabel = started ? "続きを開く" : "アカウントから始める";
+    const todayOpen = canSeeCourse("today") && percent("today") < 100;
+    const ctaHref = started ? started.href : todayOpen ? "#/course/today" : next.href;
+    const ctaLabel = started ? "続きを開く" : todayOpen ? "今日の講義を開く" : "アカウントから始める";
     const nextTitle =
       next.kind === "quiz"
         ? `${escapeHtml(next.course.title)}　確認クイズ`
@@ -1927,6 +1951,7 @@ ${q}
           </div>
         </div>
       </section>
+      ${todaySpot()}
       <section class="hero-stage">
         <div class="wrap level-gates">
           <a class="level-gate is-cowork${canSeeCourse("cowork") ? "" : " is-locked"}" href="${canSeeCourse("cowork") ? "#/cowork" : "#/me"}" data-link>
@@ -1954,7 +1979,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["account", "poster", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "poster", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -1980,22 +2005,22 @@ ${q}
           <p class="easy-meta">画面で日本語のお願い。黒い画面は使いません。左から右へ、この順です。</p>
           <p class="route-hint phone-only">横にスワイプできます（自動でも進みます）</p>
           <div class="route">
+            <a class="route-card" href="#/course/today" data-link>
+              ${coverArt("portalpage")}
+              <strong>1. 今日の講義</strong>
+              <p>2時間で一通り</p>
+            </a>
+            <span class="route-arrow" aria-hidden="true">→</span>
             <a class="route-card" href="#/course/account" data-link>
               ${coverArt("signup")}
-              <strong>1. 準備　アカウント</strong>
+              <strong>2. 準備　アカウント</strong>
               <p>claude.ai に入る</p>
             </a>
             <span class="route-arrow" aria-hidden="true">→</span>
             <a class="route-card" href="#/course/webchat" data-link>
               ${coverArt("webchat")}
-              <strong>2. 練習　チャット</strong>
+              <strong>3. 練習　チャット</strong>
               <p>ブラウザで1回頼む</p>
-            </a>
-            <span class="route-arrow" aria-hidden="true">→</span>
-            <a class="route-card" href="#/course/poster" data-link>
-              ${coverArt("poster")}
-              <strong>3. 練習　ポスター</strong>
-              <p>いちばんやさしい課題</p>
             </a>
             <span class="route-arrow" aria-hidden="true">→</span>
             <a class="route-card" href="#/course/cowork" data-link>
