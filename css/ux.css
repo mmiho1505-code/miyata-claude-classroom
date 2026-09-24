@@ -72,10 +72,10 @@ summary:focus-visible,
   border: 1px solid #ffc4b0;
 }
 
-.st-chip.is-done {
-  background: #e7f6ee;
-  color: #1f7a4d;
-  border: 1px solid #b7e0c8;
+.st-chip.is-extra {
+  background: #eef4fb;
+  color: #2a5a86;
+  border: 1px solid #c5d7ea;
 }
 
 .course-meter,

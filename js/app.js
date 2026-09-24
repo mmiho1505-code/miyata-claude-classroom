@@ -117,7 +117,14 @@
   const statusChip = (kind) => {
     if (kind === "done") return `<span class="st-chip is-done"><span aria-hidden="true">✓</span>完了</span>`;
     if (kind === "now") return `<span class="st-chip is-now"><span aria-hidden="true">▶</span>学習中</span>`;
+    if (kind === "extra") return `<span class="st-chip is-extra">余ったら</span>`;
     return `<span class="st-chip is-todo">これから</span>`;
+  };
+
+  const lessonChip = (courseId, lesson) => {
+    const st = lessonKind(courseId, lesson.id);
+    if (st === "todo" && lesson.optional) return statusChip("extra");
+    return statusChip(st);
   };
 
   const crumbs = (items) =>
@@ -1194,7 +1201,6 @@ ${q}
         install: ["desktop", "アプリを入れて同じメールでログイン"],
         cando: ["cowork", "作る・読む・つなぐ・同じ会話で直す"],
         screen: ["coworkask", "左メニュー・入力欄・できたリンク"],
-        open: ["cowork", "左から Cowork、新しいタスク"],
         stuck: ["desktop", "開けないときは当てはまる行だけ"],
         one: ["portalpage", "土台の1ページを作る"],
         wait: ["cowork", "できあがるまで確認リスト"],
@@ -1981,8 +1987,8 @@ ${q}
                 const [icon, iconCap] = artFor(courseId, l.id);
                 const st = lessonKind(courseId, l.id);
                 return `<li><a class="lesson-row is-${st}" href="#/course/${courseId}/${l.id}" data-link><span class="list-art">${coverArt(icon)}</span><span class="lesson-row-main"><span class="lesson-row-title">${i + 1}. ${escapeHtml(l.title)}${
-                    l.practice ? "（やってみる）" : ""
-                  }</span><span class="lesson-row-cap">${escapeHtml(iconCap || "")}</span></span>${statusChip(st)}<span class="lesson-go" aria-hidden="true">›</span></a></li>`;
+                    l.optional ? "（余ったら）" : l.practice ? "（やってみる）" : ""
+                  }</span><span class="lesson-row-cap">${escapeHtml(iconCap || "")}</span></span>${lessonChip(courseId, l)}<span class="lesson-go" aria-hidden="true">›</span></a></li>`;
               })
               .join("")}
           </ul>
@@ -2006,7 +2012,7 @@ ${q}
         const st = lessonKind(courseId, l.id);
         return `<a href="#/course/${courseId}/${l.id}" data-link class="${l.id === lessonId ? "active" : ""} ${
           done[l.id] ? "done" : ""
-        }"><span class="list-art">${coverArt(artFor(courseId, l.id)[0])}</span><span>${escapeHtml(l.title)}</span>${statusChip(st)}</a>`;
+        }"><span class="list-art">${coverArt(artFor(courseId, l.id)[0])}</span><span>${escapeHtml(l.title)}</span>${lessonChip(courseId, l)}</a>`;
       })
       .join("");
     const p = percent(courseId);

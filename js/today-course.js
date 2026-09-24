@@ -20,16 +20,17 @@
             <h1>チャット → Cowork → 作る → 直す（2時間）</h1>
             <p>今日は2時間あります。急がず、待ち時間も使います。途中の講座に飛ばなくても、この1本で一通りできます。</p>
             <table>
-              <thead><tr><th>時間</th><th>やること</th></tr></thead>
+              <thead><tr><th>時間</th><th>区分</th><th>やること</th></tr></thead>
               <tbody>
-                <tr><td>0〜10分</td><td>今日の地図。ログインできるか確認</td></tr>
-                <tr><td>10〜25分</td><td>チャット入門。返事を2回もらう</td></tr>
-                <tr><td>25〜50分</td><td>初めての Cowork。アプリ・設定・できること</td></tr>
-                <tr><td>50〜65分</td><td>ポータルを作る。待ち時間は確認リスト</td></tr>
-                <tr><td>65〜70分</td><td>休憩</td></tr>
-                <tr><td>70〜90分</td><td>直し方。追加・移動を試す。先生と確認</td></tr>
-                <tr><td>90〜110分</td><td>同じ会話で機能を足す</td></tr>
-                <tr><td>110〜120分</td><td>デザインは最後。まとめ</td></tr>
+                <tr><td>0〜10分</td><td>必須</td><td>今日の地図。ログインできるか確認</td></tr>
+                <tr><td>10〜25分</td><td>必須</td><td>チャット入門。返事を2回もらう</td></tr>
+                <tr><td>25〜50分</td><td>必須</td><td>初めての Cowork。アプリを入れて始める</td></tr>
+                <tr><td>50〜65分</td><td>必須</td><td>ポータルを1ページ作る。確認リスト</td></tr>
+                <tr><td>65〜70分</td><td>必須</td><td>休憩</td></tr>
+                <tr><td>70〜90分</td><td>必須</td><td>直し方。追加・移動を2つ。先生と確認</td></tr>
+                <tr><td>90〜95分</td><td>できれば</td><td>勤怠の打刻を足す</td></tr>
+                <tr><td>95〜110分</td><td>余ったら</td><td>申請・給与・予約。飛ばしてよい</td></tr>
+                <tr><td>110〜120分</td><td>必須</td><td>デザインは最後。まとめ</td></tr>
               </tbody>
             </table>
             <div class="ops">
@@ -37,7 +38,7 @@
               <article class="op"><span class="num">2</span><h3>Cowork</h3><p>初めての人はアプリの入れ方から。作業係を開き、ページを作ってもらう</p></article>
               <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書く</p></article>
             </div>
-            <div class="callout">マンツーマンです。相手のペースに合わせます。待ち時間は、確認リストと見本を一緒に見ます。</div>
+            <div class="callout">今日の成功は、ポータルを1枚作って、お知らせを1件足せることです。申請や給与は余ったらで構いません。</div>
             <p>実際に作った例（別タブで開く）：<a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">社内ポータルの見本</a></p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
@@ -89,31 +90,32 @@
       },
       {
         id: "install",
-        title: "アプリの入れ方",
+        title: "アプリを入れて始める",
         body: `
-            <p class="kicker">設定　30〜38分</p>
+            <p class="kicker">設定　30〜42分</p>
             <h1>初めてなら、パソコンに Claude アプリを入れる</h1>
             <p>Cowork は、ブラウザの claude.ai だけでは足りないことがあります。今日はパソコンのアプリを使います。</p>
             <ol>
               <li>パソコンのブラウザで <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> を開く</li>
               <li>Windows なら Windows 用、Mac なら macOS 用を入れて、インストールする</li>
               <li>アプリを開き、claude.ai と<strong>同じメール</strong>でログインする</li>
-              <li>画面の左に「Chat」と「Cowork」などが見えたら成功</li>
+              <li>左から <strong>Cowork</strong> を選ぶ（Chat のまま始めない）</li>
+              <li><strong>新しいタスク</strong>（新しい会話）を1つ始める</li>
             </ol>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>同じアカウント</h3><p>チャットで使ったメールと同じ。別の Google だとログインできません</p></article>
               <article class="op"><span class="num">2</span><h3>有料プラン</h3><p>Cowork を使うには、多くの場合 Pro などの有料プランが必要です。<a href="#/course/account" data-link>プランの確認</a></p></article>
-              <article class="op"><span class="num">3</span><h3>ネット</h3><p>会社のパソコンでは、インストールが許可されないことがあります。無理に突破しません</p></article>
+              <article class="op"><span class="num">3</span><h3>フォルダ</h3><p>今日のポータルだけなら、先に文を貼ってよい。請求書・経費のときはフォルダを先に許可する</p></article>
             </div>
-            <p>すでにアプリが入っている人は、開いてログインできるかだけ確認し、次へ進みます。</p>
-            <div class="callout">「このパソコンを使ってよいですか」「フォルダを開いてよいですか」と出たら、今日使うものだけ許可します。全部はいりません。</div>
+            <p>すでにアプリが入っている人は、開いて Cowork の新しいタスクまで来れば十分です。</p>
+            <div class="callout">この先の作り方・直しまで、同じ会話を使います。途中で新しい会話に切り替えないでください。「許可しますか」と出たら、今日使うものだけ許可します。</div>
           `
       },
       {
         id: "cando",
         title: "Coworkでできること",
         body: `
-            <p class="kicker">機能　38〜42分</p>
+            <p class="kicker">機能　42〜46分</p>
             <h1>チャットは相談、Coworkは手を動かす</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>ページや資料を作る</h3><p>社内ポータル、請求書、Excel、PDF、スライド</p></article>
@@ -129,38 +131,29 @@
         id: "screen",
         title: "画面の見方",
         body: `
-            <p class="kicker">設定　42〜48分</p>
+            <p class="kicker">設定　46〜52分</p>
             <h1>初めて開いたときの、見る場所</h1>
-            <table>
-              <thead><tr><th>場所</th><th>何をするところ</th></tr></thead>
-              <tbody>
-                <tr><td>左のメニュー</td><td>Chat と Cowork を切り替える。今日は Cowork</td></tr>
-                <tr><td>会話（タスク）の一覧</td><td>前の作業に戻る。ポータルを直すときは、作った会話を開く</td></tr>
-                <tr><td>下の入力欄</td><td>お願いを貼って送る。教室の「コピー」を使ってから貼る</td></tr>
-                <tr><td>フォルダ・ファイル</td><td>パソコンのフォルダを許可すると、Excel や PDF を読める</td></tr>
-                <tr><td>できたページのリンク</td><td>社員に渡す住所。直しても、この住所は変わらないことが多い</td></tr>
-              </tbody>
-            </table>
-            <p>聞かれたら、知っている範囲で答えるか「おまかせで進めて」で構いません。送る・消す・公開の最終確認は人の仕事です。</p>
-          `
-      },
-      {
-        id: "open",
-        title: "Cowork の始め方",
-        body: `
-            <p class="kicker">設定　48〜52分</p>
-            <h1>左から Cowork、新しいタスク、フォルダ</h1>
-            <ol>
-              <li>パソコンで Claude のアプリを開く</li>
-              <li>左から <strong>Cowork</strong> を選ぶ（Chat のまま始めない）</li>
-              <li><strong>新しいタスク</strong>（新しい会話）を1つ始める</li>
-              <li>フォルダを使う作業なら、作業フォルダを接続（許可）する。今日のポータルだけなら、先に文を貼ってもよい</li>
-            </ol>
-            <div class="ops">
-              <article class="op"><span class="num">A</span><h3>今日のポータル</h3><p>お願い文を貼ればページができます。あとでリンクが出ます</p></article>
-              <article class="op"><span class="num">B</span><h3>請求書・経費</h3><p>ひな形やリストの入ったフォルダを先に接続しないと、「ファイルが無い」と言われます</p></article>
+            <div class="qa">
+              <p class="qa-q">左のメニュー</p>
+              <p>Chat と Cowork を切り替える。今日は Cowork。</p>
             </div>
-            <div class="callout">この先の作り方・直しまで、同じ会話を使います。途中で新しい会話に切り替えないでください。</div>
+            <div class="qa">
+              <p class="qa-q">会話（タスク）の一覧</p>
+              <p>前の作業に戻る。ポータルを直すときは、作った会話を開く。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">下の入力欄</p>
+              <p>お願いを貼って送る。教室の「コピー」を使ってから貼る。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">フォルダ・ファイル</p>
+              <p>パソコンのフォルダを許可すると、Excel や PDF を読める。今日のポータルだけなら後でもよい。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">できたページのリンク</p>
+              <p>社員に渡す住所。直しても、この住所は変わらないことが多い。</p>
+            </div>
+            <p>聞かれたら、知っている範囲で答えるか「おまかせで進めて」で構いません。送る・消す・公開の最終確認は人の仕事です。</p>
           `
       },
       {
@@ -323,7 +316,7 @@
             <p class="kicker">同じ会話の続き　90〜95分</p>
             <h1>打刻を足す</h1>
             <p>作り方・直し方が分かったら、同じ会話に機能を足していきます。デザインの調整は、あとでまとめて行います。</p>
-            <p>90分を過ぎて遅れているときは、勤怠だけ足してデザインへ飛ばして構いません。</p>
+            <p>90分を過ぎて遅れているときは、勤怠は飛ばして <a href="#/course/today/eight" data-link>デザインは最後に</a> へ進んで構いません。</p>
             ${box(`勤怠の打刻機能を追加してください。
 ・出勤・休憩開始・休憩終了・退勤のボタン
 ・社員はclaude.aiのアカウントで自動的に見分ける
@@ -335,8 +328,9 @@
         id: "three",
         title: "管理画面と社員画面",
         practice: true,
+        optional: true,
         body: `
-            <p class="kicker">続き　95〜98分</p>
+            <p class="kicker">余ったら　95〜98分</p>
             ${box(`管理者（私）だけが開ける「管理画面」と、社員用の画面を分けてください。
 管理画面には、今日の出勤状況（誰が勤務中か）と、ポータルの内容を編集するボタンを置いてください。
 社員には管理画面の存在も見えないようにしてください。`)}
@@ -346,8 +340,9 @@
         id: "four",
         title: "申請と承認",
         practice: true,
+        optional: true,
         body: `
-            <p class="kicker">続き　98〜102分</p>
+            <p class="kicker">余ったら　98〜102分</p>
             <h1>申請を足して、管理画面で承認する</h1>
             ${box(`社員用の「申請・休暇」を追加して、管理画面で承認・却下できるようにしてください。
 ・打刻修正の申請（日付・出勤・退勤・休憩・理由）
@@ -361,8 +356,9 @@
         id: "five",
         title: "給与計算（管理者だけ）",
         practice: true,
+        optional: true,
         body: `
-            <p class="kicker">続き　102〜105分</p>
+            <p class="kicker">余ったら　102〜105分</p>
             <h1>総支給額までの計算を足す</h1>
             ${box(`管理画面に給与計算を追加してください。私だけが見られるようにしてください。
 ・勤怠から総支給額まで計算（控除・手取りは不要）
@@ -378,8 +374,9 @@
         id: "six",
         title: "管理の仕上げ",
         practice: true,
+        optional: true,
         body: `
-            <p class="kicker">続き　105分　余ったら</p>
+            <p class="kicker">余ったら　105分</p>
             <h1>アラート・確認・締め・名簿</h1>
             ${box(`管理画面に次を追加してください。
 ・残業アラート（36協定の月45時間・年360時間に近い人を表示）
@@ -392,8 +389,9 @@
         id: "seven",
         title: "社員向けの便利機能",
         practice: true,
+        optional: true,
         body: `
-            <p class="kicker">続き　余ったら</p>
+            <p class="kicker">余ったら</p>
             <h1>予約と、規程・書式集</h1>
             ${box(`社員画面に次を追加してください。
 ・会議室・社用車の予約（空き状況を見て予約、時間が重なったら断る、自分の予約だけ取り消せる）
@@ -418,7 +416,7 @@
 ・マウスカーソルに、黄色い丸がふわっと付いてくる動きを付ける`)}
             <p>迷ったら「3案を並べて見せて」と頼むと選びやすくなります。</p>
             ${box(`トップのタイル案を3つ並べて見せてください。色と並びだけ変えて、機能は同じままにしてください。`)}
-            <p>110分を過ぎたら、⑥⑦は飛ばしてこのページへ進みます。</p>
+            <p>時間が押したら、このページの⑥⑦は飛ばして次のデザインへ進みます。</p>
           `
       },
       {
@@ -435,8 +433,9 @@
       {
         id: "tips",
         title: "使うときのコツ",
+        optional: true,
         body: `
-            <p class="kicker">コツ　途中の空き時間に</p>
+            <p class="kicker">コツ　余ったら／空き時間に</p>
             <h1>速くなる4つ</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>具体的に書く</h3><p>色・文字の大きさ・載せたいものを最初に書いておく</p></article>
