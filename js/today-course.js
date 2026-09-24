@@ -163,36 +163,42 @@
       {
         id: "gmail",
         title: "Gmailとつなぐ",
+        practice: true,
         body: `
-            <p class="kicker">設定　できれば　5分</p>
-            <h1>Gmail をつなぐ</h1>
-            <p>つなぐと、「今日のメールを短くまとめて」と頼めます。ポータルを作るには、<strong>やらなくてよい</strong>です。</p>
-            <p>メニューに「接続」はありません。<strong>コネクタ</strong>（英語なら Connectors）です。</p>
+            <p class="kicker">設定　できれば　5分　練習</p>
+            <h1>お願い文を貼って、Gmail をつなぐ</h1>
+            <p>メニューは探しません。教室の「コピー」を押して、Claude に貼ります。画面の案内に従って、Google で許可するだけです。</p>
             <ol>
-              <li>パソコンの Claude アプリ、またはブラウザの <strong>claude.ai</strong> を開く</li>
-              <li><strong>カスタマイズ</strong> を押す（左下や、自分の名前の近く。英語なら Customize）</li>
-              <li><strong>コネクタ</strong> を開く</li>
-              <li><strong>Gmail</strong> を探し、<strong>Connect</strong>（つなぐ）を押す</li>
-              <li>Google の画面で、<strong>会社のメール</strong>を選んで許可する</li>
+              <li>パソコンの Claude アプリ、または <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> を開く</li>
+              <li>下の文をコピーして、入力欄に貼って送る</li>
+              <li>Claude が「ここを押して」と書いたら、そのとおりに押す</li>
+              <li>Google の画面が出たら、<strong>会社のメール</strong>を選んで許可する。パスワードはそこに自分で入れる</li>
             </ol>
-            <p>カスタマイズが見つからないとき：入力欄の横の <strong>＋</strong> を押し、<strong>コネクタ</strong> を開く。</p>
+            ${box(`初めてです。GmailとClaudeをつなぎたいです。
+
+今の画面に合わせて、押す場所を日本語で1つずつ教えてください。私が押したら、次を教えてください。
+
+・メニューの名前が英語でも、日本語で言い換えてください
+・パスワードは私が自分で入れます。入力欄には書かないでください
+・メールの送信はしないでください
+・会社のGoogleアカウントを使います`)}
             <div class="qa">
               <p class="qa-q">できた</p>
-              <p>Gmail の横に、つながった・Connect 済み、と出る。下の文をコピーして送ってみる</p>
+              <p>Gmail がつながった、と出る。下の「試す文」をコピーして送る</p>
             </div>
             <div class="qa">
-              <p class="qa-q">コネクタが無い・Gmail が無い</p>
-              <p>有料プランか、会社がまだ許可していないことがある。無理に探さない。このページは飛ばして「ポータルを作る」へ</p>
+              <p class="qa-q">どこを押すか分からない</p>
+              <p>続きに「今の画面の言葉を、そのまま書いて案内して」と送る</p>
             </div>
             <div class="qa">
-              <p class="qa-q">Google の画面で止まる・エラー</p>
-              <p>アプリではなく、<a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> のカスタマイズ → コネクタ で同じことをする。それでも駄目なら次へ</p>
+              <p class="qa-q">つながらない・Gmail が無い</p>
+              <p>有料プランか、会社がまだ許可していないことがある。無理に探さない。「ポータルを作る」へ</p>
             </div>
             <div class="qa">
               <p class="qa-q">やってはいけない</p>
-              <p>パスワードを Claude に書く。メールを送る。個人の Gmail でつなぐ</p>
+              <p>パスワードを貼る。メールを送る。個人の Gmail でつなぐ</p>
             </div>
-            <p>つながった人だけ、下をコピーします。送信はしません。</p>
+            <p>つながった人だけ、試します。送信はしません。</p>
             ${box(`今日の未読メールを、大事そうな順に3行でまとめてください。返信が要りそうなものは下書きまで。送信はしないでください。`)}
           `
       },
@@ -225,7 +231,7 @@
             </div>
             <div class="qa">
               <p class="qa-q">Gmail がつながらない</p>
-              <p>カスタマイズ → コネクタ。無い・止まれば飛ばして次へ</p>
+              <p>お願い文を貼る。案内どおりに許可。無理なら飛ばす</p>
             </div>
             <div class="callout">どれも違うときは、画面を先生に見せます。次の「ポータルを作る」へ進んで、お願い文だけ先に読んでも構いません。</div>
           `
