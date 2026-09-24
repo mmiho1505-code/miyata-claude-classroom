@@ -483,6 +483,193 @@ ${q}
     }
   };
 
+  const isTeacher = () => !!loadProgress().teacher;
+
+  const setTeacher = (on) => {
+    const p = loadProgress();
+    p.teacher = !!on;
+    saveProgress(p);
+  };
+
+  const isTeachCode = (raw) => {
+    const s = String(raw || "")
+      .normalize("NFKC")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "");
+    return s === "先生" || s === "sensei" || s === "teach" || s === "講師";
+  };
+
+  const applyTeachFromUrl = () => {
+    try {
+      const q = new URLSearchParams(location.search);
+      const hashQ = location.hash.includes("?")
+        ? new URLSearchParams(location.hash.slice(location.hash.indexOf("?")))
+        : null;
+      const raw = ((q.get("teach") || (hashQ && hashQ.get("teach")) || "") + "").trim().toLowerCase();
+      if (!raw) return;
+      if (raw === "0" || raw === "off" || raw === "no") setTeacher(false);
+      else setTeacher(true);
+      dropTeachFromAddress();
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const dropTeachFromAddress = () => {
+    try {
+      const url = new URL(location.href);
+      let changed = false;
+      if (url.searchParams.has("teach")) {
+        url.searchParams.delete("teach");
+        changed = true;
+      }
+      if (url.hash.includes("?")) {
+        const hi = url.hash.indexOf("?");
+        const path = url.hash.slice(0, hi);
+        const hp = new URLSearchParams(url.hash.slice(hi));
+        if (hp.has("teach")) {
+          hp.delete("teach");
+          const rest = hp.toString();
+          url.hash = rest ? `${path}?${rest}` : path;
+          changed = true;
+        }
+      }
+      if (changed) history.replaceState(null, "", url.pathname + url.search + url.hash);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const markKey = (courseId, lessonId) => `${courseId}/${lessonId}`;
+
+  const loadMarks = (courseId, lessonId) => {
+    const all = loadProgress().marks;
+    const list = all && all[markKey(courseId, lessonId)];
+    return Array.isArray(list) ? list.slice(0, 40) : [];
+  };
+
+  const saveMarks = (courseId, lessonId, list) => {
+    const p = loadProgress();
+    p.marks = p.marks || {};
+    const key = markKey(courseId, lessonId);
+    const next = (list || []).filter(Boolean).slice(0, 40);
+    if (!next.length) delete p.marks[key];
+    else p.marks[key] = next;
+    saveProgress(p);
+  };
+
+  const wrapFirstUnmarked = (root, needle) => {
+    const want = String(needle || "");
+    if (want.length < 2) return false;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.includes(want)) return NodeFilter.FILTER_REJECT;
+        const el = node.parentElement;
+        if (!el) return NodeFilter.FILTER_REJECT;
+        if (el.closest("mark.teach-mark, button, a, script, style, .teach-bar, .copy, .sidebar, figcaption")) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const node = walker.nextNode();
+    if (!node) return false;
+    const i = node.nodeValue.indexOf(want);
+    if (i < 0) return false;
+    try {
+      const range = document.createRange();
+      range.setStart(node, i);
+      range.setEnd(node, i + want.length);
+      const mark = document.createElement("mark");
+      mark.className = "teach-mark";
+      mark.title = "押すとマーカーを消します";
+      range.surroundContents(mark);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const paintMarks = (root, list) => {
+    (list || []).forEach((t) => wrapFirstUnmarked(root, t));
+  };
+
+  const selectionIn = (root) => {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount) return "";
+    const range = sel.getRangeAt(0);
+    if (!root.contains(range.commonAncestorContainer)) return "";
+    const node = range.commonAncestorContainer;
+    const el = node.nodeType === 1 ? node : node.parentElement;
+    if (el && el.closest(".teach-bar, button, a, .copy, .code-wrap, mark.teach-mark")) {
+      return "";
+    }
+    const text = String(sel.toString() || "").replace(/\s+/g, " ").trim();
+    if (text.length < 2 || text.length > 120) return "";
+    return text;
+  };
+
+  const bindTeachMarks = () => {
+    document.body.classList.toggle("is-teacher", isTeacher());
+    const article = document.querySelector(".lesson-body[data-course][data-lesson]");
+    if (!article || !isTeacher()) return;
+    const courseId = article.dataset.course;
+    const lessonId = article.dataset.lesson;
+    paintMarks(article, loadMarks(courseId, lessonId));
+    if (article.querySelector(".teach-bar")) return;
+    const bar = document.createElement("div");
+    bar.className = "teach-bar";
+    const markingOn = sessionStorage.getItem("teach-mark-off") !== "1";
+    bar.innerHTML = `
+      <label class="teach-bar-toggle"><input type="checkbox" data-teach-toggle ${markingOn ? "checked" : ""} /> マーカー</label>
+      <span class="teach-bar-hint">大事な文を選ぶと黄色く塗ります。塗ったところを押すと消えます。このパソコンにだけ残ります。</span>
+      <button type="button" class="ghost" data-teach-clear>このページを消す</button>
+    `;
+    const kicker = article.querySelector(".kicker");
+    if (kicker) kicker.insertAdjacentElement("beforebegin", bar);
+    else article.insertBefore(bar, article.firstChild);
+    const toggle = bar.querySelector("[data-teach-toggle]");
+    const clearBtn = bar.querySelector("[data-teach-clear]");
+    if (toggle) {
+      toggle.onchange = () => {
+        sessionStorage.setItem("teach-mark-off", toggle.checked ? "0" : "1");
+      };
+    }
+    if (clearBtn) {
+      clearBtn.onclick = () => {
+        saveMarks(courseId, lessonId, []);
+        render({ keepScroll: true });
+      };
+    }
+    article.querySelectorAll("mark.teach-mark").forEach((mark) => {
+      mark.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const t = (mark.textContent || "").replace(/\s+/g, " ").trim();
+        const next = loadMarks(courseId, lessonId).filter((x) => x !== t);
+        saveMarks(courseId, lessonId, next);
+        render({ keepScroll: true });
+      });
+    });
+    const paintFromSelection = () => {
+      if (sessionStorage.getItem("teach-mark-off") === "1") return;
+      if (toggle && !toggle.checked) return;
+      const text = selectionIn(article);
+      if (!text) return;
+      const list = loadMarks(courseId, lessonId);
+      if (list.includes(text)) return;
+      list.push(text);
+      saveMarks(courseId, lessonId, list);
+      window.getSelection().removeAllRanges();
+      render({ keepScroll: true });
+    };
+    article.addEventListener("mouseup", () => setTimeout(paintFromSelection, 0));
+    article.addEventListener("keyup", (e) => {
+      if (e.key === "Shift" || e.key.startsWith("Arrow")) setTimeout(paintFromSelection, 0);
+    });
+  };
+
   const lockedView = (want) => {
     const pack = GATE_PACKS[want] ? want : want === "code" ? "dougu" : "jimu";
     const label = (GATE_PACKS[pack] || GATE_PACKS.jimu).label;
@@ -2714,12 +2901,14 @@ ${q}
         e.preventDefault();
         const input = gateForm.querySelector("[name=gate]");
         const pack = decodeGate(input && input.value);
+        const teach = isTeachCode(input && input.value);
         const err = document.getElementById("gate-err");
-        if (!pack) {
+        if (!pack && !teach) {
           if (err) err.hidden = false;
           return;
         }
-        addGate(pack);
+        if (teach) setTeacher(true);
+        if (pack) addGate(pack);
         render({ keepScroll: true });
       };
     }
@@ -2805,6 +2994,15 @@ ${q}
           </div>
           <p class="easy-meta" id="gate-err" hidden>コードが違います。塾の案内を見てください。</p>
         </form>
+        ${
+          isTeacher()
+            ? `<div class="card teach-card">
+          <h2>説明用マーカー</h2>
+          <p class="easy-meta">ONです。講座の本文で文字を選ぶと黄色く塗れます。受講者の画面には出ません。このパソコンにだけ残ります。</p>
+          <p><button class="btn-dark" type="button" id="teacher-off">マーカーをOFFにする</button></p>
+        </div>`
+            : ""
+        }
 
         <div class="card">
           <h2>ほかの人に送る</h2>
@@ -3315,6 +3513,7 @@ ${q}
   const render = (opts = {}) => {
     applyNameFromUrl();
     applyKeyFromUrl();
+    applyTeachFromUrl();
     const hash = (location.hash || "#/").split("?")[0];
     const parts = hash.replace(/^#/, "").split("/").filter(Boolean);
     let html = "";
@@ -3359,6 +3558,7 @@ ${q}
     hydratePics();
     bindCopies();
     bindComplete();
+    bindTeachMarks();
     bindMember();
     bindWorks();
     bindTeacherAsk();
@@ -3371,6 +3571,13 @@ ${q}
     if (clearBtn) {
       clearBtn.onclick = () => {
         setMemberName("");
+        render({ keepScroll: true });
+      };
+    }
+    const teacherOff = document.getElementById("teacher-off");
+    if (teacherOff) {
+      teacherOff.onclick = () => {
+        setTeacher(false);
         render({ keepScroll: true });
       };
     }

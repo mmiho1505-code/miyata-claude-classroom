@@ -78,6 +78,47 @@ summary:focus-visible,
   border: 1px solid #c5d7ea;
 }
 
+.teach-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  background: #fff8e0;
+  border: 2px solid #f0d56a;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.teach-bar-toggle {
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.teach-bar-hint {
+  flex: 1 1 180px;
+  color: #5a524c;
+}
+
+mark.teach-mark {
+  background: #ffe566;
+  color: inherit;
+  padding: 0.05em 0.12em;
+  border-radius: 3px;
+  cursor: pointer;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+body.is-teacher mark.teach-mark:hover {
+  background: #ffd83d;
+}
+
 .course-meter,
 .hero-meter {
   height: 8px !important;
