@@ -38,6 +38,7 @@
               <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書く</p></article>
             </div>
             <div class="callout">講師：できた人から次へ進めてよい、と伝える。待っている人には「隣の画面を見る」「確認リストを読む」を渡す。</div>
+            <p>実際に作った例（別タブで開く）：<a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">社内ポータルの見本</a></p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
       },
@@ -143,6 +144,7 @@
 できたら、社員が開けるリンクをください。`)}
             <p>分からないことを聞かれたら、短く答えるか「おまかせで進めて」で大丈夫です。</p>
             <p>講師：送り終わった人は次の「待ち時間」へ。まだの人は一緒にコピーを押す。</p>
+            <p>先に見本を見たい人は <a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">実際に作った例</a> を開いてください。</p>
           `
       },
       {
@@ -158,6 +160,7 @@
               <li>本物のデータはまだ渡さない、と自分に言い聞かせる</li>
             </ol>
             <div class="callout">早くできた人は、リンクをお気に入りに保存してから、確認リストを先に試す。全員がリンクを持てるまで、機能追加には進まない。</div>
+            <p>待ち時間に見本を見る：<a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">実際に作った例</a></p>
           `
       },
       {
@@ -173,6 +176,7 @@
               <li>スマホでも文字が読めるか</li>
             </ol>
             <p>よければリンクをお気に入りに保存し、社員に渡します。あとから中身を直しても、アドレスは変わりません。</p>
+            <p>実際に作った例：<a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ</a></p>
             <div class="callout">本物のお知らせや名簿は、ページができてから渡します。今はサンプルのままで進めて構いません。</div>
           `
       },
