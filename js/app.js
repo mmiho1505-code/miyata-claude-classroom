@@ -1195,7 +1195,7 @@ ${q}
         cando: ["cowork", "作る・読む・つなぐ・同じ会話で直す"],
         screen: ["coworkask", "左メニュー・入力欄・できたリンク"],
         open: ["cowork", "左から Cowork、新しいタスク"],
-        stuck: ["quiz", "開かない人はここで待つ"],
+        stuck: ["desktop", "開けないときは当てはまる行だけ"],
         one: ["portalpage", "土台の1ページを作る"],
         wait: ["cowork", "できあがるまで確認リスト"],
         share: ["eyecheck", "見てからリンクを渡す"],
@@ -2031,7 +2031,7 @@ ${q}
             <p class="easy-meta">目安 ${escapeHtml(course.duration)}　この講座 ${p}%</p>
             ${thinMeter(p, "course-meter is-lesson", "この講座の進度")}
             <div class="study-rail" aria-hidden="true"><span style="--p:${Math.round(((idx + 1) / course.lessons.length) * 100)}%"></span></div>
-            ${figureHTML(pic, cap || "このページでやること", "hero")}
+            ${figureHTML(pic, cap || "このページでやること", lessonId === "stuck" ? "compact" : "hero")}
             ${lesson.body}
             <div class="mark-read ${done[lessonId] ? "is-inked" : ""}">
               <span class="mark-read-stamp" aria-hidden="true">💮</span>

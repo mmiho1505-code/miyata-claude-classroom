@@ -165,21 +165,32 @@
       },
       {
         id: "stuck",
-        title: "開かないときの待ち時間",
+        title: "止まったとき",
         body: `
             <p class="kicker">つまずき　必要なら5分</p>
-            <h1>止まったときは、ここを見る</h1>
-            <p>開けなければ、下の表を先生と一緒に見ます。開いたら、次のお願い文を先に読んでおきます。</p>
-            <table>
-              <thead><tr><th>こんなとき</th><th>こうする</th></tr></thead>
-              <tbody>
-                <tr><td>アプリが無い</td><td><a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> から入れる</td></tr>
-                <tr><td>Cowork が見当たらない</td><td>ブラウザではなく、パソコンの Claude アプリ。左メニュー</td></tr>
-                <tr><td>ログインできない</td><td>claude.ai と同じメールか確認。<a href="#/course/account" data-link>アカウント編</a></td></tr>
-                <tr><td>貼り付けできない</td><td>入力欄をクリックしてから Ctrl＋V（Macは ⌘＋V）。<a href="#/course/faq/paste" data-link>貼り付け</a></td></tr>
-                <tr><td>会社のネットで止まる</td><td>無理に突破しない。<a href="#/course/faq/net" data-link>社内ルール</a></td></tr>
-              </tbody>
-            </table>
+            <h1>開けないときは、当てはまる行だけ見る</h1>
+            <p>先生と一緒に、今の画面と下を見比べます。開いたら、次のお願い文を先に読んでおきます。</p>
+            <div class="qa">
+              <p class="qa-q">アプリが無い</p>
+              <p>パソコンのブラウザで <a href="https://claude.ai/download" target="_blank" rel="noopener">Claude を入れる</a>。Windows 用か Mac 用かを選ぶ。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">Cowork が見当たらない</p>
+              <p>ブラウザの claude.ai ではなく、<strong>パソコンの Claude アプリ</strong>を開く。左のメニューから Cowork。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">ログインできない</p>
+              <p>チャットと同じメールか確認する。<a href="#/course/account" data-link>アカウント編</a></p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">貼り付けできない</p>
+              <p>入力欄をクリックしてから Ctrl＋V（Mac は ⌘＋V）。<a href="#/course/faq/paste" data-link>貼り付けのつまずき</a></p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">会社のネットで止まる</p>
+              <p>無理に突破しない。<a href="#/course/faq/net" data-link>社内ルール</a></p>
+            </div>
+            <div class="callout">どれも違うときは、画面を先生に見せます。次の「ポータルを作る」へ進んで、お願い文だけ先に読んでも構いません。</div>
           `
       },
       {
