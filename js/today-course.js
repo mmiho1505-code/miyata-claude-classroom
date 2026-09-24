@@ -1,4 +1,8 @@
 (() => {
+  const SAMPLE = "https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu";
+  const sampleLink = (label) =>
+    `<a href="${SAMPLE}" target="_blank" rel="noopener">${label}</a>`;
+
   const box = (text) => `
             <div class="code-wrap">
               <button class="copy" type="button">コピー</button>
@@ -39,7 +43,7 @@
               <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書く</p></article>
             </div>
             <div class="callout">今日の成功は、ポータルを1枚作って、お知らせを1件足せることです。申請や給与は余ったらで構いません。</div>
-            <p>実際に作った例（別タブで開く）：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a></p>
+            <p>サイトの例（別タブで開く）：${sampleLink("社内ポータルの見本")}</p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
       },
@@ -211,7 +215,7 @@
 できたら、社員が開けるリンクをください。`)}
             <p>分からないことを聞かれたら、短く答えるか「おまかせで進めて」で大丈夫です。</p>
             <p>送れたら次の「待ち時間」へ。送れなければ、先生と一緒にコピーを押します。</p>
-            <p>先に見本を見たい人は <a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a> を開いてください。</p>
+            <p>先に見本を見たい人は <a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a> を開いてください。</p>
           `
       },
       {
@@ -227,7 +231,7 @@
               <li>本物のデータはまだ渡さない、と自分に言い聞かせる</li>
             </ol>
             <div class="callout">リンクが出たら、お気に入りに保存してから確認リストを試します。リンクがまだなら、機能追加には進みません。</div>
-            <p>待ち時間に見本を見る：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a></p>
+            <p>待ち時間に見本を見る：<a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a></p>
           `
       },
       {
@@ -243,7 +247,7 @@
               <li>スマホでも文字が読めるか</li>
             </ol>
             <p>よければリンクをお気に入りに保存し、社員に渡します。あとから中身を直しても、アドレスは変わりません。</p>
-            <p>実際に作った例：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a></p>
+            <p>実際に作った例：<a href="https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu" target="_blank" rel="noopener">社内ポータルの見本</a></p>
             <div class="callout">本物のお知らせや名簿は、ページができてから渡します。今はサンプルのままで進めて構いません。</div>
           `
       },
@@ -440,8 +444,9 @@
             <p class="kicker">見た目　110〜115分</p>
             <h1>タイル型にまとめて直す</h1>
             <p>機能が増えるたびに並びが変わるので、デザインはここでまとめて行います。先に雰囲気を決めてから、下の文を送ります。</p>
-            <p>デザインを探す：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">Pinterest（社内ポータル）</a> を別タブで開く。気に入ったものを1つだけ決める。2つ以上は迷います。</p>
-            ${box(`Pinterestで見たポータルの雰囲気を参考に、トップを整えてください。白を基調に、落ち着いた社内向けにしてください。`)}
+            <p>サイトの例：${sampleLink("社内ポータルの見本")} を別タブで開く。この雰囲気を参考にします。</p>
+            ${box(`この見本の雰囲気を参考に、トップを整えてください。白を基調に、落ち着いた社内向けにしてください。
+見本：https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu`)}
             ${box(`トップページをグループウェアのようなタイル型にしてください。
 ・上に短めの青い帯（ページ名と一言）
 ・その下に、機能ごとのタイルを4列で並べる
