@@ -165,23 +165,34 @@
         title: "Gmailとつなぐ",
         body: `
             <p class="kicker">設定　できれば　5分</p>
-            <h1>Claude と Gmail を、一度つなぐ</h1>
-            <p>つながると、メールの要約や返信の下書きを頼めます。今日のポータル作りには必須ではありません。会社の Google が使える人だけ、先生と一緒にやります。</p>
+            <h1>Gmail をつなぐ</h1>
+            <p>つなぐと、「今日のメールを短くまとめて」と頼めます。ポータルを作るには、<strong>やらなくてよい</strong>です。会社のメールが使える人だけ、先生と一緒にやります。</p>
+            <p>いまからやることは、1つだけです。<strong>Claude に、Gmail を見てよい、と許可する</strong>ことです。</p>
             <ol>
-              <li>パソコンの <strong>Claude アプリ</strong>を開く</li>
-              <li>設定（歯車）を開き、<strong>接続</strong>・コネクタ・Integrations など、アプリをつなぐ場所を探す</li>
-              <li><strong>Gmail</strong> を選んでつなぐ（カレンダーやドライブが出たら、使いたいものだけ）</li>
-              <li>Google の画面が出たら、<strong>いつも使う会社のメール</strong>で許可する</li>
-              <li>「送信してよいですか」と聞かれたら、今日は送らない。下書きまでにする</li>
+              <li>パソコンの <strong>Claude アプリ</strong>を開く（ブラウザの claude.ai ではない）</li>
+              <li><strong>歯車</strong>（設定）を押す</li>
+              <li><strong>接続</strong> を探す。英語なら Connectors と書いてある</li>
+              <li><strong>Gmail</strong> を押して、つなぐ</li>
+              <li>Google の画面が出たら、<strong>会社のメール</strong>を選んで許可する</li>
             </ol>
-            <div class="ops">
-              <article class="op"><span class="num">1</span><h3>パスワード</h3><p>Google の画面に、自分で入れる。Claude の入力欄には書かない</p></article>
-              <article class="op"><span class="num">2</span><h3>アカウント</h3><p>会社の Google と、個人の Gmail を取り違えない</p></article>
-              <article class="op"><span class="num">3</span><h3>送れないとき</h3><p>会社が接続を禁止していることがある。無理に突破しない</p></article>
+            <div class="qa">
+              <p class="qa-q">できた</p>
+              <p>Gmail の横に、オン・つながった、と出る。下の文をコピーして送ってみる</p>
             </div>
-            <p>つながったら、下をコピーして送ってみます。送れなければ、次の「止まったとき」か「ポータルを作る」へ。</p>
+            <div class="qa">
+              <p class="qa-q">歯車が無い・接続が無い</p>
+              <p>先生に画面を見せる。見つからなければ、このページは飛ばして「ポータルを作る」へ</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">Google の画面が出ない・エラー</p>
+              <p>会社が禁止していることがある。無理に突破しない。次へ進む</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">やってはいけない</p>
+              <p>パスワードを Claude に書く。メールを送る。個人の Gmail でつなぐ</p>
+            </div>
+            <p>つながった人だけ、下をコピーします。送信はしません。</p>
             ${box(`今日の未読メールを、大事そうな順に3行でまとめてください。返信が要りそうなものは下書きまで。送信はしないでください。`)}
-            <div class="callout">メールの中身に、パスワード・口座・マイナンバーがあったら、そのままコピーして渡さない。</div>
           `
       },
       {
@@ -213,7 +224,7 @@
             </div>
             <div class="qa">
               <p class="qa-q">Gmail がつながらない</p>
-              <p>会社の Google か確認。個人の Gmail と取り違えていないか見る。禁止なら無理に突破しない</p>
+              <p>会社のメールか見る。個人の Gmail ならやり直す。出てこなければ飛ばして次へ</p>
             </div>
             <div class="callout">どれも違うときは、画面を先生に見せます。次の「ポータルを作る」へ進んで、お願い文だけ先に読んでも構いません。</div>
           `
