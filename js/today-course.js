@@ -39,7 +39,7 @@
               <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書く</p></article>
             </div>
             <div class="callout">今日の成功は、ポータルを1枚作って、お知らせを1件足せることです。申請や給与は余ったらで構いません。</div>
-            <p>実際に作った例（別タブで開く）：<a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">社内ポータルの見本</a></p>
+            <p>実際に作った例（別タブで開く）：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a></p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
       },
@@ -211,7 +211,7 @@
 できたら、社員が開けるリンクをください。`)}
             <p>分からないことを聞かれたら、短く答えるか「おまかせで進めて」で大丈夫です。</p>
             <p>送れたら次の「待ち時間」へ。送れなければ、先生と一緒にコピーを押します。</p>
-            <p>先に見本を見たい人は <a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">実際に作った例</a> を開いてください。</p>
+            <p>先に見本を見たい人は <a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a> を開いてください。</p>
           `
       },
       {
@@ -227,7 +227,7 @@
               <li>本物のデータはまだ渡さない、と自分に言い聞かせる</li>
             </ol>
             <div class="callout">リンクが出たら、お気に入りに保存してから確認リストを試します。リンクがまだなら、機能追加には進みません。</div>
-            <p>待ち時間に見本を見る：<a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">実際に作った例</a></p>
+            <p>待ち時間に見本を見る：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a></p>
           `
       },
       {
@@ -243,7 +243,7 @@
               <li>スマホでも文字が読めるか</li>
             </ol>
             <p>よければリンクをお気に入りに保存し、社員に渡します。あとから中身を直しても、アドレスは変わりません。</p>
-            <p>実際に作った例：<a href="https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ" target="_blank" rel="noopener">https://claude.ai/artifact/J1xXKG3XpYBbPGQBUkppFQ</a></p>
+            <p>実際に作った例：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">社内ポータルの見本</a></p>
             <div class="callout">本物のお知らせや名簿は、ページができてから渡します。今はサンプルのままで進めて構いません。</div>
           `
       },
@@ -290,6 +290,14 @@
             ${box(`『今月の予定』のブロックを、『お知らせ』のすぐ下に移して`)}
             ${box(`お知らせの2番目と3番目を入れ替えて`)}
             ${box(`さっきの変更は取り消して、ひとつ前に戻して`)}
+            <h2>タブの直し方</h2>
+            <p>上のメニュー名を変えるときも、同じ会話の続きに書きます。下をコピーして送ります。</p>
+            <p>①『ホーム』を『予定』にする</p>
+            ${box(`上のタブの『ホーム』を『予定』に変えて。中身は今のホームのままにして`)}
+            <p>②もともとの『予定』タブは消す（同じ名前が2つにならないように）</p>
+            ${box(`『予定』というタブは消して。さっき『ホーム』を『予定』に変えたので、同じ名前が2つ残らないように`)}
+            <p>③案件管理のタブを変える</p>
+            ${box(`案件管理のタブを変更してほしいです。`)}
             <p>1回に頼むのは1〜3個まで。あいまいな「いい感じに」より、具体的な一言のほうが早いです。</p>
             <p>直したらページを再読み込みして、自分の目で確認します。</p>
           `
