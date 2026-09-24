@@ -1202,7 +1202,7 @@ ${q}
         break: ["desktop", "会話は閉じずに5分"],
         edit: ["copy", "同じ会話の続きで直す"],
         promptwork: ["copy", "追加・変更・移動・戻す"],
-        round: ["site", "隣と1分ずつ見せ合う"],
+        round: ["site", "直したところを先生に1つ見せる"],
         two: ["attendapp", "出勤・休憩・退勤の打刻"],
         three: ["safety", "管理画面は社員に見せない"],
         four: ["copy", "申請して、管理者が承認"],
