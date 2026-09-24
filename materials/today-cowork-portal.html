@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>今日の教え方｜チャット入門からポータル直し方｜株式会社 宮田財務</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 16mm 16mm 18mm;
+      }
+      * { box-sizing: border-box; }
+      body {
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+        color: #1f1f1f;
+        font-size: 11.5pt;
+        line-height: 1.55;
+        margin: 0;
+      }
+      h1 {
+        font-size: 18pt;
+        margin: 0 0 6px;
+        letter-spacing: 0.02em;
+      }
+      h2 {
+        font-size: 13pt;
+        margin: 16px 0 8px;
+        padding: 4px 0 4px 10px;
+        border-left: 6px solid #e29447;
+      }
+      h3 {
+        font-size: 11.5pt;
+        margin: 12px 0 4px;
+      }
+      p { margin: 0 0 8px; }
+      .meta {
+        color: #6b6b6b;
+        font-size: 10pt;
+        margin-bottom: 12px;
+      }
+      .goal {
+        background: #fff6ec;
+        border: 1px solid #f0d4b0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-weight: 700;
+        margin: 0 0 12px;
+      }
+      .skip {
+        background: #f3e6d4;
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-size: 10.5pt;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10.5pt;
+        margin: 8px 0 12px;
+      }
+      th, td {
+        border: 1px solid #e0d8ce;
+        padding: 6px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th { background: #f7f5f2; }
+      ol, ul { margin: 4px 0 10px; padding-left: 1.3em; }
+      li { margin: 2px 0; }
+      .num {
+        display: inline-block;
+        width: 1.4em;
+        height: 1.4em;
+        border-radius: 50%;
+        background: #e29447;
+        color: #fff;
+        font-size: 10pt;
+        font-weight: 800;
+        text-align: center;
+        line-height: 1.4em;
+        margin-right: 4px;
+      }
+      .url {
+        font-size: 9.5pt;
+        word-break: break-all;
+        background: #f7f5f2;
+        padding: 6px 8px;
+        border-radius: 6px;
+      }
+      footer {
+        margin-top: 16px;
+        font-size: 9pt;
+        color: #6b6b6b;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 8px 0 12px;
+      }
+      .card {
+        border: 1px solid #e0d8ce;
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+      .card strong { display: block; margin-bottom: 4px; }
+    </style>
+  </head>
+  <body>
+    <p class="meta">はじめてのClaude 教室　講師用　株式会社 宮田財務</p>
+    <h1>今日の教え方</h1>
+    <p>チャット、初めてのCowork設定、ポータルの作り方・直し方まで</p>
+    <p class="goal">今日のゴール：Coworkを自分で開けて、社内ポータルの1ページを作り、お知らせを1件足せる。</p>
+    <p class="skip">やらないこと：ポスター、Claude Code、Cowork講座の請求書・経費。教室は補助。先生が画面を見せて、受講者は同じ文をコピーして貼る。</p>
+
+    <h2>一本の話</h2>
+    <p>「相談できる → 作ってもらえる → 直せる」で通す。ポスターと黒い画面は出さない。</p>
+    <ol>
+      <li>チャット入門（相談）</li>
+      <li>初めてのCowork（アプリ・設定・できること）</li>
+      <li>ポータルを作る</li>
+      <li>ポータルを直す</li>
+    </ol>
+    <p>最初に言うこと：「同じClaudeでも入り口は2つ。チャットは文章で答える相談相手（ブラウザ）。Coworkはページまで作る作業係（パソコンのアプリ）。今日は左から右へ。」</p>
+    <p class="url">教室：https://mmiho1505-code.github.io/miyata-claude-classroom/?key=jimu<br />マイページに受講コード「じむ」を入れる。</p>
+
+    <h2>時間の目安（約2時間）</h2>
+    <table>
+      <thead>
+        <tr><th>時刻の目安</th><th>内容</th><th>教室の場所</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0:00〜0:10</td><td>今日の地図。ログイン確認</td><td>#/course/today 今日の地図</td></tr>
+        <tr><td>0:10〜0:25</td><td>チャットで返事を2回もらう</td><td>チャット入門／もう1回</td></tr>
+        <tr><td>0:25〜0:50</td><td>初めてのCowork。アプリ・設定・できること</td><td>アプリの入れ方〜始め方</td></tr>
+        <tr><td>0:50〜1:05</td><td>見本文でポータルを作る。確認リスト</td><td>ポータルを作る</td></tr>
+        <tr><td>1:05〜1:10</td><td>休憩</td><td>—</td></tr>
+        <tr><td>1:10〜1:30</td><td>直し方。追加・移動。隣と見せ合う</td><td>よくある直し方</td></tr>
+        <tr><td>1:30〜1:50</td><td>同じ会話で機能を足す</td><td>勤怠〜便利機能</td></tr>
+        <tr><td>1:50〜2:00</td><td>デザインは最後。まとめ</td><td>デザイン／まとめ</td></tr>
+      </tbody>
+    </table>
+    <p>遅れたら削る順：便利機能 → 給与計算 → 申請。作る1回と直す1回、Coworkの入れ方は残す。</p>
+
+    <h2>1. チャット入門（15〜20分）</h2>
+    <p>口頭は短く。左が履歴、下が入力欄。教室の「コピー」→ 入力欄をクリック → 貼る → 送る。</p>
+    <p>実習は1回。「最初のお願い」の見本文を使う。返事が来たら成功。教えるのは「貼って送る」だけ。上手な文章は後回し。</p>
+
+    <h2>2. 初めてのCowork（25分）</h2>
+    <p>今日が初めての人が多い。教室の「今日の講義」のまま進む。請求書STEPは飛ばす。</p>
+    <ul>
+      <li>パソコンに Claude アプリ（<span class="url" style="display:inline;padding:2px 6px">claude.ai/download</span>）。同じメールでログイン</li>
+      <li>左メニューの Cowork。新しいタスク</li>
+      <li>できること：ページや資料を作る／ファイルを読む／フォルダをつなぐ／同じ会話で直す</li>
+      <li>見る場所：左メニュー、会話一覧、下の入力欄、できたページのリンク</li>
+      <li>「許可しますか」と出たら、今日使うものだけ。全部はいらない</li>
+    </ul>
+    <p>止まりやすいところ：Coworkが見当たらない → ブラウザで開いている。アプリに切り替える。インストールできない → 無理に突破しない。全員が Cowork の新しいタスクまで来たら次へ。</p>
+
+    <h2>3. ポータルを作る（35〜45分）</h2>
+    <p>教室の「見本文を貼る」をそのまま使う。自分の言葉に直さなくていい、と言う。</p>
+    <p>TOPは4つ。上からこの順。5つ目は作らない。</p>
+    <ol>
+      <li>お知らせ（新しいものが上、3件まで）</li>
+      <li>今月の予定</li>
+      <li>よく使うリンク（勤怠・メール・フォルダ。出退勤はここのボタン）</li>
+      <li>部署の連絡先（名前・内線・メール。携帯は載せない）</li>
+    </ol>
+    <p>待ち時間に復唱：誰が・何を・どんな感じか。</p>
+    <p>できたページのチェックは4つだけ。並び／社名／リンクが押せるか／スマホで文字が小さすぎないか。リンクをお気に入りに保存。会話は閉じない。</p>
+
+    <h2>4. 直し方（25〜35分）</h2>
+    <ul>
+      <li>ページの中を自分でいじらない</li>
+      <li>作った会話の続きに「〇〇を△△に変えて」</li>
+      <li>直したら、ページを再読み込み</li>
+    </ul>
+    <p>実習は2つまで。①お知らせを1件、一番上に足す。②内線を1つ変える、またはよく使うリンクに経費精算を足す（［URL］は穴埋め、と先に言う）。失敗したら「元に戻して」。</p>
+
+    <h2>5. おわり（5分）</h2>
+    <p>覚えて帰ること3つ。</p>
+    <ol>
+      <li>相談はチャット、作る・直すは Cowork（初めてならアプリを入れて同じメールでログイン）</li>
+      <li>1ページは4つ。上から お知らせ→予定→リンク→連絡先</li>
+      <li>直すときは続きに書く。見てから社員に渡す</li>
+    </ol>
+    <p>載せないもの：パスワード、携帯番号、給与。宿題にするなら「自分の会社の名前に直して、お知らせを1件足す」だけ。</p>
+
+    <h2>言い方の型</h2>
+    <p class="goal">今から先生がやります。同じ文をコピーして、一緒に送ってください。うまくいかなくても、続きに「元に戻して」と書けば大丈夫です。</p>
+
+    <div class="two">
+      <div class="card">
+        <strong>チャット</strong>
+        ブラウザ　文章で返る　相談・下書き
+      </div>
+      <div class="card">
+        <strong>Cowork</strong>
+        パソコンのアプリ　ページやファイル　作る・直す
+      </div>
+    </div>
+
+    <footer>
+      無断転載・複製・配布・公開は禁止です。契約者ご本人の学習・講師用です。教材の最終判断はご自身で行ってください。
+    </footer>
+  </body>
+</html>
