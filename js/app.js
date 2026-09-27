@@ -335,6 +335,7 @@ ${q}
     "market",
     "hypo",
     "hr",
+    "sched",
     "cowork",
     "portalmake",
     "portalfix",
@@ -357,7 +358,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "market", "hypo", "hr", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "market", "hypo", "hr", "sched", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -396,7 +397,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "faq", "market", "hypo", "hr"].includes(courseId)) return "starter";
+    if (["poster", "account", "faq", "market", "hypo", "hr", "sched"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -405,7 +406,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "Claude Cowork" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq", "market", "hypo", "hr"];
+  const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq", "market", "hypo", "hr", "sched"];
   const GATE_PACKS = {
     jimu: { label: "事務（Cowork）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -715,6 +716,7 @@ ${q}
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
     hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
+    sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
     cowork: ["cover-cowork", "Cowork", "やり方ガイドつき。資料・整理・連携から請求書と経費まで。", "cowork"],
     today: ["cover-cowork", "今日", "10枚・2時間。チャット、初めてのCowork設定、ポータルの作り方・直し方。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
@@ -746,6 +748,7 @@ ${q}
     market: ["マーケ", "📣"],
     hypo: ["仮説", "💡"],
     hr: ["人事", "👥"],
+    sched: ["日程", "📅"],
     cowork: ["Cowork", "💬"],
     today: ["今日の講義", "📌"],
     portalmake: ["ポータル作る", "🏠"],
@@ -909,7 +912,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "market", "hypo", "hr", "poster"].concat(
+    const pickOrder = ["today", "market", "hypo", "hr", "sched", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1285,6 +1288,7 @@ ${q}
     market: ["sns", "誰に・何を・どう届けるか"],
     hypo: ["copy", "私はこう思う。外れたら指摘して"],
     hr: ["crm", "AIと人で切り分ける"],
+    sched: ["mail", "空き時間をクリックしてメール文"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
     today: ["portalpage", "10枚。チャット、Cowork、ポータルまで"],
     portalfix: ["copy", "同じ会話の続きで直す"],
@@ -1468,6 +1472,19 @@ ${q}
         summary: ["crm", "軽くするだけではない"]
       };
       return t[lessonId] || COURSE_ART.hr;
+    }
+    if (courseId === "sched") {
+      const t = {
+        goal: ["mail", "小さな作業から成功体験"],
+        prep: ["signup", "ClaudeとGoogleのアカウント"],
+        connect: ["mail", "コネクターでカレンダー"],
+        project: ["copy", "手順に3つを貼る"],
+        run: ["copy", "実行と書くだけ"],
+        tune: ["copy", "期間・区切り・敬語"],
+        qa: ["quiz", "相手のカレンダーは読めない"],
+        summary: ["mail", "つなぐ・貼る・実行"]
+      };
+      return t[lessonId] || COURSE_ART.sched;
     }
     if (courseId === "portalmake") {
       const t = {
@@ -1827,7 +1844,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "faq"])}</div>
       </div>`;
   };
 
@@ -1886,26 +1903,27 @@ ${q}
       ["market", "05", "マーケ", "届ける"],
       ["hypo", "06", "仮説", "問い"],
       ["hr", "07", "人事", "切り分け"],
-      ["cowork", "08", "Cowork", "事務"],
-      ["portalmake", "09", "ポータル", "作る"],
-      ["portalfix", "10", "直す", "Cowork"],
-      ["attend", "11", "出退勤", "作る"],
-      ["salary", "12", "給料", "計算"],
-      ["invoicemake", "13", "請求書", "Cowork"],
-      ["code", "14", "Windows", "準備"],
-      ["codemac", "15", "Mac", "準備"],
-      ["snspost", "16", "投稿文", "やさしい"],
-      ["survey", "17", "集計", "やさしい"],
-      ["expense", "18", "経費", "作る"],
-      ["invoice", "19", "請求書", "Code"],
-      ["abc", "20", "ABC", "分析"],
-      ["sns", "21", "SNS", "分析"],
-      ["crm", "22", "CRM", "作る"],
-      ["shop", "23", "店舗", "公開"],
-      ["secretary", "24", "秘書", "実践"],
-      ["appedit", "25", "画面", "直す"],
-      ["applied", "26", "使いこなし", "中級"],
-      ["faq", "27", "つまずき", "補助"]
+      ["sched", "08", "日程", "調整"],
+      ["cowork", "09", "Cowork", "事務"],
+      ["portalmake", "10", "ポータル", "作る"],
+      ["portalfix", "11", "直す", "Cowork"],
+      ["attend", "12", "出退勤", "作る"],
+      ["salary", "13", "給料", "計算"],
+      ["invoicemake", "14", "請求書", "Cowork"],
+      ["code", "15", "Windows", "準備"],
+      ["codemac", "16", "Mac", "準備"],
+      ["snspost", "17", "投稿文", "やさしい"],
+      ["survey", "18", "集計", "やさしい"],
+      ["expense", "19", "経費", "作る"],
+      ["invoice", "20", "請求書", "Code"],
+      ["abc", "21", "ABC", "分析"],
+      ["sns", "22", "SNS", "分析"],
+      ["crm", "23", "CRM", "作る"],
+      ["shop", "24", "店舗", "公開"],
+      ["secretary", "25", "秘書", "実践"],
+      ["appedit", "26", "画面", "直す"],
+      ["applied", "27", "使いこなし", "中級"],
+      ["faq", "28", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -2038,7 +2056,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2183,6 +2201,7 @@ ${q}
       market: "cover-sns",
       hypo: "cover-applied",
       hr: "cover-crm",
+      sched: "cover-chat",
       intro: "cover-intro",
       secretary: "cover-secretary",
       appedit: "cover-appedit",
@@ -2211,6 +2230,7 @@ ${q}
       market: "マーケ",
       hypo: "仮説",
       hr: "人事",
+      sched: "日程",
       intro: "勉強会",
       secretary: "秘書",
       appedit: "画面",
