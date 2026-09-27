@@ -43,8 +43,9 @@
         body: `
             <p class="kicker">型　3／7</p>
             <h1>イシュー・仮説・ファクトベース</h1>
+            <p>イシュー（Issue）とは、一言で言うと<strong>「今本当に解決・検討すべき問い（テーマ）」</strong>のことです。単なる問題や雑多な質問ではなく、<strong>結論を出す価値がある重要な問い</strong>を指します。</p>
             <div class="ops">
-              <article class="op"><span class="num">問</span><h3>イシュー</h3><p>聞きたいことを1つに絞る</p></article>
+              <article class="op"><span class="num">問</span><h3>イシュー</h3><p>今本当に結論を出す価値がある問いを、1つに絞る。何でも聞く質問ではない</p></article>
               <article class="op"><span class="num">仮</span><h3>仮説</h3><p>「私はこう思う」を先に書く。間違っていても構わない。「絶対こうなる」という思い込みは、仮説ではない</p></article>
               <article class="op"><span class="num">事</span><h3>ファクトベース</h3><p>「外れているところを、根拠つきで指摘して」と頼む。そうするとAIが同調せず、正面から答えやすい</p></article>
             </div>
@@ -122,7 +123,7 @@
             <p class="kicker">覚えておくこと　7／7</p>
             <h1>私はこう思う。外れたら指摘して</h1>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>問いを1つ</h3><p>イシューを絞る。同じ質問の丸投げでは差がつかない</p></article>
+              <article class="op"><span class="num">1</span><h3>問いを1つ</h3><p>イシューは、結論を出す価値がある問い。雑多な質問ではない</p></article>
               <article class="op"><span class="num">2</span><h3>仮説を先に</h3><p>間違っていてよい。「絶対こうなる」は仮説ではない</p></article>
               <article class="op"><span class="num">3</span><h3>根拠で指摘</h3><p>ファクトベースで頼む。同調させない</p></article>
             </div>
@@ -146,7 +147,7 @@
         q: "仮説思考の3つは？",
         choices: ["安く・早く・多く", "イシュー・仮説・ファクトベース", "要約・翻訳・投稿"],
         a: 1,
-        explain: "問いを1つに絞り、「私はこう思う」を先に書き、外れている点を根拠つきで指摘してもらいます。"
+        explain: "イシューは、今本当に結論を出す価値がある問いです。1つに絞り、仮説を先に書き、根拠つきで指摘してもらいます。"
       },
       {
         q: "「絶対こうなる」は仮説ですか？",
