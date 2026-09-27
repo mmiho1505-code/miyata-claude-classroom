@@ -145,6 +145,27 @@
               <p class="qa-q">できたページのリンク</p>
               <p>社員に渡す住所。できた画面の近くにあることが多い。直しても、この住所は変わらないことが多い。</p>
             </div>
+            <div class="qa">
+              <p class="qa-q">モデル（Opus など）</p>
+              <p>入力欄の近くにあることが多い。「誰が答えるか」の選び方。今日のポータルは <strong>Opus</strong>。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">Effort（エフォート）</p>
+              <p>どれだけじっくり考えるか。英語で Effort と出ます。今日のポータルは <strong>高め（High）</strong>。</p>
+            </div>
+            <h2>モデルと Effort</h2>
+            <p>名前が英語でも、意味だけ覚えます。見つからなければ無理に探さない。プランによって選べないことがあります。</p>
+            <div class="ops">
+              <article class="op"><span class="num">O</span><h3>Opus</h3><p>いちばんよく考える。ページを作る・直す向き。今日はこれ</p></article>
+              <article class="op"><span class="num">S</span><h3>Sonnet</h3><p>ふつうの相談向き。速さとのバランス</p></article>
+              <article class="op"><span class="num">H</span><h3>Haiku</h3><p>短い返事向き。今日のポータルは向かない</p></article>
+            </div>
+            <div class="ops">
+              <article class="op"><span class="num">低</span><h3>Effort 低め</h3><p>早く終わる。かんたんな質問向き</p></article>
+              <article class="op"><span class="num">中</span><h3>Effort ふつう</h3><p>迷ったらこれ。相談の続き向き</p></article>
+              <article class="op"><span class="num">高</span><h3>Effort 高め</h3><p>ていねいに作る。今日のポータルはこれ</p></article>
+            </div>
+            <div class="callout">今日の決まり：モデルは Opus、Effort は高め。変えたら、同じ会話のまま次のお願い文を貼ります。</div>
             <p>聞かれたら、知っている範囲で答えるか「おまかせで進めて」で構いません。送る・消す・公開の最終確認は人の仕事です。</p>
             <h2>開けないときは、当てはまる行だけ見る</h2>
             <p>先生と一緒に、今の画面と下を見比べます。開いたら、次のお願い文を先に読んでおきます。</p>
@@ -455,7 +476,7 @@
             <h1>チャットから、ポータルの直し方まで</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>チャット</h3><p>相談はブラウザ。日本語で1回、返事をもらう</p></article>
-              <article class="op"><span class="num">2</span><h3>Coworkで作る</h3><p>アプリを入れてログイン。左から Cowork。同じ会話に貼って、ページを作る</p></article>
+              <article class="op"><span class="num">2</span><h3>Coworkで作る</h3><p>アプリを入れてログイン。左から Cowork。モデルは Opus、Effort は高め。同じ会話に貼って、ページを作る</p></article>
               <article class="op"><span class="num">3</span><h3>続きで直す</h3><p>「何を・どこへ」と書く。移動もドラッグしない</p></article>
             </div>
             <h2>使い始める前に</h2>
@@ -489,6 +510,12 @@
         choices: ["スマホのブラウザで開く", "パソコンに Claude アプリを入れ、同じメールでログインする", "黒い画面でコマンドを打つ"],
         a: 1,
         explain: "Cowork はパソコンのアプリです。claude.ai と同じアカウントで入ります。"
+      },
+      {
+        q: "今日のポータル作りで、モデルと Effort は？",
+        choices: ["Haiku と低め。いちばん速い", "Opus と高め。ていねいに作る", "名前は暗記して、毎回全部変える"],
+        a: 1,
+        explain: "Opus がいちばんよく考えます。Effort を高めにすると、じっくり作ります。"
       },
       {
         q: "Gmail とつなぐとき、パスワードは？",

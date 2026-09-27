@@ -1406,7 +1406,7 @@ ${q}
       const t = {
         goal: ["site", "10枚。チャット → Cowork → 作る → 直す"],
         chat: ["webchat", "日本語で返事をもらう"],
-        install: ["desktop", "左メニュー・入力欄・できた画面"],
+        install: ["desktop", "OpusとEffort、できた画面"],
         gmail: ["copy", "つなぐとメール・予定・資料が手元に"],
         one: ["portalpage", "土台の1ページを作る"],
         promptwork: ["copy", "同じ会話の続きで直す"],
