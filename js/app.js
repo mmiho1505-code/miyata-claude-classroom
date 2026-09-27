@@ -353,6 +353,7 @@ ${q}
     "crm",
     "shop",
     "secretary",
+    "secplus",
     "appedit",
     "applied",
     "faq"
@@ -369,6 +370,7 @@ ${q}
     "crm",
     "shop",
     "secretary",
+    "secplus",
     "appedit",
     "applied"
   ];
@@ -737,6 +739,7 @@ ${q}
     sns: ["cover-sns", "SNS", "投稿と反応から、伸びた投稿の傾向と次のヒントを見える化。", "sns"],
     snspost: ["cover-snspost", "投稿文", "ネタを渡すだけで、らしいトーンの投稿文を文字数内で複数案。", "snspost"],
     secretary: ["cover-secretary", "秘書", "日本語のお願いから、GitHub保存・公開までの6ステップ。", "secretary"],
+    secplus: ["cover-secretary", "秘書+", "DesktopのフォルダにカレンダーとGmail。送信はブロック。", "mail"],
     appedit: ["cover-appedit", "画面", "作ったアプリの文字・色・部品を、日本語のお願いで直す。", "mouse"],
     faq: ["cover-faq", "つまずき", "PowerShellが開かない、ログインできない、など。", "quiz"]
   };
@@ -769,6 +772,7 @@ ${q}
     sns: ["SNS", "📱"],
     snspost: ["投稿文", "✏️"],
     secretary: ["秘書", "🤝"],
+    secplus: ["秘書+", "📬"],
     appedit: ["画面", "✏️"],
     faq: ["つまずき", "🆘"]
   };
@@ -1271,6 +1275,7 @@ ${q}
     poster: ["poster", "A4縦の求人ポスターを1枚"],
     intro: ["desktop", "日本語でお願いして作る"],
     secretary: ["secretary", "予定・メモ・振り返り"],
+    secplus: ["mail", "カレンダーとGmail。送信はしない"],
     appedit: ["mouse", "日本語で画面を直す"],
     invoice: ["invoice", "リストから1社1PDF"],
     expense: ["expense", "レシートを仕分けて集計"],
@@ -1610,6 +1615,18 @@ ${q}
     if (courseId === "secretary" && lessonId === "step1") return ["secretary", "予定・メモ・振り返り"];
     if (courseId === "secretary" && lessonId === "step4") return ["git", "GitHubに保存する"];
     if (courseId === "secretary" && lessonId === "step5") return ["browser", "公開してスマホで見る"];
+    if (courseId === "secplus") {
+      const t = {
+        goal: ["secretary", "予定とメールで段取り"],
+        can: ["mail", "読む・ずらす・組む・数える"],
+        cal: ["calendar", "コネクターでカレンダー"],
+        gmail: ["mail", "同じ手順でGmail"],
+        perms: ["safety", "送信・返信・転送はブロック"],
+        qa: ["quiz", "渡すか・説明・ChatWork"],
+        summary: ["secretary", "読む・下書きは許可。送るのは人"]
+      };
+      return t[lessonId] || COURSE_ART.secplus;
+    }
     if (courseId === "poster" && lessonId === "step5") return ["canva", "Canvaで文字を直す"];
     if (
       ["invoice", "expense", "crm", "shop", "survey", "abc", "sns", "snspost"].includes(courseId) &&
@@ -1921,9 +1938,10 @@ ${q}
       ["crm", "23", "CRM", "作る"],
       ["shop", "24", "店舗", "公開"],
       ["secretary", "25", "秘書", "実践"],
-      ["appedit", "26", "画面", "直す"],
-      ["applied", "27", "使いこなし", "中級"],
-      ["faq", "28", "つまずき", "補助"]
+      ["secplus", "26", "秘書+", "つなぐ"],
+      ["appedit", "27", "画面", "直す"],
+      ["applied", "28", "使いこなし", "中級"],
+      ["faq", "29", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -2204,6 +2222,7 @@ ${q}
       sched: "cover-chat",
       intro: "cover-intro",
       secretary: "cover-secretary",
+      secplus: "cover-secretary",
       appedit: "cover-appedit",
       invoice: "cover-invoice",
       expense: "cover-expense",
@@ -2233,6 +2252,7 @@ ${q}
       sched: "日程",
       intro: "勉強会",
       secretary: "秘書",
+      secplus: "秘書+",
       appedit: "画面",
       invoice: "請求書",
       expense: "経費",
@@ -2628,6 +2648,7 @@ ${q}
           <li><a href="#/course/abc" data-link>6 分析</a></li>
           <li><a href="#/course/shop" data-link>7 サイト</a></li>
           <li><a href="#/course/secretary" data-link>8 秘書</a></li>
+          <li><a href="#/course/secplus" data-link>秘書+</a></li>
           <li><a href="#/course/appedit" data-link>9 画面</a></li>
           <li><a href="#/course/applied" data-link>10 使いこなし</a></li>
         </ol>
