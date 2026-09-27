@@ -332,6 +332,7 @@ ${q}
     "account",
     "webchat",
     "poster",
+    "market",
     "cowork",
     "portalmake",
     "portalfix",
@@ -354,7 +355,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "market", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -393,7 +394,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "faq"].includes(courseId)) return "starter";
+    if (["poster", "account", "faq", "market"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -402,7 +403,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "Claude Cowork" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq"];
+  const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq", "market"];
   const GATE_PACKS = {
     jimu: { label: "事務（Cowork）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -709,6 +710,7 @@ ${q}
     account: ["cover-account", "準備", "claude.ai に入って、有料プランの画面を確認。", "signup"],
     webchat: ["cover-chat", "チャット", "Coworkの前に。ブラウザで日本語のお願いを一度。", "webchat"],
     poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
+    market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     cowork: ["cover-cowork", "Cowork", "やり方ガイドつき。資料・整理・連携から請求書と経費まで。", "cowork"],
     today: ["cover-cowork", "今日", "10枚・2時間。チャット、初めてのCowork設定、ポータルの作り方・直し方。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
@@ -737,6 +739,7 @@ ${q}
     account: ["アカウント", "🔑"],
     webchat: ["チャット", "💭"],
     poster: ["ポスター", "🎨"],
+    market: ["マーケ", "📣"],
     cowork: ["Cowork", "💬"],
     today: ["今日の講義", "📌"],
     portalmake: ["ポータル作る", "🏠"],
@@ -900,7 +903,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "poster"].concat(
+    const pickOrder = ["today", "market", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1273,6 +1276,7 @@ ${q}
     webchat: ["webchat", "下の入力欄に書いて送る"],
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
+    market: ["sns", "誰に・何を・どう届けるか"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
     today: ["portalpage", "10枚。チャット、Cowork、ポータルまで"],
     portalfix: ["copy", "同じ会話の続きで直す"],
@@ -1416,6 +1420,20 @@ ${q}
         summary: ["portalpage", "チャットから直し方まで"]
       };
       return t[lessonId] || COURSE_ART.today;
+    }
+    if (courseId === "market") {
+      const t = {
+        goal: ["sns", "誰に・何を・どう届けるか"],
+        miss: ["quiz", "知られない・伝わらない・場所がずれる"],
+        one: ["copy", "ターゲットを3案。4点で確かめる"],
+        two: ["copy", "潜在ニーズを5つ以上"],
+        three: ["copy", "時間・費用・成果・安心・負担"],
+        four: ["sns", "媒体を1つ選んで作る"],
+        five: ["eyecheck", "見られない／反応が無い"],
+        qa: ["quiz", "地方・転用・商品の探し方"],
+        summary: ["sns", "同じチャットで①から⑤"]
+      };
+      return t[lessonId] || COURSE_ART.market;
     }
     if (courseId === "portalmake") {
       const t = {
@@ -1775,7 +1793,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "poster", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "faq"])}</div>
       </div>`;
   };
 
@@ -1831,26 +1849,27 @@ ${q}
       ["account", "02", "アカウント", "準備"],
       ["webchat", "03", "チャット", "入門"],
       ["poster", "04", "ポスター", "初級"],
-      ["cowork", "05", "Cowork", "事務"],
-      ["portalmake", "06", "ポータル", "作る"],
-      ["portalfix", "07", "直す", "Cowork"],
-      ["attend", "08", "出退勤", "作る"],
-      ["salary", "09", "給料", "計算"],
-      ["invoicemake", "10", "請求書", "Cowork"],
-      ["code", "11", "Windows", "準備"],
-      ["codemac", "12", "Mac", "準備"],
-      ["snspost", "13", "投稿文", "やさしい"],
-      ["survey", "14", "集計", "やさしい"],
-      ["expense", "15", "経費", "作る"],
-      ["invoice", "16", "請求書", "Code"],
-      ["abc", "17", "ABC", "分析"],
-      ["sns", "18", "SNS", "分析"],
-      ["crm", "19", "CRM", "作る"],
-      ["shop", "20", "店舗", "公開"],
-      ["secretary", "21", "秘書", "実践"],
-      ["appedit", "22", "画面", "直す"],
-      ["applied", "23", "使いこなし", "中級"],
-      ["faq", "24", "つまずき", "補助"]
+      ["market", "05", "マーケ", "届ける"],
+      ["cowork", "06", "Cowork", "事務"],
+      ["portalmake", "07", "ポータル", "作る"],
+      ["portalfix", "08", "直す", "Cowork"],
+      ["attend", "09", "出退勤", "作る"],
+      ["salary", "10", "給料", "計算"],
+      ["invoicemake", "11", "請求書", "Cowork"],
+      ["code", "12", "Windows", "準備"],
+      ["codemac", "13", "Mac", "準備"],
+      ["snspost", "14", "投稿文", "やさしい"],
+      ["survey", "15", "集計", "やさしい"],
+      ["expense", "16", "経費", "作る"],
+      ["invoice", "17", "請求書", "Code"],
+      ["abc", "18", "ABC", "分析"],
+      ["sns", "19", "SNS", "分析"],
+      ["crm", "20", "CRM", "作る"],
+      ["shop", "21", "店舗", "公開"],
+      ["secretary", "22", "秘書", "実践"],
+      ["appedit", "23", "画面", "直す"],
+      ["applied", "24", "使いこなし", "中級"],
+      ["faq", "25", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -1983,7 +2002,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "poster", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2125,6 +2144,7 @@ ${q}
       codemac: "cover-mac",
       applied: "cover-applied",
       poster: "cover-poster",
+      market: "cover-sns",
       intro: "cover-intro",
       secretary: "cover-secretary",
       appedit: "cover-appedit",
@@ -2150,6 +2170,7 @@ ${q}
       codemac: "Mac",
       applied: "応用",
       poster: "ポスター",
+      market: "マーケ",
       intro: "勉強会",
       secretary: "秘書",
       appedit: "画面",
