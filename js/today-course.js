@@ -18,7 +18,7 @@
     lessons: [
       {
         id: "goal",
-        title: "1. 今日の地図",
+        title: "今日の地図",
         body: `
             <p class="kicker">GOAL　0〜10分　1／10</p>
             <h1>チャット → Cowork → 作る → 直す（2時間・10枚）</h1>
@@ -50,7 +50,7 @@
       },
       {
         id: "chat",
-        title: "2. チャット",
+        title: "チャット",
         practice: true,
         body: `
             <p class="kicker">入口　10〜25分　2／10</p>
@@ -72,7 +72,7 @@
       },
       {
         id: "install",
-        title: "3. Coworkを始める",
+        title: "Coworkを始める",
         body: `
             <p class="kicker">設定　25〜45分　3／10</p>
             <h1>相談はチャット、作るのは Cowork</h1>
@@ -157,7 +157,7 @@
       },
       {
         id: "gmail",
-        title: "4. メール・予定・資料をつなぐ",
+        title: "メール・予定・資料をつなぐ",
         practice: true,
         body: `
             <p class="kicker">設定　できれば　5〜10分　4／10　練習</p>
@@ -230,7 +230,7 @@
       },
       {
         id: "one",
-        title: "5. ポータルを作る",
+        title: "ポータルを作る",
         practice: true,
         body: `
             <p class="kicker">作る　45〜65分　5／10　練習</p>
@@ -281,7 +281,7 @@
       },
       {
         id: "promptwork",
-        title: "6. 直す",
+        title: "直す",
         practice: true,
         body: `
             <p class="kicker">直す　70〜90分　6／10　練習</p>
@@ -348,7 +348,7 @@
       },
       {
         id: "two",
-        title: "7. 機能を足す：勤怠",
+        title: "機能を足す：勤怠",
         practice: true,
         body: `
             <p class="kicker">できれば　90〜95分　7／10</p>
@@ -364,7 +364,7 @@
       },
       {
         id: "three",
-        title: "8. 余ったら：申請・給与",
+        title: "余ったら：申請・給与",
         practice: true,
         optional: true,
         body: `
@@ -405,7 +405,7 @@
       },
       {
         id: "eight",
-        title: "9. デザインは最後に",
+        title: "デザインは最後に",
         practice: true,
         body: `
             <p class="kicker">見た目　110〜115分　9／10</p>
@@ -429,7 +429,7 @@
       },
       {
         id: "summary",
-        title: "10. まとめ",
+        title: "まとめ",
         body: `
             <p class="kicker">覚えておくこと　115〜120分　10／10</p>
             <h1>チャットから、ポータルの直し方まで</h1>
