@@ -369,6 +369,24 @@ ${q}
     "applied"
   ];
   const COWORK_IDS = ["today", "webchat", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake"];
+  const TODAY_LESSON_ALIAS = {
+    chatmore: "chat",
+    vs: "install",
+    cando: "install",
+    screen: "install",
+    stuck: "install",
+    wait: "one",
+    share: "one",
+    break: "one",
+    edit: "promptwork",
+    round: "promptwork",
+    four: "three",
+    five: "three",
+    six: "three",
+    seven: "three",
+    nine: "summary",
+    tips: "summary"
+  };
   const CODE_SETUP_IDS = ["code", "codemac"];
   const CODE_MAKE_IDS = ADVANCED_IDS.slice();
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -692,7 +710,7 @@ ${q}
     webchat: ["cover-chat", "チャット", "Coworkの前に。ブラウザで日本語のお願いを一度。", "webchat"],
     poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
     cowork: ["cover-cowork", "Cowork", "やり方ガイドつき。資料・整理・連携から請求書と経費まで。", "cowork"],
-    today: ["cover-cowork", "今日", "2時間。チャット、初めてのCowork設定、ポータルの作り方・直し方。", "portalpage"],
+    today: ["cover-cowork", "今日", "10枚・2時間。チャット、初めてのCowork設定、ポータルの作り方・直し方。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
     portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
     attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "attendapp"],
@@ -771,7 +789,9 @@ ${q}
       };
     }
     if (last.lessonId) {
-      const idx = course.lessons.findIndex((l) => l.id === last.lessonId);
+      const mapped =
+        courseId === "today" && TODAY_LESSON_ALIAS[last.lessonId] ? TODAY_LESSON_ALIAS[last.lessonId] : last.lessonId;
+      const idx = course.lessons.findIndex((l) => l.id === mapped);
       if (idx >= 0) {
         const lesson = course.lessons[idx];
         return {
@@ -1254,7 +1274,7 @@ ${q}
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    today: ["portalpage", "チャット、Cowork設定、ポータルまで"],
+    today: ["portalpage", "10枚。チャット、Cowork、ポータルまで"],
     portalfix: ["copy", "同じ会話の続きで直す"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
     salary: ["expense", "時間×時給を表にする"],
@@ -1384,31 +1404,15 @@ ${q}
     }
     if (courseId === "today") {
       const t = {
-        goal: ["site", "チャット → Cowork → 作る → 直す"],
-        chat: ["webchat", "日本語で1回、返事をもらう"],
-        chatmore: ["webchat", "同じチャットでもう1回"],
-        vs: ["compare", "相談はチャット、作業はCowork"],
-        install: ["desktop", "アプリを入れて同じメールでログイン"],
-        cando: ["cowork", "作る・読む・つなぐ・同じ会話で直す"],
-        screen: ["coworkask", "左メニュー・入力欄・できたリンク"],
+        goal: ["site", "10枚。チャット → Cowork → 作る → 直す"],
+        chat: ["webchat", "日本語で返事をもらう"],
+        install: ["desktop", "アプリ・画面・止まったとき"],
         gmail: ["copy", "つなぐとメール・予定・資料が手元に"],
-        stuck: ["desktop", "開けないときは当てはまる行だけ"],
         one: ["portalpage", "土台の1ページを作る"],
-        wait: ["cowork", "できあがるまで確認リスト"],
-        share: ["eyecheck", "見てからリンクを渡す"],
-        break: ["desktop", "会話は閉じずに5分"],
-        edit: ["copy", "同じ会話の続きで直す"],
-        promptwork: ["copy", "追加・変更・移動・戻す"],
-        round: ["site", "直したところを先生に1つ見せる"],
+        promptwork: ["copy", "同じ会話の続きで直す"],
         two: ["attendapp", "出勤・休憩・退勤の打刻"],
-        three: ["safety", "管理画面は社員に見せない"],
-        four: ["copy", "申請して、管理者が承認"],
-        five: ["expense", "総支給額まで。控除は不要"],
-        six: ["excel", "アラート・締め・名簿"],
-        seven: ["calendar", "会議室と社用車の予約"],
+        three: ["copy", "申請・給与は余ったら"],
         eight: ["pinterest", "Pinterestで雰囲気を1つ決める"],
-        nine: ["eyecheck", "足りない点を聞いてから渡す"],
-        tips: ["copy", "具体・最後に見た目・本物は後"],
         summary: ["portalpage", "チャットから直し方まで"]
       };
       return t[lessonId] || COURSE_ART.today;
@@ -1882,7 +1886,7 @@ ${q}
         <a class="today-spot-card${open ? "" : " is-locked"}" href="${href}" data-link>
           <span class="today-spot-tag">きょうの教室</span>
           <h2>${escapeHtml(course.title)}</h2>
-          <p>2時間。チャット → 初めての Cowork → ポータルを作る・直す。この1本で一通りできます。</p>
+          <p>10枚・2時間。チャット → 初めての Cowork → ポータルを作る・直す。この1本で一通りできます。</p>
           <strong>${open ? `進度 ${p}%` : "受講コードが必要です"}</strong>
           ${open ? thinMeter(p, "meter", "今日の講義の進度") : ""}
           <span class="btn-orange">${label}</span>
@@ -3545,6 +3549,10 @@ ${q}
     let html = "";
     if ((parts[0] === "course" || parts[0] === "quiz") && parts[1] === "intro") {
       location.replace("#/code");
+      return;
+    }
+    if (parts[0] === "course" && parts[1] === "today" && parts[2] && TODAY_LESSON_ALIAS[parts[2]]) {
+      location.replace(`#/course/today/${TODAY_LESSON_ALIAS[parts[2]]}`);
       return;
     }
     if (parts[0] === "cowork" && !canSeeCourse("cowork")) html = lockedView("jimu");
