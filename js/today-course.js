@@ -44,6 +44,11 @@
               <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書く</p></article>
             </div>
             <div class="callout">今日の成功は、ポータルを1枚作って、お知らせを1件足せることです。申請や給与は余ったらで構いません。</div>
+            <div class="ops">
+              <article class="op"><span class="num">P</span><h3>パソコン</h3><p>今日はパソコンです。スマホだけでは Cowork が足りません</p></article>
+              <article class="op"><span class="num">2</span><h3>画面は2つ</h3><p>左にこの教室、右に Claude。コピーして、すぐ貼れるようにする</p></article>
+              <article class="op"><span class="num">@</span><h3>会社のメール</h3><p>チャットも Cowork も、会社の同じメール。個人の Gmail は使わない</p></article>
+            </div>
             <p>${sampleLink("社内ポータルの見本")}</p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
@@ -208,6 +213,18 @@
               <p class="qa-q">上限・制限と出る</p>
               <p>トークンを使い切ったことがある。無理に突破しない。画面を先生に見せる</p>
             </div>
+            <div class="qa">
+              <p class="qa-q">終わったか分からない</p>
+              <p>できた画面が出る。またはリンクが出る。考えているあいだは待つ。2〜10分かかることがあります。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">英語の画面</p>
+              <p>言葉を暗記しなくてよい。「今の画面の言葉を、そのまま書いて案内して」と送る。または先生に画面を見せる。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">アプリを入れられない</p>
+              <p>会社のパソコンで止められることがある。無理に突破しない。先生に画面を見せる。</p>
+            </div>
             <div class="callout">どれも違うときは、画面を先生に見せます。次の「ポータルを作る」へ進んで、お願い文だけ先に読んでも構いません。</div>
           `
       },
@@ -325,6 +342,18 @@
               <li>スマホでも文字が読めるか</li>
             </ol>
             <p>よければリンクをお気に入りに保存し、社員に渡します。あとから中身を直しても、アドレスは変わりません。</p>
+            <div class="qa">
+              <p class="qa-q">できた合図</p>
+              <p>できた画面が見える。または「開く」「リンク」と出る。まだ考えているなら待つ。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">リンクの残し方</p>
+              <p>アドレスをコピーする。ブラウザのお気に入りにも入れる。メモに貼ってもよい。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">聞かれたとき</p>
+              <p>知っている範囲で短く答える。分からなければ「おまかせで進めて」。</p>
+            </div>
             <div class="callout">本物のお知らせや名簿は、ページができてから渡します。今はサンプルのままで進めて構いません。リンクが出たら、お気に入りに保存してから確認します。リンクがまだなら、機能追加には進みません。</div>
             <h2>休憩（5分）</h2>
             <p>席を立ってよい時間です。Cowork の会話は閉じないでください。戻ったら、同じ会話の続きから直します。</p>
@@ -505,6 +534,18 @@
               <article class="op"><span class="num">4</span><h3>本物は後から</h3><p>お知らせ・連絡先・名簿は、ページができてから渡す</p></article>
             </div>
             <p>2時間おつかれさまでした。家でも、同じ会話の続きで直せます。</p>
+            <div class="qa">
+              <p class="qa-q">明日、どこを開く</p>
+              <p>パソコンの Claude アプリ → 左の Cowork → 今日作った会話。新しいタスクは開かない。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">リンクの扱い</p>
+              <p>社員に渡す用です。SNSや社外に載せない。パスワード・給与・携帯番号は載せない。</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">困ったとき</p>
+              <p>英語もエラーも、画面の言葉をそのまま先生に見せる。自分で突破しない。</p>
+            </div>
             <p><a class="btn-orange" href="#/course/webchat" data-link>チャット入門</a>
             <a class="btn-dark" href="#/course/portalfix" data-link>直し方編</a></p>
           `
