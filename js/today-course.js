@@ -1,7 +1,10 @@
 (() => {
   const SAMPLE = "https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu";
+  const HP = "https://mmiho1505-code.github.io/portfolio/";
   const sampleLink = (label) =>
     `<a href="${SAMPLE}" target="_blank" rel="noopener">${label}</a>`;
+  const hpLink = (label) =>
+    `<a href="${HP}" target="_blank" rel="noopener">${label}</a>`;
 
   const box = (text) => `
             <div class="code-wrap">
@@ -49,7 +52,8 @@
               <article class="op"><span class="num">2</span><h3>画面は2つ</h3><p>左にこの教室、右に Claude。コピーして、すぐ貼れるようにする</p></article>
               <article class="op"><span class="num">@</span><h3>会社のメール</h3><p>チャットも Cowork も、会社の同じメール。個人の Gmail は使わない</p></article>
             </div>
-            <p>${sampleLink("社内ポータルの見本")}</p>
+            <p>${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
+            <p>ホームページの例は、Cowork で作った外向けのページです。今日作るのは社内ポータルです。見た目の参考にしてよいです。</p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
       },
@@ -102,7 +106,7 @@
             <div class="callout">この先の作り方・直しまで、同じ会話を使います。途中で新しい会話に切り替えないでください。「許可しますか」と出たら、今日使うものだけ許可します。</div>
             <h2>Coworkでできること</h2>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>ページや資料を作る</h3><p>社内ポータル、請求書、Excel、PDF、スライド</p></article>
+              <article class="op"><span class="num">1</span><h3>ページや資料を作る</h3><p>社内ポータル、ホームページ、請求書、Excel、PDF、スライド</p></article>
               <article class="op"><span class="num">2</span><h3>ファイルを読む・整理する</h3><p>フォルダの中を仕分け、名前をそろえる、集計する</p></article>
               <article class="op"><span class="num">3</span><h3>つなぐ</h3><p>パソコンのフォルダ。Gmail やカレンダーにつながることもある</p></article>
               <article class="op"><span class="num">4</span><h3>同じ会話で直す</h3><p>「〇〇を△△に」と続ける。手順を残して毎月くり返すこともできる</p></article>
@@ -325,7 +329,7 @@
 中身はサンプルで作り、あとで私が画面上で書き換えられるようにしてください。
 できたら、社員が開けるリンクをください。`)}
             <p>分からないことを聞かれたら、短く答えるか「おまかせで進めて」で大丈夫です。</p>
-            <p>送れなければ、もう一度教室の「コピー」を押します。実際の例：${sampleLink("社内ポータルの見本")}</p>
+            <p>送れなければ、もう一度教室の「コピー」を押します。実際の例：${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
             <h2>Cowork が作っているあいだに</h2>
             <p>ページができるまで、2〜10分かかることがあります。その間に下をやります。できたら画面を閉じずに待ちます。</p>
             <ol>
@@ -333,7 +337,7 @@
               <li>できた画面は閉じない</li>
               <li>本物のデータはまだ渡さない、と自分に言い聞かせる</li>
             </ol>
-            <p>待ち時間に見る：${sampleLink("社内ポータルの見本")}</p>
+            <p>待ち時間に見る：${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
             <h2>自分の目で見てから、リンクを渡す</h2>
             <ol>
               <li>社名が「株式会社 宮田財務」か</li>
@@ -462,7 +466,8 @@
             <p class="kicker">見た目　110〜115分　9／10</p>
             <h1>タイル型にまとめて直す</h1>
             <p>機能が増えるたびに並びが変わるので、デザインはここでまとめて行います。先に雰囲気を決めてから、下の文を送ります。</p>
-            <p>雰囲気を探す：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">Pinterestで社内ポータル</a>。実際の例は ${sampleLink("この見本")} を別タブで開きます。</p>
+            <p>雰囲気を探す：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">Pinterestで社内ポータル</a>。</p>
+            <p>実際の例：${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")} を別タブで開きます。今日直すのは社内ポータルです。</p>
             ${box(`この見本の雰囲気を参考に、トップを整えてください。白を基調に、落ち着いた社内向けにしてください。
 見本：https://claude.ai/artifact/2z9qPrxtUiCPgjVbA7Uuiu`)}
             ${box(`トップページをグループウェアのようなタイル型にしてください。
@@ -500,6 +505,7 @@
               <article class="op"><span class="num">4</span><h3>本物は後から</h3><p>お知らせ・連絡先・名簿は、ページができてから渡す</p></article>
             </div>
             <p>2時間おつかれさまでした。家でも、同じ会話の続きで直せます。</p>
+            <p>${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
             <div class="qa">
               <p class="qa-q">明日、どこを開く</p>
               <p>パソコンの Claude アプリ → 左の Cowork → 今日作った会話。新しいタスクは開かない。</p>
