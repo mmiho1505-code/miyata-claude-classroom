@@ -19,7 +19,7 @@
             <p class="kicker">GOAL</p>
             <h1>コードを書かず、対話で画面を直す</h1>
             <div data-pic="mouse" data-cap="文字・色・配置・部品まで、お願いして直す"></div>
-            <p>秘書アプリなど、作ったあとの画面を直す講座です。むずかしい中身は知らなくて大丈夫。<strong>見て・頼んで・戻せる</strong>が分かれば十分です。</p>
+            <p>むずかしい中身は知らなくて大丈夫。<strong>見て・頼んで・戻せる</strong>が分かれば十分です。ことばの意味は <a href="#/course/webwords" data-link>HTML・CSS・JAVA</a> です。</p>
             <ul>
               <li>文字・色・配置・部品まで直せる</li>
               <li>スマホ対応や不具合も、同じくお願いするだけ</li>

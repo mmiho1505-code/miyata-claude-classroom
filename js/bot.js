@@ -8,6 +8,13 @@
       link: "PowerShellが開かない"
     },
     {
+      keys: ["html", "css", "java", "javascript", "ジャバ", "HTML", "CSS", "JAVA", "骨組み"],
+      answer:
+        "HTMLは骨組み（何が載っているか）、CSSは見た目（色・大きさ）、JAVAはこの教室では動き（JavaScript）です。Javaは名前が似ている別の言語です。コードは書かなくてよく、日本語で頼めます。",
+      href: "#/course/webwords",
+      link: "HTML・CSS・JAVA"
+    },
+    {
       keys: ["irm", "iex", "command not found: irm", "zsh: command not found"],
       answer:
         "Mac の画面です。irm と iex は Windows の PowerShell 用です。Mac は curl -fsSL https://claude.ai/install.sh | bash を貼ります。すでに claude が入っている人は、新しいターミナルで claude とだけ打ちます。",

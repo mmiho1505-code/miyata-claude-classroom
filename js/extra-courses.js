@@ -134,7 +134,7 @@
             <h1>日本語で1回、返事をもらう</h1>
             <div data-pic="webchat" data-cap="下の入力欄に書いて、送るボタン"></div>
             <p>資料作成・分析・ファイル出力も、今は同じチャットで任せられます。その前に、<strong>日本語で返事をもらう</strong>感覚をつかみます。黒い画面は使いません。</p>
-            <p>まだアカウントが無い人は、先に <a href="#/course/account" data-link>アカウントと有料プラン</a> です。</p>
+            <p>まだアカウントが無い人は、先に <a href="#/course/account" data-link>アカウントと有料プラン</a> です。ページの骨組み・見た目・動きは <a href="#/course/webwords" data-link>HTML・CSS・JAVA</a> です。</p>
           `
       },
       {
@@ -375,6 +375,7 @@
             <h1>症状からページを選ぶ</h1>
             <div data-pic="quiz" data-cap="上から近いものを押してください"></div>
             <ul>
+              <li><a href="#/course/webwords" data-link>HTML・CSS・JAVA の意味が分からない</a></li>
               <li><a href="#/course/faq/ps" data-link>PowerShell が開かない・CMDになってしまう</a></li>
               <li><a href="#/course/faq/paste" data-link>コピーした文が貼れない</a></li>
               <li><a href="#/course/faq/notfound" data-link>claude が認識されない</a></li>

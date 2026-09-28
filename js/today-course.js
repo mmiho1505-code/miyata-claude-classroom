@@ -56,7 +56,7 @@
             </div>
             <p>${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
             <p>ホームページの例は、Claude のチャットで作った外向けのページです。今日作るのは社内ポータルです。見た目の参考にしてよいです。</p>
-            <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
+            <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/webwords" data-link>HTML・CSS・JAVA</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
       },
       {

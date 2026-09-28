@@ -331,6 +331,7 @@ ${q}
     "today",
     "account",
     "webchat",
+    "webwords",
     "poster",
     "market",
     "hypo",
@@ -361,7 +362,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -402,7 +403,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "faq", "market", "hypo", "hr", "sched", "aicopy"].includes(courseId)) return "starter";
+    if (["poster", "account", "faq", "market", "hypo", "hr", "sched", "aicopy", "webwords"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -411,7 +412,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
+  const OPEN_COURSE_IDS = ["account", "webchat", "webwords", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -717,6 +718,7 @@ ${q}
   const COURSE_META = {
     account: ["cover-account", "準備", "claude.ai に入って、有料プランの画面を確認。", "signup"],
     webchat: ["cover-chat", "チャット", "同じ画面で日本語のお願いを一度。作業もここに入った。", "webchat"],
+    webwords: ["cover-intro", "ことば", "HTMLは骨組み、CSSは見た目、JAVAは動き。コードは書かない。", "site"],
     poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
@@ -752,6 +754,7 @@ ${q}
   const STAMP_LABELS = {
     account: ["アカウント", "🔑"],
     webchat: ["チャット", "💭"],
+    webwords: ["HTML CSS JAVA", "🧱"],
     poster: ["ポスター", "🎨"],
     market: ["マーケ", "📣"],
     hypo: ["仮説", "💡"],
@@ -923,7 +926,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
+    const pickOrder = ["today", "webwords", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1296,6 +1299,7 @@ ${q}
     applied: ["desktop", "一度決めたら、次からラク"],
     account: ["signup", "claude.ai で登録して、プランを確認"],
     webchat: ["webchat", "下の入力欄に書いて送る"],
+    webwords: ["site", "HTMLは骨組み、CSSは見た目、JAVAは動き"],
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     market: ["sns", "誰に・何を・どう届けるか"],
@@ -1447,6 +1451,17 @@ ${q}
         summary: ["portalpage", "チャットから直し方まで"]
       };
       return t[lessonId] || COURSE_ART.today;
+    }
+    if (courseId === "webwords") {
+      const t = {
+        goal: ["site", "骨組み・見た目・動き"],
+        html: ["docs", "何が載っているか"],
+        css: ["poster", "色と大きさ"],
+        java: ["mouse", "押したら動く"],
+        ask: ["copy", "日本語で1つずつ"],
+        summary: ["site", "コードは書かなくてよい"]
+      };
+      return t[lessonId] || COURSE_ART.webwords;
     }
     if (courseId === "market") {
       const t = {
@@ -1684,6 +1699,7 @@ ${q}
 
   const pickOpPic = (text) => {
     if (/出退勤|出勤|退勤/.test(text)) return "attendapp";
+    if (/HTML|CSS|JAVA|JavaScript|骨組み/.test(text)) return "site";
     if (/ポータル|お知らせ/.test(text)) return "portalpage";
     if (/ターミナル|Mac|Spotlight/.test(text)) return "terminal";
     if (/プラン|有料|Upgrade/.test(text)) return "plan";
@@ -1902,7 +1918,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
       </div>`;
   };
 
@@ -1957,6 +1973,7 @@ ${q}
       ["today", "01", "今日", "講義"],
       ["account", "02", "アカウント", "準備"],
       ["webchat", "03", "チャット", "入門"],
+      ["webwords", "03b", "HTML", "ことば"],
       ["poster", "04", "ポスター", "初級"],
       ["market", "05", "マーケ", "届ける"],
       ["hypo", "06", "仮説", "問い"],
@@ -2117,7 +2134,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2253,6 +2270,7 @@ ${q}
     const covers = {
       account: "cover-account",
       webchat: "cover-chat",
+      webwords: "cover-intro",
       cowork: "cover-cowork",
       today: "cover-cowork",
       code: "cover-code",
@@ -2285,6 +2303,7 @@ ${q}
     const labels = {
       account: "準備",
       webchat: "チャット",
+      webwords: "ことば",
       cowork: "Cowork",
       today: "今日",
       code: "Code",
@@ -2766,10 +2785,17 @@ ${q}
           ${figureHTML("webchat", "下の入力欄に書いて送る")}
           <p>Cowork の前に、ブラウザで日本語のお願いを1回します。</p>
         </article>
+        <article class="op">
+          <span class="num">3</span>
+          <h3>HTML・CSS・JAVA</h3>
+          ${figureHTML("site", "骨組み・見た目・動き")}
+          <p>ページは3つでできています。コードは書かなくてよいです。</p>
+        </article>
       </div>
       <p>
         <a class="btn-orange" href="#/course/account" data-link>アカウントへ</a>
         <a class="btn-dark" href="#/course/webchat" data-link>チャット入門へ</a>
+        <a class="btn-dark" href="#/course/webwords" data-link>HTML・CSS・JAVAへ</a>
         <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a>
       </p>
 
