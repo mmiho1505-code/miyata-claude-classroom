@@ -66,9 +66,9 @@
     {
       keys: ["node -v", "nodejs", "node.js", "ノード", "入れてないとだめ"],
       answer:
-        "だめではありません。node -v は、講座と同じく npm で入れる人の確認です。いま推奨の公式は Mac が curl、Windows が irm で、こちらは Node 不要です。すでに claude と打って起動する人は、入れ直し不要です。",
-      href: "#/course/today/cursorcode",
-      link: "Cursor に Claude Code"
+        "だめではありません。node -v は、講座と同じく npm で入れる人の確認です。入れ方は環境構築②（約4分）です。いま推奨の公式は Mac が curl、Windows が irm で、こちらは Node 不要です。すでに claude と打って起動する人は、入れ直し不要です。",
+      href: "#/course/nodejs",
+      link: "Node.jsのインストール"
     },
     {
       keys: ["今日の講義", "きょうの講義", "土台：ポータル", "タイル型", "カーソルに", "cursor に"],

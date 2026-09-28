@@ -531,6 +531,7 @@ window.CLASSROOM = {
               <li>Windows 10（1809）以降のパソコン（メモリ4GB以上・インターネット接続）。CPUが x64 か Arm64 かは、パソコンの「システム」画面で確認できます</li>
               <li>ターミナル（PowerShell）。Windowsに最初から入っています</li>
               <li>Claudeの有料プラン（Pro / Max / Team など）</li>
+              <li>講座と同じ方法（npm）で入れる人は <a href="#/course/nodejs" data-link>環境構築② Node.js</a></li>
               <li>Claudeアカウントのログイン情報（メールアドレスとパスワード）</li>
             </ul>
             <div class="callout warn"><strong>注意：</strong>無料プランでは Claude Code は使えません。まず有料プラン（Pro など）の契約を確認しましょう。</div>

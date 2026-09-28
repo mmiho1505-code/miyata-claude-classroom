@@ -242,7 +242,7 @@
               <p class="qa-q">zsh: command not found: irm</p>
               <p>Mac です。Windows 用を貼っています。上の Mac 用（curl）を貼り直す</p>
             </div>
-            <p><strong>講座と同じ方法（Node.js を使う）</strong>　公式の1行が通った人は、ここは飛ばしてよいです。</p>
+            <p><strong>講座と同じ方法（Node.js を使う）</strong>　公式の1行が通った人は、ここは飛ばしてよいです。入れ方の画面つきは <a href="#/course/nodejs" data-link>環境構築② Node.js</a>（約4分）です。</p>
             <ol>
               <li><a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> から <strong>LTS</strong> を入れてインストールする</li>
               <li>ターミナルをクリックして、下を貼り、Enter。数字が出ればOK</li>

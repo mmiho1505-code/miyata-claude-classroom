@@ -344,6 +344,7 @@ ${q}
     "attend",
     "salary",
     "invoicemake",
+    "nodejs",
     "code",
     "codemac",
     "snspost",
@@ -362,7 +363,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -397,7 +398,7 @@ ${q}
     nine: "summary",
     tips: "summary"
   };
-  const CODE_SETUP_IDS = ["code", "codemac"];
+  const CODE_SETUP_IDS = ["nodejs", "code", "codemac"];
   const CODE_MAKE_IDS = ADVANCED_IDS.slice();
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
 
@@ -732,6 +733,7 @@ ${q}
     attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "attendapp"],
     salary: ["cover-invoice", "給料", "出退勤の記録から支給額まで。電卓で検算してから渡す。", "expense"],
     invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
+    nodejs: ["cover-code", "Node", "Claude Codeの前。ターミナルで node -v。公式からインストーラー。", "terminal"],
     intro: ["cover-intro", "勉強会", "日本語でお願いして、作って・見て・直す感覚。", "desktop"],
     code: ["cover-code", "Code", "黒い画面に1行貼って、使える状態まで。", "powershell"],
     codemac: ["cover-mac", "Mac", "ターミナルに1行貼って、使える状態まで。", "terminal"],
@@ -768,6 +770,7 @@ ${q}
     attend: ["出退勤", "⏰"],
     salary: ["給料", "💴"],
     invoicemake: ["請求書", "📄"],
+    nodejs: ["Node.js", "🟢"],
     intro: ["勉強会", "📘"],
     code: ["Code", "💻"],
     codemac: ["Mac", ""],
@@ -1312,7 +1315,8 @@ ${q}
     portalfix: ["copy", "同じ会話の続きで直す"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
     salary: ["expense", "時間×時給を表にする"],
-    invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"]
+    invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"],
+    nodejs: ["terminal", "node -v。入っていなければ公式から"]
   };
 
   const LESSON_ART = {
@@ -1435,6 +1439,18 @@ ${q}
         summary: ["compare", "WindowsはPowerShellへ"]
       };
       return t[lessonId] || COURSE_ART.codemac;
+    }
+    if (courseId === "nodejs") {
+      const t = {
+        goal: ["terminal", "Claude Codeの前に土台を入れる"],
+        what: ["site", "JavaScriptを動かす土台"],
+        check: ["copy", "node -v で確認"],
+        download: ["browser", "nodejs.org。Dockerは無視"],
+        install: ["mouse", "次へ。toolsのチェックは不要"],
+        restart: ["desktop", "Cursorを完全に終了してから"],
+        summary: ["terminal", "確認→入れる→終了→再確認"]
+      };
+      return t[lessonId] || COURSE_ART.nodejs;
     }
     if (courseId === "today") {
       const t = {
@@ -1986,22 +2002,23 @@ ${q}
       ["attend", "13", "出退勤", "作る"],
       ["salary", "14", "給料", "計算"],
       ["invoicemake", "15", "請求書", "Cowork"],
-      ["code", "16", "Windows", "準備"],
-      ["codemac", "17", "Mac", "準備"],
-      ["snspost", "18", "投稿文", "やさしい"],
-      ["survey", "19", "集計", "やさしい"],
-      ["expense", "20", "経費", "作る"],
-      ["invoice", "21", "請求書", "Code"],
-      ["abc", "22", "ABC", "分析"],
-      ["sns", "23", "SNS", "分析"],
-      ["crm", "24", "CRM", "作る"],
-      ["shop", "25", "店舗", "公開"],
-      ["secretary", "26", "秘書", "実践"],
-      ["secplus", "27", "秘書+", "つなぐ"],
-      ["appedit", "28", "画面", "直す"],
-      ["claudemd", "29", "CLAUDE.md", "メモ"],
-      ["applied", "30", "使いこなし", "中級"],
-      ["faq", "31", "つまずき", "補助"]
+      ["nodejs", "16", "Node", "準備"],
+      ["code", "17", "Windows", "準備"],
+      ["codemac", "18", "Mac", "準備"],
+      ["snspost", "19", "投稿文", "やさしい"],
+      ["survey", "20", "集計", "やさしい"],
+      ["expense", "21", "経費", "作る"],
+      ["invoice", "22", "請求書", "Code"],
+      ["abc", "23", "ABC", "分析"],
+      ["sns", "24", "SNS", "分析"],
+      ["crm", "25", "CRM", "作る"],
+      ["shop", "26", "店舗", "公開"],
+      ["secretary", "27", "秘書", "実践"],
+      ["secplus", "28", "秘書+", "つなぐ"],
+      ["appedit", "29", "画面", "直す"],
+      ["claudemd", "30", "CLAUDE.md", "メモ"],
+      ["applied", "31", "使いこなし", "中級"],
+      ["faq", "32", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -2298,6 +2315,7 @@ ${q}
       attend: "cover-expense",
       salary: "cover-invoice",
       invoicemake: "cover-invoice",
+      nodejs: "cover-code",
       faq: "cover-faq"
     };
     const labels = {
@@ -2331,6 +2349,7 @@ ${q}
       attend: "出退勤",
       salary: "給料",
       invoicemake: "請求書",
+      nodejs: "Node.js",
       faq: "つまずき"
     };
     const cover = covers[courseId] || "cover-cowork";
@@ -2885,7 +2904,30 @@ ${q}
       </div>
       <p><a class="btn-dark" href="#/course/cowork" data-link>事務の講座へ</a></p>
 
-      <h2>D. Claude Code（Windows）</h2>
+      <h2>D. 環境構築② Node.js（約4分）</h2>
+      <div class="ops">
+        <article class="op">
+          <span class="num">1</span>
+          <h3>確認</h3>
+          ${figureHTML("copy", "node -v")}
+          <p>Cursor のターミナル（Ctrl／⌘＋J）で確認。数字が出たら飛ばしてよいです。</p>
+        </article>
+        <article class="op">
+          <span class="num">2</span>
+          <h3>公式から入れる</h3>
+          ${figureHTML("browser", "nodejs.org")}
+          <p>Docker は無視。OS を選んでインストーラー。「tools」のチェックは不要。</p>
+        </article>
+        <article class="op">
+          <span class="num">3</span>
+          <h3>Cursor を終了</h3>
+          ${figureHTML("desktop", "完全に終了してから開き直す")}
+          <p>Mac は Dock を右クリックして「終了」。もう一度 node -v。</p>
+        </article>
+      </div>
+      <p><a class="btn-orange" href="#/course/nodejs" data-link>Node.jsのインストールへ</a></p>
+
+      <h2>E. Claude Code（Windows）</h2>
       <div class="ops">
         <article class="op">
           <span class="num">1</span>
@@ -2925,7 +2967,7 @@ ${q}
         <a class="btn-dark" href="#/course/invoice" data-link>請求書ツールへ</a>
         <a class="btn-dark" href="#/course/secretary" data-link>秘書アプリへ</a>
       </p>
-      <h2>E. Claude Code（Mac）</h2>
+      <h2>F. Claude Code（Mac）</h2>
       <div class="ops">
         <article class="op">
           <span class="num">1</span>

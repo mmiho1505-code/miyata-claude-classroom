@@ -282,6 +282,7 @@
               <li>Mac（管理者のパスワードを知っていること）</li>
               <li>インターネット</li>
               <li>Claude の有料プラン（Pro / Max / Team など）</li>
+              <li>講座と同じ方法（npm）で入れる人は <a href="#/course/nodejs" data-link>環境構築② Node.js</a></li>
             </ul>
           `
       },
