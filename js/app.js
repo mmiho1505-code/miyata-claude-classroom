@@ -336,6 +336,7 @@ ${q}
     "hypo",
     "hr",
     "sched",
+    "aicopy",
     "cowork",
     "portalmake",
     "portalfix",
@@ -359,7 +360,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "market", "hypo", "hr", "sched", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "webchat", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -399,7 +400,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "faq", "market", "hypo", "hr", "sched"].includes(courseId)) return "starter";
+    if (["poster", "account", "faq", "market", "hypo", "hr", "sched", "aicopy"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -408,7 +409,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq", "market", "hypo", "hr", "sched"];
+  const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -719,6 +720,7 @@ ${q}
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
     hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
     sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
+    aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
     today: ["cover-cowork", "今日", "10枚・2時間。同じチャットで会話と作業、ポータルの作り方・直し方。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
@@ -752,6 +754,7 @@ ${q}
     hypo: ["仮説", "💡"],
     hr: ["人事", "👥"],
     sched: ["日程", "📅"],
+    aicopy: ["著作", "⚖️"],
     cowork: ["Cowork", "💬"],
     today: ["今日の講義", "📌"],
     portalmake: ["ポータル作る", "🏠"],
@@ -916,7 +919,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "market", "hypo", "hr", "sched", "poster"].concat(
+    const pickOrder = ["today", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1294,6 +1297,7 @@ ${q}
     hypo: ["copy", "私はこう思う。外れたら指摘して"],
     hr: ["crm", "AIと人で切り分ける"],
     sched: ["mail", "空き時間をクリックしてメール文"],
+    aicopy: ["safety", "見て・調べて・確認してから"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
     today: ["portalpage", "10枚。同じチャットからポータルまで"],
     portalfix: ["copy", "同じ会話の続きで直す"],
@@ -1490,6 +1494,22 @@ ${q}
         summary: ["mail", "つなぐ・貼る・実行"]
       };
       return t[lessonId] || COURSE_ART.sched;
+    }
+    if (courseId === "aicopy") {
+      const t = {
+        goal: ["safety", "決めつけない。確かめてから"],
+        case: ["quiz", "入力・そっくり・商用の3つが不明"],
+        others: ["eyecheck", "類似性と依拠性"],
+        two: ["docs", "話題が同じだけでは足りない"],
+        style: ["poster", "画風と固有の特徴は別"],
+        own: ["quiz", "契約と著作権法は別"],
+        terms: ["copy", "規約は4点。原文で確かめる"],
+        refimg: ["copy", "用途を分けて許可を聞く"],
+        check: ["check", "納品前の4点"],
+        qa: ["quiz", "似ていたら使わない"],
+        summary: ["safety", "3つの分からないを先に潰す"]
+      };
+      return t[lessonId] || COURSE_ART.aicopy;
     }
     if (courseId === "portalmake") {
       const t = {
@@ -1861,7 +1881,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
       </div>`;
   };
 
@@ -1921,27 +1941,28 @@ ${q}
       ["hypo", "06", "仮説", "問い"],
       ["hr", "07", "人事", "切り分け"],
       ["sched", "08", "日程", "調整"],
-      ["cowork", "09", "Cowork", "事務"],
-      ["portalmake", "10", "ポータル", "作る"],
-      ["portalfix", "11", "直す", "Cowork"],
-      ["attend", "12", "出退勤", "作る"],
-      ["salary", "13", "給料", "計算"],
-      ["invoicemake", "14", "請求書", "Cowork"],
-      ["code", "15", "Windows", "準備"],
-      ["codemac", "16", "Mac", "準備"],
-      ["snspost", "17", "投稿文", "やさしい"],
-      ["survey", "18", "集計", "やさしい"],
-      ["expense", "19", "経費", "作る"],
-      ["invoice", "20", "請求書", "Code"],
-      ["abc", "21", "ABC", "分析"],
-      ["sns", "22", "SNS", "分析"],
-      ["crm", "23", "CRM", "作る"],
-      ["shop", "24", "店舗", "公開"],
-      ["secretary", "25", "秘書", "実践"],
-      ["secplus", "26", "秘書+", "つなぐ"],
-      ["appedit", "27", "画面", "直す"],
-      ["applied", "28", "使いこなし", "中級"],
-      ["faq", "29", "つまずき", "補助"]
+      ["aicopy", "09", "著作", "確認"],
+      ["cowork", "10", "Cowork", "事務"],
+      ["portalmake", "11", "ポータル", "作る"],
+      ["portalfix", "12", "直す", "Cowork"],
+      ["attend", "13", "出退勤", "作る"],
+      ["salary", "14", "給料", "計算"],
+      ["invoicemake", "15", "請求書", "Cowork"],
+      ["code", "16", "Windows", "準備"],
+      ["codemac", "17", "Mac", "準備"],
+      ["snspost", "18", "投稿文", "やさしい"],
+      ["survey", "19", "集計", "やさしい"],
+      ["expense", "20", "経費", "作る"],
+      ["invoice", "21", "請求書", "Code"],
+      ["abc", "22", "ABC", "分析"],
+      ["sns", "23", "SNS", "分析"],
+      ["crm", "24", "CRM", "作る"],
+      ["shop", "25", "店舗", "公開"],
+      ["secretary", "26", "秘書", "実践"],
+      ["secplus", "27", "秘書+", "つなぐ"],
+      ["appedit", "28", "画面", "直す"],
+      ["applied", "29", "使いこなし", "中級"],
+      ["faq", "30", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -2074,7 +2095,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2220,6 +2241,7 @@ ${q}
       hypo: "cover-applied",
       hr: "cover-crm",
       sched: "cover-chat",
+      aicopy: "cover-faq",
       intro: "cover-intro",
       secretary: "cover-secretary",
       secplus: "cover-secretary",
@@ -2250,6 +2272,7 @@ ${q}
       hypo: "仮説",
       hr: "人事",
       sched: "日程",
+      aicopy: "著作",
       intro: "勉強会",
       secretary: "秘書",
       secplus: "秘書+",
