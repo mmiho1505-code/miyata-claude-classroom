@@ -255,15 +255,14 @@
             <ol>
               <li>Cursor のメニュー「ターミナル」→「新しいターミナル」。下に黒い（または白い）画面が出ます</li>
               <li>その画面を<strong>一度クリック</strong>する。クリックしないと貼れません</li>
-              <li>画面の行頭を見る。<code>%</code> なら Mac。<code>PS</code> なら Windows</li>
-              <li>自分のパソコン用を1行、教室の「コピー」を押す</li>
-              <li>ターミナルに貼る。Mac は ⌘＋V。Windows は右クリック、または Ctrl＋V</li>
+              <li>画面の行頭を見る。<code>%</code> なら Mac。<code>PS</code> なら Windows編へ</li>
+              <li>Mac は下の <code>curl</code> の「コピー」を押す</li>
+              <li>ターミナルに貼る。Mac は ⌘＋V</li>
               <li>Enter を押す。終わるまで待つ</li>
             </ol>
             <p><strong>Mac</strong>（行頭が <code>%</code>。Cursor の下でも、ターミナルアプリでも、この1行だけ）</p>
             ${box(`curl -fsSL https://claude.ai/install.sh | bash`)}
-            <p><strong>Windows</strong>（行頭が <code>PS</code>。Mac には貼らない）</p>
-            ${box(`irm https://claude.ai/install.ps1 | iex`)}
+            <p>Windows の人は、このページでは貼りません。行頭が <code>PS</code> の画面で、<a href="#/course/code" data-link>Windows編</a> の1行を使います。<code>irm</code> は Mac に貼らないでください。</p>
             <p>途中でパスワードを聞かれたら、パソコンにログインするときのパスワードです。画面には出ません。打ち終わって Enter です。教室には書きません。</p>
             <p>終わったら、ターミナルを一度閉じて、もう一度「新しいターミナル」を開きます。画面をクリックしてから、下をコピーして貼り、Enter します。</p>
             ${box(`claude`)}

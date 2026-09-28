@@ -602,6 +602,7 @@ _</pre>
             <p class="kicker">STEP 2</p>
             <h1>コマンド1行で導入する</h1>
             <p>PowerShell に、次の1行を貼り付けて Enter します。管理者権限は不要です。以後は自動で最新版に更新されます。</p>
+            <div class="callout warn">Mac の人は、この行を貼らないでください。行頭が <code>%</code> なら <a href="#/course/codemac" data-link>Mac編</a> です。<code>zsh: command not found: irm</code> と出たら、Windows 用を貼っています。</div>
             <div data-pic="copy" data-cap="操作：コピー → PowerShellの画面で右クリック（貼り付け）→ Enterキー"></div>
             <div class="code-wrap">
               <button class="copy" type="button">コピー</button>

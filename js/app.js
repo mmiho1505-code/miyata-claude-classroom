@@ -2877,7 +2877,7 @@ ${q}
           <span class="num">3</span>
           <h3>1行を貼る</h3>
           ${figureHTML("copy", "コピーして Enter")}
-          <p>教室のコマンドをコピーし、PowerShellで右クリック（または Ctrl＋V）して Enter です。</p>
+          <p>教室のコマンドをコピーし、PowerShellで右クリック（または Ctrl＋V）して Enter です。Mac の <code>%</code> の画面には貼りません。</p>
         </article>
         <article class="op">
           <span class="num">4</span>
@@ -2917,7 +2917,7 @@ ${q}
           <span class="num">3</span>
           <h3>1行を貼る</h3>
           ${figureHTML("copy", "⌘＋V して Enter")}
-          <p>教室のコマンドを貼ります。パスワードは画面に出ません。</p>
+          <p>Mac編の <code>curl</code> の1行です。<code>irm</code> ではありません。</p>
         </article>
       </div>
       <p><a class="btn-orange" href="#/course/codemac" data-link>Mac編へ</a>
