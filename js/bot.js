@@ -85,6 +85,13 @@
       link: "著作権と利用規約"
     },
     {
+      keys: ["claude.md", "claudemd", "claude md", "ルールブック", "/init", "/memory"],
+      answer:
+        "CLAUDE.md はフォルダいちばん上のルールブックです。ファイル名は大文字の CLAUDE.md。秘密は書かない。先に質問させて作るか、/init で下書き。足したら /memory で読まれているか見ます。",
+      href: "#/course/claudemd",
+      link: "CLAUDE.md の作り方"
+    },
+    {
       keys: ["秘書+", "Desktop", "送信ブロック", "ツールの権限", "ChatWork"],
       answer:
         "秘書の応用編は、Claude CodeデスクトップのフォルダにカレンダーとGmailをつなぎます。読む・下書きは常に許可。送信・返信・転送と完全削除はブロック。顧客メールを渡すかは自分で決めます。",

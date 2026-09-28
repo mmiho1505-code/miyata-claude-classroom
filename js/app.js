@@ -356,6 +356,7 @@ ${q}
     "secretary",
     "secplus",
     "appedit",
+    "claudemd",
     "applied",
     "faq"
   ];
@@ -373,6 +374,7 @@ ${q}
     "secretary",
     "secplus",
     "appedit",
+    "claudemd",
     "applied"
   ];
   const COWORK_IDS = ["today", "webchat", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake"];
@@ -731,6 +733,7 @@ ${q}
     intro: ["cover-intro", "勉強会", "日本語でお願いして、作って・見て・直す感覚。", "desktop"],
     code: ["cover-code", "Code", "黒い画面に1行貼って、使える状態まで。", "powershell"],
     codemac: ["cover-mac", "Mac", "ターミナルに1行貼って、使える状態まで。", "terminal"],
+    claudemd: ["cover-applied", "MD", "フォルダのルールブック。CLAUDE.md を1枚書く。", "docs"],
     applied: ["cover-applied", "応用", "毎回の説明を省くメモと、いつもの手順の登録。", "desktop"],
     invoice: ["cover-invoice", "請求書", "取引先リストとひな形から、PDFを一括作成。", "invoice"],
     expense: ["cover-expense", "経費", "レシートや明細を読み取り、科目ごとに月次集計。", "expense"],
@@ -765,6 +768,7 @@ ${q}
     intro: ["勉強会", "📘"],
     code: ["Code", "💻"],
     codemac: ["Mac", ""],
+    claudemd: ["CLAUDE.md", "📝"],
     applied: ["応用", "🧩"],
     invoice: ["請求書", "📄"],
     expense: ["経費", "🧾"],
@@ -1288,6 +1292,7 @@ ${q}
     abc: ["abc", "大きい順に A・B・C"],
     sns: ["sns", "伸びた投稿の共通点を見る"],
     snspost: ["snspost", "ネタから複数案。出す前は自分で"],
+    claudemd: ["docs", "CLAUDE.md をフォルダのいちばん上に"],
     applied: ["desktop", "一度決めたら、次からラク"],
     account: ["signup", "claude.ai で登録して、プランを確認"],
     webchat: ["webchat", "下の入力欄に書いて送る"],
@@ -1618,6 +1623,21 @@ ${q}
         summary: ["eyecheck", "まずは文字をひとつ"]
       };
       return t[lessonId] || COURSE_ART.appedit;
+    }
+    if (courseId === "claudemd") {
+      const t = {
+        goal: ["docs", "毎回読まれる取扱説明書"],
+        where: ["folder", "いちばん上に CLAUDE.md"],
+        safety: ["safety", "秘密は書かない"],
+        ask: ["copy", "先に質問してから作る"],
+        init: ["copy", "/init で下書き"],
+        fill: ["copy", "〔　〕を自分の言葉に"],
+        add: ["copy", "注意は1行足す"],
+        review: ["eyecheck", "まだ直さないで一覧"],
+        memory: ["copy", "/memory で読まれたか"],
+        summary: ["docs", "作る・足す・見直す"]
+      };
+      return t[lessonId] || COURSE_ART.claudemd;
     }
     if (lessonId === "safety") return ["safety", "送る・消す・公開の前は、自分の目で"];
     if (lessonId === "trouble") return ["chat", "エラー文をそのまま伝える"];
@@ -1961,8 +1981,9 @@ ${q}
       ["secretary", "26", "秘書", "実践"],
       ["secplus", "27", "秘書+", "つなぐ"],
       ["appedit", "28", "画面", "直す"],
-      ["applied", "29", "使いこなし", "中級"],
-      ["faq", "30", "つまずき", "補助"]
+      ["claudemd", "29", "CLAUDE.md", "メモ"],
+      ["applied", "30", "使いこなし", "中級"],
+      ["faq", "31", "つまずき", "補助"]
     ];
     return `
       <ol class="studio-path">
@@ -2236,6 +2257,7 @@ ${q}
       code: "cover-code",
       codemac: "cover-mac",
       applied: "cover-applied",
+      claudemd: "cover-applied",
       poster: "cover-poster",
       market: "cover-sns",
       hypo: "cover-applied",
@@ -2267,6 +2289,7 @@ ${q}
       code: "Code",
       codemac: "Mac",
       applied: "応用",
+      claudemd: "CLAUDE.md",
       poster: "ポスター",
       market: "マーケ",
       hypo: "仮説",
@@ -2673,6 +2696,7 @@ ${q}
           <li><a href="#/course/secretary" data-link>8 秘書</a></li>
           <li><a href="#/course/secplus" data-link>秘書+</a></li>
           <li><a href="#/course/appedit" data-link>9 画面</a></li>
+          <li><a href="#/course/claudemd" data-link>CLAUDE.md</a></li>
           <li><a href="#/course/applied" data-link>10 使いこなし</a></li>
         </ol>
 

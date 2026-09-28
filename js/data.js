@@ -715,7 +715,7 @@ _</pre>
             <ul>
               <li><strong>モデルを選ぶ</strong> … <code>/config</code> でモデルや自動更新チャンネルを設定できる</li>
               <li><strong>権限を確認</strong> … 変更やコマンド実行の前に「確認する」設定にしておくと安心</li>
-              <li><strong>CLAUDE.md を作る</strong> … プロジェクトの説明メモ。置いておくと毎回の指示がラクに</li>
+              <li><strong>CLAUDE.md を作る</strong> … プロジェクトの説明メモ。手順は <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a></li>
             </ul>
             <p>起動後は <code>/</code> から始まるコマンドが使えます。<code>/help</code> で一覧。指示は日本語でそのままOKです。</p>
             <div class="code-wrap">
@@ -1267,7 +1267,7 @@ _</pre>
             <h2>次の一歩</h2>
             <ol>
               <li><a href="#/course/code" data-link>Windows編</a>でセットアップする</li>
-              <li>慣れたら <a href="#/course/applied" data-link>応用編</a> で CLAUDE.md を1枚書く</li>
+              <li>慣れたら <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> でルールブックを1枚書く</li>
               <li><a href="#/course/invoice" data-link>請求書ツール</a>など、自分専用ツールを1つ作ってみる。小さくてOK</li>
               <li>できたらシェアする。うまくいっても、つまずいても、みんなで共有</li>
             </ol>
