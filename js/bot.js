@@ -3,7 +3,7 @@
     {
       keys: ["powershell", "パワーシェル", "ps", "開かない", "コマンドプロンプト", "cmd", "黒い画面", "スタート"],
       answer:
-        "Windows ではスタートボタンから「PowerShell」と検索します。「コマンドプロンプト」は違います。行頭に PS があれば正解です。管理者として実行は、教室の1行では通常不要です。Mac の人は PowerShell を使いません。",
+        "PowerShell は、Windows の黒い画面の名前です。スタートから「PowerShell」と検索し、行頭が PS なら正解です。「コマンドプロンプト」は違います。Mac の人は使いません。Mac はターミナル（行頭が %）です。",
       href: "#/course/faq/ps",
       link: "PowerShellが開かない"
     },

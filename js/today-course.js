@@ -235,6 +235,10 @@
             <p><strong>Windows用</strong>（行頭が <code>PS</code>。Mac には貼らない）</p>
             ${box(`irm https://claude.ai/install.ps1 | iex`)}
             <div class="qa">
+              <p class="qa-q">PowerShell ってなに</p>
+              <p>Windows の黒い画面の名前です。行頭が <code>PS</code>。Mac の人は使いません。Mac は「ターミナル」（行頭が <code>%</code>）です</p>
+            </div>
+            <div class="qa">
               <p class="qa-q">zsh: command not found: irm</p>
               <p>Mac です。Windows 用を貼っています。上の Mac 用（curl）を貼り直す</p>
             </div>
