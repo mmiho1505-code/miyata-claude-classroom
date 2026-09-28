@@ -15,7 +15,7 @@
   CLASSROOM.courses.today = {
     id: "today",
     title: "今日の講義",
-    subtitle: "10枚。2時間。同じチャットで会話と作業。ポータルの作り方・直し方",
+    subtitle: "11枚。2時間。同じチャットで会話と作業。できれば Cursor に Claude Code。ポータルの作り方・直し方",
     duration: "約120分",
     audience: "マンツーマン／チャットで作業を任せるのが初めての人からポータル担当まで",
     lessons: [
@@ -23,8 +23,8 @@
         id: "goal",
         title: "今日の地図",
         body: `
-            <p class="kicker">GOAL　0〜10分　1／10</p>
-            <h1>チャットで相談し、同じ画面で作る・直す（2時間・10枚）</h1>
+            <p class="kicker">GOAL　0〜10分　1／11</p>
+            <h1>チャットで相談し、同じ画面で作る・直す（2時間・11枚）</h1>
             <p>今日は2時間あります。急がず、待ち時間も使います。途中の講座に飛ばなくても、この1本で一通りできます。</p>
             <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、<strong>今このチャットに統合</strong>されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</div>
             <table>
@@ -33,13 +33,14 @@
                 <tr><td>1</td><td>0〜10分</td><td>必須</td><td>今日の地図。ログインできるか確認</td></tr>
                 <tr><td>2</td><td>10〜25分</td><td>必須</td><td>チャット。返事を2回もらう</td></tr>
                 <tr><td>3</td><td>25〜45分</td><td>必須</td><td>同じチャットで作業を任せる。画面・止まったとき</td></tr>
-                <tr><td>4</td><td>できれば</td><td>できれば</td><td>Gmail／カレンダー／ドライブ</td></tr>
-                <tr><td>5</td><td>45〜65分</td><td>必須</td><td>ポータルを1ページ作る。確認。休憩</td></tr>
-                <tr><td>6</td><td>70〜90分</td><td>必須</td><td>直し方。追加・移動を2つ。自分の目で確認</td></tr>
-                <tr><td>7</td><td>90〜95分</td><td>できれば</td><td>勤怠の打刻を足す</td></tr>
-                <tr><td>8</td><td>95〜110分</td><td>余ったら</td><td>申請・給与・予約。飛ばしてよい</td></tr>
-                <tr><td>9</td><td>110〜115分</td><td>必須</td><td>デザインは最後</td></tr>
-                <tr><td>10</td><td>115〜120分</td><td>必須</td><td>まとめ</td></tr>
+                <tr><td>4</td><td>できれば</td><td>できれば</td><td>Cursor に Claude Code を入れる</td></tr>
+                <tr><td>5</td><td>できれば</td><td>できれば</td><td>Gmail／カレンダー／ドライブ</td></tr>
+                <tr><td>6</td><td>45〜65分</td><td>必須</td><td>ポータルを1ページ作る。確認。休憩</td></tr>
+                <tr><td>7</td><td>70〜90分</td><td>必須</td><td>直し方。追加・移動を2つ。自分の目で確認</td></tr>
+                <tr><td>8</td><td>90〜95分</td><td>できれば</td><td>勤怠の打刻を足す</td></tr>
+                <tr><td>9</td><td>95〜110分</td><td>余ったら</td><td>申請・給与・予約。飛ばしてよい</td></tr>
+                <tr><td>10</td><td>110〜115分</td><td>必須</td><td>デザインは最後</td></tr>
+                <tr><td>11</td><td>115〜120分</td><td>必須</td><td>まとめ</td></tr>
               </tbody>
             </table>
             <div class="ops">
@@ -63,7 +64,7 @@
         title: "チャット",
         practice: true,
         body: `
-            <p class="kicker">入口　10〜25分　2／10</p>
+            <p class="kicker">入口　10〜25分　2／11</p>
             <h1>まず、日本語で返事をもらう</h1>
             <p>ブラウザで <strong>claude.ai</strong> を開きます。下が入力欄です。黒い画面は使いません。</p>
             <ol>
@@ -84,7 +85,7 @@
         id: "install",
         title: "同じチャットで作業",
         body: `
-            <p class="kicker">設定　25〜45分　3／10</p>
+            <p class="kicker">設定　25〜45分　3／11</p>
             <h1>会話も作業も、この同じ画面</h1>
             <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話でのやり取りも、両方この同じ画面です。別々のアプリや別の場所に切り替える必要はありません。</div>
             <div class="ops">
@@ -213,7 +214,71 @@
               <p class="qa-q">アプリを入れられない</p>
               <p>会社のパソコンで止められることがある。無理に突破しない。次へ進んでよい。</p>
             </div>
-            <div class="callout">どれも違うときは、無理に探さない。次の「ポータルを作る」へ進んで、お願い文だけ先に読んでも構いません。</div>
+            <div class="callout">どれも違うときは、無理に探さない。次へ進んで、お願い文だけ先に読んでも構いません。Cursor に Claude Code を入れる人は次のページ。ポータルだけ進む人は、その次の「メール・予定・資料」か「ポータルを作る」へ。</div>
+          `
+      },
+      {
+        id: "cursorcode",
+        title: "Cursor に Claude Code",
+        practice: true,
+        body: `
+            <p class="kicker">設定　できれば　10分　4／11　練習</p>
+            <h1>Cursor の中に、Claude Code を入れる</h1>
+            <p>Cursor（カーソル）は、フォルダを開いて日本語で道具をつくる画面です。今日の社内ポータルは <strong>claude.ai の同じチャット</strong>でも作れます。このページは、Cursor で Claude Code を使う人向けです。ポータルだけ進む人は、飛ばしてよいです。</p>
+            <div class="callout warn">Claude Code は無料プランでは使えません。先に <a href="#/course/account" data-link>有料プラン</a> を確認します。会社のパソコンでインストールが止められたら、無理に突破しません。</div>
+            <div class="ops">
+              <article class="op"><span class="num">別</span><h3>別の道具</h3><p>Cursor の自分のチャットと、Claude Code は別です。今日入れるのは Anthropic の「Claude Code」です</p></article>
+              <article class="op"><span class="num">同</span><h3>同じメール</h3><p>claude.ai で使っている、会社の有料アカウントで入ります</p></article>
+              <article class="op"><span class="num">ポ</span><h3>ポータルはチャット</h3><p>社内ポータルは、今までどおり同じチャットでも進みます</p></article>
+            </div>
+            <h2>1. Cursor を入れる</h2>
+            <ol>
+              <li>パソコンのブラウザで <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> を開く</li>
+              <li>Download から、Windows 用か Mac 用かを選んで入れる</li>
+              <li>起動したら、案内に沿ってログインする</li>
+            </ol>
+            <p>すでに Cursor がある人は、起動できれば十分です。</p>
+            <h2>2. 拡張機能「Claude Code」を入れる</h2>
+            <p>公式の案内は <a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener">Claude Code（VS Code / Cursor）</a> です。「Install for Cursor」があれば、それを押します。</p>
+            <ol>
+              <li>Cursor を開く</li>
+              <li>拡張機能を開く。Windows は <kbd>Ctrl</kbd>＋<kbd>Shift</kbd>＋<kbd>X</kbd>。Mac は <kbd>⌘</kbd>＋<kbd>Shift</kbd>＋<kbd>X</kbd>。左の四角が並んだアイコンでも同じです</li>
+              <li>検索に <strong>Claude Code</strong> と入れる</li>
+              <li><strong>Anthropic</strong> の「Claude Code」を選んで Install（インストール）</li>
+            </ol>
+            <p>入ったあとにアイコンが見えなければ、コマンドパレットを開きます。Windows は <kbd>Ctrl</kbd>＋<kbd>Shift</kbd>＋<kbd>P</kbd>。Mac は <kbd>⌘</kbd>＋<kbd>Shift</kbd>＋<kbd>P</kbd>。「Claude Code」と打って、<strong>Open in New Tab</strong>（新しいタブで開く）を選びます。それでも見えなければ「Developer: Reload Window」（ウィンドウを再読み込み）です。</p>
+            <p>火花（きらきら）のマーク、または左の Claude Code を押してパネルを開きます。初めてなら <strong>Sign in</strong>（ログイン）→ ブラウザで、claude.ai と<strong>同じ会社のメール</strong>。パスワードはそこに自分で入れます。教室の入力欄には書きません。</p>
+            <h2>3. 拡張が無いときは、下の画面で claude</h2>
+            <p>拡張機能が見つからない・入らないときは、Cursor の下のターミナルで使います。メニューの「ターミナル」→「新しいターミナル」。またはキーボード左上のほうの、英数字の並びのキーと Ctrl（Mac は Control）を同時押し、と画面に書いてあることがあります。</p>
+            <p>まだパソコンに Claude Code が入っていない人は、下から自分のパソコン用を1行だけ貼って Enter します。詳しい画面は <a href="#/course/code" data-link>Windows編</a> と <a href="#/course/codemac" data-link>Mac編</a> です。</p>
+            <p>Windows（行頭が PS の画面）</p>
+            ${box(`irm https://claude.ai/install.ps1 | iex`)}
+            <p>Mac</p>
+            ${box(`curl -fsSL https://claude.ai/install.sh | bash`)}
+            <p>終わったら、ターミナルを一度閉じて開き直し、次を打ちます。</p>
+            ${box(`claude`)}
+            <p>ブラウザが開いたら、同じ有料アカウントでログインします。</p>
+            <h2>できたか試す</h2>
+            <p>Claude Code の入力欄（パネルでも、下の <code>claude</code> でも）に、下を貼って送ります。</p>
+            ${box(`このフォルダに何が入っているか、初心者にも分かるように3行で説明してください。まだファイルは作らないでください。`)}
+            <p>3行返ってきたら成功です。削除・送信・公開はしません。続きのルールブックは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。</p>
+            <div class="qa">
+              <p class="qa-q">拡張に Claude Code が無い</p>
+              <p>公式ページの「Install for Cursor」を試す。だめなら下のターミナルで <code>claude</code>。無理に別の拡張は入れない</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">ログインできない</p>
+              <p>有料プランか、会社の同じメールか。<a href="#/course/account" data-link>アカウント編</a></p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">会社で止められる</p>
+              <p>無理に突破しない。<a href="#/course/faq/net" data-link>社内ルール</a>。ポータル作りへ進んでよい</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">英語の画面</p>
+              <p>言葉を暗記しなくてよい。「今の画面の言葉を、そのまま書いて案内して」と送る</p>
+            </div>
+            <div class="callout">時間がないときは、ここまでで止めて「ポータルを作る」へ。今日の成功は、ポータル1枚です。</div>
           `
       },
       {
@@ -221,7 +286,7 @@
         title: "メール・予定・資料をつなぐ",
         practice: true,
         body: `
-            <p class="kicker">設定　できれば　5〜10分　4／10　練習</p>
+            <p class="kicker">設定　できれば　5〜10分　5／11　練習</p>
             <h1>お願い文を貼って、Google をつなぐ</h1>
             <p>つながると、Claude が<strong>会社のメール・予定・資料</strong>を見て答えられます。毎回コピーして貼らなくてよくなります。送る・消す・予定の変更は、これまでどおり人の仕事です。</p>
             <div class="ops">
@@ -294,7 +359,7 @@
         title: "ポータルを作る",
         practice: true,
         body: `
-            <p class="kicker">作る　45〜65分　5／10　練習</p>
+            <p class="kicker">作る　45〜65分　6／11　練習</p>
             <h1>土台の1ページを頼む</h1>
             <p>誰が使うか・何を載せるか・どんな感じかを、最初に書いておくと直す回数が減ります。下をコピーして、今のチャットに貼ります。</p>
             ${box(`当社の社内ポータルを1ページ作ってください。社名は「株式会社 宮田財務」です。
@@ -356,7 +421,7 @@
         title: "直す",
         practice: true,
         body: `
-            <p class="kicker">直す　70〜90分　6／10　練習</p>
+            <p class="kicker">直す　70〜90分　7／11　練習</p>
             <h1>ページの中をいじらず、話しかける</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>会話に戻る</h3><p>ポータルを作ったチャットを開く</p></article>
@@ -389,7 +454,7 @@
         title: "機能を足す：勤怠",
         practice: true,
         body: `
-            <p class="kicker">できれば　90〜95分　7／10</p>
+            <p class="kicker">できれば　90〜95分　8／11</p>
             <h1>打刻を足す</h1>
             <p>作り方・直し方が分かったら、同じ会話に機能を足していきます。デザインの調整は、あとでまとめて行います。</p>
             <p>90分を過ぎて遅れているときは、勤怠は飛ばして <a href="#/course/today/eight" data-link>デザインは最後に</a> へ進んで構いません。</p>
@@ -406,7 +471,7 @@
         practice: true,
         optional: true,
         body: `
-            <p class="kicker">余ったら　95〜110分　8／10</p>
+            <p class="kicker">余ったら　95〜110分　9／11</p>
             <h1>管理画面・申請・給与・便利機能</h1>
             <p>時間が無ければ飛ばして、<a href="#/course/today/eight" data-link>デザインは最後に</a> へ。</p>
             <h2>管理画面と社員画面</h2>
@@ -446,7 +511,7 @@
         title: "デザインは最後に",
         practice: true,
         body: `
-            <p class="kicker">見た目　110〜115分　9／10</p>
+            <p class="kicker">見た目　110〜115分　10／11</p>
             <h1>タイル型にまとめて直す</h1>
             <p>機能が増えるたびに並びが変わるので、デザインはここでまとめて行います。先に雰囲気を決めてから、下の文を送ります。</p>
             <p>雰囲気を探す：<a href="https://jp.pinterest.com/search/pins/?q=%E7%A4%BE%E5%86%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB&rs=typed" target="_blank" rel="noopener">Pinterestで社内ポータル</a>。</p>
@@ -463,19 +528,20 @@
 ・マウスカーソルに、黄色い丸がふわっと付いてくる動きを付ける`)}
             <p>迷ったら「3案を並べて見せて」と頼むと選びやすくなります。</p>
             ${box(`トップのタイル案を3つ並べて見せてください。色と並びだけ変えて、機能は同じままにしてください。`)}
-            <p>時間が押したら、7と8（勤怠・申請）は飛ばして、このデザインへ進みます。勤怠を足していない人は、下の文の「勤怠」の行は飛ばしてよいです。</p>
+            <p>時間が押したら、8と9（勤怠・申請）は飛ばして、このデザインへ進みます。勤怠を足していない人は、下の文の「勤怠」の行は飛ばしてよいです。</p>
           `
       },
       {
         id: "summary",
         title: "まとめ",
         body: `
-            <p class="kicker">覚えておくこと　115〜120分　10／10</p>
+            <p class="kicker">覚えておくこと　115〜120分　11／11</p>
             <h1>チャットから、ポータルの直し方まで</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>チャット</h3><p>相談はブラウザ。日本語で1回、返事をもらう</p></article>
               <article class="op"><span class="num">2</span><h3>同じ画面で作る</h3><p>モデルは Opus、Effort は高め。同じ会話に貼って、ページを作る</p></article>
               <article class="op"><span class="num">3</span><h3>続きで直す</h3><p>「何を・どこへ」と書く。移動もドラッグしない</p></article>
+              <article class="op"><span class="num">4</span><h3>Cursor</h3><p>できれば Claude Code を拡張で入れる。無いときは下の画面で claude</p></article>
             </div>
             <h2>使い始める前に</h2>
             ${box(`使い始める前に、足りない点や注意点を教えてください。`)}
@@ -502,7 +568,7 @@
               <p>英語もエラーも、画面の言葉をそのまま Claude に送る。自分で突破しない。</p>
             </div>
             <p><a class="btn-orange" href="#/course/webchat" data-link>チャット入門</a>
-            <a class="btn-dark" href="#/course/portalfix" data-link>直し方編</a></p>
+            <a class="btn-dark" href="#/course/code" data-link>Claude Code（Windows）</a></p>
           `
       }
     ]
@@ -551,6 +617,12 @@
         choices: ["最初の1ページだけで完成させる", "機能を足し終わってからまとめて直す", "チャットの時点で決める"],
         a: 1,
         explain: "機能が増えるたびに並びが変わるので、見た目は最後です。"
+      },
+      {
+        q: "Cursor に Claude Code を入れるとき、正しいのは？",
+        choices: ["無料プランのまま拡張を探す", "拡張機能で Anthropic の Claude Code を入れ、同じ有料アカウントでログインする。無ければ下の画面で claude", "ポータルのリンクを SNS に載せる"],
+        a: 1,
+        explain: "Cursor の自分のチャットとは別です。会社で止められたら無理に突破しません。"
       },
       {
         q: "パスワードや口座番号は？",

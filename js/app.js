@@ -724,7 +724,7 @@ ${q}
     sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
     aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
-    today: ["cover-cowork", "今日", "10枚・2時間。同じチャットで会話と作業、ポータルの作り方・直し方。", "portalpage"],
+    today: ["cover-cowork", "今日", "11枚・2時間。同じチャットとポータル。できれば Cursor に Claude Code。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
     portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
     attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "attendapp"],
@@ -1304,7 +1304,7 @@ ${q}
     sched: ["mail", "空き時間をクリックしてメール文"],
     aicopy: ["safety", "見て・調べて・確認してから"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    today: ["portalpage", "10枚。同じチャットからポータルまで"],
+    today: ["portalpage", "11枚。同じチャットと、できれば Cursor"],
     portalfix: ["copy", "同じ会話の続きで直す"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
     salary: ["expense", "時間×時給を表にする"],
@@ -1434,9 +1434,10 @@ ${q}
     }
     if (courseId === "today") {
       const t = {
-        goal: ["site", "10枚。同じチャット → 作る → 直す"],
+        goal: ["site", "11枚。同じチャット → 作る → 直す"],
         chat: ["webchat", "日本語で返事をもらう"],
         install: ["desktop", "OpusとEffort、できた画面"],
+        cursorcode: ["desktop", "Cursorに Claude Code を入れる"],
         gmail: ["copy", "つなぐとメール・予定・資料が手元に"],
         one: ["portalpage", "土台の1ページを作る"],
         promptwork: ["copy", "同じ会話の続きで直す"],
@@ -2019,7 +2020,7 @@ ${q}
         <a class="today-spot-card${open ? "" : " is-locked"}" href="${href}" data-link>
           <span class="today-spot-tag">きょうの教室</span>
           <h2>${escapeHtml(course.title)}</h2>
-          <p>10枚・2時間。同じチャットで会話し、同じ画面でポータルを作る・直す。この1本で一通りできます。</p>
+          <p>11枚・2時間。同じチャットでポータルを作る・直す。できれば Cursor に Claude Code。</p>
           <strong>${open ? `進度 ${p}%` : "受講コードが必要です"}</strong>
           ${open ? thinMeter(p, "meter", "今日の講義の進度") : ""}
           <span class="btn-orange">${label}</span>
