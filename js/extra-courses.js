@@ -415,6 +415,10 @@
               <li><strong>チャット</strong> … 入力欄をクリックしてから貼る</li>
             </ul>
             <p>「コピー済み」と教室に出ても、貼る側をクリックしていないと入りません。</p>
+            <div class="qa">
+              <p class="qa-q">zsh: command not found: irm</p>
+              <p>Mac の画面に、Windows 用の行を貼った印です。<code>irm</code> は使いません。<a href="#/course/codemac" data-link>Mac編</a> の <code>curl</code> の1行を貼ります。</p>
+            </div>
           `
       },
       {

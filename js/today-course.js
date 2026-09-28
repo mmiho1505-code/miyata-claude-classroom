@@ -250,18 +250,20 @@
             <p>火花（きらきら）のマーク、または左の Claude Code を押してパネルを開きます。初めてなら <strong>Sign in</strong>（ログイン）→ ブラウザで、claude.ai と<strong>同じ会社のメール</strong>。パスワードはそこに自分で入れます。教室の入力欄には書きません。</p>
             <h2>3. 自分でターミナルに貼る（拡張と両方やる）</h2>
             <p>拡張機能を入れた人も、入れてない人も、ここをやります。先生も受講者も、同じ文を<strong>自分のターミナルに貼ります</strong>。貼っただけでは動きません。Enter までです。</p>
+            <div class="callout warn">行の取り違えに注意。行頭が <code>%</code> や <code>zsh</code>、<code>user@MacBook</code> なら <strong>Mac</strong> です。Mac に <code>irm</code> の行を貼ると、<code>zsh: command not found: irm</code> と出ます。そのときは Windows 用です。すぐ下の <strong>Mac の1行</strong>を貼り直してください。</div>
             <p>貼り方はいつも同じです。くわしくは <a href="#/course/faq/paste" data-link>貼り付けできない</a>。</p>
             <ol>
               <li>Cursor のメニュー「ターミナル」→「新しいターミナル」。下に黒い（または白い）画面が出ます</li>
               <li>その画面を<strong>一度クリック</strong>する。クリックしないと貼れません</li>
-              <li>下から自分のパソコン用を1行、教室の「コピー」を押す</li>
-              <li>ターミナルに貼る。Windows は右クリック、または Ctrl＋V。Mac は ⌘＋V</li>
+              <li>画面の行頭を見る。<code>%</code> なら Mac。<code>PS</code> なら Windows</li>
+              <li>自分のパソコン用を1行、教室の「コピー」を押す</li>
+              <li>ターミナルに貼る。Mac は ⌘＋V。Windows は右クリック、または Ctrl＋V</li>
               <li>Enter を押す。終わるまで待つ</li>
             </ol>
-            <p>Windows（行頭が <code>PS</code> の画面。Cursor の下でも、スタートから開いた PowerShell でも同じ1行です）</p>
-            ${box(`irm https://claude.ai/install.ps1 | iex`)}
-            <p>Mac（Cursor の下でも、ターミナルアプリでも同じ1行です）</p>
+            <p><strong>Mac</strong>（行頭が <code>%</code>。Cursor の下でも、ターミナルアプリでも、この1行だけ）</p>
             ${box(`curl -fsSL https://claude.ai/install.sh | bash`)}
+            <p><strong>Windows</strong>（行頭が <code>PS</code>。Mac には貼らない）</p>
+            ${box(`irm https://claude.ai/install.ps1 | iex`)}
             <p>途中でパスワードを聞かれたら、パソコンにログインするときのパスワードです。画面には出ません。打ち終わって Enter です。教室には書きません。</p>
             <p>終わったら、ターミナルを一度閉じて、もう一度「新しいターミナル」を開きます。画面をクリックしてから、下をコピーして貼り、Enter します。</p>
             ${box(`claude`)}
@@ -271,6 +273,10 @@
             <p>ターミナルに <code>claude</code> と出ている入力欄、または拡張のパネルに、下を<strong>自分で貼って</strong>送ります。先に入力欄をクリックしてから貼ります。</p>
             ${box(`このフォルダに何が入っているか、初心者にも分かるように3行で説明してください。まだファイルは作らないでください。`)}
             <p>3行返ってきたら成功です。削除・送信・公開はしません。続きのルールブックは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。</p>
+            <div class="qa">
+              <p class="qa-q">zsh: command not found: irm</p>
+              <p>Mac です。Windows の行を貼っています。上の <strong>Mac の1行</strong>（curl から始まる）をコピーして貼り直す</p>
+            </div>
             <div class="qa">
               <p class="qa-q">貼れない</p>
               <p>ターミナルを一度クリックしてから貼る。貼ったあと Enter。<a href="#/course/faq/paste" data-link>貼り付けできない</a></p>

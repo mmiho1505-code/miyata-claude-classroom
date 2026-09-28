@@ -8,6 +8,13 @@
       link: "PowerShellが開かない"
     },
     {
+      keys: ["irm", "iex", "command not found: irm", "zsh: command not found"],
+      answer:
+        "Mac の画面です。irm と iex は Windows の PowerShell 用です。Mac は curl -fsSL https://claude.ai/install.sh | bash を貼ります。すでに claude が入っている人は、新しいターミナルで claude とだけ打ちます。",
+      href: "#/course/today/cursorcode",
+      link: "Cursor に Claude Code"
+    },
+    {
       keys: ["貼", "コピー", "ctrl", "ペースト", "⌘", "command", "貼り付け"],
       answer:
         "教室の「コピー」を押したあと、貼る場所（PowerShell・ターミナル・チャットの入力欄）を一度クリックしてから貼ります。Windows は右クリックまたは Ctrl＋V、Mac は ⌘＋V です。",
