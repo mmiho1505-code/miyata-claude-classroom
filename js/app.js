@@ -404,7 +404,7 @@ ${q}
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
   const toolListLabel = (courseId) =>
-    toolOf(courseId) === "cowork" ? "Coworkの一覧" : toolOf(courseId) === "starter" ? "ホームへ" : "Claude Codeの一覧";
+    toolOf(courseId) === "cowork" ? "事務の講座" : toolOf(courseId) === "starter" ? "ホームへ" : "Claude Codeの一覧";
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
@@ -1425,7 +1425,7 @@ ${q}
     }
     if (courseId === "today") {
       const t = {
-        goal: ["site", "10枚。チャット → Cowork → 作る → 直す"],
+        goal: ["site", "10枚。同じチャット → 作る → 直す"],
         chat: ["webchat", "日本語で返事をもらう"],
         install: ["desktop", "OpusとEffort、できた画面"],
         gmail: ["copy", "つなぐとメール・予定・資料が手元に"],
