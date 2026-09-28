@@ -50,6 +50,13 @@
       link: "左にCoworkが無い"
     },
     {
+      keys: ["trust", "trust this folder", "no, exit", "yes, i trust", "safety check", "accessing workspace"],
+      answer:
+        "エラーではありません。このフォルダを信頼するかの確認です。矢印の下で Yes, I trust this folder を選んで Enter します。No, exit を押した人は、もう一度 claude と打ちます。自分で開いた作業フォルダなら Yes で進みます。",
+      href: "#/course/today/cursorcode",
+      link: "Cursor に Claude Code"
+    },
+    {
       keys: ["node -v", "nodejs", "node.js", "ノード", "入れてないとだめ"],
       answer:
         "だめではありません。node -v は、講座と同じく npm で入れる人の確認です。いま推奨の公式は Mac が curl、Windows が irm で、こちらは Node 不要です。すでに claude と打って起動する人は、入れ直し不要です。",

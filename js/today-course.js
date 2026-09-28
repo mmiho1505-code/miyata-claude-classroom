@@ -262,6 +262,7 @@
             </ol>
             ${box(`claude`)}
             <p>入れた直後は、今のターミナルを閉じて「新しいターミナル」を開き、画面をクリックしてから、上の <code>claude</code> だけ貼ります。<code>irm</code> や <code>cou</code> は貼りません。</p>
+            <p>「Is this a project you created or one you trust?」（このフォルダを信頼しますか）と出たら、エラーではありません。<kbd>↓</kbd> で <strong>Yes, I trust this folder</strong> を選んで Enter。今日の作業フォルダは、自分で開いたものです。</p>
             <p>初回はブラウザが開きます。Claude のアカウント（Pro / Max）でログインします。パスワードはブラウザに自分で入れます。</p>
             <p>Windows の黒い画面だけの人は <a href="#/course/code" data-link>Windows編</a>。Mac のターミナルだけの人は <a href="#/course/codemac" data-link>Mac編</a>。</p>
             <h2>③ よく使うコマンド</h2>
@@ -286,6 +287,10 @@ index.html 1つで、スマホでも見やすくして。`)}
             <div class="qa">
               <p class="qa-q">貼れない</p>
               <p>ターミナルを一度クリックしてから貼る。貼ったあと Enter</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">trust / 英語の確認が出た</p>
+              <p>エラーではありません。↓ で Yes, I trust this folder を選んで Enter。No, exit を押したら、もう一度 claude</p>
             </div>
             <div class="qa">
               <p class="qa-q">claude と打つとエラー / command not found: claude</p>
