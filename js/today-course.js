@@ -228,7 +228,17 @@
             <div class="callout warn">無料プランでは使えません。Pro / Max などの <a href="#/course/account" data-link>有料プラン</a> です。会社のパソコンで止められたら、無理に突破しません。</div>
             <p>貼る前に、ターミナルを<strong>一度クリック</strong>します。くわしくは <a href="#/course/faq/paste" data-link>貼り付けできない</a>。</p>
             <h2>① Claude Code を入れる（最初の1回だけ）</h2>
-            <p>講座と同じく、<strong>Node.js を使う方法</strong>です。</p>
+            <div class="callout">Node.js は必須ではありません。<code>node -v</code> は、下の「講座と同じ方法」を使う人の確認です。いま推奨の公式の1行なら、Node は入れなくてよいです。すでに <code>claude</code> と打って起動する人は、入れ直し不要です。</div>
+            <p><strong>公式の方法（推奨・Node 不要）</strong>　行頭が <code>%</code> なら Mac。<code>PS</code> なら Windows。取り違えないでください。</p>
+            <p><strong>Mac用</strong>（行頭が <code>%</code>）</p>
+            ${box(`curl -fsSL https://claude.ai/install.sh | bash`)}
+            <p><strong>Windows用</strong>（行頭が <code>PS</code>。Mac には貼らない）</p>
+            ${box(`irm https://claude.ai/install.ps1 | iex`)}
+            <div class="qa">
+              <p class="qa-q">zsh: command not found: irm</p>
+              <p>Mac です。Windows 用を貼っています。上の Mac 用（curl）を貼り直す</p>
+            </div>
+            <p><strong>講座と同じ方法（Node.js を使う）</strong>　公式の1行が通った人は、ここは飛ばしてよいです。</p>
             <ol>
               <li><a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> から <strong>LTS</strong> を入れてインストールする</li>
               <li>ターミナルをクリックして、下を貼り、Enter。数字が出ればOK</li>
@@ -239,15 +249,6 @@
             ${box(`npm install -g @anthropic-ai/claude-code`)}
             <p>Mac で <code>permission denied</code>（許可がありません）と出たら、先頭に <code>sudo</code> を付けてやり直します。Mac にログインするときのパスワードです。画面には出ません。教室には書きません。</p>
             ${box(`sudo npm install -g @anthropic-ai/claude-code`)}
-            <p>Node.js を使わない公式の方法もあります。現在はこちらが推奨です。行頭が <code>%</code> なら Mac。<code>PS</code> なら Windows。取り違えないでください。</p>
-            <p><strong>Mac用</strong>（行頭が <code>%</code>）</p>
-            ${box(`curl -fsSL https://claude.ai/install.sh | bash`)}
-            <p><strong>Windows用</strong>（行頭が <code>PS</code>。Mac には貼らない）</p>
-            ${box(`irm https://claude.ai/install.ps1 | iex`)}
-            <div class="qa">
-              <p class="qa-q">zsh: command not found: irm</p>
-              <p>Mac です。Windows 用を貼っています。上の Mac 用（curl）を貼り直す</p>
-            </div>
             <p>画面でも使いたい人は、拡張機能の「Claude Code」（Anthropic）を入れます。公式は <a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener">Install for Cursor</a>。Cursor が無ければ <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> から入れます。</p>
             <h2>② 作業フォルダを開いて起動する</h2>
             <ol>
@@ -282,8 +283,12 @@ index.html 1つで、スマホでも見やすくして。`)}
               <p>ターミナルを一度クリックしてから貼る。貼ったあと Enter</p>
             </div>
             <div class="qa">
+              <p class="qa-q">node -v を入れてないとだめ？</p>
+              <p>だめではありません。公式の1行（Mac は curl、Windows は irm）なら、Node は不要です</p>
+            </div>
+            <div class="qa">
               <p class="qa-q">node -v が出ない</p>
-              <p>LTS を入れたあと、ターミナルを閉じて開き直す</p>
+              <p>講座と同じ方法の人だけ。LTS を入れたあと、ターミナルを閉じて開き直す。公式の1行で入れる人は気にしなくてよい</p>
             </div>
             <div class="qa">
               <p class="qa-q">ログインできない</p>
@@ -635,7 +640,7 @@ index.html 1つで、スマホでも見やすくして。`)}
       },
       {
         q: "Claude Code を入れるとき、正しいのは？",
-        choices: ["無料プランのまま irm を Mac に貼る", "node -v で数字を見てから入れるか、公式の Mac／Windows の1行を使う。起動は作業フォルダで claude", "確認を出さずに全部自動で公開する"],
+        choices: ["無料プランのまま irm を Mac に貼る", "公式の1行（Mac は curl、Windows は irm）で入れてよい。Node は必須ではない。起動は作業フォルダで claude", "確認を出さずに全部自動で公開する"],
         a: 1,
         explain: "ファイルを変える前の確認は見てから承認します。Mac に irm は貼りません。"
       },

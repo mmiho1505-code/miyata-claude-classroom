@@ -50,9 +50,16 @@
       link: "左にCoworkが無い"
     },
     {
+      keys: ["node -v", "nodejs", "node.js", "ノード", "入れてないとだめ"],
+      answer:
+        "だめではありません。node -v は、講座と同じく npm で入れる人の確認です。いま推奨の公式は Mac が curl、Windows が irm で、こちらは Node 不要です。すでに claude と打って起動する人は、入れ直し不要です。",
+      href: "#/course/today/cursorcode",
+      link: "Cursor に Claude Code"
+    },
+    {
       keys: ["今日の講義", "きょうの講義", "土台：ポータル", "タイル型", "カーソルに", "cursor に"],
       answer:
-        "今日の講義の Claude Code は、最初の1回だけ入れます。講座と同じなら Node.js の LTS と npm。いま推奨の公式は Mac が curl、Windows が irm。作業フォルダを開いて claude。ファイルを変える前の確認は見てから承認します。",
+        "今日の講義の Claude Code は、最初の1回だけ入れます。推奨は公式の1行（Mac は curl、Windows は irm）。Node.js は必須ではありません。作業フォルダを開いて claude。ファイルを変える前の確認は見てから承認します。",
       href: "#/course/today",
       link: "今日の講義"
     },
