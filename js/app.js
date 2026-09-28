@@ -1295,7 +1295,7 @@ ${q}
     hr: ["crm", "AIと人で切り分ける"],
     sched: ["mail", "空き時間をクリックしてメール文"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    today: ["portalpage", "10枚。チャット、Cowork、ポータルまで"],
+    today: ["portalpage", "10枚。同じチャットからポータルまで"],
     portalfix: ["copy", "同じ会話の続きで直す"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
     salary: ["expense", "時間×時給を表にする"],
@@ -1303,8 +1303,8 @@ ${q}
   };
 
   const LESSON_ART = {
-    compare: ["compare", "チャットは相談、Coworkは作業"],
-    what: ["cowork", "左メニューの Cowork を選ぶ"],
+    compare: ["compare", "会話も作業も同じ画面"],
+    what: ["cowork", "新しいチャットで作業する"],
     goal: ["cowork", "任せて、ラクをする"],
     cando: ["cowork", "資料・整理・連携・定期実行"],
     map: ["cowork", "できることはこの4つ"],
@@ -1380,7 +1380,7 @@ ${q}
         notfound: ["powershell", "窓を閉じて開き直す"],
         login: ["plan", "有料プランの同じメールか"],
         macfail: ["terminal", "赤い丸・黄・緑の窓"],
-        coworkmiss: ["cowork", "アプリの左メニュー"],
+        coworkmiss: ["cowork", "左にCoworkが無くても探さない"],
         net: ["safety", "社内ルールを優先"],
         summary: ["check", "エラー文を残す"]
       };
@@ -1494,10 +1494,10 @@ ${q}
     if (courseId === "portalmake") {
       const t = {
         goal: ["cowork", "作る・確かめる・見せる"],
-        what: ["compare", "チャットは相談、Coworkは作業"],
+        what: ["compare", "会話も作業も同じ画面"],
         image: ["portalpage", "お知らせ・予定・リンク・連絡先"],
         flow: ["desktop", "開く → 頼む → 確かめる → 渡す"],
-        open: ["cowork", "パソコンのアプリで Cowork"],
+        open: ["cowork", "新しいチャットで頼む"],
         ask: ["copy", "見本文を貼って送る"],
         tips: ["copy", "誰が・何を・どんな感じで"],
         answer: ["coworkask", "分からなければおまかせ"],
