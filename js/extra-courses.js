@@ -19,7 +19,7 @@
             <p class="kicker">GOAL</p>
             <h1>ログインできるようにする</h1>
             <div data-pic="signup" data-cap="ブラウザで claude.ai を開きます"></div>
-            <p>この教室のあと工程（チャット・Cowork・Claude Code）は、どれも<strong>同じアカウント</strong>を使います。今日は申し込みと、有料プランの見方までです。</p>
+            <p>この教室のあと工程（チャットでの会話と作業、Claude Code）は、どれも<strong>同じアカウント</strong>を使います。今日は申し込みと、有料プランの見方までです。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>サイトを開く</h3><p>パソコンのブラウザで claude.ai</p></article>
               <article class="op"><span class="num">2</span><h3>登録する</h3><p>メールまたは Google で続ける</p></article>
@@ -68,7 +68,7 @@
             <p>無料プランでも、ブラウザで日本語の相談はできます。次の講座「ブラウザのチャット入門」は、この画面の使い方です。</p>
             <ul>
               <li><strong>できる</strong> … ブラウザで話しかける、文章の下書き</li>
-              <li><strong>できないことが多い</strong> … Claude Code（黒い画面の道具）。Cowork もプランやアプリの条件があります</li>
+              <li><strong>できないことが多い</strong> … Claude Code（黒い画面の道具）。大きなファイル作業もプランの条件があります</li>
             </ul>
             <p>教室で <a href="#/course/code" data-link>Claude Code</a> まで進む人は、次のページの有料プランを見てください。</p>
           `
@@ -86,7 +86,7 @@
               <li><strong>プラン</strong> または <strong>Upgrade</strong> を押す</li>
               <li>Pro / Max / Team など、表が出るので読む</li>
             </ol>
-            <div class="callout">Claude Code は、無料プランでは使えません。Pro などの有料プランが必要です。Cowork はアプリ側の案内に従ってください。</div>
+            <div class="callout">Claude Code は、無料プランでは使えません。Pro などの有料プランが必要です。チャットでの作業も、プランの案内に従ってください。</div>
             <p>支払い画面に進むときは、カード番号を<strong>公式の入力欄だけ</strong>に入れます。チャットにカード番号を書かないでください。</p>
           `
       },
@@ -122,9 +122,9 @@
   CLASSROOM.courses.webchat = {
     id: "webchat",
     title: "ブラウザのチャット入門",
-    subtitle: "Coworkの前に。claude.ai で日本語のお願いを一度やってみる",
+    subtitle: "同じチャットで日本語のお願いを一度やってみる",
     duration: "約25分",
-    audience: "アカウント作成済み／Coworkの前の人",
+    audience: "アカウント作成済み／会話と作業の前の人",
     lessons: [
       {
         id: "goal",
@@ -133,7 +133,7 @@
             <p class="kicker">GOAL</p>
             <h1>日本語で1回、返事をもらう</h1>
             <div data-pic="webchat" data-cap="下の入力欄に書いて、送るボタン"></div>
-            <p>Cowork は「ファイルまで仕上げる作業係」です。その前に、<strong>相談するチャット</strong>の感覚をつかみます。黒い画面は使いません。</p>
+            <p>資料作成・分析・ファイル出力も、今は同じチャットで任せられます。その前に、<strong>日本語で返事をもらう</strong>感覚をつかみます。黒い画面は使いません。</p>
             <p>まだアカウントが無い人は、先に <a href="#/course/account" data-link>アカウントと有料プラン</a> です。</p>
           `
       },
@@ -182,30 +182,30 @@
       },
       {
         id: "vs",
-        title: "Coworkとの違い",
+        title: "作業も同じ画面",
         body: `
             <p class="kicker">COMPARE</p>
-            <h1>チャットは相談、Coworkは作業</h1>
-            <div data-pic="compare" data-cap="左がチャット、右が Cowork"></div>
+            <h1>会話も作業も、このチャット</h1>
+            <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</div>
             <div class="compare">
               <div>
-                <h3>ブラウザのチャット</h3>
+                <h3>会話</h3>
                 <ul>
                   <li>答えが文章で返ってくる</li>
-                  <li>自分でコピーして、Word などに貼る</li>
+                  <li>自分でコピーして使うこともできる</li>
                   <li>相談・下書き向き</li>
                 </ul>
               </div>
               <div>
-                <h3>Cowork</h3>
+                <h3>作業（以前のCowork）</h3>
                 <ul>
                   <li>フォルダやファイルまで触る</li>
-                  <li>PDFや表として仕上がることが多い</li>
+                  <li>PDFや表、ページとして仕上がることが多い</li>
                   <li>請求書・整理などの実務向き</li>
                 </ul>
               </div>
             </div>
-            <p>事務を任せたい人は、次に <a href="#/course/cowork" data-link>Cowork講座</a> です。いちばんやさしい入口は <a href="#/course/poster" data-link>求人ポスター</a> でも大丈夫です。</p>
+            <p>どちらも同じチャットです。事務の例は <a href="#/course/cowork" data-link>事務の講座</a> です。いちばんやさしい入口は <a href="#/course/poster" data-link>求人ポスター</a> でも大丈夫です。</p>
           `
       },
       {
@@ -228,9 +228,9 @@
         title: "まとめ",
         body: `
             <p class="kicker">WRAP</p>
-            <h1>相談はチャット、仕上げはCowork</h1>
-            <div data-pic="cowork" data-cap="次は左メニューの Cowork です"></div>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>Cowork講座へ</a>
+            <h1>同じ画面で、会話も作業も</h1>
+            <div data-pic="webchat" data-cap="下の入力欄が、話しかける場所です"></div>
+            <p><a class="btn-orange" href="#/course/cowork" data-link>事務の講座へ</a>
             <a class="btn-dark" href="#/course/poster" data-link>ポスターから始める</a></p>
           `
       }
@@ -380,7 +380,7 @@
               <li><a href="#/course/faq/notfound" data-link>claude が認識されない</a></li>
               <li><a href="#/course/faq/login" data-link>ログインできない／無料と言われる</a></li>
               <li><a href="#/course/faq/macfail" data-link>Macのターミナルで失敗する</a></li>
-              <li><a href="#/course/faq/coworkmiss" data-link>Cowork のメニューが見当たらない</a></li>
+              <li><a href="#/course/faq/coworkmiss" data-link>左に Cowork が無い（今はチャット）</a></li>
               <li><a href="#/course/faq/net" data-link>ネットや会社PCで止まる</a></li>
             </ul>
           `
@@ -465,13 +465,13 @@
       },
       {
         id: "coworkmiss",
-        title: "Coworkが見当たらない",
+        title: "左にCoworkが無い",
         body: `
-            <p class="kicker">COWORK</p>
-            <h1>ブラウザのチャットではなく、アプリ</h1>
-            <div data-pic="cowork" data-cap="左メニューに Cowork。チャットの隣です"></div>
-            <p>claude.ai のただのチャット画面には、Cowork が無いことがあります。デスクトップ用の Claude アプリを開き、左の一覧から <strong>Cowork</strong> を選びます。</p>
-            <p>プランや地域、アプリの版で名前が違うときは、アプリ内の案内を優先してください。講座は <a href="#/course/cowork" data-link>Cowork</a> です。</p>
+            <p class="kicker">CHAT</p>
+            <h1>探さなくてよいです。今はチャットの中</h1>
+            <div data-pic="webchat" data-cap="新しいチャットで、作ってと頼む"></div>
+            <p>以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</p>
+            <p>新しいチャットを開き、「作って」と頼んでください。講座は <a href="#/course/cowork" data-link>事務（旧Cowork）</a> です。</p>
           `
       },
       {
@@ -534,10 +534,10 @@
         explain: "下の太い入力欄です。アドレス欄に日本語のお願いを書かないでください。"
       },
       {
-        q: "チャットと Cowork のいちばんの違いは？",
-        choices: ["チャットは相談（文章）、Coworkは作業（ファイルまで）", "チャットのほうが必ず有料", "Coworkはスマホ専用"],
+        q: "以前の Cowork は、今どこで使いますか？",
+        choices: ["同じチャットの中。切り替えなくてよい", "チャットのほうが必ず有料", "スマホ専用の別アプリ"],
         a: 0,
-        explain: "相談はチャット、仕上げの実務は Cowork が多いです。"
+        explain: "資料作成も会話も、同じ画面です。"
       },
       {
         q: "チャットに書いてはいけないものは？",

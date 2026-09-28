@@ -23,7 +23,7 @@
               <article class="op"><span class="num">2</span><h3>毎月作る</h3><p>取引先と明細を伝えて、今月の請求書を作る</p></article>
               <article class="op"><span class="num">3</span><h3>確かめて送る</h3><p>金額を検算し、PDFで送って保存する</p></article>
             </div>
-            <p>Claude Code でリストからまとめて作る講座は、別の <a href="#/course/invoice" data-link>請求書（道具づくり）</a> です。今日は Cowork で話しかけるやり方です。</p>
+            <p>Claude Code でリストからまとめて作る講座は、別の <a href="#/course/invoice" data-link>請求書（道具づくり）</a> です。今日は同じチャットで話しかけるやり方です。</p>
           `
       },
       {
@@ -86,7 +86,7 @@
         body: `
             <p class="kicker">STEP 2　最初の1回だけ　練習</p>
             <h1>ひな形を作るお願い（このまま真似してOK）</h1>
-            <p>パソコンの Claude アプリで Cowork を開き、下の文を貼ります。［　］は自分の会社の情報に直してください。演習では、このままの架空データで構いません。</p>
+            <p>claude.ai またはパソコンの Claude でチャットを開き、下の文を貼ります。［　］は自分の会社の情報に直してください。演習では、このままの架空データで構いません。</p>
             ${box(`当社の請求書のひな形をExcelで作ってください。
 
 ・会社情報：株式会社 練習商事、東京都千代田区練習1-1-1、03-0000-0000

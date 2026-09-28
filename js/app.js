@@ -320,7 +320,7 @@ ${q}
     const course = CLASSROOM.courses[id];
     const why =
       toolOf(id) === "cowork"
-        ? "事務は Claude Cowork です。"
+        ? "事務は同じチャットです。"
         : id === "code" || id === "codemac"
           ? "次は Claude Code（道具づくり）です。"
           : "やさしい順の、次の講座です。";
@@ -406,11 +406,11 @@ ${q}
   const toolListLabel = (courseId) =>
     toolOf(courseId) === "cowork" ? "Coworkの一覧" : toolOf(courseId) === "starter" ? "ホームへ" : "Claude Codeの一覧";
   const toolKicker = (courseId) =>
-    toolOf(courseId) === "cowork" ? "Claude Cowork" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
+    toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   const OPEN_COURSE_IDS = ["account", "webchat", "poster", "faq", "market", "hypo", "hr", "sched"];
   const GATE_PACKS = {
-    jimu: { label: "事務（Cowork）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
+    jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
     zenbu: { label: "全部", ids: HOME_ORDER.slice() }
   };
@@ -713,14 +713,14 @@ ${q}
 
   const COURSE_META = {
     account: ["cover-account", "準備", "claude.ai に入って、有料プランの画面を確認。", "signup"],
-    webchat: ["cover-chat", "チャット", "Coworkの前に。ブラウザで日本語のお願いを一度。", "webchat"],
+    webchat: ["cover-chat", "チャット", "同じ画面で日本語のお願いを一度。作業もここに入った。", "webchat"],
     poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
     hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
     sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
-    cowork: ["cover-cowork", "Cowork", "やり方ガイドつき。資料・整理・連携から請求書と経費まで。", "cowork"],
-    today: ["cover-cowork", "今日", "10枚・2時間。チャット、初めてのCowork設定、ポータルの作り方・直し方。", "portalpage"],
+    cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
+    today: ["cover-cowork", "今日", "10枚・2時間。同じチャットで会話と作業、ポータルの作り方・直し方。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
     portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
     attend: ["cover-expense", "出退勤", "名前を選んでボタンを押すだけ。記録は消えず、月末はExcel。", "attendapp"],
@@ -1011,34 +1011,34 @@ ${q}
     s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const compareTableHTML = () => `
-      <div class="wrap compare-board" role="region" aria-label="チャット・Cowork・Claude Codeの比較">
+      <div class="wrap compare-board" role="region" aria-label="チャットとClaude Codeの比較">
         <p class="kicker">くらべる</p>
-        <h2 class="compare-board-title">チャット・Cowork・Code</h2>
-        <p class="compare-board-lead">同じClaudeでも、入り口は3つです。迷ったら左から順に。</p>
+        <h2 class="compare-board-title">チャットと Code</h2>
+        <p class="compare-board-lead">以前の Cowork は、今チャットに入っています。別の場所に切り替えなくてよいです。黒い画面の Code だけが別です。</p>
         <div class="compare-cols">
           <article class="compare-col is-chat">
-            <span class="compare-tag">相談</span>
+            <span class="compare-tag">会話と作業</span>
             <h3>チャット</h3>
-            <p class="compare-one">文章で答えてくれる相談相手</p>
+            <p class="compare-one">相談も、資料作成・ファイル出力も同じ画面</p>
             <dl>
-              <div><dt>画面</dt><dd>ブラウザ</dd></div>
-              <div><dt>返ってくるもの</dt><dd>文章</dd></div>
-              <div><dt>向いていること</dt><dd>質問・下書き</dd></div>
-              <div><dt>自分ですること</dt><dd>コピーして使う</dd></div>
+              <div><dt>画面</dt><dd>ブラウザまたはアプリ</dd></div>
+              <div><dt>返ってくるもの</dt><dd>文章、できたページやファイル</dd></div>
+              <div><dt>向いていること</dt><dd>質問・下書き・請求書・整理</dd></div>
+              <div><dt>自分ですること</dt><dd>確認して使う・送る</dd></div>
             </dl>
             <a class="btn-dark" href="#/course/webchat" data-link>チャット入門へ</a>
           </article>
           <article class="compare-col is-cowork">
-            <span class="compare-tag">事務</span>
-            <h3>Cowork</h3>
-            <p class="compare-one">ファイルまで仕上げる作業係</p>
+            <span class="compare-tag">事務の講座</span>
+            <h3>事務（旧Cowork）</h3>
+            <p class="compare-one">やり方は同じチャット。請求書などの型がある</p>
             <dl>
-              <div><dt>画面</dt><dd>アプリの画面</dd></div>
+              <div><dt>画面</dt><dd>チャットのまま</dd></div>
               <div><dt>返ってくるもの</dt><dd>できたファイル</dd></div>
               <div><dt>向いていること</dt><dd>請求書・整理</dd></div>
               <div><dt>自分ですること</dt><dd>確認して送る</dd></div>
             </dl>
-            <a class="btn-dark" href="#/cowork" data-link>Coworkへ</a>
+            <a class="btn-dark" href="#/cowork" data-link>事務の講座へ</a>
           </article>
           <article class="compare-col is-code">
             <span class="compare-tag">道具</span>
@@ -1128,7 +1128,7 @@ ${q}
       howto: ["操作のしかた", "#/howto"],
       guide: ["説明資料", "#/guide"],
       chat: ["チャット", "#/chat"],
-      cowork: ["Claude Cowork", "#/cowork"],
+      cowork: ["チャットで作業", "#/cowork"],
       code: ["Claude Code", "#/code"],
       beginner: ["初級編", "#/beginner"],
       applied: ["応用", "#/applied"],
@@ -1404,7 +1404,7 @@ ${q}
         open: ["webchat", "下が入力欄"],
         ask: ["copy", "コピーして貼って送る"],
         copy: ["copy", "Ctrl＋V または ⌘＋V"],
-        vs: ["compare", "相談はチャット、作業はCowork"],
+        vs: ["webchat", "会話も作業も同じチャット"],
         safety: ["safety", "パスワードは書かない"],
         summary: ["cowork", "次は Cowork"]
       };
@@ -1798,18 +1798,18 @@ ${q}
     const firstId = ids.find((id) => CLASSROOM.courses[id] && percent(id) < 100) || ids[0];
     return `
       <div class="page track-page ${isCowork ? "is-cowork-page" : "is-code-page"}">
-        <p class="kicker">${isCowork ? "COWORK" : "CLAUDE CODE"}</p>
-        <h1>${isCowork ? "Claude Cowork" : "Claude Code"}</h1>
+        <p class="kicker">${isCowork ? "事務" : "CLAUDE CODE"}</p>
+        <h1>${isCowork ? "チャットで作業（旧Cowork）" : "Claude Code"}</h1>
         ${figureHTML(
-          isCowork ? "cowork" : "powershell",
-          isCowork ? "左メニューで Cowork。ファイルまで仕上げる" : "黒い画面に1行貼って、道具をつくる"
+          isCowork ? "webchat" : "powershell",
+          isCowork ? "同じチャットで、ファイルまで仕上げる" : "黒い画面に1行貼って、道具をつくる"
         )}
         <p class="lede">${
           isCowork
-            ? "チャットではなく Cowork を選びます。資料・整理・請求書など、事務を日本語で任せます。PowerShellは使いません。"
+            ? "以前の Cowork は、今このチャットに統合されています。資料・整理・請求書など、事務を日本語で任せます。PowerShellは使いません。別の場所に切り替えなくてよいです。"
             : opts.appliedOnly
               ? "人気順ではありません。かんたんに作れる順です。いちばんやさしいのは投稿文。つづきは集計・経費・請求書、分析、サイト、秘書、最後に使いこなしです。"
-              : "PowerShell（黒い画面）を使います。インストール → 道具づくり、の順です。事務作業は Cowork へ。"
+              : "PowerShell（黒い画面）を使います。インストール → 道具づくり、の順です。事務作業は同じチャットへ。"
         }</p>
         <p class="easy-meta">進度 ${stats.overall}%　読んだ ${stats.done} / ${stats.total}</p>
         <div class="meter" aria-label="このレーンの進度"><span style="--p:${stats.overall}%"></span></div>
@@ -1850,7 +1850,7 @@ ${q}
           <a class="level-gate is-cowork${canSeeCourse("cowork") ? "" : " is-locked"}" href="${canSeeCourse("cowork") ? "#/cowork" : "#/me"}" data-link>
             ${coverArt("cowork")}
             <span class="level-tag">事務・ファイル</span>
-            <h2>Claude Cowork</h2>
+            <h2>チャットで作業</h2>
             <p>${canSeeCourse("cowork") ? "画面で日本語のお願い。黒い画面は使いません。" : "受講コードが必要です。"}</p>
           </a>
           <a class="level-gate is-code${canSeeCourse("code") ? "" : " is-locked"}" href="${canSeeCourse("code") ? "#/code" : "#/me"}" data-link>
@@ -1977,7 +1977,7 @@ ${q}
         <a class="today-spot-card${open ? "" : " is-locked"}" href="${href}" data-link>
           <span class="today-spot-tag">きょうの教室</span>
           <h2>${escapeHtml(course.title)}</h2>
-          <p>10枚・2時間。チャット → 初めての Cowork → ポータルを作る・直す。この1本で一通りできます。</p>
+          <p>10枚・2時間。同じチャットで会話し、同じ画面でポータルを作る・直す。この1本で一通りできます。</p>
           <strong>${open ? `進度 ${p}%` : "受講コードが必要です"}</strong>
           ${open ? thinMeter(p, "meter", "今日の講義の進度") : ""}
           <span class="btn-orange">${label}</span>
@@ -2052,7 +2052,7 @@ ${q}
           <a class="level-gate is-cowork${canSeeCourse("cowork") ? "" : " is-locked"}" href="${canSeeCourse("cowork") ? "#/cowork" : "#/me"}" data-link>
             ${coverArt("cowork")}
             <span class="level-tag">事務・ファイル</span>
-            <h2>Claude Cowork</h2>
+            <h2>チャットで作業</h2>
             <p>${canSeeCourse("cowork") ? "画面で日本語のお願い。黒い画面は使いません。" : "受講コードが必要です。"}</p>
             <strong>進度 ${coworkStats.overall}%</strong>
             <span class="meter"><span style="--p:${coworkStats.overall}%"></span></span>
@@ -2078,8 +2078,8 @@ ${q}
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
-            <h2>Coworkのスタンプ</h2>
-            <a href="#/cowork" data-link>Coworkへ →</a>
+            <h2>事務のスタンプ</h2>
+            <a href="#/cowork" data-link>事務へ →</a>
           </div>
           ${stampBook(COWORK_IDS)}
         </section>
@@ -2096,7 +2096,7 @@ ${q}
             <a href="#/guide" data-link>説明資料 →</a>
           </div>
           <p class="route-lead">人気ランキングではありません。上は事務、下は道具づくり。どちらか一方の道で大丈夫です。</p>
-          <h3 class="route-lane-title">事務の道（Claude Cowork）</h3>
+          <h3 class="route-lane-title">事務の道（同じチャット）</h3>
           <p class="easy-meta">画面で日本語のお願い。黒い画面は使いません。左から右へ、この順です。</p>
           <p class="route-hint phone-only">横にスワイプできます（自動でも進みます）</p>
           <div class="route">
@@ -2156,7 +2156,7 @@ ${q}
         <div class="desk-catalog">
         <div class="lane lane-cowork">
         <div class="section-head">
-          <h2>Claude Cowork</h2>
+          <h2>チャットで作業</h2>
           <a href="#/cowork" data-link>一覧へ →</a>
         </div>
         <div class="course-grid">${cardsFor(COWORK_IDS)}</div>
@@ -2183,7 +2183,7 @@ ${q}
               <span class="point-label">Point1</span>
               ${figureHTML("poster", "迷ったらポスターから")}
               <h3>いちばんやさしいのはポスター</h3>
-              <p>事務は Cowork、道具づくりは Claude Code。混ぜずに、どちらかのレーンから進みます。</p>
+              <p>事務は同じチャット、道具づくりは Claude Code。混ぜずに、どちらかのレーンから進みます。</p>
             </div>
             <div>
               <span class="point-label">Point2</span>
@@ -2598,7 +2598,7 @@ ${q}
           <span class="guide-pick-tag">事務</span>
           <h2>ファイルまで任せたい</h2>
           <p>画面で日本語のお願い。黒い画面は使いません。</p>
-          <p class="guide-pick-tool">使うもの　Claude Cowork</p>
+          <p class="guide-pick-tool">使うもの　同じチャット（以前のCowork）</p>
           <a class="btn-orange" href="#/cowork" data-link>この道で進む</a>
         </article>
         <p class="guide-or">または</p>
@@ -2618,7 +2618,7 @@ ${q}
           ${guideStepHTML("1", "#/course/account", "アカウント", "claude.ai に入る")}
           ${guideStepHTML("2", "#/course/webchat", "チャット", "ブラウザで日本語を1回")}
           ${guideStepHTML("3", "#/course/poster", "ポスター", "いちばんやさしい課題")}
-          ${guideStepHTML("4", "#/course/cowork", "Cowork", "請求書・経費などの本番")}
+          ${guideStepHTML("4", "#/course/cowork", "事務", "請求書・経費などの本番")}
         </ol>
 
         <h2>道具づくりの順番</h2>
@@ -2731,7 +2731,7 @@ ${q}
           <span class="num">1</span>
           <h3>カードを押す</h3>
           ${figureHTML("site", "ホームの色つきカード")}
-          <p>上の2つの箱から選びます。Coworkは事務、Codeはツールづくりです。</p>
+          <p>上の2つの箱から選びます。事務は同じチャット、Codeはツールづくりです。</p>
         </article>
         <article class="op">
           <span class="num">2</span>
@@ -2782,19 +2782,19 @@ ${q}
       </div>
       <p><a class="btn-orange" href="#/course/poster" data-link>ポスター講座へ</a></p>
 
-      <h2>C. Cowork（パソコンのアプリ）</h2>
+      <h2>C. チャットで作業（以前のCowork）</h2>
       <div class="ops">
         <article class="op">
           <span class="num">1</span>
-          <h3>デスクトップを開く</h3>
+          <h3>Claudeを開く</h3>
           ${figureHTML("desktop", "自分のパソコン")}
-          <p>スマホよりパソコンがおすすめです。Claudeのデスクトップアプリを起動します。</p>
+          <p>スマホよりパソコンがおすすめです。claude.ai でもアプリでも、今は同じチャットです。</p>
         </article>
         <article class="op">
           <span class="num">2</span>
-          <h3>Coworkを選ぶ</h3>
-          ${figureHTML("cowork", "左のメニューで Cowork")}
-          <p>チャットではなく「Cowork」をクリックして、新しい作業を始めます。</p>
+          <h3>新しいチャット</h3>
+          ${figureHTML("webchat", "同じ画面で始める")}
+          <p>左に Cowork が無くても探さない。今はチャットの中です。</p>
         </article>
         <article class="op">
           <span class="num">3</span>
@@ -2809,7 +2809,7 @@ ${q}
           <p>できた請求書は、送付の前に必ず自分の目で見ます。</p>
         </article>
       </div>
-      <p><a class="btn-dark" href="#/course/cowork" data-link>Cowork講座へ</a></p>
+      <p><a class="btn-dark" href="#/course/cowork" data-link>事務の講座へ</a></p>
 
       <h2>D. Claude Code（Windows）</h2>
       <div class="ops">
@@ -3463,7 +3463,7 @@ ${q}
   const syncDocMeta = (parts) => {
     const site = "はじめてのClaude 教室｜株式会社 宮田財務";
     let title = site;
-    let desc = "求人ポスター、Claude Cowork、Claude Code を自分のペースで学べる教室サイトです。";
+    let desc = "求人ポスター、チャットでの作業、Claude Code を自分のペースで学べる教室サイトです。";
     if (parts[0] === "me") {
       title = `マイページ｜${site}`;
       desc = "続き・進度・修了証・資料がある、自分の学びの拠点です。";
@@ -3483,7 +3483,7 @@ ${q}
     }
     else if (parts[0] === "safety") title = `安全の約束｜${site}`;
     else if (parts[0] === "prompts") title = `テキストで学ぶ｜${site}`;
-    else if (parts[0] === "cowork") title = `Claude Cowork｜${site}`;
+    else if (parts[0] === "cowork") title = `チャットで作業｜${site}`;
     else if (parts[0] === "code") title = `Claude Code｜${site}`;
     else if (parts[0] === "course" && CLASSROOM.courses[parts[1]]) {
       const c = CLASSROOM.courses[parts[1]];

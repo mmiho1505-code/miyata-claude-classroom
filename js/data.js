@@ -3,7 +3,7 @@ window.CLASSROOM = {
     cowork: {
       id: "cowork",
       title: "はじめての Claude Cowork",
-      subtitle: "やり方ガイドつき。請求書・経費から、資料・連携・定期実行まで",
+      subtitle: "同じチャットで。請求書・経費から、資料・連携・定期実行まで",
       duration: "約55分",
       audience: "経営者・個人事業主／パソコン作業をAIに任せたい人",
       lessons: [
@@ -16,7 +16,7 @@ window.CLASSROOM = {
             <p>チャットは少し使ったことがある方向けの実践講座です。むずかしい設定より、「任せて、ラクをする」体験を大事にします。</p>
             <div class="steps">
               <ol>
-                <li><strong>Coworkが何かわかる</strong> … チャットとの違いと、何を任せられるかを理解する</li>
+                <li><strong>作業を任せるやり方がわかる</strong> … 以前の Cowork は今チャットの中。何を任せられるかを理解する</li>
                 <li><strong>請求書・経費のツールを自分で作れる</strong> … 毎月のひな形作業をAIに指示して仕上げる</li>
                 <li><strong>くり返し作業を自動化する第一歩</strong> … 一度作った手順を毎月くり返し使えるようにする</li>
               </ol>
@@ -29,14 +29,15 @@ window.CLASSROOM = {
           title: "Coworkとは",
           body: `
             <p class="kicker">WHAT</p>
-            <h1>Cowork（コワーク）とは？</h1>
-            <p>Claudeアプリの中にある、パソコンのファイルや作業を<strong>任せられるモード</strong>です。</p>
+            <h1>以前の Cowork は、今チャットの中</h1>
+            <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話でのやり取りも、両方この同じ画面です。別々のアプリや別の場所に切り替える必要はありません。</div>
+            <p>パソコンのファイルや作業を<strong>同じチャットに任せられる</strong>使い方です。</p>
             <ul>
               <li><strong>ファイルを読む・作る</strong> … Excel・Word・PDF・スライドなどを実際に作成</li>
               <li><strong>作業を最後までやる</strong> … 下ごしらえから仕上げ・保存まで代行</li>
               <li><strong>つながる・くり返す</strong> … フォルダやGmail等と連携し、毎月自動でも実行</li>
             </ul>
-            <div class="callout">たとえるなら、チャットは「相談相手」、Coworkは実際に手を動かす「作業アシスタント」です。</div>
+            <div class="callout">たとえるなら、会話で相談し、同じ画面で手を動かす作業アシスタントです。場所は分かれません。</div>
           `
         },
         {
@@ -44,8 +45,8 @@ window.CLASSROOM = {
           title: "チャットとの違い",
           body: `
             <p class="kicker">COMPARE</p>
-            <h1>「チャット」と「Cowork」の違い</h1>
-            <p class="lead">同じ日本語で頼んでも、返ってくるものが違います。チャットは<strong>相談相手</strong>、Coworkは<strong>作業を代行する相棒</strong>です。</p>
+            <h1>会話と作業は、同じチャット</h1>
+            <p class="lead">同じ日本語で頼んでも、返ってくるものが違います。文章の答えも、仕上がったファイルも、<strong>同じ画面</strong>です。以前は後者だけが Cowork と呼ばれていました。</p>
             <div class="vs-board">
               <article class="vs-card is-chat">
                 <span class="vs-badge muted">相談する</span>
@@ -98,7 +99,7 @@ window.CLASSROOM = {
                 <span class="hl" data-label="Cowork" role="cell">手順を保存して毎月</span>
               </div>
             </div>
-            <div class="callout ok">いちばん覚えたいこと：Coworkは「答え」ではなく<strong>仕上がったファイル</strong>で返ってきます。</div>
+            <div class="callout ok">いちばん覚えたいこと：作業を任せると「答え」だけでなく<strong>仕上がったファイル</strong>で返ってきます。場所はチャットのままです。</div>
           `
         },
         {
@@ -124,7 +125,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">MAP</p>
             <h1>コワークでできる4つのこと</h1>
-            <p>黒い画面は不要です。日本語で「〇〇して」と頼むだけです。Codeは本格的な開発、Coworkは日々の事務、という住み分けです。</p>
+            <p>黒い画面は不要です。日本語で「〇〇して」と頼むだけです。Codeは本格的な開発、日々の事務は同じチャット、という住み分けです。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>資料を作る</h3><p>財務資料・セミナー教材・提案書・ひな形</p></article>
               <article class="op"><span class="num">2</span><h3>ファイルを整理する</h3><p>仕分け・PDF検索・集計・文字起こし</p></article>
@@ -320,16 +321,16 @@ window.CLASSROOM = {
           title: "準備（4ステップ）",
           body: `
             <p class="kicker">SETUP</p>
-            <h1>Coworkの始め方</h1>
-            <div data-pic="desktop" data-cap="まずは自分のパソコン（デスクトップ）で作業します"></div>
+            <h1>同じチャットで始める</h1>
+            <div data-pic="desktop" data-cap="まずは自分のパソコンで作業します"></div>
             <ol>
-              <li>Claudeデスクトップアプリを開く（スマホでも使えますが、フォルダ接続はパソコンが便利）</li>
-              <li>「Cowork」を選ぶ。チャットではなくCoworkモードで新しい会話を始める</li>
+              <li>claude.ai または Claude デスクトップアプリを開く（フォルダ接続はパソコンが便利）</li>
+              <li>新しいチャットを始める。左に Cowork が無くても探さない。今はチャットの中です</li>
               <li>自分のパソコンのフォルダを接続する。請求書・経費を入れておくフォルダを許可する</li>
               <li>素材を用意する。ひな形・取引先リスト・明細CSV・レシート画像など</li>
             </ol>
             <div class="ops">
-              <article class="op"><span class="num">2</span><h3>Coworkをクリック</h3><div data-pic="cowork" data-cap="左メニューの Cowork を押す"></div></article>
+              <article class="op"><span class="num">2</span><h3>新しいチャット</h3><div data-pic="webchat" data-cap="同じ画面で始める"></div></article>
               <article class="op"><span class="num">3</span><h3>フォルダを接続</h3><div data-pic="folder" data-cap="作業フォルダを許可する"></div></article>
             </div>
             <div class="callout">フォルダの接続ができていないと、「ファイルが見つからない」と言われます。次の実践の前に、ここを済ませてください。</div>
@@ -350,7 +351,7 @@ window.CLASSROOM = {
               <li>金額・宛名を自分で最終チェックする</li>
             </ol>
             <p>「いつ・どの形式・どこに保存」を具体的に伝えるほど、仕上がりが安定します。</p>
-            <div data-pic="copy" data-cap="下の文の「コピー」を押し、Coworkの入力欄に貼ります"></div>
+            <div data-pic="copy" data-cap="下の文の「コピー」を押し、チャットの入力欄に貼ります"></div>
             <h2>そのままマネできる指示例</h2>
             <div class="code-wrap">
               <button class="copy" type="button">コピー</button>
@@ -446,7 +447,7 @@ window.CLASSROOM = {
             <p class="kicker">SUMMARY</p>
             <h1>今日のまとめと、次の一歩</h1>
             <ol>
-              <li>Coworkは“作業を任せる”モード。資料作成・整理・アプリ連携・定期実行の4つが使い道</li>
+              <li>以前のCoworkは、今チャットで“作業を任せる”使い方。資料作成・整理・アプリ連携・定期実行の4つが使い道</li>
               <li>頼み方は日本語でOK。ゴール・素材・形式を伝える。まずは「今日のメールを整理して」から</li>
               <li>請求書は1社ぶんから。次に経費、最後に自動化。一度決めれば毎朝・毎月がラクになる</li>
             </ol>
@@ -496,7 +497,7 @@ window.CLASSROOM = {
           title: "Coworkとの使い分け",
           body: `
             <p class="kicker">COMPARE</p>
-            <h1>Cowork と Claude Code の違い</h1>
+            <h1>事務のチャット と Claude Code の違い</h1>
             <div class="compare">
               <div>
                 <h3>Cowork</h3>
@@ -1080,10 +1081,10 @@ _</pre>
             <h1>Claude の3つの使い方</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>チャット</h3><p>質問や相談に文章で答えてくれる。いちばん気軽。調べもの・文章作成に。</p></article>
-              <article class="op"><span class="num">2</span><h3>Cowork</h3><p>画面上でファイル作成や整理を代行。クリック中心。事務作業をラクに。</p></article>
+              <article class="op"><span class="num">2</span><h3>チャットで作業</h3><p>画面上でファイル作成や整理を代行。事務作業をラクに。以前の Cowork はここに入った</p></article>
               <article class="op"><span class="num">3</span><h3>Code</h3><p>本格的な制作・開発・自動化。もう一歩先。今日の主役はコレ。</p></article>
             </div>
-            <p>くわしいセットアップは <a href="#/course/code" data-link>Claude Code講座（Windows編）</a>、事務の自動化は <a href="#/course/cowork" data-link>Cowork講座</a> です。</p>
+            <p>くわしいセットアップは <a href="#/course/code" data-link>Claude Code講座（Windows編）</a>、事務は <a href="#/course/cowork" data-link>同じチャットでの作業講座</a> です。</p>
           `
         },
         {
@@ -1517,16 +1518,16 @@ npm run dev</pre>
   quizzes: {
     cowork: [
       {
-        q: "Coworkをたとえると、いちばん近いのはどれですか？",
-        choices: ["文章で相談に乗ってくれる相手", "ファイルを作って仕上げまで動く作業アシスタント", "パソコンのウイルス対策ソフト"],
+        q: "以前の Cowork をたとえると、いちばん近いのはどれですか？",
+        choices: ["文章で相談に乗ってくれる相手", "ファイルを作って仕上げまで動く作業アシスタント（今は同じチャット）", "パソコンのウイルス対策ソフト"],
         a: 1,
-        explain: "チャットは相談相手、Coworkは手を動かす作業アシスタントです。"
+        explain: "会話も作業も、同じ画面です。"
       },
       {
-        q: "チャットと比べた Cowork の最大の違いは？",
-        choices: ["日本語が使えること", "答えではなく、仕上がったファイルで返ってくること", "無料で無制限に使えること"],
+        q: "作業を任せたときの最大の違いは？",
+        choices: ["日本語が使えること", "答えだけでなく、仕上がったファイルで返ってくること", "無料で無制限に使えること"],
         a: 1,
-        explain: "同じお願いでも、Coworkは保存された成果物として返します。"
+        explain: "同じチャットでも、任せる内容によってファイルまで仕上がります。"
       },
       {
         q: "請求書づくりで、仕上がりを安定させる頼み方は？",
@@ -1638,9 +1639,9 @@ npm run dev</pre>
       },
       {
         q: "Claudeの3つの入り口に含まれないものは？",
-        choices: ["チャット", "Cowork", "Excelのマクロ専用ソフト"],
+        choices: ["チャット", "Claude Code", "Excelのマクロ専用ソフト"],
         a: 2,
-        explain: "チャット・Cowork・Codeの3つです。今日の主役はCodeです。"
+        explain: "会話と事務の作業は同じチャット。道具づくりが Code です。今日の主役はCodeです。"
       },
       {
         q: "バイブコーディングの進め方は？",

@@ -20,7 +20,7 @@
             <h1>予定とメールを踏まえて、段取りを組む</h1>
             <p>基礎編で作ったAI秘書（<strong>Claude Code デスクトップ版のフォルダ</strong>）に、Googleカレンダーと Gmail をつなぎます。実際の予定とメールを見て、段取りを組めるようになります。</p>
             <div class="callout">安全のため、メールの<strong>送信・返信・転送はさせない</strong>設定にするのがポイントです。</div>
-            <p>この講座は Claude Code のデスクトップです。ブラウザのチャットだけ、Cowork だけ、では進めません。まだ黒い画面の準備が無い人は、先に <a href="#/course/code" data-link>Windows編</a> または <a href="#/course/codemac" data-link>Mac編</a> です。Webアプリの秘書は、別講座の <a href="#/course/secretary" data-link>秘書アプリの作り方</a> です。</p>
+            <p>この講座は Claude Code のデスクトップです。普通のチャットだけでは足りません。まだ黒い画面の準備が無い人は、先に <a href="#/course/code" data-link>Windows編</a> または <a href="#/course/codemac" data-link>Mac編</a> です。Webアプリの秘書は、別講座の <a href="#/course/secretary" data-link>秘書アプリの作り方</a> です。</p>
           `
       },
       {

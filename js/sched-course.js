@@ -21,7 +21,7 @@
             <p>講師は川口さんです。AIチャットボットの企画職で、元エンジニアです。手を動かすワークショップでした。</p>
             <p>いきなり大きなアプリを作ろうとせず、<strong>毎日必ず発生する小さな作業</strong>から自動化して、まず成功体験を作ります。日程調整は1回の手間が小さくても、年間では約120時間になる、という試算が示されました。</p>
             <div class="callout">Claude の無料プランでも、この4ステップはできます。プロジェクトをチームで共有するには、Team 以上のプランが必要です。無料プランは使用上限にすぐ達しやすいので、途中で止まったら次の日に続ければよいです。</div>
-            <p><a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> を開いて進めます。Cowork や黒い画面は使いません。</p>
+            <p><a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> を開いて進めます。黒い画面（Claude Code）は使いません。</p>
           `
       },
       {

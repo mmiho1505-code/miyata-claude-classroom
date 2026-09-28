@@ -8,9 +8,9 @@
   CLASSROOM.courses.salary = {
     id: "salary",
     title: "出退勤の記録から給料を計算しよう",
-    subtitle: "月末の「時間×時給」の手計算を、Coworkに手伝ってもらう",
+    subtitle: "月末の「時間×時給」の手計算を、チャットに手伝ってもらう",
     duration: "約40分",
-    audience: "Coworkを使う人／総務・給与担当",
+    audience: "チャットで作業する人／総務・給与担当",
     lessons: [
       {
         id: "goal",
@@ -20,7 +20,7 @@
             <h1>帰るときに、この3つができるように</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>そろえる</h3><p>出退勤の記録と、社員ごとの時給・手当をそろえる</p></article>
-              <article class="op"><span class="num">2</span><h3>計算する</h3><p>Coworkに頼んで、給料計算表をExcelで作る</p></article>
+              <article class="op"><span class="num">2</span><h3>計算する</h3><p>チャットに頼んで、給料計算表をExcelで作る</p></article>
               <article class="op"><span class="num">3</span><h3>確かめる</h3><p>電卓で検算し、おかしな数字がないか確認する</p></article>
             </div>
             <p>出退勤アプリの作り方は <a href="#/course/attend" data-link>出退勤管理編</a> です。</p>
@@ -48,7 +48,7 @@
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>取り出す</h3><p>出退勤を取り出す</p></article>
               <article class="op"><span class="num">2</span><h3>条件を用意</h3><p>給与条件を用意</p></article>
-              <article class="op"><span class="num">3</span><h3>頼む</h3><p>Coworkに頼む</p></article>
+              <article class="op"><span class="num">3</span><h3>頼む</h3><p>同じチャットに頼む</p></article>
               <article class="op"><span class="num">4</span><h3>確かめる</h3><p>検算して確かめる</p></article>
               <article class="op"><span class="num">5</span><h3>渡す</h3><p>給与ソフトへ渡す</p></article>
             </div>
@@ -120,7 +120,7 @@
               <li>ファイルが添付されたのを確認して、お願い文と一緒に送る</li>
               <li>できた計算表のファイルを開き、自分のパソコンに保存する</li>
             </ol>
-            <p>給料のフォルダを Cowork につないでおくと、そこに直接保存してもらうこともできます。</p>
+            <p>給料のフォルダを Claude につないでおくと、そこに直接保存してもらうこともできます。</p>
           `
       },
       {

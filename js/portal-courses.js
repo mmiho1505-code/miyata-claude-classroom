@@ -10,7 +10,7 @@
     title: "社内ポータルを作ろう（作り方編）",
     subtitle: "話しかけるだけで、お知らせ・予定・リンク・連絡先の1ページを作る",
     duration: "約30分",
-    audience: "Coworkを使う人／事務・総務・各部署",
+    audience: "チャットで作業を任せる人／事務・総務・各部署",
     lessons: [
       {
         id: "goal",
@@ -23,20 +23,21 @@
               <article class="op"><span class="num">2</span><h3>確かめる</h3><p>パソコンとスマホで、中身が正しいか見る</p></article>
               <article class="op"><span class="num">3</span><h3>見せる</h3><p>社員が開けるリンクを渡す</p></article>
             </div>
-            <div class="callout">プログラミングは不要です。パソコンの Claude アプリで Cowork を開いて、お願いを書くだけです。</div>
+            <div class="callout">プログラミングは不要です。Claude のチャットに、お願いを書くだけです。以前の Cowork は、今この同じ画面に入っています。</div>
           `
       },
       {
         id: "what",
-        title: "チャットと Cowork",
+        title: "同じチャットで作る",
         body: `
             <p class="kicker">違い</p>
-            <h1>今日使うのは「Cowork」です</h1>
+            <h1>会話も作業も、この画面</h1>
+            <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</div>
             <div class="ops">
-              <article class="op"><span class="num">A</span><h3>チャット</h3><p>相談する相手。文章で答えてくれます</p></article>
-              <article class="op"><span class="num">B</span><h3>Cowork</h3><p>作業する相手。ページやファイルまで作ってくれます</p></article>
+              <article class="op"><span class="num">話</span><h3>会話</h3><p>相談する。文章で答えてくれます</p></article>
+              <article class="op"><span class="num">作</span><h3>作業</h3><p>ページやファイルまで作ってくれます。今日はこちら</p></article>
             </div>
-            <p>ポータルは「作ってもらう仕事」なので、<strong>Cowork</strong> を使います。ブラウザのチャット画面ではありません。</p>
+            <p>ポータルは「作ってもらう仕事」なので、同じチャットに「作って」と頼むだけです。</p>
           `
       },
       {
@@ -63,7 +64,7 @@
             <p class="kicker">4ステップ</p>
             <h1>開く → 頼む → 確かめる → 渡す</h1>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>開く</h3><p>パソコンの Claude アプリで Cowork を開く</p></article>
+              <article class="op"><span class="num">1</span><h3>開く</h3><p>claude.ai またはパソコンの Claude で、新しいチャットを開く</p></article>
               <article class="op"><span class="num">2</span><h3>頼む</h3><p>下の見本文を貼って送る</p></article>
               <article class="op"><span class="num">3</span><h3>確かめる</h3><p>出てきたページを、自分の目で見る</p></article>
               <article class="op"><span class="num">4</span><h3>渡す</h3><p>リンクをお気に入りに保存し、社員に共有する</p></article>
@@ -73,16 +74,16 @@
       },
       {
         id: "open",
-        title: "Cowork を開く",
+        title: "チャットを開く",
         body: `
             <p class="kicker">STEP 1</p>
-            <h1>パソコンの Claude アプリを使う</h1>
+            <h1>同じ画面で、新しい会話を始める</h1>
             <ol>
-              <li>パソコンで <strong>Claude のアプリ</strong>を開く（ブラウザの claude.ai ではなく、デスクトップアプリ）</li>
-              <li>左のメニューから <strong>Cowork</strong> を選ぶ</li>
-              <li>新しいタスク（会話）を始める</li>
+              <li>パソコンで <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> を開く。アプリでも同じです</li>
+              <li>新しいチャットを始める</li>
+              <li>左に「Cowork」が無くても探さない。今はチャットの中です</li>
             </ol>
-            <div class="callout">スマホだけでは、この講座の作業はできません。Cowork はパソコンのアプリ側です。</div>
+            <div class="callout">スマホだけだと、できたページの確認がしにくいことがあります。できればパソコンで進めてください。</div>
           `
       },
       {
@@ -91,7 +92,7 @@
         practice: true,
         body: `
             <p class="kicker">STEP 2　練習</p>
-            <h1>この文をコピーして、Cowork に貼る</h1>
+            <h1>この文をコピーして、チャットに貼る</h1>
             <p>まずはこのまま送ります。社名やリンクは、あとから直せます。</p>
             ${box(`当社の社内ポータルを1ページ作ってください。
 
@@ -117,7 +118,7 @@
         body: `
             <p class="kicker">伝え方</p>
             <h1>お願い文に入れると、一発で近づく3つ</h1>
-            <p>オレンジの「コピー」を押すか、黒い枠の文を長押ししてコピーできます。Cowork へのお願い文に貼ってください。</p>
+            <p>オレンジの「コピー」を押すか、黒い枠の文を長押ししてコピーできます。チャットの入力欄に貼ってください。</p>
             <h2>1. 誰が使うか</h2>
             <p>例えば、この1行です。</p>
             ${box(`誰が使うか：全社員が毎朝開く`)}
@@ -149,7 +150,7 @@
         body: `
             <p class="kicker">STEP 3</p>
             <h1>聞かれたら答える。分からなければ「おまかせ」</h1>
-            <p>Cowork が色や項目を聞いてきたら、短く答えて構いません。</p>
+            <p>色や項目を聞いてきたら、短く答えて構いません。</p>
             <div class="ops">
               <article class="op"><span class="num">A</span><h3>分かるとき</h3><p>「お知らせは3件」「内線は3桁」など、知っている範囲で答える</p></article>
               <article class="op"><span class="num">B</span><h3>分からないとき</h3><p>「おまかせで進めて」と書く。仮の内容で作ってくれます</p></article>
@@ -190,7 +191,7 @@
             <table>
               <thead><tr><th>こんなとき</th><th>こうする</th></tr></thead>
               <tbody>
-                <tr><td>Cowork が見当たらない</td><td>ブラウザではなく、パソコンの Claude アプリを開く</td></tr>
+                <tr><td>左に Cowork が無い</td><td>探さない。同じチャットで「作って」と頼む</td></tr>
                 <tr><td>ページができない</td><td>見本文をもう一度、そのまま貼って送る</td></tr>
                 <tr><td>色や配置が違う</td><td>「もっと落ち着いた緑に」「文字を大きく」と具体的に頼む</td></tr>
                 <tr><td>リンクが開けない</td><td>共有（シェア）になっているか確認する</td></tr>
@@ -220,7 +221,7 @@
             <p class="kicker">演習</p>
             <h1>実際に1ページ作ってみましょう</h1>
             <ol>
-              <li>Cowork を開く</li>
+              <li>Claude の新しいチャットを開く</li>
               <li>前のページの見本文を貼って送る</li>
               <li>出てきたページを、パソコンとスマホで見る</li>
               <li>リンクをお気に入りに保存する</li>
@@ -235,7 +236,7 @@
             <p class="kicker">覚えておくこと</p>
             <h1>覚えておくのは、この3つだけ</h1>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>Cowork に頼む</h3><p>チャットではなく、パソコンアプリの Cowork</p></article>
+              <article class="op"><span class="num">1</span><h3>チャットに頼む</h3><p>同じ画面。別の場所へは切り替えない</p></article>
               <article class="op"><span class="num">2</span><h3>見本文を貼る</h3><p>誰が・何を・どんな感じで、が書いてあれば十分</p></article>
               <article class="op"><span class="num">3</span><h3>見てから渡す</h3><p>リンクは変わらない。中身の最終チェックは人の仕事</p></article>
             </div>
@@ -262,7 +263,7 @@
             <h1>この2つを用意しましょう</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>ポータルのリンク</h3><p>前回お気に入りに保存したページ。開けるか確認</p></article>
-              <article class="op"><span class="num">2</span><h3>作ったときの会話</h3><p>Cowork の履歴から、ポータルを作った会話を開く</p></article>
+              <article class="op"><span class="num">2</span><h3>作ったときの会話</h3><p>履歴から、ポータルを作った会話を開く</p></article>
             </div>
             <p>まだ作っていない方は、<a href="#/course/portalmake" data-link>作り方編</a>の見本文で先に1つ作りましょう。</p>
           `
@@ -427,9 +428,9 @@
     portalmake: [
       {
         q: "社内ポータルを作るとき、使うのはどれですか？",
-        choices: ["ブラウザのチャットだけ", "パソコンの Claude アプリの Cowork", "PowerShell"],
+        choices: ["黒い画面（PowerShell）", "同じチャット（以前のCoworkはここに入った）", "必ず別のCoworkアプリ"],
         a: 1,
-        explain: "ページを作る作業は Cowork です。デスクトップアプリの左メニューから開きます。"
+        explain: "会話も作業も、同じ画面です。別の場所に切り替えなくてよいです。"
       },
       {
         q: "お願い文に入れると近づく3つは？",

@@ -15,23 +15,24 @@
   CLASSROOM.courses.today = {
     id: "today",
     title: "今日の講義",
-    subtitle: "10枚。2時間。チャット、初めてのCowork設定、ポータルの作り方・直し方",
+    subtitle: "10枚。2時間。同じチャットで会話と作業。ポータルの作り方・直し方",
     duration: "約120分",
-    audience: "マンツーマン／Coworkが初めての人からポータル担当まで",
+    audience: "マンツーマン／チャットで作業を任せるのが初めての人からポータル担当まで",
     lessons: [
       {
         id: "goal",
         title: "今日の地図",
         body: `
             <p class="kicker">GOAL　0〜10分　1／10</p>
-            <h1>チャット → Cowork → 作る → 直す（2時間・10枚）</h1>
+            <h1>チャットで相談し、同じ画面で作る・直す（2時間・10枚）</h1>
             <p>今日は2時間あります。急がず、待ち時間も使います。途中の講座に飛ばなくても、この1本で一通りできます。</p>
+            <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、<strong>今このチャットに統合</strong>されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</div>
             <table>
               <thead><tr><th>枚</th><th>時間</th><th>区分</th><th>やること</th></tr></thead>
               <tbody>
                 <tr><td>1</td><td>0〜10分</td><td>必須</td><td>今日の地図。ログインできるか確認</td></tr>
                 <tr><td>2</td><td>10〜25分</td><td>必須</td><td>チャット。返事を2回もらう</td></tr>
-                <tr><td>3</td><td>25〜45分</td><td>必須</td><td>Coworkを始める。アプリ・画面・止まったとき</td></tr>
+                <tr><td>3</td><td>25〜45分</td><td>必須</td><td>同じチャットで作業を任せる。画面・止まったとき</td></tr>
                 <tr><td>4</td><td>できれば</td><td>できれば</td><td>Gmail／カレンダー／ドライブ</td></tr>
                 <tr><td>5</td><td>45〜65分</td><td>必須</td><td>ポータルを1ページ作る。確認。休憩</td></tr>
                 <tr><td>6</td><td>70〜90分</td><td>必須</td><td>直し方。追加・移動を2つ。自分の目で確認</td></tr>
@@ -42,18 +43,18 @@
               </tbody>
             </table>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>チャット</h3><p>ブラウザで日本語のお願いを送り、返事をもらう</p></article>
-              <article class="op"><span class="num">2</span><h3>Cowork</h3><p>初めての人はアプリの入れ方から。作業係を開き、ページを作ってもらう</p></article>
+              <article class="op"><span class="num">1</span><h3>会話</h3><p>ブラウザで日本語のお願いを送り、返事をもらう</p></article>
+              <article class="op"><span class="num">2</span><h3>作業</h3><p>同じチャットに「作って」と頼む。ページやファイルまで任せる</p></article>
               <article class="op"><span class="num">3</span><h3>直す</h3><p>同じ会話の続きに「何を・どこへ」と書く</p></article>
             </div>
             <div class="callout">今日の成功は、ポータルを1枚作って、お知らせを1件足せることです。申請や給与は余ったらで構いません。</div>
             <div class="ops">
-              <article class="op"><span class="num">P</span><h3>パソコン</h3><p>今日はパソコンです。スマホだけでは Cowork が足りません</p></article>
+              <article class="op"><span class="num">P</span><h3>パソコン</h3><p>今日はパソコンです。スマホだけだと、できたページの確認がしにくいことがあります</p></article>
               <article class="op"><span class="num">並</span><h3>画面は2つ</h3><p>左にこの教室、右に Claude。コピーして、すぐ貼れるようにする</p></article>
-              <article class="op"><span class="num">@</span><h3>会社のメール</h3><p>チャットも Cowork も、会社の同じメール。個人の Gmail は使わない</p></article>
+              <article class="op"><span class="num">@</span><h3>会社のメール</h3><p>会社の同じメール。個人の Gmail は使わない</p></article>
             </div>
             <p>${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
-            <p>ホームページの例は、Cowork で作った外向けのページです。今日作るのは社内ポータルです。見た目の参考にしてよいです。</p>
+            <p>ホームページの例は、Claude のチャットで作った外向けのページです。今日作るのは社内ポータルです。見た目の参考にしてよいです。</p>
             <p>もっと詳しく読むときは <a href="#/course/webchat" data-link>チャット入門</a>、<a href="#/course/portalmake" data-link>作り方編</a>、<a href="#/course/portalfix" data-link>直し方編</a> へ。</p>
           `
       },
@@ -81,30 +82,29 @@
       },
       {
         id: "install",
-        title: "Coworkを始める",
+        title: "同じチャットで作業",
         body: `
             <p class="kicker">設定　25〜45分　3／10</p>
-            <h1>相談はチャット、作るのは Cowork</h1>
+            <h1>会話も作業も、この同じ画面</h1>
+            <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話でのやり取りも、両方この同じ画面です。別々のアプリや別の場所に切り替える必要はありません。</div>
             <div class="ops">
-              <article class="op"><span class="num">A</span><h3>チャット</h3><p>ブラウザ。答えが文章で返ってくる。相談・下書き向き</p></article>
-              <article class="op"><span class="num">B</span><h3>Cowork</h3><p>パソコンの Claude アプリ。ページやファイルまで作る。実務向き</p></article>
+              <article class="op"><span class="num">話</span><h3>会話</h3><p>質問する、下書きを直す、短く言い換える</p></article>
+              <article class="op"><span class="num">作</span><h3>作業</h3><p>ページやファイルまで任せる。今日のポータルはこちら</p></article>
             </div>
-            <p>社内ポータルは「作ってもらう仕事」なので、ここから先は <strong>Cowork</strong> です。初めてなら、パソコンに Claude アプリを入れます。ブラウザの claude.ai だけでは足りないことがあります。</p>
+            <p>社内ポータルは「作ってもらう仕事」なので、同じチャットに「作って」と頼むだけです。<a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> でも、パソコンの Claude アプリでも、今は同じチャットです。フォルダや大きなファイルを触るときは、パソコンのアプリが扱いやすいことがあります。</p>
             <ol>
-              <li>パソコンのブラウザで <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> を開く</li>
-              <li>Windows なら Windows 用、Mac なら macOS 用を入れて、インストールする</li>
-              <li>アプリを開き、claude.ai と<strong>同じメール</strong>でログインする</li>
-              <li>左から <strong>Cowork</strong> を選ぶ（Chat のまま始めない）</li>
-              <li><strong>新しいタスク</strong>（新しい会話）を1つ始める</li>
+              <li>パソコンで <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> を開く。アプリが無ければ <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> から入れてもよい</li>
+              <li>claude.ai と<strong>同じメール</strong>でログインする</li>
+              <li><strong>新しいチャット</strong>を1つ始める。別の場所へは移動しない</li>
             </ol>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>同じアカウント</h3><p>チャットで使ったメールと同じ。別の Google だとログインできません</p></article>
-              <article class="op"><span class="num">2</span><h3>有料プラン</h3><p>Cowork を使うには、多くの場合 Pro などの有料プランが必要です。<a href="#/course/account" data-link>プランの確認</a></p></article>
+              <article class="op"><span class="num">1</span><h3>同じアカウント</h3><p>今まで使ったメールと同じ。別の Google だとログインできません</p></article>
+              <article class="op"><span class="num">2</span><h3>有料プラン</h3><p>ページを作る作業は、多くの場合 Pro などの有料プランが必要です。<a href="#/course/account" data-link>プランの確認</a></p></article>
               <article class="op"><span class="num">3</span><h3>フォルダ</h3><p>今日のポータルだけなら、先に文を貼ってよい。請求書・経費のときはフォルダを先に許可する</p></article>
             </div>
-            <p>すでにアプリが入っている人は、開いて Cowork の新しいタスクまで来れば十分です。</p>
+            <p>すでに開いている人は、新しいチャットまで来れば十分です。</p>
             <div class="callout">この先の作り方・直しまで、同じ会話を使います。途中で新しい会話に切り替えないでください。「許可しますか」と出たら、今日使うものだけ許可します。</div>
-            <h2>Coworkでできること</h2>
+            <h2>同じチャットでできること（以前のCowork）</h2>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>ページや資料を作る</h3><p>社内ポータル、ホームページ、請求書、Excel、PDF、スライド</p></article>
               <article class="op"><span class="num">2</span><h3>ファイルを読む・整理する</h3><p>フォルダの中を仕分け、名前をそろえる、集計する</p></article>
@@ -112,18 +112,14 @@
               <article class="op"><span class="num">4</span><h3>同じ会話で直す</h3><p>「〇〇を△△に」と続ける。手順を残して毎月くり返すこともできる</p></article>
             </div>
             <div class="callout">今日のポータル作りで使うのは 1 と 4 です。Gmail・カレンダー・ドライブは次のページ（つながると、メール・予定・資料をいちいち貼らなくてよい）。ポータルには必須ではありません。</div>
-            <p>詳しい事務の例は <a href="#/course/cowork" data-link>はじめての Cowork</a> にあります。</p>
+            <p>詳しい事務の例は <a href="#/course/cowork" data-link>はじめての Cowork（事務）</a> にあります。やり方は、今のチャットと同じです。</p>
             <h2>初めて開いたときの、見る場所</h2>
             <div class="qa">
-              <p class="qa-q">左のメニュー</p>
-              <p>Chat と Cowork を切り替える。今日は Cowork。</p>
+              <p class="qa-q">新しいチャット</p>
+              <p>作業を1つ始める場所。今日はここで始める。別メニューへは行かない。</p>
             </div>
             <div class="qa">
-              <p class="qa-q">新しいタスク</p>
-              <p>Cowork を選んだあと、作業を1つ始めるボタン。今日はここで始める。Chat のまま始めない。</p>
-            </div>
-            <div class="qa">
-              <p class="qa-q">会話（タスク）の一覧</p>
+              <p class="qa-q">会話の一覧</p>
               <p>前の作業に戻る。ポータルを直すときは、作った会話を開く。</p>
             </div>
             <div class="qa">
@@ -182,8 +178,8 @@
               <p>パソコンのブラウザで <a href="https://claude.ai/download" target="_blank" rel="noopener">Claude を入れる</a>。Windows 用か Mac 用かを選ぶ。</p>
             </div>
             <div class="qa">
-              <p class="qa-q">Cowork が見当たらない</p>
-              <p>ブラウザの claude.ai ではなく、<strong>パソコンの Claude アプリ</strong>を開く。左のメニューから Cowork。</p>
+              <p class="qa-q">左に Cowork が無い</p>
+              <p>探さなくてよいです。以前の Cowork は、今このチャットに入っています。新しいチャットで「作って」と頼んでください。</p>
             </div>
             <div class="qa">
               <p class="qa-q">ログインできない</p>
@@ -300,7 +296,7 @@
         body: `
             <p class="kicker">作る　45〜65分　5／10　練習</p>
             <h1>土台の1ページを頼む</h1>
-            <p>誰が使うか・何を載せるか・どんな感じかを、最初に書いておくと直す回数が減ります。下をコピーして Cowork に貼ります。</p>
+            <p>誰が使うか・何を載せるか・どんな感じかを、最初に書いておくと直す回数が減ります。下をコピーして、今のチャットに貼ります。</p>
             ${box(`当社の社内ポータルを1ページ作ってください。社名は「株式会社 宮田財務」です。
 
 載せたいもの
@@ -318,7 +314,7 @@
 できたら、社員が開けるリンクをください。`)}
             <p>分からないことを聞かれたら、短く答えるか「おまかせで進めて」で大丈夫です。</p>
             <p>送れなければ、もう一度教室の「コピー」を押します。実際の例：${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
-            <h2>Cowork が作っているあいだに</h2>
+            <h2>Claude が作っているあいだに</h2>
             <p>ページができるまで、2〜10分かかることがあります。その間に下をやります。できたら画面を閉じずに待ちます。</p>
             <ol>
               <li>社名・日付・リンク・スマホの4つを、あとで見るメモにする</li>
@@ -347,7 +343,7 @@
             </div>
             <div class="callout">本物のお知らせや名簿は、ページができてから渡します。今はサンプルのままで進めて構いません。リンクが出たら、お気に入りに保存してから確認します。リンクがまだなら、機能追加には進みません。あとから中身を直しても、アドレスは変わりません。</div>
             <h2>休憩（5分）</h2>
-            <p>席を立ってよい時間です。Cowork の会話は閉じないでください。戻ったら、同じ会話の続きから直します。</p>
+            <p>席を立ってよい時間です。今の会話は閉じないでください。戻ったら、同じ会話の続きから直します。</p>
             <ul>
               <li>トイレ・水・姿勢を直す</li>
               <li>リンクがお気に入りにあるか、もう一度見る</li>
@@ -363,7 +359,7 @@
             <p class="kicker">直す　70〜90分　6／10　練習</p>
             <h1>ページの中をいじらず、話しかける</h1>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>会話に戻る</h3><p>ポータルを作った Cowork の会話を開く</p></article>
+              <article class="op"><span class="num">1</span><h3>会話に戻る</h3><p>ポータルを作ったチャットを開く</p></article>
               <article class="op"><span class="num">2</span><h3>頼む</h3><p>「〇〇を△△に変えて」と送る</p></article>
               <article class="op"><span class="num">3</span><h3>開き直す</h3><p>ページを再読み込みすると、直った状態になる</p></article>
             </div>
@@ -478,7 +474,7 @@
             <h1>チャットから、ポータルの直し方まで</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>チャット</h3><p>相談はブラウザ。日本語で1回、返事をもらう</p></article>
-              <article class="op"><span class="num">2</span><h3>Coworkで作る</h3><p>アプリを入れてログイン。左から Cowork。モデルは Opus、Effort は高め。同じ会話に貼って、ページを作る</p></article>
+              <article class="op"><span class="num">2</span><h3>同じ画面で作る</h3><p>モデルは Opus、Effort は高め。同じ会話に貼って、ページを作る</p></article>
               <article class="op"><span class="num">3</span><h3>続きで直す</h3><p>「何を・どこへ」と書く。移動もドラッグしない</p></article>
             </div>
             <h2>使い始める前に</h2>
@@ -495,7 +491,7 @@
             <p>${sampleLink("社内ポータルの見本")}　${hpLink("会社のホームページの例")}</p>
             <div class="qa">
               <p class="qa-q">明日、どこを開く</p>
-              <p>パソコンの Claude アプリ → 左の Cowork → 今日作った会話。新しいタスクは開かない。</p>
+              <p>claude.ai またはパソコンの Claude アプリ → 今日作った会話。新しいチャットは開かない。</p>
             </div>
             <div class="qa">
               <p class="qa-q">リンクの扱い</p>
@@ -515,16 +511,16 @@
   Object.assign(CLASSROOM.quizzes, {
     today: [
       {
-        q: "チャットと Cowork の役割は？",
-        choices: ["どちらも黒い画面", "チャットは相談（文章）、Coworkは作業（ページやファイル）", "Coworkはスマホ専用"],
+        q: "以前の Cowork は、今どこで使いますか？",
+        choices: ["必ず黒い画面", "同じチャットの中。別の場所に切り替えなくてよい", "スマホ専用の別アプリ"],
         a: 1,
-        explain: "ポータルを作る・直すのは Cowork です。"
+        explain: "資料作成も会話も、同じ画面です。"
       },
       {
-        q: "初めて Cowork を使うとき、最初にすることは？",
-        choices: ["スマホのブラウザで開く", "パソコンに Claude アプリを入れ、同じメールでログインする", "黒い画面でコマンドを打つ"],
+        q: "ポータルを作るとき、最初にすることは？",
+        choices: ["スマホだけで全部やる", "新しいチャットを開き、お願い文を貼って送る", "黒い画面でコマンドを打つ"],
         a: 1,
-        explain: "Cowork はパソコンのアプリです。claude.ai と同じアカウントで入ります。"
+        explain: "claude.ai と同じアカウントで入り、同じ会話で作ります。"
       },
       {
         q: "今日のポータル作りで、モデルと Effort は？",
@@ -558,7 +554,7 @@
       },
       {
         q: "パスワードや口座番号は？",
-        choices: ["チャットにも Cowork にも書かない", "管理画面なら書いてよい", "お知らせに載せる"],
+        choices: ["チャットに書かない", "管理画面なら書いてよい", "お知らせに載せる"],
         a: 0,
         explain: "秘密の数字は渡しません。"
       }
