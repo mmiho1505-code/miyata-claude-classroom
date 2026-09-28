@@ -25,7 +25,7 @@
               <article class="op"><span class="num">育</span><h3>育て方</h3><p>足りない行を1つ足す。長くしすぎない</p></article>
             </div>
             <div class="callout">ゼロから自分で書かなくて大丈夫です。Claude に質問させてから作ってもらいます。黒い画面で <code>claude</code> と打ったあと、下のお願い文を貼ります。</div>
-            <p>まだ入れていない人は、先に <a href="#/course/code" data-link>Windows編</a> か <a href="#/course/codemac" data-link>Mac編</a> です。Skills や Rules まで進む人は、あとで <a href="#/course/applied" data-link>応用編</a> へ。</p>
+            <p>まだ入れていない人は、先に <a href="#/course/code" data-link>Windows編</a> か <a href="#/course/codemac" data-link>Mac編</a> です。座学の意味だけ先に知りたい人は <a href="#/course/mdbase" data-link>CLAUDE.mdの基礎</a> です。Skills や Rules まで進む人は、あとで <a href="#/course/applied" data-link>応用編</a> へ。</p>
           `
       },
       {

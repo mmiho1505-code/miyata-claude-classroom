@@ -120,11 +120,11 @@
       link: "著作権と利用規約"
     },
     {
-      keys: ["claude.md", "claudemd", "claude md", "ルールブック", "/init", "/memory"],
+      keys: ["claude.md", "claudemd", "claude md", "ルールブック", "/init", "/memory", "業務マニュアル", "マークダウン", "markdown"],
       answer:
-        "CLAUDE.md はフォルダいちばん上のルールブックです。ファイル名は大文字の CLAUDE.md。秘密は書かない。先に質問させて作るか、/init で下書き。足したら /memory で読まれているか見ます。",
-      href: "#/course/claudemd",
-      link: "CLAUDE.md の作り方"
+        "CLAUDE.md は Claude Code に渡す業務マニュアルです。起動のたびに自動で読みます。必須ではありません。/init で下書きできます。座学は基礎（約5分）、手を動かすのは作り方です。",
+      href: "#/course/mdbase",
+      link: "CLAUDE.mdの基礎"
     },
     {
       keys: ["秘書+", "Desktop", "送信ブロック", "ツールの権限", "ChatWork"],
