@@ -1437,7 +1437,7 @@ ${q}
         goal: ["site", "11枚。同じチャット → 作る → 直す"],
         chat: ["webchat", "日本語で返事をもらう"],
         install: ["desktop", "OpusとEffort、できた画面"],
-        cursorcode: ["copy", "拡張と、ターミナルに自分で貼る"],
+        cursorcode: ["copy", "入れる・フォルダを開く・claude"],
         gmail: ["copy", "つなぐとメール・予定・資料が手元に"],
         one: ["portalpage", "土台の1ページを作る"],
         promptwork: ["copy", "同じ会話の続きで直す"],

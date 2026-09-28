@@ -33,7 +33,7 @@
                 <tr><td>1</td><td>0〜10分</td><td>必須</td><td>今日の地図。ログインできるか確認</td></tr>
                 <tr><td>2</td><td>10〜25分</td><td>必須</td><td>チャット。返事を2回もらう</td></tr>
                 <tr><td>3</td><td>25〜45分</td><td>必須</td><td>同じチャットで作業を任せる。画面・止まったとき</td></tr>
-                <tr><td>4</td><td>できれば</td><td>できれば</td><td>Cursor に Claude Code。拡張と、ターミナルに自分で貼る</td></tr>
+                <tr><td>4</td><td>できれば</td><td>できれば</td><td>Claude Code。Node.js または公式の1行。フォルダを開いて claude</td></tr>
                 <tr><td>5</td><td>できれば</td><td>できれば</td><td>Gmail／カレンダー／ドライブ</td></tr>
                 <tr><td>6</td><td>45〜65分</td><td>必須</td><td>ポータルを1ページ作る。確認。休憩</td></tr>
                 <tr><td>7</td><td>70〜90分</td><td>必須</td><td>直し方。追加・移動を2つ。自分の目で確認</td></tr>
@@ -222,68 +222,68 @@
         title: "Cursor に Claude Code",
         practice: true,
         body: `
-            <p class="kicker">設定　できれば　10分　4／11　練習</p>
-            <h1>Cursor の中に、Claude Code を入れる</h1>
-            <p>Cursor（カーソル）は、フォルダを開いて日本語で道具をつくる画面です。今日の社内ポータルは <strong>claude.ai の同じチャット</strong>でも作れます。このページは、Cursor で Claude Code を使う人向けです。ポータルだけ進む人は、飛ばしてよいです。</p>
-            <div class="callout warn">Claude Code は無料プランでは使えません。先に <a href="#/course/account" data-link>有料プラン</a> を確認します。会社のパソコンでインストールが止められたら、無理に突破しません。</div>
-            <div class="ops">
-              <article class="op"><span class="num">別</span><h3>別の道具</h3><p>Cursor の自分のチャットと、Claude Code は別です。今日入れるのは Anthropic の「Claude Code」です</p></article>
-              <article class="op"><span class="num">同</span><h3>同じメール</h3><p>claude.ai で使っている、会社の有料アカウントで入ります</p></article>
-              <article class="op"><span class="num">貼</span><h3>自分で貼る</h3><p>拡張機能と、ターミナルに1行貼る、の両方をやります。教室の「コピー」を使います</p></article>
-            </div>
-            <h2>1. Cursor を入れる</h2>
+            <p class="kicker">設定　できれば　15分　4／11　練習</p>
+            <h1>Claude Code を入れる（最初の1回だけ）</h1>
+            <p>Cursor（カーソル）の中で、日本語のお願いからファイルを作る道具です。今日の社内ポータルは <strong>claude.ai の同じチャット</strong>でも作れます。ポータルだけ進む人は、飛ばしてよいです。</p>
+            <div class="callout warn">無料プランでは使えません。Pro / Max などの <a href="#/course/account" data-link>有料プラン</a> です。会社のパソコンで止められたら、無理に突破しません。</div>
+            <p>貼る前に、ターミナルを<strong>一度クリック</strong>します。くわしくは <a href="#/course/faq/paste" data-link>貼り付けできない</a>。</p>
+            <h2>① Claude Code を入れる（最初の1回だけ）</h2>
+            <p>講座と同じく、<strong>Node.js を使う方法</strong>です。</p>
             <ol>
-              <li>パソコンのブラウザで <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> を開く</li>
-              <li>Download から、Windows 用か Mac 用かを選んで入れる</li>
-              <li>起動したら、案内に沿ってログインする</li>
+              <li><a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> から <strong>LTS</strong> を入れてインストールする</li>
+              <li>ターミナルをクリックして、下を貼り、Enter。数字が出ればOK</li>
             </ol>
-            <p>すでに Cursor がある人は、起動できれば十分です。</p>
-            <h2>2. 拡張機能「Claude Code」を入れる</h2>
-            <p>公式の案内は <a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener">Claude Code（VS Code / Cursor）</a> です。「Install for Cursor」があれば、それを押します。</p>
-            <ol>
-              <li>Cursor を開く</li>
-              <li>拡張機能を開く。Windows は <kbd>Ctrl</kbd>＋<kbd>Shift</kbd>＋<kbd>X</kbd>。Mac は <kbd>⌘</kbd>＋<kbd>Shift</kbd>＋<kbd>X</kbd>。左の四角が並んだアイコンでも同じです</li>
-              <li>検索に <strong>Claude Code</strong> と入れる</li>
-              <li><strong>Anthropic</strong> の「Claude Code」を選んで Install（インストール）</li>
-            </ol>
-            <p>入ったあとにアイコンが見えなければ、コマンドパレットを開きます。Windows は <kbd>Ctrl</kbd>＋<kbd>Shift</kbd>＋<kbd>P</kbd>。Mac は <kbd>⌘</kbd>＋<kbd>Shift</kbd>＋<kbd>P</kbd>。「Claude Code」と打って、<strong>Open in New Tab</strong>（新しいタブで開く）を選びます。それでも見えなければ「Developer: Reload Window」（ウィンドウを再読み込み）です。</p>
-            <p>火花（きらきら）のマーク、または左の Claude Code を押してパネルを開きます。初めてなら <strong>Sign in</strong>（ログイン）→ ブラウザで、claude.ai と<strong>同じ会社のメール</strong>。パスワードはそこに自分で入れます。教室の入力欄には書きません。</p>
-            <h2>3. 自分でターミナルに貼る（拡張と両方やる）</h2>
-            <p>拡張機能を入れた人も、入れてない人も、ここをやります。先生も受講者も、同じ文を<strong>自分のターミナルに貼ります</strong>。貼っただけでは動きません。Enter までです。</p>
-            <div class="callout warn">行の取り違えに注意。行頭が <code>%</code> や <code>zsh</code>、<code>user@MacBook</code> なら <strong>Mac</strong> です。Mac に <code>irm</code> の行を貼ると、<code>zsh: command not found: irm</code> と出ます。そのときは Windows 用です。すぐ下の <strong>Mac の1行</strong>を貼り直してください。</div>
-            <p>貼り方はいつも同じです。くわしくは <a href="#/course/faq/paste" data-link>貼り付けできない</a>。</p>
-            <ol>
-              <li>Cursor のメニュー「ターミナル」→「新しいターミナル」。下に黒い（または白い）画面が出ます</li>
-              <li>その画面を<strong>一度クリック</strong>する。クリックしないと貼れません</li>
-              <li>画面の行頭を見る。<code>%</code> なら Mac（上の枠）。<code>PS</code> なら Windows（下の枠）</li>
-              <li>自分の枠だけ「コピー」を押す。もう一方は貼らない</li>
-              <li>ターミナルに貼る。Mac は ⌘＋V。Windows は右クリック、または Ctrl＋V</li>
-              <li>Enter を押す。終わるまで待つ</li>
-            </ol>
-            <p><strong>Mac用</strong>（行頭が <code>%</code>。この1行だけ）</p>
+            ${box(`node -v`)}
+            <p><code>v22.x.x</code> のように数字が出れば成功です。出なければ、入れたあとターミナルを一度閉じて開き直します。</p>
+            <p>つづいて Claude Code を入れます。</p>
+            ${box(`npm install -g @anthropic-ai/claude-code`)}
+            <p>Mac で <code>permission denied</code>（許可がありません）と出たら、先頭に <code>sudo</code> を付けてやり直します。Mac にログインするときのパスワードです。画面には出ません。教室には書きません。</p>
+            ${box(`sudo npm install -g @anthropic-ai/claude-code`)}
+            <p>Node.js を使わない公式の方法もあります。現在はこちらが推奨です。行頭が <code>%</code> なら Mac。<code>PS</code> なら Windows。取り違えないでください。</p>
+            <p><strong>Mac用</strong>（行頭が <code>%</code>）</p>
             ${box(`curl -fsSL https://claude.ai/install.sh | bash`)}
-            <p><strong>Windows用</strong>（行頭が <code>PS</code>。Mac の <code>%</code> には貼らない）</p>
+            <p><strong>Windows用</strong>（行頭が <code>PS</code>。Mac には貼らない）</p>
             ${box(`irm https://claude.ai/install.ps1 | iex`)}
-            <p>途中でパスワードを聞かれたら、パソコンにログインするときのパスワードです。画面には出ません。打ち終わって Enter です。教室には書きません。</p>
-            <p>終わったら、ターミナルを一度閉じて、もう一度「新しいターミナル」を開きます。画面をクリックしてから、下をコピーして貼り、Enter します。</p>
-            ${box(`claude`)}
-            <p>ブラウザが開いたら、claude.ai と<strong>同じ会社の有料アカウント</strong>でログインします。パスワードはそこに自分で入れます。</p>
-            <p>詳しい画面の違いだけ見たい人は <a href="#/course/code" data-link>Windows編</a> と <a href="#/course/codemac" data-link>Mac編</a> です。</p>
-            <h2>できたか試す</h2>
-            <p>ターミナルに <code>claude</code> と出ている入力欄、または拡張のパネルに、下を<strong>自分で貼って</strong>送ります。先に入力欄をクリックしてから貼ります。</p>
-            ${box(`このフォルダに何が入っているか、初心者にも分かるように3行で説明してください。まだファイルは作らないでください。`)}
-            <p>3行返ってきたら成功です。削除・送信・公開はしません。続きのルールブックは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。</p>
             <div class="qa">
               <p class="qa-q">zsh: command not found: irm</p>
-              <p>Mac です。Windows の行を貼っています。上の <strong>Mac の1行</strong>（curl から始まる）をコピーして貼り直す</p>
+              <p>Mac です。Windows 用を貼っています。上の Mac 用（curl）を貼り直す</p>
             </div>
+            <p>画面でも使いたい人は、拡張機能の「Claude Code」（Anthropic）を入れます。公式は <a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener">Install for Cursor</a>。Cursor が無ければ <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> から入れます。</p>
+            <h2>② 作業フォルダを開いて起動する</h2>
+            <ol>
+              <li>Cursor の「ファイル」→「フォルダーを開く」で、作業用フォルダを選ぶ</li>
+              <li>中身の確認は Windows は <kbd>Ctrl</kbd>＋<kbd>B</kbd>、Mac は <kbd>⌘</kbd>＋<kbd>B</kbd></li>
+              <li>「ターミナル」→「新しいターミナル」。画面をクリックしてから、下を貼って Enter</li>
+            </ol>
+            ${box(`claude`)}
+            <p>初回はブラウザが開きます。Claude のアカウント（Pro / Max）でログインします。パスワードはブラウザに自分で入れます。</p>
+            <p>Windows の黒い画面だけの人は <a href="#/course/code" data-link>Windows編</a>。Mac のターミナルだけの人は <a href="#/course/codemac" data-link>Mac編</a>。</p>
+            <h2>③ よく使うコマンド</h2>
+            <table>
+              <thead><tr><th>入力</th><th>意味</th></tr></thead>
+              <tbody>
+                <tr><td><code>claude</code></td><td>起動する</td></tr>
+                <tr><td><code>claude --version</code></td><td>バージョンを確認する</td></tr>
+                <tr><td><code>claude update</code></td><td>最新版に更新する</td></tr>
+                <tr><td><code>/init</code></td><td>そのフォルダの説明書（CLAUDE.md）を自動で作る</td></tr>
+                <tr><td><code>/model</code></td><td>モデルを切り替える</td></tr>
+                <tr><td><code>/clear</code></td><td>会話をリセットする</td></tr>
+                <tr><td><code>/exit</code> または Ctrl＋C を2回</td><td>終了する</td></tr>
+              </tbody>
+            </table>
+            <p><code>/init</code> のあとの育て方は <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。</p>
+            <h2>④ 起動後の最初の依頼例</h2>
+            <p>入力欄をクリックしてから貼ります。ファイルを作ったり変えたりする前に、確認が出ます。内容を見てから承認します。送る・消す・公開はしません。</p>
+            ${box(`このフォルダに、宮田財務の紹介用の1ページのWebサイトを作って。
+index.html 1つで、スマホでも見やすくして。`)}
+            <div class="callout">インストールの方法は更新されることがあります。うまくいかないときは <a href="https://code.claude.com/docs" target="_blank" rel="noopener">Claude Code の公式案内</a>（docs.claude.com の Claude Code）で最新を確認します。エラーは、画面の文字をそのまま残して相談します。自分で突破しません。</div>
             <div class="qa">
               <p class="qa-q">貼れない</p>
-              <p>ターミナルを一度クリックしてから貼る。貼ったあと Enter。<a href="#/course/faq/paste" data-link>貼り付けできない</a></p>
+              <p>ターミナルを一度クリックしてから貼る。貼ったあと Enter</p>
             </div>
             <div class="qa">
-              <p class="qa-q">拡張に Claude Code が無い</p>
-              <p>公式ページの「Install for Cursor」を試す。ターミナルへの貼り付けは、拡張が無くてもやる</p>
+              <p class="qa-q">node -v が出ない</p>
+              <p>LTS を入れたあと、ターミナルを閉じて開き直す</p>
             </div>
             <div class="qa">
               <p class="qa-q">ログインできない</p>
@@ -292,10 +292,6 @@
             <div class="qa">
               <p class="qa-q">会社で止められる</p>
               <p>無理に突破しない。<a href="#/course/faq/net" data-link>社内ルール</a>。ポータル作りへ進んでよい</p>
-            </div>
-            <div class="qa">
-              <p class="qa-q">英語の画面</p>
-              <p>言葉を暗記しなくてよい。「今の画面の言葉を、そのまま書いて案内して」と送る</p>
             </div>
             <div class="callout">時間がないときは、ここまでで止めて「ポータルを作る」へ。今日の成功は、ポータル1枚です。</div>
           `
@@ -560,7 +556,7 @@
               <article class="op"><span class="num">1</span><h3>チャット</h3><p>相談はブラウザ。日本語で1回、返事をもらう</p></article>
               <article class="op"><span class="num">2</span><h3>同じ画面で作る</h3><p>モデルは Opus、Effort は高め。同じ会話に貼って、ページを作る</p></article>
               <article class="op"><span class="num">3</span><h3>続きで直す</h3><p>「何を・どこへ」と書く。移動もドラッグしない</p></article>
-              <article class="op"><span class="num">4</span><h3>Cursor</h3><p>拡張と、ターミナルに自分で貼る。貼る前に画面をクリック</p></article>
+              <article class="op"><span class="num">4</span><h3>Claude Code</h3><p>最初の1回だけ入れる。フォルダを開いて claude。確認してから承認</p></article>
             </div>
             <h2>使い始める前に</h2>
             ${box(`使い始める前に、足りない点や注意点を教えてください。`)}
@@ -638,10 +634,10 @@
         explain: "機能が増えるたびに並びが変わるので、見た目は最後です。"
       },
       {
-        q: "Cursor に Claude Code を入れるとき、正しいのは？",
-        choices: ["無料プランのまま拡張だけ探す", "拡張機能を入れ、自分でもターミナルをクリックして1行を貼り Enter する。同じ有料アカウントでログイン", "ポータルのリンクを SNS に載せる"],
+        q: "Claude Code を入れるとき、正しいのは？",
+        choices: ["無料プランのまま irm を Mac に貼る", "node -v で数字を見てから入れるか、公式の Mac／Windows の1行を使う。起動は作業フォルダで claude", "確認を出さずに全部自動で公開する"],
         a: 1,
-        explain: "貼る前にターミナルをクリックします。会社で止められたら無理に突破しません。"
+        explain: "ファイルを変える前の確認は見てから承認します。Mac に irm は貼りません。"
       },
       {
         q: "パスワードや口座番号は？",
