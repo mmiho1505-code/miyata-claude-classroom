@@ -24,7 +24,7 @@
     {
       keys: ["not found", "認識", "command not found", "claudeが", "見つから", "doctor"],
       answer:
-        "インストールした直後は、PowerShell やターミナルを全部閉じて、新しく開き直してから claude と打ってください。まだなら、Windows編または Mac編の1行をもう一度貼ります。確認は claude doctor です。",
+        "入れた直後は、今のターミナルを閉じて新しく開き、claude だけ打ってください。Mac で cou と出たら打ち間違いです。command not found: claude なら source ~/.zshrc のあと claude。まだなら公式の1行（Mac は curl、Windows は irm）をもう一度。確認は claude doctor です。",
       href: "#/course/faq/notfound",
       link: "claude が認識されない"
     },

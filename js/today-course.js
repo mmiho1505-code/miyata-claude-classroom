@@ -257,6 +257,7 @@
               <li>「ターミナル」→「新しいターミナル」。画面をクリックしてから、下を貼って Enter</li>
             </ol>
             ${box(`claude`)}
+            <p>入れた直後は、今のターミナルを閉じて「新しいターミナル」を開き、画面をクリックしてから、上の <code>claude</code> だけ貼ります。<code>irm</code> や <code>cou</code> は貼りません。</p>
             <p>初回はブラウザが開きます。Claude のアカウント（Pro / Max）でログインします。パスワードはブラウザに自分で入れます。</p>
             <p>Windows の黒い画面だけの人は <a href="#/course/code" data-link>Windows編</a>。Mac のターミナルだけの人は <a href="#/course/codemac" data-link>Mac編</a>。</p>
             <h2>③ よく使うコマンド</h2>
@@ -281,6 +282,10 @@ index.html 1つで、スマホでも見やすくして。`)}
             <div class="qa">
               <p class="qa-q">貼れない</p>
               <p>ターミナルを一度クリックしてから貼る。貼ったあと Enter</p>
+            </div>
+            <div class="qa">
+              <p class="qa-q">claude と打つとエラー / command not found: claude</p>
+              <p>入れた直後は、ターミナルを閉じて「新しいターミナル」を開き、画面をクリックしてから <code>claude</code> だけ打つ。<code>cou</code> は打ち間違い（画面の折り返し）です</p>
             </div>
             <div class="qa">
               <p class="qa-q">node -v を入れてないとだめ？</p>
