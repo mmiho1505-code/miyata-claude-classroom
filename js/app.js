@@ -321,9 +321,7 @@ ${q}
     const why =
       toolOf(id) === "cowork"
         ? "事務は同じチャットです。"
-        : id === "code" || id === "codemac"
-          ? "次は Claude Code（道具づくり）です。"
-          : "やさしい順の、次の講座です。";
+        : "やさしい順の、次の講座です。";
     return { id, course, why };
   };
 
@@ -930,8 +928,7 @@ ${q}
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
     const pickOrder = ["today", "webwords", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
-      COWORK_IDS.filter((id) => id !== "today"),
-      CODE_IDS
+      COWORK_IDS.filter((id) => id !== "today")
     );
     for (const id of pickOrder) {
       if (!CLASSROOM.courses[id] || !canSeeCourse(id)) continue;
@@ -1024,10 +1021,10 @@ ${q}
     s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const compareTableHTML = () => `
-      <div class="wrap compare-board" role="region" aria-label="チャットとClaude Codeの比較">
+      <div class="wrap compare-board" role="region" aria-label="チャットと事務の比較">
         <p class="kicker">くらべる</p>
-        <h2 class="compare-board-title">チャットと Code</h2>
-        <p class="compare-board-lead">以前の Cowork は、今チャットに入っています。別の場所に切り替えなくてよいです。黒い画面の Code だけが別です。</p>
+        <h2 class="compare-board-title">チャットと事務</h2>
+        <p class="compare-board-lead">以前の Cowork は、今チャットに入っています。別の場所に切り替えなくてよいです。</p>
         <div class="compare-cols">
           <article class="compare-col is-chat">
             <span class="compare-tag">会話と作業</span>
@@ -1052,18 +1049,6 @@ ${q}
               <div><dt>自分ですること</dt><dd>確認して送る</dd></div>
             </dl>
             <a class="btn-dark" href="#/cowork" data-link>事務の講座へ</a>
-          </article>
-          <article class="compare-col is-code">
-            <span class="compare-tag">道具</span>
-            <h3>Claude Code</h3>
-            <p class="compare-one">黒い画面から、道具をつくる相棒</p>
-            <dl>
-              <div><dt>画面</dt><dd>ターミナル</dd></div>
-              <div><dt>返ってくるもの</dt><dd>ツール・サイト</dd></div>
-              <div><dt>向いていること</dt><dd>自動化・アプリ</dd></div>
-              <div><dt>自分ですること</dt><dd>1行貼って起動</dd></div>
-            </dl>
-            <a class="btn-dark" href="#/code" data-link>Claude Codeへ</a>
           </article>
         </div>
       </div>`;
@@ -1918,7 +1903,7 @@ ${q}
         <p class="kicker">BEGINNER</p>
         <h1>初級編</h1>
         ${compareTableHTML()}
-        <p class="lede">同じClaudeでも、入り口が違います。下の2つから選びます。</p>
+        <p class="lede">事務は同じチャットです。下の講座から進みます。</p>
         <div class="level-gates">
           <a class="level-gate is-cowork${canSeeCourse("cowork") ? "" : " is-locked"}" href="${canSeeCourse("cowork") ? "#/cowork" : "#/me"}" data-link>
             ${coverArt("cowork")}
@@ -1926,14 +1911,8 @@ ${q}
             <h2>チャットで作業</h2>
             <p>${canSeeCourse("cowork") ? "画面で日本語のお願い。黒い画面は使いません。" : "受講コードが必要です。"}</p>
           </a>
-          <a class="level-gate is-code${canSeeCourse("code") ? "" : " is-locked"}" href="${canSeeCourse("code") ? "#/code" : "#/me"}" data-link>
-            ${coverArt("powershell")}
-            <span class="level-tag">道具づくり</span>
-            <h2>Claude Code</h2>
-            <p>${canSeeCourse("code") ? "PowerShellに1行貼って、自分の道具を作ります。" : "受講コードが必要です。"}</p>
-          </a>
         </div>
-        <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
+        <div class="section-head"><h2>はじめて（準備）</h2></div>
         <div class="course-grid">${cardsFor(["today", "account", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
       </div>`;
   };
@@ -2065,7 +2044,6 @@ ${q}
   const home = () => {
     const stats = courseStats();
     const coworkStats = courseStats(COWORK_IDS);
-    const codeStats = courseStats(CODE_IDS);
     const next = nextRecommended();
     const started = continueStudy();
     const todayOpen = canSeeCourse("today") && percent("today") < 100;
@@ -2103,7 +2081,6 @@ ${q}
               ${progressRing(stats.overall)}
               <div class="stat-pills">
                 <div class="stat-pill">Cowork<b>${coworkStats.overall}%</b></div>
-                <div class="stat-pill">Claude Code<b>${codeStats.overall}%</b></div>
                 <div class="stat-pill">全体の進度<b>${stats.overall}%</b></div>
               </div>
             </div>
@@ -2134,14 +2111,6 @@ ${q}
             <strong>進度 ${coworkStats.overall}%</strong>
             <span class="meter"><span style="--p:${coworkStats.overall}%"></span></span>
           </a>
-          <a class="level-gate is-code${canSeeCourse("code") ? "" : " is-locked"}" href="${canSeeCourse("code") ? "#/code" : "#/me"}" data-link>
-            ${coverArt("powershell")}
-            <span class="level-tag">道具づくり</span>
-            <h2>Claude Code</h2>
-            <p>${canSeeCourse("code") ? "PowerShellに1行貼って、自分の仕事用の道具を作ります。" : "受講コードが必要です。"}</p>
-            <strong>進度 ${codeStats.overall}%</strong>
-            <span class="meter"><span style="--p:${codeStats.overall}%"></span></span>
-          </a>
         </div>
       </section>
       <div class="page">
@@ -2160,21 +2129,14 @@ ${q}
           </div>
           ${stampBook(COWORK_IDS)}
         </section>
-        <section class="stamp-sec lane lane-code">
-          <div class="section-head">
-            <h2>Claude Codeのスタンプ</h2>
-            <a href="#/code" data-link>Claude Codeへ →</a>
-          </div>
-          ${stampBook(CODE_IDS)}
-        </section>
         <section class="route-sec">
           <div class="section-head">
             <h2>迷ったときの進み方</h2>
             <a href="#/guide" data-link>説明資料 →</a>
           </div>
-          <p class="route-lead">人気ランキングではありません。上は事務、下は道具づくり。どちらか一方の道で大丈夫です。</p>
+          <p class="route-lead">人気ランキングではありません。事務は同じチャットです。左から右へ、この順です。</p>
           <h3 class="route-lane-title">事務の道（同じチャット）</h3>
-          <p class="easy-meta">画面で日本語のお願い。黒い画面は使いません。左から右へ、この順です。</p>
+          <p class="easy-meta">画面で日本語のお願い。黒い画面は使いません。</p>
           <p class="route-hint phone-only">横にスワイプできます（自動でも進みます）</p>
           <div class="route">
             <a class="route-card" href="#/course/today" data-link>
@@ -2201,34 +2163,6 @@ ${q}
               <p>事務を日本語で任せる</p>
             </a>
           </div>
-          <h3 class="route-lane-title">道具づくりの道（Claude Code）</h3>
-          <p class="easy-meta">WindowsとMacは両方やらなくてよいです。自分のパソコンだけ準備して、そのあとやさしい道具から作ります。</p>
-          <p class="route-hint phone-only">横にスワイプできます（自動でも進みます）</p>
-          <div class="route">
-            <a class="route-card" href="#/course/code" data-link>
-              ${coverArt("powershell")}
-              <strong>Windowsの人</strong>
-              <p>PowerShellに1行貼る</p>
-            </a>
-            <span class="route-or">または</span>
-            <a class="route-card" href="#/course/codemac" data-link>
-              ${coverArt("terminal")}
-              <strong>Macの人</strong>
-              <p>ターミナルに1行貼る</p>
-            </a>
-            <span class="route-arrow" aria-hidden="true">→</span>
-            <a class="route-card" href="#/course/snspost" data-link>
-              ${coverArt("sns")}
-              <strong>最初の道具　投稿文</strong>
-              <p>準備のあと、いちばんかんたん</p>
-            </a>
-            <span class="route-arrow" aria-hidden="true">→</span>
-            <a class="route-card" href="#/applied" data-link>
-              ${coverArt("desktop")}
-              <strong>つづきはかんたん順</strong>
-              <p>集計→経費→請求書…と続く</p>
-            </a>
-          </div>
         </section>
         <div class="desk-catalog">
         <div class="lane lane-cowork">
@@ -2238,20 +2172,6 @@ ${q}
         </div>
         <div class="course-grid">${cardsFor(COWORK_IDS)}</div>
         </div>
-        <div class="lane lane-code">
-        <div class="section-head">
-          <h2>Claude Code（準備）</h2>
-          <a href="#/code" data-link>一覧へ →</a>
-        </div>
-        <div class="course-grid">${cardsFor(CODE_SETUP_IDS)}</div>
-        </div>
-        <div class="lane lane-code">
-        <div class="section-head">
-          <h2>Claude Codeで作る道具（かんたん順）</h2>
-          <a href="#/applied" data-link>一覧へ →</a>
-        </div>
-        <div class="course-grid">${cardsFor(CODE_MAKE_IDS)}</div>
-        </div>
         </div>
         <section class="points">
           <h2>教室の特徴</h2>
@@ -2260,7 +2180,7 @@ ${q}
               <span class="point-label">Point1</span>
               ${figureHTML("poster", "迷ったらポスターから")}
               <h3>いちばんやさしいのはポスター</h3>
-              <p>事務は同じチャット、道具づくりは Claude Code。混ぜずに、どちらかのレーンから進みます。</p>
+              <p>いちばんやさしい課題はポスターです。事務は同じチャットで進めます。</p>
             </div>
             <div>
               <span class="point-label">Point2</span>
@@ -2672,27 +2592,19 @@ ${q}
       ])}
       <p class="kicker">迷ったらここ</p>
       <h1>進み方</h1>
-      <p class="lede">やりたいことで、道は1本だけ選びます。人気順ではありません。混ぜなくて大丈夫です。</p>
+      <p class="lede">事務は同じチャットです。上から1つずつ進めます。</p>
       <p class="guide-actions">
         <button class="btn-orange" type="button" id="guide-print">このページを印刷</button>
         <a class="btn-dark" href="#/howto" data-link>操作のしかた</a>
       </p>
 
-      <section class="guide-pick" aria-label="どちらの道か">
+      <section class="guide-pick" aria-label="進み方">
         <article class="guide-pick-card is-cowork">
           <span class="guide-pick-tag">事務</span>
           <h2>ファイルまで任せたい</h2>
           <p>画面で日本語のお願い。黒い画面は使いません。</p>
           <p class="guide-pick-tool">使うもの　同じチャット（以前のCowork）</p>
-          <a class="btn-orange" href="#/cowork" data-link>この道で進む</a>
-        </article>
-        <p class="guide-or">または</p>
-        <article class="guide-pick-card is-code">
-          <span class="guide-pick-tag">道具</span>
-          <h2>自分の道具をつくりたい</h2>
-          <p>PowerShell か ターミナルに、1行貼ります。</p>
-          <p class="guide-pick-tool">使うもの　Claude Code</p>
-          <a class="btn-orange" href="#/code" data-link>この道で進む</a>
+          <a class="btn-orange" href="#/cowork" data-link>講座一覧へ</a>
         </article>
       </section>
 
@@ -2704,39 +2616,6 @@ ${q}
           ${guideStepHTML("2", "#/course/webchat", "チャット", "ブラウザで日本語を1回")}
           ${guideStepHTML("3", "#/course/poster", "ポスター", "いちばんやさしい課題")}
           ${guideStepHTML("4", "#/course/cowork", "事務", "請求書・経費などの本番")}
-        </ol>
-
-        <h2>道具づくりの順番</h2>
-        <p class="easy-meta">Windows と Mac は、どちらか一方だけでよいです。</p>
-        <ol class="guide-flow">
-          <li class="guide-split">
-            <span class="guide-n">1</span>
-            <div class="guide-split-body">
-              <a href="#/code" data-link>
-                <strong>Windows</strong>
-                <small>PowerShell に1行貼る</small>
-              </a>
-              <span class="guide-or-mini">または</span>
-              <a href="#/course/codemac" data-link>
-                <strong>Mac</strong>
-                <small>ターミナルに1行貼る</small>
-              </a>
-            </div>
-          </li>
-          ${guideStepHTML("2", "#/course/snspost", "投稿文", "最初の道具。いちばんかんたん")}
-        </ol>
-        <p class="easy-meta">つづきは、かんたん順に1つずつ。</p>
-        <ol class="guide-chips">
-          <li><a href="#/course/survey" data-link>3 集計</a></li>
-          <li><a href="#/course/expense" data-link>4 経費</a></li>
-          <li><a href="#/course/invoice" data-link>5 請求書</a></li>
-          <li><a href="#/course/abc" data-link>6 分析</a></li>
-          <li><a href="#/course/shop" data-link>7 サイト</a></li>
-          <li><a href="#/course/secretary" data-link>8 秘書</a></li>
-          <li><a href="#/course/secplus" data-link>秘書+</a></li>
-          <li><a href="#/course/appedit" data-link>9 画面</a></li>
-          <li><a href="#/course/claudemd" data-link>CLAUDE.md</a></li>
-          <li><a href="#/course/applied" data-link>10 使いこなし</a></li>
         </ol>
 
         <div class="guide-extras">
