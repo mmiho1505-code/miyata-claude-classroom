@@ -328,6 +328,7 @@ ${q}
   const HOME_ORDER = [
     "today",
     "account",
+    "settings",
     "webchat",
     "webwords",
     "poster",
@@ -361,7 +362,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -402,7 +403,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "faq", "market", "hypo", "hr", "sched", "aicopy", "webwords"].includes(courseId)) return "starter";
+    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "aicopy", "webwords"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -411,7 +412,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "webchat", "webwords", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
+  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -716,6 +717,7 @@ ${q}
 
   const COURSE_META = {
     account: ["cover-account", "準備", "claude.ai に入って、有料プランの画面を確認。", "signup"],
+    settings: ["cover-account", "設定", "左の一覧。一般・請求・メモリー・コネクタ。全部いじらなくてよい。", "plan"],
     webchat: ["cover-chat", "チャット", "同じ画面で日本語のお願いを一度。作業もここに入った。", "webchat"],
     webwords: ["cover-intro", "ことば", "HTMLは骨組み、CSSは見た目、JAVAは動き。コードは書かない。", "site"],
     poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
@@ -753,6 +755,7 @@ ${q}
 
   const STAMP_LABELS = {
     account: ["アカウント", "🔑"],
+    settings: ["設定", "⚙️"],
     webchat: ["チャット", "💭"],
     webwords: ["HTML CSS JAVA", "🧱"],
     poster: ["ポスター", "🎨"],
@@ -927,7 +930,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "webwords", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
+    const pickOrder = ["today", "account", "settings", "webwords", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today")
     );
     for (const id of pickOrder) {
@@ -1286,6 +1289,7 @@ ${q}
     claudemd: ["docs", "CLAUDE.md をフォルダのいちばん上に"],
     applied: ["desktop", "一度決めたら、次からラク"],
     account: ["signup", "claude.ai で登録して、プランを確認"],
+    settings: ["plan", "設定の左の一覧。全部いじらなくてよい"],
     webchat: ["webchat", "下の入力欄に書いて送る"],
     webwords: ["site", "HTMLは骨組み、CSSは見た目、JAVAは動き"],
     codemac: ["terminal", "Macのターミナルに1行貼る"],
@@ -1399,6 +1403,20 @@ ${q}
         summary: ["webchat", "次はチャット入門"]
       };
       return t[lessonId] || COURSE_ART.account;
+    }
+    if (courseId === "settings") {
+      const t = {
+        goal: ["plan", "左の一覧は設定の目次"],
+        open: ["signup", "名前から設定を開く"],
+        everyday: ["signup", "一般・アカウント・プライバシー"],
+        bill: ["plan", "請求はお金。使用量はメーター"],
+        memory: ["docs", "メモリーと機能。デザインは後回し"],
+        apps: ["desktop", "Code・Chrome・デスクトップ"],
+        system: ["safety", "システム・拡張・開発者"],
+        add: ["mail", "スキル・コネクタ・プラグイン"],
+        summary: ["plan", "地図だけ持って帰る"]
+      };
+      return t[lessonId] || COURSE_ART.settings;
     }
     if (courseId === "webchat") {
       const t = {
@@ -1703,7 +1721,7 @@ ${q}
     if (/HTML|CSS|JAVA|JavaScript|骨組み/.test(text)) return "site";
     if (/ポータル|お知らせ/.test(text)) return "portalpage";
     if (/ターミナル|Mac|Spotlight/.test(text)) return "terminal";
-    if (/プラン|有料|Upgrade/.test(text)) return "plan";
+    if (/設定|メモリー|コネクタ|スキル|プラグイン/.test(text)) return "plan";
     if (/アカウント|登録|Google で/.test(text)) return "signup";
     if (/チャット|入力欄/.test(text)) return "webchat";
     if (/コピー|貼/.test(text)) return "copy";
@@ -1913,7 +1931,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（準備）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
       </div>`;
   };
 
@@ -1967,6 +1985,7 @@ ${q}
     const items = [
       ["today", "01", "今日", "講義"],
       ["account", "02", "アカウント", "準備"],
+      ["settings", "02b", "設定", "一覧"],
       ["webchat", "03", "チャット", "入門"],
       ["webwords", "03b", "HTML", "ことば"],
       ["poster", "04", "ポスター", "初級"],
@@ -2120,7 +2139,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2206,6 +2225,7 @@ ${q}
     const first = course.lessons[0];
     const covers = {
       account: "cover-account",
+      settings: "cover-account",
       webchat: "cover-chat",
       webwords: "cover-intro",
       cowork: "cover-cowork",
@@ -2240,6 +2260,7 @@ ${q}
     };
     const labels = {
       account: "準備",
+      settings: "設定",
       webchat: "チャット",
       webwords: "ことば",
       cowork: "Cowork",
@@ -2675,7 +2696,7 @@ ${q}
           <span class="num">1</span>
           <h3>アカウント</h3>
           ${figureHTML("signup", "ブラウザで claude.ai")}
-          <p>全員共通です。ログインと、Code を使う人の有料プラン確認。</p>
+          <p>全員共通です。ログインと、Code を使う人の有料プラン確認。左の一覧は <a href="#/course/settings" data-link>Claudeの設定</a>。</p>
         </article>
         <article class="op">
           <span class="num">2</span>
@@ -2692,6 +2713,7 @@ ${q}
       </div>
       <p>
         <a class="btn-orange" href="#/course/account" data-link>アカウントへ</a>
+        <a class="btn-dark" href="#/course/settings" data-link>Claudeの設定へ</a>
         <a class="btn-dark" href="#/course/webchat" data-link>チャット入門へ</a>
         <a class="btn-dark" href="#/course/webwords" data-link>HTML・CSS・JAVAへ</a>
         <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a>
