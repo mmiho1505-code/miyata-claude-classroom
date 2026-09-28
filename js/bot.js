@@ -45,7 +45,7 @@
     {
       keys: ["今日の講義", "きょうの講義", "土台：ポータル", "タイル型", "カーソルに", "cursor に"],
       answer:
-        "今日の講義は、同じチャットでポータルを作る・直す一本です。できれば Cursor に Claude Code を入れます。拡張機能で Anthropic の Claude Code。無ければ下の画面で claude。ポータルは claude.ai でも進めます。",
+        "今日の講義は、同じチャットでポータルを作る・直す一本です。できれば Cursor に Claude Code。拡張に加えて、教室のコピーをターミナルに自分で貼って Enter します。貼る前に画面をクリック。",
       href: "#/course/today",
       link: "今日の講義"
     },

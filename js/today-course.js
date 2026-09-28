@@ -33,7 +33,7 @@
                 <tr><td>1</td><td>0〜10分</td><td>必須</td><td>今日の地図。ログインできるか確認</td></tr>
                 <tr><td>2</td><td>10〜25分</td><td>必須</td><td>チャット。返事を2回もらう</td></tr>
                 <tr><td>3</td><td>25〜45分</td><td>必須</td><td>同じチャットで作業を任せる。画面・止まったとき</td></tr>
-                <tr><td>4</td><td>できれば</td><td>できれば</td><td>Cursor に Claude Code を入れる</td></tr>
+                <tr><td>4</td><td>できれば</td><td>できれば</td><td>Cursor に Claude Code。拡張と、ターミナルに自分で貼る</td></tr>
                 <tr><td>5</td><td>できれば</td><td>できれば</td><td>Gmail／カレンダー／ドライブ</td></tr>
                 <tr><td>6</td><td>45〜65分</td><td>必須</td><td>ポータルを1ページ作る。確認。休憩</td></tr>
                 <tr><td>7</td><td>70〜90分</td><td>必須</td><td>直し方。追加・移動を2つ。自分の目で確認</td></tr>
@@ -229,7 +229,7 @@
             <div class="ops">
               <article class="op"><span class="num">別</span><h3>別の道具</h3><p>Cursor の自分のチャットと、Claude Code は別です。今日入れるのは Anthropic の「Claude Code」です</p></article>
               <article class="op"><span class="num">同</span><h3>同じメール</h3><p>claude.ai で使っている、会社の有料アカウントで入ります</p></article>
-              <article class="op"><span class="num">ポ</span><h3>ポータルはチャット</h3><p>社内ポータルは、今までどおり同じチャットでも進みます</p></article>
+              <article class="op"><span class="num">貼</span><h3>自分で貼る</h3><p>拡張機能と、ターミナルに1行貼る、の両方をやります。教室の「コピー」を使います</p></article>
             </div>
             <h2>1. Cursor を入れる</h2>
             <ol>
@@ -248,23 +248,36 @@
             </ol>
             <p>入ったあとにアイコンが見えなければ、コマンドパレットを開きます。Windows は <kbd>Ctrl</kbd>＋<kbd>Shift</kbd>＋<kbd>P</kbd>。Mac は <kbd>⌘</kbd>＋<kbd>Shift</kbd>＋<kbd>P</kbd>。「Claude Code」と打って、<strong>Open in New Tab</strong>（新しいタブで開く）を選びます。それでも見えなければ「Developer: Reload Window」（ウィンドウを再読み込み）です。</p>
             <p>火花（きらきら）のマーク、または左の Claude Code を押してパネルを開きます。初めてなら <strong>Sign in</strong>（ログイン）→ ブラウザで、claude.ai と<strong>同じ会社のメール</strong>。パスワードはそこに自分で入れます。教室の入力欄には書きません。</p>
-            <h2>3. 拡張が無いときは、下の画面で claude</h2>
-            <p>拡張機能が見つからない・入らないときは、Cursor の下のターミナルで使います。メニューの「ターミナル」→「新しいターミナル」。またはキーボード左上のほうの、英数字の並びのキーと Ctrl（Mac は Control）を同時押し、と画面に書いてあることがあります。</p>
-            <p>まだパソコンに Claude Code が入っていない人は、下から自分のパソコン用を1行だけ貼って Enter します。詳しい画面は <a href="#/course/code" data-link>Windows編</a> と <a href="#/course/codemac" data-link>Mac編</a> です。</p>
-            <p>Windows（行頭が PS の画面）</p>
+            <h2>3. 自分でターミナルに貼る（拡張と両方やる）</h2>
+            <p>拡張機能を入れた人も、入れてない人も、ここをやります。先生も受講者も、同じ文を<strong>自分のターミナルに貼ります</strong>。貼っただけでは動きません。Enter までです。</p>
+            <p>貼り方はいつも同じです。くわしくは <a href="#/course/faq/paste" data-link>貼り付けできない</a>。</p>
+            <ol>
+              <li>Cursor のメニュー「ターミナル」→「新しいターミナル」。下に黒い（または白い）画面が出ます</li>
+              <li>その画面を<strong>一度クリック</strong>する。クリックしないと貼れません</li>
+              <li>下から自分のパソコン用を1行、教室の「コピー」を押す</li>
+              <li>ターミナルに貼る。Windows は右クリック、または Ctrl＋V。Mac は ⌘＋V</li>
+              <li>Enter を押す。終わるまで待つ</li>
+            </ol>
+            <p>Windows（行頭が <code>PS</code> の画面。Cursor の下でも、スタートから開いた PowerShell でも同じ1行です）</p>
             ${box(`irm https://claude.ai/install.ps1 | iex`)}
-            <p>Mac</p>
+            <p>Mac（Cursor の下でも、ターミナルアプリでも同じ1行です）</p>
             ${box(`curl -fsSL https://claude.ai/install.sh | bash`)}
-            <p>終わったら、ターミナルを一度閉じて開き直し、次を打ちます。</p>
+            <p>途中でパスワードを聞かれたら、パソコンにログインするときのパスワードです。画面には出ません。打ち終わって Enter です。教室には書きません。</p>
+            <p>終わったら、ターミナルを一度閉じて、もう一度「新しいターミナル」を開きます。画面をクリックしてから、下をコピーして貼り、Enter します。</p>
             ${box(`claude`)}
-            <p>ブラウザが開いたら、同じ有料アカウントでログインします。</p>
+            <p>ブラウザが開いたら、claude.ai と<strong>同じ会社の有料アカウント</strong>でログインします。パスワードはそこに自分で入れます。</p>
+            <p>詳しい画面の違いだけ見たい人は <a href="#/course/code" data-link>Windows編</a> と <a href="#/course/codemac" data-link>Mac編</a> です。</p>
             <h2>できたか試す</h2>
-            <p>Claude Code の入力欄（パネルでも、下の <code>claude</code> でも）に、下を貼って送ります。</p>
+            <p>ターミナルに <code>claude</code> と出ている入力欄、または拡張のパネルに、下を<strong>自分で貼って</strong>送ります。先に入力欄をクリックしてから貼ります。</p>
             ${box(`このフォルダに何が入っているか、初心者にも分かるように3行で説明してください。まだファイルは作らないでください。`)}
             <p>3行返ってきたら成功です。削除・送信・公開はしません。続きのルールブックは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。</p>
             <div class="qa">
+              <p class="qa-q">貼れない</p>
+              <p>ターミナルを一度クリックしてから貼る。貼ったあと Enter。<a href="#/course/faq/paste" data-link>貼り付けできない</a></p>
+            </div>
+            <div class="qa">
               <p class="qa-q">拡張に Claude Code が無い</p>
-              <p>公式ページの「Install for Cursor」を試す。だめなら下のターミナルで <code>claude</code>。無理に別の拡張は入れない</p>
+              <p>公式ページの「Install for Cursor」を試す。ターミナルへの貼り付けは、拡張が無くてもやる</p>
             </div>
             <div class="qa">
               <p class="qa-q">ログインできない</p>
@@ -541,7 +554,7 @@
               <article class="op"><span class="num">1</span><h3>チャット</h3><p>相談はブラウザ。日本語で1回、返事をもらう</p></article>
               <article class="op"><span class="num">2</span><h3>同じ画面で作る</h3><p>モデルは Opus、Effort は高め。同じ会話に貼って、ページを作る</p></article>
               <article class="op"><span class="num">3</span><h3>続きで直す</h3><p>「何を・どこへ」と書く。移動もドラッグしない</p></article>
-              <article class="op"><span class="num">4</span><h3>Cursor</h3><p>できれば Claude Code を拡張で入れる。無いときは下の画面で claude</p></article>
+              <article class="op"><span class="num">4</span><h3>Cursor</h3><p>拡張と、ターミナルに自分で貼る。貼る前に画面をクリック</p></article>
             </div>
             <h2>使い始める前に</h2>
             ${box(`使い始める前に、足りない点や注意点を教えてください。`)}
@@ -620,9 +633,9 @@
       },
       {
         q: "Cursor に Claude Code を入れるとき、正しいのは？",
-        choices: ["無料プランのまま拡張を探す", "拡張機能で Anthropic の Claude Code を入れ、同じ有料アカウントでログインする。無ければ下の画面で claude", "ポータルのリンクを SNS に載せる"],
+        choices: ["無料プランのまま拡張だけ探す", "拡張機能を入れ、自分でもターミナルをクリックして1行を貼り Enter する。同じ有料アカウントでログイン", "ポータルのリンクを SNS に載せる"],
         a: 1,
-        explain: "Cursor の自分のチャットとは別です。会社で止められたら無理に突破しません。"
+        explain: "貼る前にターミナルをクリックします。会社で止められたら無理に突破しません。"
       },
       {
         q: "パスワードや口座番号は？",
