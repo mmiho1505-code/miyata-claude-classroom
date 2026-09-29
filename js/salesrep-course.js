@@ -142,7 +142,7 @@
               <li>ZIP でスキルにする。新しいチャットでもフォルダを指定する</li>
               <li>プレビューではなく、ファイルを開いて人が確認する</li>
             </ol>
-            <p>この流れは、売上レポート以外の定型業務にも応用できます。請求書の毎月流し込みは <a href="#/course/invoicemake" data-link>請求書</a> です。</p>
+            <p>この流れは、売上レポート以外の定型業務にも応用できます。請求書の毎月流し込みは <a href="#/course/invoicemake" data-link>請求書</a> です。CSVから比較と打ち手案までは <a href="#/course/salescsv" data-link>売上CSVの分析</a> です。</p>
             <p><a class="btn-orange" href="#/course/salesrep/p1" data-link>プロンプト1からやり直す</a>
             <a class="btn-dark" href="#/course/skillbase" data-link>Skillsの基礎へ</a></p>
           `

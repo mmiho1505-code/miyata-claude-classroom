@@ -344,6 +344,7 @@ ${q}
     "slacksum",
     "minutes",
     "salesrep",
+    "salescsv",
     "aicopy",
     "aisub",
     "cowork",
@@ -374,7 +375,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -416,7 +417,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "canvaai", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
+    if (["poster", "canvaai", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -425,7 +426,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub"];
+  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -744,6 +745,7 @@ ${q}
     slacksum: ["cover-cowork", "Slack", "予定済みで毎朝要約。決定・ToDo・返信だけ。雑談は外す。", "mail"],
     minutes: ["cover-chat", "議事録", "録音→起こす→型でまとめる。配る前に人が確認。", "copy"],
     salesrep: ["cover-invoice", "売上", "ひな形を調べて固めてスキル。セル番地は書かない。", "invoice"],
+    salescsv: ["cover-survey", "CSV", "集計→グラフ→寄与度。行番号は書かない。", "survey"],
     aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
     aisub: ["cover-expense", "補助", "旧IT導入補助金。会計・勤怠・AI。支援事業者と一緒に申請。", "expense"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
@@ -792,6 +794,7 @@ ${q}
     slacksum: ["Slack要約", "💬"],
     minutes: ["議事録", "📝"],
     salesrep: ["売上レポート", "📊"],
+    salescsv: ["売上CSV", "📈"],
     aicopy: ["著作", "⚖️"],
     aisub: ["AI補助", "💴"],
     cowork: ["Cowork", "💬"],
@@ -963,7 +966,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub"].concat(
+    const pickOrder = ["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1351,6 +1354,7 @@ ${q}
     slacksum: ["mail", "Slackを毎朝3つだけ要約"],
     minutes: ["copy", "決定とToDoが抜けない議事録"],
     salesrep: ["invoice", "調べて固めてスキル。セル番地は書かない"],
+    salescsv: ["survey", "CSVを集計してグラフとひとこと"],
     aicopy: ["safety", "見て・調べて・確認してから"],
     aisub: ["expense", "デジタル化・AI導入補助金。公式で確認"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
@@ -1677,6 +1681,19 @@ ${q}
         summary: ["invoice", "初回だけ調べて、2回目は一言"]
       };
       return t[lessonId] || COURSE_ART.salesrep;
+    }
+    if (courseId === "salescsv") {
+      const t = {
+        goal: ["survey", "分析をフォルダの中で任せる"],
+        prep: ["folder", "コピーを作業フォルダへ"],
+        p1: ["docs", "統合して検算。番地は書かない"],
+        p2: ["survey", "前月・前年・目標をグラフに"],
+        p3: ["copy", "どの店・商品が効いたか"],
+        p4: ["copy", "打ち手が見えないとき切り口を変える"],
+        next: ["copy", "翌月は②〜④。スキルにできる"],
+        summary: ["survey", "集計、グラフ、寄与度、深掘り"]
+      };
+      return t[lessonId] || COURSE_ART.salescsv;
     }
     if (courseId === "aicopy") {
       const t = {
@@ -2151,7 +2168,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
       </div>`;
   };
 
@@ -2219,6 +2236,7 @@ ${q}
       ["slacksum", "08b", "Slack", "要約"],
       ["minutes", "08c", "議事録", "型"],
       ["salesrep", "08d", "売上", "レポート"],
+      ["salescsv", "08e", "CSV", "分析"],
       ["aicopy", "09", "著作", "確認"],
       ["aisub", "09b", "AI補助", "制度"],
       ["cowork", "10", "Cowork", "事務"],
@@ -2379,7 +2397,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2540,6 +2558,7 @@ ${q}
       slacksum: "cover-cowork",
       minutes: "cover-chat",
       salesrep: "cover-invoice",
+      salescsv: "cover-survey",
       aicopy: "cover-faq",
       aisub: "cover-expense",
       intro: "cover-intro",
@@ -2585,6 +2604,7 @@ ${q}
       slacksum: "Slack",
       minutes: "議事録",
       salesrep: "売上",
+      salescsv: "CSV分析",
       aicopy: "著作",
       aisub: "補助",
       intro: "勉強会",
