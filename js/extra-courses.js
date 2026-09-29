@@ -19,7 +19,8 @@
             <p class="kicker">GOAL</p>
             <h1>ログインできるようにする</h1>
             <div data-pic="signup" data-cap="ブラウザで claude.ai を開きます"></div>
-            <p>この教室のあと工程（チャットでの会話と作業、Claude Code）は、どれも<strong>同じアカウント</strong>を使います。今日は申し込みと、有料プランの見方までです。</p>
+            <p>パソコンのブラウザで <code>claude.ai</code> を開くと、白い画面に「続ける」やログインが出ます。今日は、ここから自分のアカウントに入れるようにします。</p>
+            <p>申し込みと、有料プランの見方までです。あとの講座も、同じアカウントです。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>サイトを開く</h3><p>パソコンのブラウザで claude.ai</p></article>
               <article class="op"><span class="num">2</span><h3>登録する</h3><p>メールまたは Google で続ける</p></article>
@@ -35,6 +36,7 @@
             <p class="kicker">STEP 1</p>
             <h1>Google Chrome などで claude.ai</h1>
             <div data-pic="browser" data-cap="アドレス欄に claude.ai と入れて Enter"></div>
+            <p>ブラウザの一番上に、アドレス欄があります。そこに <code>claude.ai</code> と入れて Enter します。</p>
             <ol>
               <li>パソコンのブラウザを開く（Chrome / Edge / Safari どれでも可）</li>
               <li>上のアドレス欄をクリックする</li>
@@ -50,6 +52,7 @@
             <p class="kicker">STEP 2</p>
             <h1>「続ける」から登録</h1>
             <div data-pic="signup" data-cap="Google か、メールアドレスで続けます"></div>
+            <p>開くと、「Googleで続ける」と、メールアドレスの欄が並びます。会社のGmailなら、Googleのほうが早いです。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>Googleで続ける</h3><p>会社のGmailを使っている人は、これがいちばん簡単です。</p></article>
               <article class="op"><span class="num">2</span><h3>メールで続ける</h3><p>届いた番号やリンクを、画面の指示どおり入力します。</p></article>
@@ -65,12 +68,9 @@
             <p class="kicker">FREE</p>
             <h1>無料でも、会話は始められる</h1>
             <div data-pic="webchat" data-cap="ログインできると、白いチャット画面が出ます"></div>
-            <p>無料プランでも、ブラウザで日本語の相談はできます。次の講座「ブラウザのチャット入門」は、この画面の使い方です。</p>
-            <ul>
-              <li><strong>できる</strong> … ブラウザで話しかける、文章の下書き</li>
-              <li><strong>できないことが多い</strong> … Claude Code（黒い画面の道具）。大きなファイル作業もプランの条件があります</li>
-            </ul>
-            <p>教室で <a href="#/course/code" data-link>Claude Code</a> まで進む人は、次のページの有料プランを見てください。</p>
+            <p>ログインできると、白いチャット画面が出ます。下に入力欄があります。無料でも、ここで日本語の相談はできます。</p>
+            <p>ブラウザで話しかける、文章の下書きは、無料から始められます。Claude Code（黒い画面の道具）は、無料では使えません。大きなファイル作業も、プランの条件があります。</p>
+            <p>Code まで進む人は、次のページで有料プランを見てください。</p>
           `
       },
       {
@@ -80,6 +80,7 @@
             <p class="kicker">PLAN</p>
             <h1>設定からプランを開く</h1>
             <div data-pic="plan" data-cap="設定 → プラン（または Upgrade）"></div>
+            <p>設定を開くと、左に一覧が出ます。「プラン」または Upgrade を押すと、Pro / Max / Team などの表が出ます。</p>
             <ol>
               <li>画面の左下または右上の<strong>自分の名前／歯車</strong>を押す</li>
               <li><strong>設定</strong>（Settings）を開く</li>
@@ -97,8 +98,7 @@
             <p class="kicker">CHECK</p>
             <h1>プラン名が出ていればOK</h1>
             <div data-pic="plan" data-cap="設定のプラン欄に Pro などと出ていれば成功"></div>
-            <p>設定 → プラン に、今のプラン名が出ます。Free のままだと、Claude Code のログインで止まりやすいです。</p>
-            <p>左の一覧（一般・請求・メモリー・コネクタなど）の意味は、<a href="#/course/settings" data-link>Claudeの設定</a> です。ログインできたら、<a href="#/course/claudebase" data-link>基本設定と便利な機能</a>（Claudeへの指示・プロジェクト）も見てください。</p>
+            <p>設定 → プラン を開きます。今のプラン名（Pro など）が出ていればOKです。Free のままだと、Claude Code のログインで止まりやすいです。</p>
             <p>うまくいかないときは <a href="#/course/faq" data-link>つまずき一覧</a> の「ログインできない」へ。</p>
           `
       },
@@ -135,8 +135,8 @@
             <p class="kicker">GOAL</p>
             <h1>日本語で1回、返事をもらう</h1>
             <div data-pic="webchat" data-cap="下の入力欄に書いて、送るボタン"></div>
-            <p>資料作成・分析・ファイル出力も、今は同じチャットで任せられます。その前に、<strong>日本語で返事をもらう</strong>感覚をつかみます。黒い画面は使いません。</p>
-            <p>まだアカウントが無い人は、先に <a href="#/course/account" data-link>アカウントと有料プラン</a> です。ページの骨組み・見た目・動きは <a href="#/course/webwords" data-link>HTML・CSS・JAVA</a> です。</p>
+            <p>claude.ai に入ると、下に太い入力欄があります。右に送るボタン（紙飛行機）があります。今日は、ここに日本語を1回書いて、返事をもらいます。</p>
+            <p>資料作成・分析・ファイル出力も、今は同じチャットで任せられます。黒い画面は使いません。</p>
           `
       },
       {
@@ -146,12 +146,8 @@
             <p class="kicker">SCREEN</p>
             <h1>左が履歴、下が入力欄</h1>
             <div data-pic="webchat" data-cap="下の太い枠が、話しかける場所です"></div>
-            <ul>
-              <li><strong>左</strong> … これまでの会話の一覧（新しい会話 を押すと白紙）</li>
-              <li><strong>真ん中</strong> … Claudeの返事</li>
-              <li><strong>下</strong> … 自分の文章を書く欄</li>
-            </ul>
-            <p>迷ったら「新しいチャット」（New chat）を押して、空の画面から始めます。</p>
+            <p>左に、これまでの会話の一覧（履歴）があります。「新しいチャット」（New chat）を押すと白紙です。真ん中に Claude の返事が並び、下が自分の文章を書く欄です。</p>
+            <p>迷ったら、新しいチャットを押して空の画面から始めます。</p>
           `
       },
       {
@@ -188,6 +184,7 @@
         body: `
             <p class="kicker">COMPARE</p>
             <h1>会話も作業も、このチャット</h1>
+            <p>左の一覧に「Cowork」という別アプリは、今はありません。以前の Cowork（コワーク）の作業は、このチャットに入っています。</p>
             <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</div>
             <div class="compare">
               <div>
@@ -207,7 +204,7 @@
                 </ul>
               </div>
             </div>
-            <p>どちらも同じチャットです。事務の例は <a href="#/course/cowork" data-link>事務の講座</a> です。いちばんやさしい入口は <a href="#/course/poster" data-link>求人ポスター</a> でも大丈夫です。</p>
+            <p>どちらも同じチャットです。事務の例は <a href="#/course/cowork" data-link>事務の講座</a> です。</p>
           `
       },
       {
@@ -217,6 +214,7 @@
             <p class="kicker">SAFETY</p>
             <h1>パスワードと口座は書かない</h1>
             <div data-pic="safety" data-cap="送る前に、秘密が混ざっていないか見る"></div>
+            <p>送る前に、入力欄を一度見ます。パスワード、暗証番号、APIキー（接続用の秘密の番号）は書きません。</p>
             <ul>
               <li>パスワード、暗証番号、APIキー</li>
               <li>お客さんの住所・電話がたくさん載った名簿そのもの</li>
@@ -253,7 +251,7 @@
             <p class="kicker">GOAL</p>
             <h1>ターミナルから claude が起動する</h1>
             <div data-pic="mac" data-cap="Windowsではなく、Macの人向けです"></div>
-            <p>Windows の人は <a href="#/course/code" data-link>Windows編</a> を使ってください。今日は Mac の「ターミナル」です。</p>
+            <p>Mac の「ターミナル」を開くと、上に赤・黄・緑の3つの丸があります。今日は、ここに1行貼って、<code>claude</code> が起動するまでです。</p>
             <ol>
               <li>ターミナルを開ける</li>
               <li>インストールの1行を貼って実行する</li>
@@ -269,8 +267,8 @@
             <p class="kicker">WHAT</p>
             <h1>文字でお願いする黒い（または白い）画面</h1>
             <div data-pic="terminal" data-cap="上に赤・黄・緑の3つの丸。これがターミナル"></div>
-            <p>Windows の PowerShell と同じ役割です。マウスではなく、文字を貼って Enter します。</p>
-            <p><strong>使わないもの:</strong> テキストエディットだけ、ブラウザのアドレス欄。必ず「ターミナル」アプリです。</p>
+            <p>ターミナルを開くと、上に赤・黄・緑の3つの丸があります。Windows の PowerShell と同じ役割です。マウスではなく、文字を貼って Enter します。</p>
+            <p>テキストエディットや、ブラウザのアドレス欄には貼りません。必ず「ターミナル」アプリです。</p>
           `
       },
       {
@@ -280,12 +278,8 @@
             <p class="kicker">CHECK</p>
             <h1>始める前に揃えるもの</h1>
             <div data-pic="plan" data-cap="ネットにつながった Mac と、有料プラン"></div>
-            <ul>
-              <li>Mac（管理者のパスワードを知っていること）</li>
-              <li>インターネット</li>
-              <li>Claude の有料プラン（Pro / Max / Team など）</li>
-              <li>講座と同じ方法（npm）で入れる人は <a href="#/course/nodejs" data-link>環境構築② Node.js</a></li>
-            </ul>
+            <p>手元に、ネットにつながった Mac と、Claude の有料プラン（Pro / Max / Team など）を揃えます。管理者のパスワードも知っておきます。</p>
+            <p>講座と同じ方法（npm）で入れる人は <a href="#/course/nodejs" data-link>環境構築② Node.js</a> です。</p>
           `
       },
       {
@@ -377,6 +371,7 @@
             <p class="kicker">MAP</p>
             <h1>症状からページを選ぶ</h1>
             <div data-pic="quiz" data-cap="上から近いものを押してください"></div>
+            <p>赤い英文や「command not found」で止まったとき用です。上から、今の症状に近いものを押してください。</p>
             <ul>
               <li><a href="#/course/webwords" data-link>HTML・CSS・JAVA の意味が分からない</a></li>
               <li><a href="#/course/faq/ps" data-link>PowerShell が開かない・CMDになってしまう</a></li>
@@ -396,6 +391,7 @@
             <p class="kicker">WINDOWS</p>
             <h1>スタート → PowerShell。CMDではない</h1>
             <div data-pic="powershell" data-cap="行頭が PS C:\\ なら正解。C:\\ だけなら CMD"></div>
+            <p>スタートを押して PowerShell と入れると、青い窓や黒い窓が開きます。行頭が <code>PS C:\\</code> なら正解です。<code>C:\\</code> だけなら CMD（コマンドプロンプト）です。</p>
             <ol>
               <li>左下のスタート（Windowsマーク）を押す</li>
               <li><strong>PowerShell</strong> と入力する（「コマンドプロンプト」は選ばない）</li>
@@ -413,12 +409,12 @@
             <p class="kicker">PASTE</p>
             <h1>コピーしたあとに、貼る場所をクリック</h1>
             <div data-pic="copy" data-cap="教室のコピー → 貼る画面をクリック → 貼り付け"></div>
+            <p>教室で「コピー済み」と出ても、貼る側をクリックしていないと入りません。PowerShell、ターミナル、チャットの入力欄を、先にクリックします。</p>
             <ul>
               <li><strong>Windows</strong> … PowerShell では右クリック1回で貼ることが多い。だめなら Ctrl＋V</li>
               <li><strong>Mac</strong> … ⌘＋V。ターミナルをクリックしてから</li>
               <li><strong>チャット</strong> … 入力欄をクリックしてから貼る</li>
             </ul>
-            <p>「コピー済み」と教室に出ても、貼る側をクリックしていないと入りません。</p>
             <div class="qa">
               <p class="qa-q">zsh: command not found: irm</p>
               <p>Mac の画面に、Windows 用の行を貼った印です。<code>irm</code> は使いません。<a href="#/course/codemac" data-link>Mac編</a> の <code>curl</code> の1行を貼ります。</p>
@@ -432,6 +428,7 @@
             <p class="kicker">COMMAND</p>
             <h1>いったん閉じて、開き直す</h1>
             <div data-pic="powershell" data-cap="インストール直後は、窓を閉じないと見つからないことが多い"></div>
+            <p>インストール直後に <code>claude</code> と打つと、「command not found」と出ることが多いです。窓を全部閉じて、新しく開き直します。</p>
             <ol>
               <li>PowerShell またはターミナルを<strong>全部閉じる</strong></li>
               <li>新しく開き直す</li>
@@ -448,6 +445,7 @@
             <p class="kicker">LOGIN</p>
             <h1>有料プランの同じメールか見る</h1>
             <div data-pic="plan" data-cap="無料のままだと、Code のログインで止まりやすい"></div>
+            <p>ブラウザで claude.ai を開き、設定のプラン欄を見ます。Free のままだと、Code のログインで止まりやすいです。会社のGoogleと、個人Gmailを取り違えていないかも見ます。</p>
             <ul>
               <li>ブラウザで <a href="#/course/account" data-link>claude.ai に入れるか</a> 先に確認</li>
               <li>会社のGoogleと、個人Gmailを取り違えていないか</li>
@@ -463,6 +461,7 @@
             <p class="kicker">MAC</p>
             <h1>ターミナルか、パスワードか</h1>
             <div data-pic="terminal" data-cap="赤い丸・黄色い丸・緑の丸がある窓"></div>
+            <p>赤い丸・黄色い丸・緑の丸がある窓が、ターミナルです。テキストエディット（メモアプリ）に貼っても動きません。</p>
             <ul>
               <li>テキストエディットに貼っていないか（それはメモアプリです）</li>
               <li>パスワード入力中は文字が見えません。打ち終わって Enter</li>
@@ -478,7 +477,8 @@
             <p class="kicker">CHAT</p>
             <h1>探さなくてよいです。今はチャットの中</h1>
             <div data-pic="webchat" data-cap="新しいチャットで、作ってと頼む"></div>
-            <p>以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</p>
+            <p>左の一覧に「Cowork」を探しても、今はありません。以前の Cowork（コワーク）は、このチャットに入っています。</p>
+            <p>資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</p>
             <p>新しいチャットを開き、「作って」と頼んでください。講座は <a href="#/course/cowork" data-link>事務（旧Cowork）</a> です。</p>
           `
       },
@@ -500,7 +500,7 @@
             <p class="kicker">WRAP</p>
             <h1>画面の文言を、そのまま控える</h1>
             <div data-pic="chat" data-cap="赤いエラー文は、消さずに残す"></div>
-            <p>講師に聞くときは、次の3つがあると早いです。</p>
+            <p>講師に聞くときは、次の3つがあると早いです。赤いエラー文は、消さずに残します。</p>
             <ol>
               <li>Windows か Mac か</li>
               <li>今やっていた講座名</li>

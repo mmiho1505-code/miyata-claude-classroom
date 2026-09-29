@@ -12,8 +12,9 @@ window.CLASSROOM = {
           title: "今日のゴール",
           body: `
             <p class="kicker">GOAL</p>
-            <h1>この講座が終わると、できること</h1>
-            <p>チャットは少し使ったことがある方向けの実践講座です。むずかしい設定より、「任せて、ラクをする」体験を大事にします。</p>
+            <h1>月末の請求書を、同じチャットに任せる</h1>
+            <p>月末です。取引先リストを開いて、請求書を1件ずつ作っています。机の上にはレシート。集計はあと回しです。30分が、そのまま消えます。</p>
+            <p>チャットは少し使ったことがある方向けです。むずかしい設定より、「任せて、ラクをする」体験を大事にします。</p>
             <div class="steps">
               <ol>
                 <li><strong>作業を任せるやり方がわかる</strong> … 以前の Cowork は今チャットの中。何を任せられるかを理解する</li>
@@ -30,6 +31,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">WHAT</p>
             <h1>以前の Cowork は、今チャットの中</h1>
+            <p>同じチャットで「このExcelから、9月分の請求書を作って」と頼みます。返ってくるのは文章の答えではなく、<strong>フォルダに入ったPDF</strong>です。</p>
             <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話でのやり取りも、両方この同じ画面です。別々のアプリや別の場所に切り替える必要はありません。</div>
             <p>パソコンのファイルや作業を<strong>同じチャットに任せられる</strong>使い方です。</p>
             <ul>
@@ -46,7 +48,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">COMPARE</p>
             <h1>会話と作業は、同じチャット</h1>
-            <p class="lead">同じ日本語で頼んでも、返ってくるものが違います。文章の答えも、仕上がったファイルも、<strong>同じ画面</strong>です。以前は後者だけが Cowork と呼ばれていました。</p>
+            <p class="lead">「9月の請求書、どう書けばいい？」と聞くと、文章が返ってきます。「clients.xlsx から9月分のPDFを作って」と頼むと、フォルダにファイルが入ります。場所は<strong>同じ画面</strong>です。以前は後者だけが Cowork と呼ばれていました。</p>
             <div class="vs-board">
               <article class="vs-card is-chat">
                 <span class="vs-badge muted">相談する</span>
@@ -107,7 +109,8 @@ window.CLASSROOM = {
           title: "できること",
           body: `
             <p class="kicker">CAN DO</p>
-            <h1>Coworkでできること</h1>
+            <h1>請求書も、フォルダ整理も、同じ画面</h1>
+            <p>月末のPDF、散らかったフォルダ、CSVの集計。Gmailやカレンダーにつないで、毎月くり返す。全部、同じチャットです。</p>
             <ul>
               <li><strong>資料作成</strong> … Excel・Word・PDF・スライドをゼロから作成</li>
               <li><strong>ファイル整理</strong> … フォルダの中を分類・リネーム・まとめる</li>
@@ -125,7 +128,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">MAP</p>
             <h1>コワークでできる4つのこと</h1>
-            <p>黒い画面は不要です。日本語で「〇〇して」と頼むだけです。Codeは本格的な開発、日々の事務は同じチャット、という住み分けです。</p>
+            <p>請求書のPDFは、同じチャットに任せます。黒い画面は不要です。日本語で「〇〇して」と頼むだけです。サイトのフォルダをまとめて直すときは、ターミナルの Claude Code です。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>資料を作る</h3><p>財務資料・セミナー教材・提案書・ひな形</p></article>
               <article class="op"><span class="num">2</span><h3>ファイルを整理する</h3><p>仕分け・PDF検索・集計・文字起こし</p></article>
@@ -142,6 +145,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">CATEGORY 1</p>
             <h1>数値や要点を渡すだけで、ドラフト完成</h1>
+            <p>試算表を渡します。銀行提出用のWordが返ってきます。数字とコメントは、人が見てからです。</p>
             <h2>銀行提出用の財務分析資料</h2>
             <div class="code-wrap">
               <button class="copy" type="button">コピー</button>
@@ -197,6 +201,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">CATEGORY 2</p>
             <h1>散らかったファイルも、頼むだけで整う</h1>
+            <p>フォルダが種類も日付もバラバラです。「種類ごとに分けて、ファイル名に日付を付けて」と頼みます。</p>
             <h2>フォルダの仕分け・リネーム・日付付け</h2>
             <div class="code-wrap">
               <button class="copy" type="button">コピー</button>
@@ -226,7 +231,8 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">CATEGORY 3</p>
             <h1>GmailやカレンダーもチャットからOK</h1>
-            <p>Gmail・カレンダー・ドライブなどを一度“接続”すると使えます。設定は画面の案内どおりです。パスワード入力は自分で行ってください。</p>
+            <p>未読メールが並んでいます。同じチャットから整理と下書きまで頼めます。送信はしません。パスワード入力は自分で行ってください。</p>
+            <p>Gmail・カレンダー・ドライブなどを一度“接続”すると使えます。設定は画面の案内どおりです。</p>
             <h2>Gmailの受信整理・返信下書き</h2>
             <div class="code-wrap">
               <button class="copy" type="button">コピー</button>
@@ -252,7 +258,8 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">CATEGORY 4</p>
             <h1>一度決めれば、あとは勝手に動く</h1>
-            <p>「毎朝7時に」「毎月1日に」のように時間を指定して、定期タスクとして登録します。</p>
+            <p>毎朝、予定と重要メールを自分で見ています。「毎朝7時に」と決めて、同じチャットに預けます。</p>
+            <p>「毎月1日に」のように時間を指定して、定期タスクとして登録します。</p>
             <h2>毎朝のブリーフィング</h2>
             <div class="code-wrap">
               <button class="copy" type="button">コピー</button>
@@ -297,6 +304,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">THEME</p>
             <h1>毎月くり返す、この“あるある”を任せる</h1>
+            <p>取引先ごとに金額と日付を打ち直しています。レシートと明細は、別の場所にあります。月末にまとめると、午前が終わります。</p>
             <ul>
               <li>請求書を毎月1件ずつ手作業で作成している</li>
               <li>取引先ごとに金額・日付を打ち直している</li>
@@ -390,6 +398,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">STEP 3</p>
             <h1>毎月くり返す“ツール化”</h1>
+            <p>1社のPDFと経費のExcelができました。次は「毎月1日に先月分を」と予約します。送る・保存の最終判断は自分です。</p>
             <ul>
               <li><strong>手順を保存する</strong> … STEP1・2の指示を「いつもの依頼」として保存。次回は呼び出すだけ</li>
               <li><strong>毎月に予約する</strong> … 「毎月1日に先月分の請求書と経費集計を作って」と定期実行を設定</li>
@@ -404,6 +413,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">TIPS</p>
             <h1>うまく頼むための4つのコツ</h1>
+            <p>「いい感じで」だけだと、形がぶれます。「9月分・請求書・PDF・invoicesフォルダ」まで先に言うと、仕上がりが安定します。</p>
             <ol>
               <li><strong>ゴールを先に伝える</strong> … 「何を・どんな形で」ほしいかを最初に。例：9月分・請求書・PDFで</li>
               <li><strong>素材の場所を伝える</strong> … ファイル名・フォルダ名・接続アプリを具体的に</li>
@@ -419,6 +429,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">SAFETY</p>
             <h1>安心して使うための約束</h1>
+            <p>PDFができても、送る前に宛名と金額を指差し確認します。メール送信・支払い・削除は、自分がOKしてからです。口座番号やマイナンバーは書きません。</p>
             <ul>
               <li>メール送信や支払い、ファイル削除は、自分がOKしてから実行させる</li>
               <li>請求書の数字と宛先は、送る前に必ず自分の目で確認する</li>
@@ -446,6 +457,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">SUMMARY</p>
             <h1>今日のまとめと、次の一歩</h1>
+            <p>同じチャットに任せる。返ってくるのは、仕上がったファイルです。左に別の Cowork は探しません。</p>
             <ol>
               <li>以前のCoworkは、今チャットで“作業を任せる”使い方。資料作成・整理・アプリ連携・定期実行の4つが使い道</li>
               <li>頼み方は日本語でOK。ゴール・素材・形式を伝える。まずは「今日のメールを整理して」から</li>
@@ -468,8 +480,8 @@ window.CLASSROOM = {
           title: "今日のゴール",
           body: `
             <p class="kicker">GOAL</p>
-            <h1>この講座が終わると、できること</h1>
-            <p>ターミナル（PowerShell）を使ってClaude Codeをインストールし、ログインと初期設定まで進めます。Macの人は <a href="#/course/codemac" data-link>Mac編</a> を使ってください。</p>
+            <h1>黒い画面に claude と打つところまで</h1>
+            <p>作業したいフォルダを開き、ターミナル（PowerShell）に <code>claude</code> と打ちます。今日は、インストール・ログイン・最初の一言まで進めます。Macの人は <a href="#/course/codemac" data-link>Mac編</a> です。</p>
             <ol>
               <li><strong>自分のパソコンにセットアップ完了</strong> … ターミナルからインストールし、claude が起動する状態に</li>
               <li><strong>ログインして使い始められる</strong> … Claudeアカウントでログインし、最初の一言を送れる</li>
@@ -482,8 +494,9 @@ window.CLASSROOM = {
           title: "Claude Codeとは",
           body: `
             <p class="kicker">WHAT</p>
-            <h1>Claude Code とは？</h1>
-            <p>“ターミナル”という黒い画面から、コマンドでClaudeに作業を頼めるツールです。ひとことで言えば、<strong>日本語でお願いすると、代わりに作ってくれるAIの相棒</strong>です。</p>
+            <h1>フォルダを開いて、黒い画面に頼む</h1>
+            <p>作業したいフォルダを開き、黒い画面（ターミナル）に <code>claude</code> と打ちます。「このフォルダのサイトを直して」と日本語で頼むと、ファイルを読んで手を動かします。</p>
+            <p>ひとことで言えば、<strong>日本語でお願いすると、代わりに作ってくれるAIの相棒</strong>です。</p>
             <ul>
               <li><strong>コマンドで動かす</strong> … マウスではなく文字（コマンド）で指示する</li>
               <li><strong>フォルダごと理解</strong> … プロジェクトのファイルを読んで、まとめて作業</li>
@@ -497,22 +510,23 @@ window.CLASSROOM = {
           title: "Coworkとの使い分け",
           body: `
             <p class="kicker">COMPARE</p>
-            <h1>事務のチャット と Claude Code の違い</h1>
+            <h1>同じチャットの事務と、黒い画面の Code</h1>
+            <p>請求書のPDFは、同じチャットに任せます。サイトのフォルダをまとめて直すときは、黒い画面の Claude Code です。左に別の Cowork は探しません。</p>
             <div class="compare">
               <div>
-                <h3>Cowork</h3>
+                <h3>同じチャット（以前の Cowork）</h3>
                 <ul>
-                  <li>アプリの画面で使う（GUI）</li>
-                  <li>クリック中心でやさしい</li>
+                  <li>claude.ai の同じ画面</li>
+                  <li>クリックと会話が中心</li>
                   <li>資料作成・ファイル整理が得意</li>
-                  <li>事務作業を任せたい人向け</li>
+                  <li>日々の事務を任せたい人向け</li>
                 </ul>
               </div>
               <div>
                 <h3>Claude Code</h3>
                 <ul>
-                  <li>ターミナルで使う（コマンド）</li>
-                  <li>少し玄人向けだが、より強力</li>
+                  <li>ターミナル（黒い画面）とフォルダ</li>
+                  <li>文字（コマンド）で指示する</li>
                   <li>コード・大きめの制作が得意</li>
                   <li>開発や自動化に踏み込みたい人向け</li>
                 </ul>
@@ -527,6 +541,7 @@ window.CLASSROOM = {
           body: `
             <p class="kicker">CHECK</p>
             <h1>始める前に、必要なもの</h1>
+            <p>Windows のパソコンと、PowerShell と、Claude の有料プランです。無料プランでは Code は使えません。</p>
             <ul>
               <li>Windows 10（1809）以降のパソコン（メモリ4GB以上・インターネット接続）。CPUが x64 か Arm64 かは、パソコンの「システム」画面で確認できます</li>
               <li>ターミナル（PowerShell）。Windowsに最初から入っています</li>
@@ -542,7 +557,8 @@ window.CLASSROOM = {
           title: "用語ミニ辞典",
           body: `
             <p class="kicker">WORDS</p>
-            <h1>その前に：ことばを3つだけ</h1>
+            <h1>黒い画面を開く。打つ文がコマンドです</h1>
+            <p>スタートから PowerShell を開きます。行頭が <code>PS C:\\</code> なら、今日使う画面です。<code>C:\\</code> だけなら CMD です。取り違えると、インストールの1行が動きません。</p>
             <ol>
               <li><strong>ターミナル</strong> … コマンドを打つための黒い画面。Windowsでは「PowerShell」がよく使われます</li>
               <li><strong>コマンド</strong> … パソコンへの命令文。今日はこれをコピーして貼るだけでOK</li>
@@ -759,6 +775,7 @@ _</pre>
           body: `
             <p class="kicker">SUMMARY</p>
             <h1>今日のまとめと、次の一歩</h1>
+            <p>黒い画面を開き、1行貼って、<code>claude</code> と打ちます。事務のPDFは同じチャット。フォルダをまとめて直すのが Code です。</p>
             <ol>
               <li>PowerShellで1行インストール。<code>irm https://claude.ai/install.ps1 | iex</code> を貼るだけ</li>
               <li><code>claude</code> で起動してログイン。有料プランでログインし、<code>--version</code> と <code>doctor</code> で確認</li>
@@ -782,14 +799,15 @@ _</pre>
           title: "今日のゴール",
           body: `
             <p class="kicker">GOAL</p>
-            <h1>デザインが苦手でも、求人ポスターは作れます</h1>
-            <p>今日は、AIに質問してもらいながらポスターを1枚つくります。むずかしい言葉や、デザインの知識は要りません。聞かれたことに答えるだけです。</p>
+            <h1>店のガラスに貼る1枚を、聞かれたことに答えて作る</h1>
+            <p>求人を出したい。Canvaを開いても、何を書けばいいか分かりません。今日は、AIに質問してもらいながらポスターを1枚つくります。むずかしい言葉や、デザインの知識は要りません。聞かれたことに答えるだけです。</p>
             <div data-pic="poster" data-cap="A4縦の求人ポスターを、1枚仕上げます"></div>
             <p>道は2つあります。どちらも最後は Canva で文字を目で確認します。</p>
             <div class="ops">
               <article class="op"><span class="num">A</span><h3>一問一答</h3><p>お手本1枚 → ChatGPTに聞いて注文書 → Canvaに出して「保存して」</p></article>
               <article class="op"><span class="num">B</span><h3>1枚絵＋マジックレイヤー</h3><p>ChatGPTで案を3つ → 画像にする → Canvaでパーツに分けて直す。題材例は女性向けパーソナルジムのA4チラシ</p></article>
             </div>
+            <p>Pinterestで「こんな感じ」を1枚保存します。ChatGPTに、何を書くかを聞いてもらいます。最後は Canva で電話番号を1字ずつ読みます。</p>
             <h2>使う道具は3つ。それぞれ役割がちがいます</h2>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>Pinterest</h3><p>お手本さがし係。いろいろなポスターの画像が見られるサイト。「こんな感じにしたい」を1枚えらびます。</p><div data-pic="pinterest"></div></article>
@@ -804,8 +822,8 @@ _</pre>
           body: `
             <p class="kicker">WORDS</p>
             <h1>「プロンプト」ってなに？</h1>
-            <p><strong>プロンプト ＝ AIへの注文書</strong>です。お店でいえば「オーダー票」。サイズ、色、書く中身が書いてあります。</p>
-            <p>今日は、この注文書もAIに書いてもらいます。自分で一から書かなくて大丈夫です。</p>
+            <p>お店で用紙に「A4縦、時給、3色だけ」と書くとします。それが<strong>プロンプト（注文書）</strong>です。サイズ、色、書く中身が書いてあります。</p>
+            <p>今日は、この注文書も ChatGPT に書いてもらいます。自分で一から書かなくて大丈夫です。</p>
             <div class="callout">枠の中の文は、そのまま打てばOK。自分の言葉に変えなくて大丈夫です。コピーして貼ってもかまいません。</div>
           `
         },
@@ -815,6 +833,7 @@ _</pre>
           body: `
             <p class="kicker">FLOW</p>
             <h1>さがす → きめる → つくる → なおす</h1>
+            <p>お手本を1枚保存します。ChatGPTに聞いてもらい、注文書を作ります。Canvaに出したら「保存して」。電話番号は人が読みます。</p>
             <div class="ops">
               <article class="op"><span class="num">A</span><h3>一問一答</h3><p>お手本1枚 → 注文書 → Canvaに出して保存して直す（手順1〜9）</p></article>
               <article class="op"><span class="num">B</span><h3>マジックレイヤー</h3><p>案を3つ → 画像 → パーツに分ける → 崩れた所を手で直す</p></article>
@@ -828,6 +847,7 @@ _</pre>
           body: `
             <p class="kicker">NOTES</p>
             <h1>あわてないために</h1>
+            <p>できたポスターの電話番号が、1けた違うことがあります。あなたの操作ミスではありません。最後に人が読みます。</p>
             <ol>
               <li><strong>文字は崩れることがあります。</strong>あなたの操作ミスではありません。最後に読んで、Canvaで打ち直せば直ります。マジックレイヤーでも、文字は必ず全部、目で確認します。</li>
               <li><strong>電話番号と住所は、最後に人が読みます。</strong>いちばん間違えると困る所なので、崩れていたらCanvaで打ち直します。QRコードやロゴは、自分の本物を入れ直します。</li>

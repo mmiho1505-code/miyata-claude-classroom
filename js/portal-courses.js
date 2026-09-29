@@ -17,13 +17,14 @@
         title: "今日のゴール",
         body: `
             <p class="kicker">GOAL</p>
-            <h1>帰るときに、この3つができるように</h1>
+            <h1>社員が毎朝開く、1ページを作る</h1>
+            <p>朝、メールとフォルダとカレンダーを別々に開いています。お知らせはチャットの奥です。今日はそれを1ページにまとめます。</p>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>作る</h3><p>社内ポータルの1ページを、話しかけるだけで作る</p></article>
+              <article class="op"><span class="num">1</span><h3>作る</h3><p>同じチャットに「作って」と頼む。プログラミングは不要です</p></article>
               <article class="op"><span class="num">2</span><h3>確かめる</h3><p>パソコンとスマホで、中身が正しいか見る</p></article>
               <article class="op"><span class="num">3</span><h3>見せる</h3><p>社員が開けるリンクを渡す</p></article>
             </div>
-            <div class="callout">プログラミングは不要です。Claude のチャットに、お願いを書くだけです。以前の Cowork は、今この同じ画面に入っています。</div>
+            <div class="callout">以前の Cowork は、今この同じ画面に入っています。別の場所へは切り替えません。</div>
           `
       },
       {
@@ -31,8 +32,8 @@
         title: "同じチャットで作る",
         body: `
             <p class="kicker">違い</p>
-            <h1>会話も作業も、この画面</h1>
-            <div class="callout">以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに統合されています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。別のアプリや別の場所に切り替える必要はありません。</div>
+            <h1>左に Cowork は、探さない</h1>
+            <p>相談も、ページを作ることも、この画面です。以前「Cowork（コワーク）」として別の場所にあった機能は、今このチャットに入っています。資料作成・分析・調べもの・ファイル出力も、会話も、同じ画面です。</p>
             <div class="ops">
               <article class="op"><span class="num">話</span><h3>会話</h3><p>相談する。文章で答えてくれます</p></article>
               <article class="op"><span class="num">作</span><h3>作業</h3><p>ページやファイルまで作ってくれます。今日はこちら</p></article>
@@ -45,8 +46,8 @@
         title: "完成のイメージ",
         body: `
             <p class="kicker">完成形</p>
-            <h1>1ページに、よく見る情報をまとめる</h1>
-            <p>上からこの順です。最初の1枚は、この4つだけにします。</p>
+            <h1>開いた瞬間に、よく見る4つが並ぶ</h1>
+            <p>最初の1枚は、この4つだけにします。上からこの順です。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>お知らせ</h3><p>日付つきで、新しいものが上</p></article>
               <article class="op"><span class="num">2</span><h3>今月の予定</h3><p>会議・休業・提出期限など</p></article>
@@ -62,7 +63,7 @@
         title: "今日の流れ",
         body: `
             <p class="kicker">4ステップ</p>
-            <h1>開く → 頼む → 確かめる → 渡す</h1>
+            <h1>開く → 貼る → 自分の目で見る → 渡す</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>開く</h3><p>claude.ai またはパソコンの Claude で、新しいチャットを開く</p></article>
               <article class="op"><span class="num">2</span><h3>頼む</h3><p>下の見本文を貼って送る</p></article>
@@ -77,7 +78,7 @@
         title: "チャットを開く",
         body: `
             <p class="kicker">STEP 1</p>
-            <h1>同じ画面で、新しい会話を始める</h1>
+            <h1>新しいチャットを1つ。別メニューへは行かない</h1>
             <ol>
               <li>パソコンで <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> を開く。アプリでも同じです</li>
               <li>新しいチャットを始める</li>
@@ -92,8 +93,8 @@
         practice: true,
         body: `
             <p class="kicker">STEP 2　練習</p>
-            <h1>この文をコピーして、チャットに貼る</h1>
-            <p>まずはこのまま送ります。社名やリンクは、あとから直せます。</p>
+            <h1>この文をコピーして、入力欄に貼って送る</h1>
+            <p>まずはこのまま送ります。社名やリンクは、あとから直せます。長い文でも大丈夫です。一度に全部書いて送ってください。</p>
             ${box(`当社の社内ポータルを1ページ作ってください。
 
 1ページに載せるのは次の4つだけ。上からこの順です。
@@ -108,7 +109,6 @@
 ・社名は「株式会社 宮田財務」
 
 できたら、社員が開けるリンクをください。`)}
-            <div class="callout">長い文でも大丈夫です。一度に全部書いて送ってください。</div>
           `
       },
       {
@@ -117,19 +117,13 @@
         practice: true,
         body: `
             <p class="kicker">伝え方</p>
-            <h1>お願い文に入れると、一発で近づく3つ</h1>
+            <h1>一発で近づくのは、この3行</h1>
             <p>オレンジの「コピー」を押すか、黒い枠の文を長押ししてコピーできます。チャットの入力欄に貼ってください。</p>
-            <h2>1. 誰が使うか</h2>
-            <p>例えば、この1行です。</p>
+            <p>誰が使うか、何を載せるか、どんな感じか。この3つが書いてあれば十分です。</p>
             ${box(`誰が使うか：全社員が毎朝開く`)}
-            <h2>2. 何を載せるか</h2>
-            <p>例えば、この1行です。</p>
             ${box(`何を載せるか：上から、お知らせ、今月の予定、よく使うリンク、部署の連絡先。1ページはこの4つだけ`)}
-            <h2>3. どんな感じか</h2>
-            <p>例えば、この1行です。</p>
             ${box(`どんな感じか：落ち着いた緑、文字は大きめ`)}
-            <h2>3つをまとめた見本</h2>
-            <p>初めて作るときは、この1本をそのまま貼って大丈夫です。</p>
+            <p>初めて作るときは、下の1本をそのまま貼って大丈夫です。</p>
             ${box(`当社の社内ポータルを1ページ作ってください。
 
 誰が使うか：全社員が毎朝開く
@@ -149,8 +143,8 @@
         title: "質問に答える",
         body: `
             <p class="kicker">STEP 3</p>
-            <h1>聞かれたら答える。分からなければ「おまかせ」</h1>
-            <p>色や項目を聞いてきたら、短く答えて構いません。</p>
+            <h1>色や項目を聞かれたら、短く答える</h1>
+            <p>分からなければ「おまかせで進めて」と書きます。仮の内容で作ってくれます。</p>
             <div class="ops">
               <article class="op"><span class="num">A</span><h3>分かるとき</h3><p>「お知らせは3件」「内線は3桁」など、知っている範囲で答える</p></article>
               <article class="op"><span class="num">B</span><h3>分からないとき</h3><p>「おまかせで進めて」と書く。仮の内容で作ってくれます</p></article>
@@ -187,7 +181,7 @@
         title: "うまくいかないとき",
         body: `
             <p class="kicker">困ったとき</p>
-            <h1>よくある止まり方と、次の一手</h1>
+            <h1>今の画面と、当てはまる行だけ見る</h1>
             <table>
               <thead><tr><th>こんなとき</th><th>こうする</th></tr></thead>
               <tbody>
@@ -205,7 +199,7 @@
         title: "3つの約束",
         body: `
             <p class="kicker">注意</p>
-            <h1>作るときの3つの約束</h1>
+            <h1>渡す前に見る。秘密の数字は載せない</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>載せる前に見る</h3><p>日付・番号・名前は、自分の目で確認してから共有する</p></article>
               <article class="op"><span class="num">2</span><h3>すぐ届く</h3><p>リンクを渡した相手にも、同じ内容がすぐに見えます</p></article>
@@ -219,7 +213,7 @@
         practice: true,
         body: `
             <p class="kicker">演習</p>
-            <h1>実際に1ページ作ってみましょう</h1>
+            <h1>新しいチャットに貼って、1ページ出す</h1>
             <ol>
               <li>Claude の新しいチャットを開く</li>
               <li>前のページの見本文を貼って送る</li>
@@ -234,7 +228,7 @@
         title: "まとめ",
         body: `
             <p class="kicker">覚えておくこと</p>
-            <h1>覚えておくのは、この3つだけ</h1>
+            <h1>貼る。見てから渡す。リンクは変わらない</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>チャットに頼む</h3><p>同じ画面。別の場所へは切り替えない</p></article>
               <article class="op"><span class="num">2</span><h3>見本文を貼る</h3><p>誰が・何を・どんな感じで、が書いてあれば十分</p></article>
@@ -260,7 +254,8 @@
         title: "手元に用意するもの",
         body: `
             <p class="kicker">はじめる前に</p>
-            <h1>この2つを用意しましょう</h1>
+            <h1>お気に入りのページと、作った会話</h1>
+            <p>前回お気に入りに保存したリンクを開きます。履歴から、ポータルを作った会話も開きます。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>ポータルのリンク</h3><p>前回お気に入りに保存したページ。開けるか確認</p></article>
               <article class="op"><span class="num">2</span><h3>作ったときの会話</h3><p>履歴から、ポータルを作った会話を開く</p></article>
@@ -273,7 +268,8 @@
         title: "今日のゴール",
         body: `
             <p class="kicker">GOAL</p>
-            <h1>帰るときに、この3つができるように</h1>
+            <h1>お知らせを足し、番号を変え、失敗したら戻す</h1>
+            <p>棚卸しの午後休業を一番上に足したい、内線が変わった、古い予定が残っている。今日はそれを、同じ会話の続きで直します。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>足す</h3><p>新しいお知らせや予定、リンクを追加する</p></article>
               <article class="op"><span class="num">2</span><h3>変える</h3><p>電話番号や日付、色や文字の大きさを変える</p></article>
@@ -286,9 +282,8 @@
         title: "直し方の結論",
         body: `
             <p class="kicker">結論</p>
-            <h1>中身の直し方は、「話しかけるだけ」</h1>
-            <p>ページの中を自分でいじる必要はありません。コードも、デザインソフトも使いません。</p>
-            <p>作ったときの会話の続きに、「〇〇を△△に変えて」と書くだけです。</p>
+            <h1>ページの中は触らない。続きに書く</h1>
+            <p>コードも、デザインソフトも使いません。作ったときの会話の続きに、「〇〇を△△に変えて」と書くだけです。</p>
           `
       },
       {
@@ -296,7 +291,7 @@
         title: "同じ会話の続きに書く",
         body: `
             <p class="kicker">編集のしかた</p>
-            <h1>3手で直ります</h1>
+            <h1>戻る → 頼む → ページを開き直す</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>会話に戻る</h3><p>ポータルを作った会話の画面を開く</p></article>
               <article class="op"><span class="num">2</span><h3>頼む</h3><p>「〇〇を△△に変えて」と入力して送る</p></article>
@@ -311,8 +306,7 @@
         practice: true,
         body: `
             <p class="kicker">お願いの例文　練習</p>
-            <h1>やりたいことと、こう伝える</h1>
-            <p>近いものをコピーして、数字や日付だけ自分用に直してください。</p>
+            <h1>近い文をコピーして、数字と日付だけ直す</h1>
             <p>項目の場所を変えるときも、ページの中を自分でドラッグする必要はありません。「何を・どこへ」と書いて送ります。</p>
             ${box(`お知らせに『10/20 棚卸しのため午後休業』を一番上に追加して`)}
             ${box(`総務の内線を101から105に変えて`)}
@@ -334,13 +328,13 @@
         title: "伝え方のコツ",
         body: `
             <p class="kicker">コツ</p>
-            <h1>「どこを・どう変えるか」をはっきり</h1>
+            <h1>「いい感じに」より、「101から105に」</h1>
+            <p>場所を言い、変える前と後を書き、1回は1〜3個までです。終わったら次を頼みます。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>どこを</h3><p>「お知らせの一番上」「総務の連絡先」など場所を言う</p></article>
               <article class="op"><span class="num">2</span><h3>前 → 後</h3><p>「101から105に」のように、変える前と後を書く。移すときは「勤怠を一番上に」</p></article>
               <article class="op"><span class="num">3</span><h3>少しずつ</h3><p>1回に頼むのは1〜3個まで。終わったら次を頼む</p></article>
             </div>
-            <p>あいまいな「いい感じに」より、<strong>具体的な一言</strong>のほうが一発で直ります。</p>
             <p>1ページにブロックを増やしたくなったら、まず <strong>よく使うリンク</strong> にボタンを足してください。お知らせや予定の横に、出退勤の画面を丸ごと置かないほうが迷いません。</p>
           `
       },
@@ -349,7 +343,7 @@
         title: "別の日に直すとき",
         body: `
             <p class="kicker">後日</p>
-            <h1>新しいタスクでも直せる。リンクを添えると確実</h1>
+            <h1>会話が見つからなければ、リンクを添える</h1>
             <div class="ops">
               <article class="op"><span class="num">A</span><h3>前の会話が見つかる</h3><p>履歴から、ポータルを作った会話を開いて続きに書く</p></article>
               <article class="op"><span class="num">B</span><h3>見つからない</h3><p>新しいタスクで、ポータルのリンクを貼ってお願いする</p></article>
@@ -363,7 +357,7 @@
         title: "うまく直らないとき",
         body: `
             <p class="kicker">困ったとき</p>
-            <h1>うまく直らないときの対処法</h1>
+            <h1>変わらないときは、まず再読み込み</h1>
             <table>
               <thead><tr><th>こんなとき</th><th>こうする</th></tr></thead>
               <tbody>
@@ -381,7 +375,7 @@
         title: "直すときの3つの約束",
         body: `
             <p class="kicker">注意</p>
-            <h1>直すときの3つの約束</h1>
+            <h1>直したら見る。社員にもすぐ見える</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>直したら見る</h3><p>変更のたびに、ページを開いて日付・番号・名前を確認</p></article>
               <article class="op"><span class="num">2</span><h3>すぐ届く</h3><p>直した内容は、共有している社員にもすぐ見える</p></article>
@@ -395,7 +389,7 @@
         practice: true,
         body: `
             <p class="kicker">演習</p>
-            <h1>実際に直してみましょう</h1>
+            <h1>足す、変える、見た目、戻す。この4つ</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>足す</h3><p>お知らせを1件、一番上に追加する</p></article>
               <article class="op"><span class="num">2</span><h3>変える</h3><p>連絡先の内線番号を1つ変える</p></article>
@@ -410,7 +404,7 @@
         title: "まとめ",
         body: `
             <p class="kicker">覚えておくこと</p>
-            <h1>覚えておくのは、この3つだけ</h1>
+            <h1>続きに書く。具体的に。開き直す</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>続きに書く</h3><p>作った会話の続き（なければリンクを貼る）</p></article>
               <article class="op"><span class="num">2</span><h3>具体的に</h3><p>「どこを・どう変えるか」を伝える</p></article>

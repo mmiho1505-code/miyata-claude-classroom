@@ -10,16 +10,17 @@
     title: "出退勤管理を作ろう",
     subtitle: "ボタンを押すだけのタイムカード。記録と月末の集計をラクにする",
     duration: "約35分",
-    audience: "Coworkを使う人／事務・総務",
+    audience: "チャットで作業を任せる人／事務・総務",
     lessons: [
       {
         id: "goal",
         title: "今日のゴール",
         body: `
             <p class="kicker">GOAL</p>
-            <h1>帰るときに、この3つができるように</h1>
+            <h1>名前を選んで、出勤を押す。時刻が残る</h1>
+            <p>朝、タイムカードを探しています。押した時刻が残るかが仕事です。見るだけのポータルと違い、社員みんなが書き込みます。同じチャットに「作って」と頼みます。</p>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>作る</h3><p>出勤・退勤ボタンのあるアプリを Cowork で作る</p></article>
+              <article class="op"><span class="num">1</span><h3>作る</h3><p>出勤・退勤ボタンのあるアプリを、同じチャットで作る</p></article>
               <article class="op"><span class="num">2</span><h3>記録する</h3><p>押した時刻が消えずに残るか、テストして確かめる</p></article>
               <article class="op"><span class="num">3</span><h3>集計する</h3><p>月末に一人ずつの勤務時間をまとめて取り出す</p></article>
             </div>
@@ -30,7 +31,7 @@
         title: "完成のイメージ",
         body: `
             <p class="kicker">完成形</p>
-            <h1>名前を選んで、ボタンを押すだけ</h1>
+            <h1>一覧から自分の名前。大きいボタン。今日の時刻</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>名前を選ぶ</h3><p>一覧から自分の名前を選ぶ</p></article>
               <article class="op"><span class="num">2</span><h3>出勤／退勤</h3><p>大きいボタンを押す。時刻が残る</p></article>
@@ -44,12 +45,12 @@
         title: "ポータルとの違い",
         body: `
             <p class="kicker">保存が大事</p>
-            <h1>みんなが書き込むので、「保存」が大事</h1>
+            <h1>みんなが押すので、閉じても残す</h1>
+            <p>社内ポータルは、事務員が書いて社員は見るだけです。出退勤は、社員みんながボタンで書き込みます。だからお願い文に「記録はみんなの分を保存して、消えないように」と一言入れます。</p>
             <div class="ops">
               <article class="op"><span class="num">A</span><h3>社内ポータル</h3><p>事務員が書いて、社員は見るだけ。中身は Claude に頼んで直す</p></article>
               <article class="op"><span class="num">B</span><h3>出退勤管理</h3><p>社員みんながボタンで書き込む。押した記録を残しておく必要がある</p></article>
             </div>
-            <div class="callout">だからお願い文に「記録はみんなの分を保存して、消えないように」と一言入れます。</div>
             <p>ポータルの作り方は <a href="#/course/portalmake" data-link>作り方編</a> です。</p>
           `
       },
@@ -58,13 +59,13 @@
         title: "全体の流れ",
         body: `
             <p class="kicker">5ステップ</p>
-            <h1>作って、試して、使い始める</h1>
+            <h1>決めて、頼んで、押して、配る</h1>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>決める</h3><p>決めることを整理する</p></article>
-              <article class="op"><span class="num">2</span><h3>頼む</h3><p>お願いを書く</p></article>
-              <article class="op"><span class="num">3</span><h3>答える</h3><p>質問に答える</p></article>
-              <article class="op"><span class="num">4</span><h3>テスト</h3><p>自分でテストする</p></article>
-              <article class="op"><span class="num">5</span><h3>使い始め</h3><p>共有して使い始める</p></article>
+              <article class="op"><span class="num">1</span><h3>決める</h3><p>誰が使うか、何を押すか、月末に何が欲しいか</p></article>
+              <article class="op"><span class="num">2</span><h3>頼む</h3><p>同じチャットにお願いを書く</p></article>
+              <article class="op"><span class="num">3</span><h3>答える</h3><p>聞かれたら短く答える</p></article>
+              <article class="op"><span class="num">4</span><h3>テスト</h3><p>自分で出勤→退勤を押す</p></article>
+              <article class="op"><span class="num">5</span><h3>使い始め</h3><p>共有して、今のタイムカードと並行する</p></article>
             </div>
           `
       },
@@ -73,13 +74,13 @@
         title: "3つだけ決めておく",
         body: `
             <p class="kicker">STEP 1</p>
-            <h1>お願いする前に、3つだけ決めておく</h1>
+            <h1>名前、ボタン、月末に欲しい表</h1>
+            <p>いまのタイムカードや勤怠表を手元に置いておくと、決めやすくなります。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>誰が使う？</h3><p>社員の名前の一覧（名字だけでもOK）</p></article>
               <article class="op"><span class="num">2</span><h3>何を押す？</h3><p>出勤・退勤だけか、休憩の開始・終了も入れるか</p></article>
               <article class="op"><span class="num">3</span><h3>月末に何が欲しい？</h3><p>一人ずつの合計時間、日ごとの一覧、Excelで出す等</p></article>
             </div>
-            <p>いまのタイムカードや勤怠表を手元に置いておくと、決めやすくなります。</p>
           `
       },
       {
@@ -88,7 +89,7 @@
         practice: true,
         body: `
             <p class="kicker">STEP 2　練習</p>
-            <h1>このまま真似してOK</h1>
+            <h1>同じチャットに貼る。いちばん大事なのは「消えない」</h1>
             <p>claude.ai またはパソコンの Claude でチャットを開き、下の文を貼って送ります。名前は自分の会社用に直してください。演習では架空の3人のままで構いません。</p>
             ${box(`社員が使う出退勤管理のアプリを作ってください。
 
@@ -109,7 +110,7 @@
         title: "質問に答える",
         body: `
             <p class="kicker">STEP 3</p>
-            <h1>よく聞かれる質問と、答え方の例</h1>
+            <h1>押し間違い、見える範囲、夜勤。聞かれたらこう答える</h1>
             <table>
               <thead><tr><th>Claudeからの質問（例）</th><th>答え方の例</th></tr></thead>
               <tbody>
@@ -127,7 +128,7 @@
         title: "自分でテストする",
         body: `
             <p class="kicker">STEP 4</p>
-            <h1>使い始める前に、自分でテストする</h1>
+            <h1>配る前に、自分で押して、閉じて、開き直す</h1>
             <ol>
               <li>自分の名前で <strong>出勤→退勤</strong> を押し、記録が表示されるか</li>
               <li>ページを閉じて開き直しても、記録が残っているか</li>
@@ -142,7 +143,7 @@
         title: "共有して使い始める",
         body: `
             <p class="kicker">STEP 5</p>
-            <h1>共有して、使い始める</h1>
+            <h1>リンクを送り、最初の1〜2週間は並行する</h1>
             <table>
               <thead><tr><th>すること</th><th>ポイント</th></tr></thead>
               <tbody>
@@ -160,12 +161,11 @@
         practice: true,
         body: `
             <p class="kicker">月末</p>
-            <h1>集計も「話しかけるだけ」</h1>
-            <p>作った会話の続きに、近いものをコピーして月だけ直してください。</p>
+            <h1>作った会話の続きに、月だけ直して頼む</h1>
+            <p>近いものをコピーしてください。アプリ画面の「Excelで取り出す」ボタンから、自分で出すこともできます。</p>
             ${box(`出退勤アプリの10月分を、一人ずつ日ごとの出勤・退勤時刻と合計時間の表にして、Excelでください`)}
             ${box(`退勤の押し忘れがある日を一覧にして`)}
             ${box(`労働時間が1日8時間を超えた日を教えて`)}
-            <p>アプリ画面の「Excelで取り出す」ボタンから、自分で出すこともできます。</p>
           `
       },
       {
@@ -174,7 +174,7 @@
         practice: true,
         body: `
             <p class="kicker">変更</p>
-            <h1>よくある変更と、その伝え方</h1>
+            <h1>名前を足す、時刻を直す、休憩を足す。続きに書く</h1>
             ${box(`名前の一覧に『佐藤 次郎』を追加して`)}
             ${box(`鈴木さんを一覧から外して。過去の記録は残して`)}
             ${box(`山田さんの10/3の退勤を18:00にして`)}
@@ -190,10 +190,9 @@
         practice: true,
         body: `
             <p class="kicker">機能追加　練習</p>
-            <h1>すでに作ったページに、勤怠を足す</h1>
-            <p>ゼロから作り直さなくて大丈夫です。Cowork の会話の続きに、下を貼ってください。オレンジの「コピー」を押します。</p>
+            <h1>ゼロから作り直さない。続きに「消さないで」と書く</h1>
+            <p>ポータルはある。タイムカードだけ足したい、というときは、同じ会話の続きに下を貼ります。出退勤は1ページの5つ目にはせず、よく使うリンクから開きます。</p>
             <h2>社内ポータルに、出退勤を足す</h2>
-            <p>ポータルはある。タイムカードだけ足したい、というときの見本です。出退勤は1ページの5つ目にはせず、よく使うリンクから開きます。</p>
             ${box(`いまの社内ポータルに、「出退勤」を足してください。
 
 1ページの中身は、いまの4つのままです。上から
@@ -215,8 +214,8 @@
 社名は「株式会社 宮田財務」
 いまあるお知らせ・予定・リンク・連絡先は消さないでください。
 できたら、社員が開けるリンクをください。`)}
-            <h2>出退勤アプリに、よく足すもの</h2>
-            <p>アプリはもうある。ボタンや画面だけ足したいときの1行です。〔　〕は自分用に直してください。</p>
+            <h2>アプリはもうある。ボタンだけ足す</h2>
+            <p>〔　〕は自分用に直してください。</p>
             ${box(`出退勤アプリに、休憩開始・休憩終了のボタンを追加して。押した時刻も保存して`)}
             ${box(`出退勤に『欠勤』『有給』のボタンを追加して。理由は書かなくていい`)}
             ${box(`押し忘れた人（出勤はあるのに退勤がない人）が一目で分かる一覧を、事務の画面に追加して`)}
@@ -230,7 +229,7 @@
         title: "3つの約束",
         body: `
             <p class="kicker">注意</p>
-            <h1>勤怠の記録だからこその3つの約束</h1>
+            <h1>勤怠として使ってよいか、先に聞く</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>正式な記録か確認</h3><p>勤怠の記録として使ってよいか、社長や社労士に確認</p></article>
               <article class="op"><span class="num">2</span><h3>載せるのは名前だけ</h3><p>住所・給与・マイナンバーなどは入れない</p></article>
@@ -244,7 +243,7 @@
         practice: true,
         body: `
             <p class="kicker">演習</p>
-            <h1>実際にやってみましょう</h1>
+            <h1>架空の3人で作り、押して、足して、Excelに出す</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>作る</h3><p>見本のお願いで作る（名前は架空の3人でOK）</p></article>
               <article class="op"><span class="num">2</span><h3>テストする</h3><p>出勤→退勤を押し、開き直しても残るか確認</p></article>
@@ -258,7 +257,7 @@
         title: "まとめ",
         body: `
             <p class="kicker">覚えておくこと</p>
-            <h1>覚えておくのは、この3つだけ</h1>
+            <h1>消えないように頼む。配る前に押す。月末は Excel</h1>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>保存する</h3><p>お願い文に「全員分を保存して、消えないように」</p></article>
               <article class="op"><span class="num">2</span><h3>自分でテスト</h3><p>配る前に。別の人の記録も残るか</p></article>

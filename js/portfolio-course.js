@@ -18,8 +18,9 @@
         body: `
             <p class="kicker">GOAL　はじめてのCode</p>
             <h1>1ページを作って、URLで見せる</h1>
+            <p>名刺に載せるQRが欲しい。自己紹介の1ページを作り、URLで見せます。売上や副業の成功を保証するものではありません。</p>
             <p>できあがりは1ページです。ファーストビュー → 自己紹介 → できること → 制作実績 → よくある質問 → お問い合わせ（Googleフォームに飛ぶ）。スマホでも見えます。</p>
-            <p>GitHub Pages の URL は <code>ユーザー名.github.io/portfolio-〇〇</code> の形になります。名刺のQRなど、見せる用に使えます。売上や副業の成功を保証するものではありません。</p>
+            <p>GitHub Pages の URL は <code>ユーザー名.github.io/portfolio-〇〇</code> の形になります。</p>
             <div class="ops">
               <article class="op"><span class="num">準</span><h3>事前</h3><p>パソコン、Node.js、Claude Pro以上、GitHub。ターミナルで <code>claude</code></p></article>
               <article class="op"><span class="num">作</span><h3>作る</h3><p>テンプレを埋めて Code に頼む。数回直す</p></article>
@@ -35,6 +36,7 @@
         body: `
             <p class="kicker">準備</p>
             <h1>パソコン、Node、Pro、GitHub</h1>
+            <p>ターミナルで <code>claude</code> と打ちます。キャラクターのアイコンが出れば、Code は入っています。初回はブラウザでログインします。</p>
             <ul>
               <li>パソコン</li>
               <li>Node.js（<a href="#/course/nodejs" data-link>講座</a>。必須ではない入れ方もあります）</li>
@@ -50,6 +52,7 @@
         body: `
             <p class="kicker">画面</p>
             <h1>フォルダを開いて、拡張を入れる</h1>
+            <p>配布フォルダを、ウィンドウへドラッグします。左の四角が並んだアイコンから、Claude Code の拡張を入れます。できたコードを横に見ながら頼めます。</p>
             <ol>
               <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> を入れる</li>
               <li>配布フォルダを、ウィンドウへドラッグ＆ドロップして開く</li>
@@ -65,7 +68,7 @@
         body: `
             <p class="kicker">中身　練習</p>
             <h1>【　】を、自分の言葉に変える</h1>
-            <p>記入シートに名前・職種・拠点・自己紹介・実績・よくある質問などを書き、テンプレートの【　】部分を置き換えます。配布のシートは講義で渡します。</p>
+            <p>記入シートが空欄のままです。名前・職種・拠点を、【　】に書き込みます。配布のシートは講義で渡します。</p>
             <p><strong>裏ワザ</strong>：テンプレートを、普段使っている Claude や ChatGPT に貼り、「上記のプロンプトに私の情報を反映させて」と頼みます。蓄積されている自分の情報で、中身を埋めてくれます。無い情報は「不明」のままにしてもらいます。秘密は渡しません。</p>
             ${box(`上記のプロンプトに私の情報を反映させてください。知らない項目は「不明」のままにしてください。パスワードや口座は書かないでください。まだサイトは作らないでください。`)}
           `
@@ -77,7 +80,8 @@
         body: `
             <p class="kicker">直す　練習</p>
             <h1>初稿のあと、数回だけ足す</h1>
-            <p>最初の一回で、ほぼ完成形の初稿ができます。そのあと「画像を差し替えて」「ファビコンを設定して」「お問い合わせを付けて」などと追加で頼み、数回やり取りすれば公開できる品質になります。</p>
+            <p>初稿が出ました。顔写真が仮のまま、お問い合わせもありません。「画像を差し替えて」「ファビコンを設定して」「お問い合わせを付けて」と、数回足します。</p>
+            <p>数回やり取りすれば、公開できる品質になります。</p>
             <p>デザインを変えたいときは、カラーテーマやフォントの雰囲気を変えるよう頼みます。参考デザインを添付して、AIと壁打ちしながら固めるのがおすすめです。</p>
             ${box(`画像を差し替えて。ファビコンを設定して。お問い合わせはGoogleフォームのリンクにして。まだ公開しないでください。`)}
             <h2>動作モード</h2>
@@ -95,7 +99,7 @@
         body: `
             <p class="kicker">公開</p>
             <h1>履歴が残る場所に置いて、Pages を押す</h1>
-            <p>GitHub はコードの保管場所です。変更履歴が残るので、前の状態に戻せます。公開リポジトリには、パスワードや顧客名簿を入れません。</p>
+            <p>できた1ページを、履歴が残る場所に置きます。GitHub です。公開リポジトリには、パスワードや顧客名簿を入れません。送る・消すは人が決めます。</p>
             <p>GitHub MCP を Claude Code につなぐと、難しい git コマンドを打たなくて済みます。「GitHubをMCPで接続したい」と頼めば手順を教えてくれます。<code>/mcp</code> で接続状況を確認できます。</p>
             ${box(`GitHubをMCPで接続したいです。今の画面に合わせて、押す場所を日本語で1つずつ教えてください。パスワードは私が自分で入れます。入力欄には書かないでください。`)}
             <p>つながったら、〔portfolio-名前〕を自分用に変えて送ります。公開前に、表示やリンクのチェックも頼んでおくと安心です。</p>
@@ -109,6 +113,7 @@
         body: `
             <p class="kicker">向き不向き</p>
             <h1>静的なサイトは向く。データベースは向かない</h1>
+            <p>今日の1ページは、HTML・CSS・JavaScript だけです。会員ログインやデータベースは、この出し方では動きません。</p>
             <p><strong>できる</strong>：HTML・CSS・JavaScript だけの静的なサイト（今回のポートフォリオなど）。無料です。</p>
             <p><strong>できない</strong>：WordPress のように、データベースやサーバー側の処理が必要なサイト。</p>
             <p>お問い合わせフォームは、Googleフォームや Tally を埋め込みます（教室では送信内容の確認は人）。サーバー側の処理が必要なら Cloudflare Pages など、WordPress ならレンタルサーバーを使います。</p>
@@ -121,6 +126,7 @@
         body: `
             <p class="kicker">EP269　配布フォルダ</p>
             <h1>portfolio フォルダを Code で開く</h1>
+            <p>講義の配布リンクを開きます。解凍した <strong>portfolio</strong> フォルダを、Claude デスクトップの <strong>Code タブ</strong>で開きます。この教室サイトからは、ZIP は配っていません。</p>
             <ol>
               <li>講義の配布リンクを開く。Mac 用と Windows 用が分かれています</li>
               <li>Windows は、ダウンロード前に文字が化けて見えることがあります。<strong>ダウンロードしたあと</strong>は直ります</li>
@@ -136,6 +142,7 @@
         body: `
             <p class="kicker">手順2</p>
             <h1>images フォルダ。名前は半角英数字</h1>
+            <p>顔写真を入れます。ファイル名が日本語だと、公開したときに絵が出ないことがあります。<code>work01.jpg</code> のように、半角英数字にします。</p>
             <p>顔写真や作品の画像は <code>images</code> フォルダに入れます。なければ、用意されている <strong>avatar1</strong>・<strong>avatar2</strong> を使います。</p>
             <div class="callout warn">ファイル名は <strong>半角英数字</strong> にします（例：<code>work01.jpg</code>）。日本語の名前だと、公開したときに絵が出ないことがあります。</div>
           `
@@ -147,7 +154,7 @@
         body: `
             <p class="kicker">手順3　約15分　人が書く</p>
             <h1>portfolio.md の「：」のあと</h1>
-            <p>メモ帳などで <code>portfolio.md</code> を開き、名前・肩書き・自己紹介・目指すこと・画像のファイル名・作品を、各項目の <strong>：</strong> のあとに書き込みます。ここは人が書きます。</p>
+            <p>メモ帳で <code>portfolio.md</code> を開きます。名前も作品も、人が書きます。Code に全部書かせません。各項目の <strong>：</strong> のあとに入れます。約15分です。</p>
             <p>作品がなければ、見本の「作品1：自分のポートフォリオサイト」を使ってもOKです。</p>
             ${box(`名前：
 肩書き：
@@ -167,7 +174,7 @@
         body: `
             <p class="kicker">手順4</p>
             <h1>index.html の1ファイルにまとめる</h1>
-            <p>Code に、下を貼ります。</p>
+            <p>フォルダで Code を開いて、下を貼ります。ファイルが増えると混乱するので、<code>index.html</code> の1ファイルにまとめます。</p>
             ${box(`自己紹介と作品を並べた1ページのポートフォリオサイトを index.html という名前で作ってください。
 守ってほしいこと：
 ・HTML・CSS・JavaScriptは index.html の1ファイルにまとめる（ファイルが増えると混乱するため）
@@ -187,6 +194,7 @@
         body: `
             <p class="kicker">手順5</p>
             <h1>フォルダをドロップするだけ</h1>
+            <p>GitHub Pages の代わりに、フォルダを画面へ落とす出し方もあります。トップのファイル名は必ず <code>index.html</code> です。</p>
             <ol>
               <li><a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a> を開き、Sign up（Google アカウントでログインでよい）</li>
               <li>名前とチーム名を入力し、「Continue to deploy」</li>
@@ -203,6 +211,7 @@
         body: `
             <p class="kicker">よくある質問</p>
             <h1>Codex・載せるもの・情報の集め方</h1>
+            <p>一発目の出来より、そのあと自分で直す回数です。何でも載せず、見せて自信があるものに絞ります。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>Claude Code と Codex</h3><p>ポートフォリオ程度なら、差はほとんどありません。本格的なシステムを作るなら Claude 寄り、というのが講師の感想です。一発目の出来より、<strong>そのあと自分で手直しを重ねる</strong>ことで良し悪しが決まります。</p></article>
               <article class="op"><span class="num">2</span><h3>何を載せるか</h3><p>デザイン・システム開発など、分野ごとにセクションを分けるのがよいです。何でも載せるのではなく、<strong>人に見せて自信があるもの</strong>に厳選します。</p></article>
@@ -216,6 +225,7 @@
         body: `
             <p class="kicker">覚えておくこと</p>
             <h1>人が書く。Codeが作る。Pages かドロップ</h1>
+            <p><code>portfolio.md</code> は人が書きます。作るのは黒い画面の Code です。出すのは GitHub Pages か、Netlify へのドロップです。</p>
             <ol>
               <li>事前：<code>claude</code> で入っているか確認。VS Code か Cursor でフォルダを開く</li>
               <li>テンプレの【　】を埋める。裏ワザは普段の Claude／ChatGPT に反映させる</li>
