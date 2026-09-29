@@ -169,9 +169,9 @@
       link: "Skillsの基礎"
     },
     {
-      keys: ["ポートフォリオ", "netlify", "ep269", "記入例_penta", "index.html"],
+      keys: ["ポートフォリオ", "netlify", "ep269", "記入例_penta", "index.html", "github pages", "github.io", "vs code"],
       answer:
-        "上級の回です。portfolio フォルダを Claude Code で開き、portfolio.md は人が書く。index.html の1ファイルにまとめ、Netlify にドロップします。画像名は半角英数字。配布ZIPは講義のリンクです。",
+        "1ページの自己紹介サイトです。事前は Node・Pro・GitHub。VS Code か Cursor でフォルダを開く。テンプレを埋めて数回直す。公開は GitHub Pages（Settings→Pages）か Netlify にドロップ。公開リポジトリに秘密は入れません。EP269 は portfolio.md を人が書く流れです。",
       href: "#/course/portfolio",
       link: "ポートフォリオサイトを公開"
     },

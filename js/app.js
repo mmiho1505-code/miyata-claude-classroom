@@ -761,7 +761,7 @@ ${q}
     expense: ["cover-expense", "経費", "レシートや明細を読み取り、科目ごとに月次集計。", "expense"],
     crm: ["cover-crm", "CRM", "登録・検索・絞り込みできる、自分専用の台帳。", "crm"],
     shop: ["cover-shop", "店舗", "紹介ページと予約フォームを作って、公開まで。", "shop"],
-    portfolio: ["cover-shop", "公開", "自己紹介＋作品を1ページ。Netlifyにドロップ。上級。", "shop"],
+    portfolio: ["cover-shop", "公開", "1ページの自己紹介。GitHub Pages か Netlify。", "shop"],
     survey: ["cover-survey", "集計", "回答CSVから、グラフとレポートを自動作成。", "survey"],
     abc: ["cover-abc", "ABC", "売上や得意先をA・B・Cに分けて、力の入れどころを見える化。", "abc"],
     sns: ["cover-sns", "SNS", "投稿と反応から、伸びた投稿の傾向と次のヒントを見える化。", "sns"],
@@ -1322,7 +1322,7 @@ ${q}
     expense: ["expense", "レシートを仕分けて集計"],
     crm: ["crm", "顧客と案件を一覧で"],
     shop: ["shop", "紹介ページと予約フォーム"],
-    portfolio: ["shop", "自己紹介＋作品。Netlifyで公開"],
+    portfolio: ["shop", "自己紹介＋作品。Pages か Netlify"],
     survey: ["survey", "回答をグラフにする"],
     abc: ["abc", "大きい順に A・B・C"],
     sns: ["sns", "伸びた投稿の共通点を見る"],
@@ -1689,7 +1689,13 @@ ${q}
     }
     if (courseId === "portfolio") {
       const t = {
-        goal: ["shop", "1ページを作って Netlify で公開"],
+        goal: ["shop", "1ページ。Pages か Netlify"],
+        prep: ["terminal", "claude と打って確認"],
+        vscode: ["desktop", "VS Code に拡張を入れる"],
+        fill: ["copy", "【　】を埋める。普段のAIに反映"],
+        polish: ["copy", "数回足す。公開前は人が見る"],
+        ghpages: ["git", "MCPでpush。Settings→Pages"],
+        cans: ["compare", "静的は可。WordPressは不可"],
         kit: ["folder", "portfolio フォルダを Code で開く"],
         images: ["folder", "images。名前は半角英数字"],
         md: ["docs", "portfolio.md は人が書く"],
