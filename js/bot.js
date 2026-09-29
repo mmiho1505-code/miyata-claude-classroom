@@ -197,6 +197,13 @@
       link: "Skillsの基礎"
     },
     {
+      keys: ["リサーチャー", "researcher", "/researcher", "競合調査", "裏取り", "ポジショニングマップ", "自社サービス.md"],
+      answer:
+        "上級です。Pro以上、Cursor、ターミナルの Claude Code。配られたコマンドでプラグインを入れ、再起動して /researcher:init。自社サービス.md が軸、リサーチの好み.md に調べ方。/researcher:research で候補を選び、調査・料金の裏取り・点検。report フォルダ。HTMLが出なければ好みに毎回HTMLも作ると書く。会社を増やしすぎない。Opusで足りることが多い。売上の保証はありません。",
+      href: "#/course/researcher",
+      link: "専属リサーチャー"
+    },
+    {
       keys: ["ポートフォリオ", "netlify", "ep269", "記入例_penta", "index.html", "github pages", "github.io", "vs code"],
       answer:
         "1ページの自己紹介サイトです。事前は Node・Pro・GitHub。VS Code か Cursor でフォルダを開く。テンプレを埋めて数回直す。公開は GitHub Pages（Settings→Pages）か Netlify にドロップ。公開リポジトリに秘密は入れません。EP269 は portfolio.md を人が書く流れです。",

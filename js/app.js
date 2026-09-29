@@ -374,6 +374,7 @@ ${q}
     "appedit",
     "claudemd",
     "applied",
+    "researcher",
     "faq"
   ];
 
@@ -392,7 +393,8 @@ ${q}
     "secplus",
     "appedit",
     "claudemd",
-    "applied"
+    "applied",
+    "researcher"
   ];
   const COWORK_IDS = ["today", "webchat", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake"];
   const TODAY_LESSON_ALIAS = {
@@ -779,6 +781,7 @@ ${q}
     secretary: ["cover-secretary", "秘書", "日本語のお願いから、GitHub保存・公開までの6ステップ。", "secretary"],
     secplus: ["cover-secretary", "秘書+", "DesktopのフォルダにカレンダーとGmail。送信はブロック。", "mail"],
     appedit: ["cover-appedit", "画面", "作ったアプリの文字・色・部品を、日本語のお願いで直す。", "mouse"],
+    researcher: ["cover-survey", "競合", "料金と特徴を裏取りして比べる。手加減なしのレポート。", "survey"],
     faq: ["cover-faq", "つまずき", "PowerShellが開かない、ログインできない、など。", "quiz"]
   };
 
@@ -830,6 +833,7 @@ ${q}
     secretary: ["秘書", "🤝"],
     secplus: ["秘書+", "📬"],
     appedit: ["画面", "✏️"],
+    researcher: ["リサーチ", "🔎"],
     faq: ["つまずき", "🆘"]
   };
 
@@ -1373,7 +1377,8 @@ ${q}
     invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"],
     nodejs: ["terminal", "node -v。入っていなければ公式から"],
     mdbase: ["docs", "業務マニュアル。なくても動く。あると安定"],
-    skillbase: ["copy", "よく使う手順を /名前 で呼ぶ"]
+    skillbase: ["copy", "よく使う手順を /名前 で呼ぶ"],
+    researcher: ["survey", "料金は裏取り。report フォルダ"]
   };
 
   const LESSON_ART = {
@@ -1902,6 +1907,19 @@ ${q}
       };
       return t[lessonId] || COURSE_ART.claudemd;
     }
+    if (courseId === "researcher") {
+      const t = {
+        goal: ["survey", "3形式。料金は裏取り"],
+        prep: ["terminal", "Pro、Cursor、claude"],
+        plugin: ["folder", "配られたコマンド。/researcher:init"],
+        write: ["docs", "自社が軸。好みにHTML"],
+        run: ["survey", "候補を選ぶ。report へ"],
+        more: ["copy", "指定・テーマ・前回比"],
+        qa: ["compare", "スキルは型。プラグインはパック"],
+        summary: ["eyecheck", "2枚書いて回す"]
+      };
+      return t[lessonId] || COURSE_ART.researcher;
+    }
     if (lessonId === "safety") return ["safety", "送る・消す・公開の前は、自分の目で"];
     if (lessonId === "trouble") return ["chat", "エラー文をそのまま伝える"];
     if (courseId === "canvaai") {
@@ -2299,6 +2317,7 @@ ${q}
       ["appedit", "29", "画面", "直す"],
       ["claudemd", "30", "CLAUDE.md", "メモ"],
       ["applied", "31", "使いこなし", "中級"],
+      ["researcher", "31b", "リサーチ", "上級"],
       ["faq", "32", "つまずき", "補助"]
     ];
     return `
@@ -2617,6 +2636,7 @@ ${q}
       nodejs: "cover-code",
       mdbase: "cover-applied",
       skillbase: "cover-applied",
+      researcher: "cover-survey",
       faq: "cover-faq"
     };
     const labels = {
@@ -2665,6 +2685,7 @@ ${q}
       nodejs: "Node.js",
       mdbase: "CLAUDE.md",
       skillbase: "Skills",
+      researcher: "リサーチ",
       faq: "つまずき"
     };
     const cover = covers[courseId] || "cover-cowork";
