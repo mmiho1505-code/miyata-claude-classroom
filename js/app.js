@@ -338,6 +338,7 @@ ${q}
     "hypo",
     "hr",
     "sched",
+    "slacksum",
     "aicopy",
     "cowork",
     "portalmake",
@@ -366,7 +367,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -407,7 +408,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "aicopy", "webwords", "mdbase", "skillbase"].includes(courseId)) return "starter";
+    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "webwords", "mdbase", "skillbase"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -416,7 +417,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "mdbase", "skillbase", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
+  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "mdbase", "skillbase", "poster", "faq", "market", "hypo", "hr", "sched", "slacksum", "aicopy"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -729,6 +730,7 @@ ${q}
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
     hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
     sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
+    slacksum: ["cover-cowork", "Slack", "予定済みで毎朝要約。決定・ToDo・返信だけ。雑談は外す。", "mail"],
     aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
     today: ["cover-cowork", "今日", "11枚・2時間。同じチャットとポータル。できれば Cursor に Claude Code。", "portalpage"],
@@ -769,6 +771,7 @@ ${q}
     hypo: ["仮説", "💡"],
     hr: ["人事", "👥"],
     sched: ["日程", "📅"],
+    slacksum: ["Slack要約", "💬"],
     aicopy: ["著作", "⚖️"],
     cowork: ["Cowork", "💬"],
     today: ["今日の講義", "📌"],
@@ -938,7 +941,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "account", "settings", "webwords", "mdbase", "skillbase", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
+    const pickOrder = ["today", "account", "settings", "webwords", "mdbase", "skillbase", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1319,6 +1322,7 @@ ${q}
     hypo: ["copy", "私はこう思う。外れたら指摘して"],
     hr: ["crm", "AIと人で切り分ける"],
     sched: ["mail", "空き時間をクリックしてメール文"],
+    slacksum: ["mail", "Slackを毎朝3つだけ要約"],
     aicopy: ["safety", "見て・調べて・確認してから"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
     today: ["portalpage", "11枚。同じチャットと、できれば Cursor"],
@@ -1580,6 +1584,19 @@ ${q}
         summary: ["mail", "つなぐ・貼る・実行"]
       };
       return t[lessonId] || COURSE_ART.sched;
+    }
+    if (courseId === "slacksum") {
+      const t = {
+        goal: ["mail", "全部読まず3つだけ"],
+        vs: ["compare", "聞くか、預けておくか"],
+        connect: ["mail", "Slackとコネクタ"],
+        channels: ["eyecheck", "雑談は外す"],
+        prompt: ["copy", "3つ。なければなし"],
+        schedule: ["calendar", "予定済みに登録"],
+        caution: ["safety", "朝9時。学習オフ"],
+        summary: ["mail", "つなぐ・絞る・予定済み"]
+      };
+      return t[lessonId] || COURSE_ART.slacksum;
     }
     if (courseId === "aicopy") {
       const t = {
@@ -1984,7 +2001,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "faq"])}</div>
       </div>`;
   };
 
@@ -2046,6 +2063,7 @@ ${q}
       ["hypo", "06", "仮説", "問い"],
       ["hr", "07", "人事", "切り分け"],
       ["sched", "08", "日程", "調整"],
+      ["slacksum", "08b", "Slack", "要約"],
       ["aicopy", "09", "著作", "確認"],
       ["cowork", "10", "Cowork", "事務"],
       ["portalmake", "11", "ポータル", "作る"],
@@ -2204,7 +2222,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2359,6 +2377,7 @@ ${q}
       hypo: "cover-applied",
       hr: "cover-crm",
       sched: "cover-chat",
+      slacksum: "cover-cowork",
       aicopy: "cover-faq",
       intro: "cover-intro",
       secretary: "cover-secretary",
@@ -2396,6 +2415,7 @@ ${q}
       hypo: "仮説",
       hr: "人事",
       sched: "日程",
+      slacksum: "Slack",
       aicopy: "著作",
       intro: "勉強会",
       secretary: "秘書",

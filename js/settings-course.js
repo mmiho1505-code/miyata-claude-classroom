@@ -117,7 +117,7 @@
               <article class="op"><span class="num">3</span><h3>コネクタ</h3><p>Googleカレンダーや Gmail など、外の道具をつなぐ入口。つなぐと相手の会社にもデータが届きます。会社のアカウントは、許可されてから。</p></article>
               <article class="op"><span class="num">4</span><h3>プラグイン</h3><p>さらに足す部品。必要なときだけ。分からないものは入れないでください。</p></article>
             </div>
-            <p>カレンダーとメールをつなぐ実例は、<a href="#/course/secplus" data-link>秘書+</a> や <a href="#/course/sched" data-link>日程調整</a> です。</p>
+            <p>カレンダーとメールをつなぐ実例は、<a href="#/course/secplus" data-link>秘書+</a> や <a href="#/course/sched" data-link>日程調整</a> です。Slack の毎朝要約は <a href="#/course/slacksum" data-link>Slackを毎朝要約</a> です。</p>
           `
       },
       {
