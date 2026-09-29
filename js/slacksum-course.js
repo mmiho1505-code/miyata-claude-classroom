@@ -9,7 +9,7 @@
     id: "slacksum",
     title: "Claude CoworkでSlackを毎朝要約",
     subtitle: "未読を全部読まない。決定・自分のToDo・返信が必要なものだけ受け取る",
-    duration: "約25分",
+    duration: "約20分",
     audience: "朝のSlackが多い人／予定済みタスクが使える有料プラン",
     lessons: [
       {
@@ -17,27 +17,17 @@
         title: "ねらい",
         body: `
             <p class="kicker">GOAL　1／8　EP253</p>
-            <h1>Slackは、仕事の会話が残るチャット</h1>
-            <p>Slack（スラック）は、会社やチームで使う連絡アプリです。メールのように1通ずつ送るのではなく、<strong>部屋（チャンネル）に書き残す</strong>使い方が中心です。あとから検索できます。スマホでもパソコンでも同じ内容が見えます。</p>
-            <p>LINE に近いところもありますが、仕事向けです。部屋ごとに話題を分け、ファイルも置けます。誰がいつ書いたかが残ります。</p>
-            <h2>よく出ることば</h2>
-            <ul>
-              <li><strong>ワークスペース</strong> … 会社やチームのひとまとまり。入るときに招待が要ることが多いです</li>
-              <li><strong>チャンネル</strong> … <code>#営業</code> のような部屋。入っている人に見えます。仕事の連絡用と、雑談用が分かれていることが多いです</li>
-              <li><strong>ダイレクトメッセージ（DM）</strong> … 1対1、または少人数だけの会話</li>
-              <li><strong>スレッド</strong> … 1件の書き込みへの返信の続き。本筋の部屋が埋もれにくいです</li>
-              <li><strong>未読</strong> … まだ見ていない印。チャンネルが多いと、朝に山になります</li>
-            </ul>
-            <div class="callout">この講座では、Slack そのものを作りません。すでにある会社の Slack を、<strong>読んで要約する</strong>使い方です。Slack へ投稿したり、メッセージを消したりしません。</div>
-            <h2>全部読まず、3つだけ受け取る</h2>
-            <p>朝に未読が何十件もたまっていると、読むだけで午前中が終わります。全部読むのをやめて、AIに要約させます。受け取るのは次の3つだけです。</p>
+            <h1>朝のSlackを、3つだけにする</h1>
+            <p>会社の Slack を開くと、<code>#営業</code> に未読が並びます。隣の雑談部屋にも数字がついています。田中さんからの1対1（DM）もあります。<strong>「見積、明日でいい？」</strong>の下に、返信が何段も続いています（スレッド）。</p>
+            <p>これが仕事のチャットです。メールのように1通ずつではなく、<strong>部屋に書き残します</strong>。あとから探せます。会社のひとまとまりを、ワークスペースと呼びます。</p>
+            <p>全部読むと、午前が終わります。この講座では、すでにある Slack を<strong>読んで要約するだけ</strong>です。投稿も削除もしません。</p>
+            <p>朝もらうのは、次の3つだけです。</p>
             <div class="ops">
               <article class="op"><span class="num">決</span><h3>決定事項</h3><p>誰が決めたかまで</p></article>
               <article class="op"><span class="num">T</span><h3>自分のToDo</h3><p>自分がやること</p></article>
               <article class="op"><span class="num">返</span><h3>返信が必要</h3><p>返事を待つもの</p></article>
             </div>
-            <p>同じやり方は、Gmailの前日分の要約や、最新情報の毎日の収集にも使えます。つなぐ実例は <a href="#/course/today/gmail" data-link>今日の講義（つなぐ）</a> です。送る・消すはしません。</p>
-            <div class="callout warn">無料プランでは予定済みが使えないことがあります。Pro / Max などの <a href="#/course/account" data-link>有料プラン</a> です。会社の Slack や Team／Enterprise は、管理者の承認が必要なことがあります。無理に突破しません。</div>
+            <div class="callout warn">予定済みは、有料プランのことがあります。<a href="#/course/account" data-link>プランの確認</a>。会社の Slack は、管理者の承認が要ることがあります。無理に突破しません。</div>
           `
       },
       {
