@@ -127,6 +127,13 @@
       link: "CLAUDE.mdの基礎"
     },
     {
+      keys: ["skills", "スキル", "skill", "/invoice-check", "スラッシュコマンド"],
+      answer:
+        "Skills は、よく使う手順を名前つきで残したものです。CLAUDE.md は毎回読むマニュアル、Skills は /名前 で呼んだときの手順です。自分で書かなくてよく、日本語で頼めます。",
+      href: "#/course/skillbase",
+      link: "Skillsの基礎"
+    },
+    {
       keys: ["秘書+", "Desktop", "送信ブロック", "ツールの権限", "ChatWork"],
       answer:
         "秘書の応用編は、Claude CodeデスクトップのフォルダにカレンダーとGmailをつなぎます。読む・下書きは常に許可。送信・返信・転送と完全削除はブロック。顧客メールを渡すかは自分で決めます。",

@@ -108,9 +108,9 @@
               <li><code>.md</code> はマークダウン。ほぼ普通のテキスト</li>
               <li>必須ではない。<code>/init</code> で下書きできる</li>
             </ul>
-            <p>手を動かすのは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a>。次の座学は Claude Code Skills の予定です。</p>
-            <p><a class="btn-orange" href="#/course/claudemd" data-link>作り方へ</a>
-            <a class="btn-dark" href="#/" data-link>ホームへ</a></p>
+            <p>手を動かすのは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a>。次の座学は <a href="#/course/skillbase" data-link>Claude Code Skillsの基礎</a> です。</p>
+            <p><a class="btn-orange" href="#/course/skillbase" data-link>Skillsの基礎へ</a>
+            <a class="btn-dark" href="#/course/claudemd" data-link>作り方へ</a></p>
           `
       }
     ]

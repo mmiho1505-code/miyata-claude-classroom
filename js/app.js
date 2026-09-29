@@ -347,6 +347,7 @@ ${q}
     "invoicemake",
     "nodejs",
     "mdbase",
+    "skillbase",
     "code",
     "codemac",
     "snspost",
@@ -365,7 +366,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -400,13 +401,13 @@ ${q}
     nine: "summary",
     tips: "summary"
   };
-  const CODE_SETUP_IDS = ["nodejs", "mdbase", "code", "codemac"];
+  const CODE_SETUP_IDS = ["nodejs", "mdbase", "skillbase", "code", "codemac"];
   const CODE_MAKE_IDS = ADVANCED_IDS.slice();
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "aicopy", "webwords", "mdbase"].includes(courseId)) return "starter";
+    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "aicopy", "webwords", "mdbase", "skillbase"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -415,7 +416,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "mdbase", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
+  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "mdbase", "skillbase", "poster", "faq", "market", "hypo", "hr", "sched", "aicopy"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -738,6 +739,7 @@ ${q}
     invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
     nodejs: ["cover-code", "Node", "Claude Codeの前。ターミナルで node -v。公式からインストーラー。", "terminal"],
     mdbase: ["cover-applied", "MD", "業務マニュアル。なくても動く。あると安定。/init で作れる。", "docs"],
+    skillbase: ["cover-applied", "Skills", "よく使う手順を /名前 で呼ぶ。マニュアルとは別。", "copy"],
     intro: ["cover-intro", "勉強会", "日本語でお願いして、作って・見て・直す感覚。", "desktop"],
     code: ["cover-code", "Code", "黒い画面に1行貼って、使える状態まで。", "powershell"],
     codemac: ["cover-mac", "Mac", "ターミナルに1行貼って、使える状態まで。", "terminal"],
@@ -777,6 +779,7 @@ ${q}
     invoicemake: ["請求書", "📄"],
     nodejs: ["Node.js", "🟢"],
     mdbase: ["CLAUDE.md基礎", "📘"],
+    skillbase: ["Skills基礎", "⚡"],
     intro: ["勉強会", "📘"],
     code: ["Code", "💻"],
     codemac: ["Mac", ""],
@@ -935,7 +938,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "account", "settings", "webwords", "mdbase", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
+    const pickOrder = ["today", "account", "settings", "webwords", "mdbase", "skillbase", "market", "hypo", "hr", "sched", "aicopy", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1324,7 +1327,8 @@ ${q}
     salary: ["expense", "時間×時給を表にする"],
     invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"],
     nodejs: ["terminal", "node -v。入っていなければ公式から"],
-    mdbase: ["docs", "業務マニュアル。なくても動く。あると安定"]
+    mdbase: ["docs", "業務マニュアル。なくても動く。あると安定"],
+    skillbase: ["copy", "よく使う手順を /名前 で呼ぶ"]
   };
 
   const LESSON_ART = {
@@ -1485,6 +1489,17 @@ ${q}
         summary: ["docs", "なくても動く。あると安定"]
       };
       return t[lessonId] || COURSE_ART.mdbase;
+    }
+    if (courseId === "skillbase") {
+      const t = {
+        goal: ["copy", "手順の型。座学"],
+        what: ["copy", "よく使う手順をコマンドに"],
+        vs: ["compare", "毎回読むマニュアルと、呼んだとき"],
+        use: ["copy", "/名前 で呼び出す"],
+        make: ["copy", "日本語で Skill にしてもらう"],
+        summary: ["copy", "必須ではない。呼んだときだけ"]
+      };
+      return t[lessonId] || COURSE_ART.skillbase;
     }
     if (courseId === "today") {
       const t = {
@@ -1968,7 +1983,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
       </div>`;
   };
 
@@ -2039,6 +2054,7 @@ ${q}
       ["invoicemake", "15", "請求書", "Cowork"],
       ["nodejs", "16", "Node", "準備"],
       ["mdbase", "16b", "MD基礎", "座学"],
+      ["skillbase", "16c", "Skills", "座学"],
       ["code", "17", "Windows", "準備"],
       ["codemac", "18", "Mac", "準備"],
       ["snspost", "19", "投稿文", "やさしい"],
@@ -2187,7 +2203,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "aicopy", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2360,6 +2376,7 @@ ${q}
       invoicemake: "cover-invoice",
       nodejs: "cover-code",
       mdbase: "cover-applied",
+      skillbase: "cover-applied",
       faq: "cover-faq"
     };
     const labels = {
@@ -2396,6 +2413,7 @@ ${q}
       invoicemake: "請求書",
       nodejs: "Node.js",
       mdbase: "CLAUDE.md",
+      skillbase: "Skills",
       faq: "つまずき"
     };
     const cover = covers[courseId] || "cover-cowork";
@@ -2822,6 +2840,7 @@ ${q}
         <a class="btn-dark" href="#/course/webchat" data-link>チャット入門へ</a>
         <a class="btn-dark" href="#/course/webwords" data-link>HTML・CSS・JAVAへ</a>
         <a class="btn-dark" href="#/course/mdbase" data-link>CLAUDE.mdの基礎へ</a>
+        <a class="btn-dark" href="#/course/skillbase" data-link>Skillsの基礎へ</a>
         <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a>
       </p>
 
@@ -2933,7 +2952,8 @@ ${q}
         </article>
       </div>
       <p><a class="btn-orange" href="#/course/nodejs" data-link>Node.jsのインストールへ</a>
-      <a class="btn-dark" href="#/course/mdbase" data-link>CLAUDE.mdの基礎へ</a></p>
+      <a class="btn-dark" href="#/course/mdbase" data-link>CLAUDE.mdの基礎へ</a>
+      <a class="btn-dark" href="#/course/skillbase" data-link>Skillsの基礎へ</a></p>
 
       <h2>E. Claude Code（Windows）</h2>
       <div class="ops">
