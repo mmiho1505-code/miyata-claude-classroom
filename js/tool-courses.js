@@ -633,7 +633,7 @@
               <li>デザインを整えてスマホ対応。感覚の言葉で何度でも調整</li>
               <li>GitHub＋Cloudflareで公開。更新は自動で反映される</li>
             </ol>
-            <p>次は <a href="#/course/survey" data-link>アンケート集計・自動グラフ化</a> です。</p>
+            <p>次は <a href="#/course/survey" data-link>アンケート集計・自動グラフ化</a> です。自己紹介サイトを Netlify で出す回は <a href="#/course/portfolio" data-link>ポートフォリオ公開</a> です。</p>
           `
       }
     ]

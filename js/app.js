@@ -361,6 +361,7 @@ ${q}
     "sns",
     "crm",
     "shop",
+    "portfolio",
     "secretary",
     "secplus",
     "appedit",
@@ -379,6 +380,7 @@ ${q}
     "sns",
     "crm",
     "shop",
+    "portfolio",
     "secretary",
     "secplus",
     "appedit",
@@ -755,6 +757,7 @@ ${q}
     expense: ["cover-expense", "経費", "レシートや明細を読み取り、科目ごとに月次集計。", "expense"],
     crm: ["cover-crm", "CRM", "登録・検索・絞り込みできる、自分専用の台帳。", "crm"],
     shop: ["cover-shop", "店舗", "紹介ページと予約フォームを作って、公開まで。", "shop"],
+    portfolio: ["cover-shop", "公開", "自己紹介＋作品を1ページ。Netlifyにドロップ。上級。", "shop"],
     survey: ["cover-survey", "集計", "回答CSVから、グラフとレポートを自動作成。", "survey"],
     abc: ["cover-abc", "ABC", "売上や得意先をA・B・Cに分けて、力の入れどころを見える化。", "abc"],
     sns: ["cover-sns", "SNS", "投稿と反応から、伸びた投稿の傾向と次のヒントを見える化。", "sns"],
@@ -798,6 +801,7 @@ ${q}
     expense: ["経費", "🧾"],
     crm: ["CRM", "📒"],
     shop: ["店舗", "🏪"],
+    portfolio: ["ポートフォリオ", "🌐"],
     survey: ["集計", "📊"],
     abc: ["ABC", "🥇"],
     sns: ["SNS", "📱"],
@@ -1312,6 +1316,7 @@ ${q}
     expense: ["expense", "レシートを仕分けて集計"],
     crm: ["crm", "顧客と案件を一覧で"],
     shop: ["shop", "紹介ページと予約フォーム"],
+    portfolio: ["shop", "自己紹介＋作品。Netlifyで公開"],
     survey: ["survey", "回答をグラフにする"],
     abc: ["abc", "大きい順に A・B・C"],
     sns: ["sns", "伸びた投稿の共通点を見る"],
@@ -1649,6 +1654,19 @@ ${q}
       };
       return t[lessonId] || COURSE_ART.aisub;
     }
+    if (courseId === "portfolio") {
+      const t = {
+        goal: ["shop", "1ページを作って Netlify で公開"],
+        kit: ["folder", "portfolio フォルダを Code で開く"],
+        images: ["folder", "images。名前は半角英数字"],
+        md: ["docs", "portfolio.md は人が書く"],
+        make: ["copy", "index.html の1ファイル"],
+        netlify: ["browser", "フォルダをドロップして公開"],
+        qa: ["quiz", "Codex・載せるもの・情報収集"],
+        summary: ["shop", "人が設計。Codeが作る。ドロップ"]
+      };
+      return t[lessonId] || COURSE_ART.portfolio;
+    }
     if (courseId === "portalmake") {
       const t = {
         goal: ["cowork", "作る・確かめる・見せる"],
@@ -1818,7 +1836,7 @@ ${q}
   const pickOpPic = (text) => {
     if (/出退勤|出勤|退勤/.test(text)) return "attendapp";
     if (/HTML|CSS|JAVA|JavaScript|骨組み/.test(text)) return "site";
-    if (/補助|IT導入|支援事業者/.test(text)) return "expense";
+    if (/Netlify|ポートフォリオ|portfolio\.md/.test(text)) return "shop";
     if (/ポータル|お知らせ/.test(text)) return "portalpage";
     if (/ターミナル|Mac|Spotlight/.test(text)) return "terminal";
     if (/CLAUDE\.md|マークダウン|Markdown|業務マニュアル/.test(text)) return "docs";
@@ -2122,6 +2140,7 @@ ${q}
       ["sns", "24", "SNS", "分析"],
       ["crm", "25", "CRM", "作る"],
       ["shop", "26", "店舗", "公開"],
+      ["portfolio", "26b", "PF公開", "上級"],
       ["secretary", "27", "秘書", "実践"],
       ["secplus", "28", "秘書+", "つなぐ"],
       ["appedit", "29", "画面", "直す"],
@@ -2205,8 +2224,8 @@ ${q}
             <div class="fun-actions">
               <a class="btn-orange" href="${ctaHref}" data-link>${ctaLabel}</a>
               <a class="btn-dark" href="#/guide" data-link>説明資料</a>
-            </div>
-          </div>
+        </div>
+        </div>
           <aside class="fun-board">
             <div class="fun-stats">
               ${progressRing(stats.overall)}
@@ -2214,14 +2233,14 @@ ${q}
                 <div class="stat-pill">Cowork<b>${coworkStats.overall}%</b></div>
                 <div class="stat-pill">Claude Code<b>${codeStats.overall}%</b></div>
                 <div class="stat-pill">全体の進度<b>${stats.overall}%</b></div>
-              </div>
-            </div>
+          </div>
+        </div>
             ${thinMeter(stats.overall, "hero-meter", "全体の進度")}
             <div class="mission">
               <small>きょうのミッション</small>
               <strong>${nextTitle}</strong>
               <a class="btn-orange" href="${ctaHref}" data-link>これだけやる</a>
-            </div>
+      </div>
           </aside>
         </div>
         ${compareTableHTML()}
@@ -2427,6 +2446,7 @@ ${q}
       expense: "cover-expense",
       crm: "cover-crm",
       shop: "cover-shop",
+      portfolio: "cover-shop",
       survey: "cover-survey",
       abc: "cover-abc",
       sns: "cover-sns",
@@ -2467,6 +2487,7 @@ ${q}
       expense: "経費",
       crm: "CRM",
       shop: "店舗",
+      portfolio: "公開",
       survey: "集計",
       abc: "ABC",
       sns: "SNS",
@@ -2541,7 +2562,7 @@ ${q}
       .map((l) => {
         const st = lessonKind(courseId, l.id);
         return `<a href="#/course/${courseId}/${l.id}" data-link class="${l.id === lessonId ? "active" : ""} ${
-          done[l.id] ? "done" : ""
+            done[l.id] ? "done" : ""
         }"><span class="list-art">${coverArt(artFor(courseId, l.id)[0])}</span><span>${escapeHtml(l.title)}</span>${lessonChip(courseId, l)}</a>`;
       })
       .join("");

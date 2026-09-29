@@ -155,6 +155,13 @@
       link: "Skillsの基礎"
     },
     {
+      keys: ["ポートフォリオ", "netlify", "ep269", "記入例_penta", "index.html"],
+      answer:
+        "上級の回です。portfolio フォルダを Claude Code で開き、portfolio.md は人が書く。index.html の1ファイルにまとめ、Netlify にドロップします。画像名は半角英数字。配布ZIPは講義のリンクです。",
+      href: "#/course/portfolio",
+      link: "ポートフォリオサイトを公開"
+    },
+    {
       keys: ["秘書+", "Desktop", "送信ブロック", "ツールの権限", "ChatWork"],
       answer:
         "秘書の応用編は、Claude CodeデスクトップのフォルダにカレンダーとGmailをつなぎます。読む・下書きは常に許可。送信・返信・転送と完全削除はブロック。顧客メールを渡すかは自分で決めます。",
