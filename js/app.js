@@ -336,6 +336,7 @@ ${q}
     "promptskill",
     "trainapp",
     "poster",
+    "canvaai",
     "market",
     "hypo",
     "hr",
@@ -373,7 +374,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -415,7 +416,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
+    if (["poster", "canvaai", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -424,7 +425,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub"];
+  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -735,6 +736,7 @@ ${q}
     promptskill: ["cover-chat", "プロンプト", "目的・前提・形式。あいまいだと無難な答えになる。", "copy"],
     trainapp: ["cover-code", "工程", "見るだけ。作る／作らない。小さく頼む。直す前は改善案。", "desktop"],
     poster: ["cover-poster", "ポスター", "一問一答か、1枚絵をマジックレイヤー。A4を1枚。", "poster"],
+    canvaai: ["cover-poster", "Canva", "無料とPro。学習オフ。テンプレから文字・書き出し。", "canva"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
     hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
@@ -782,6 +784,7 @@ ${q}
     promptskill: ["プロンプト力", "✏️"],
     trainapp: ["工程", "🏋️"],
     poster: ["ポスター", "🎨"],
+    canvaai: ["Canva基礎", "🧩"],
     market: ["マーケ", "📣"],
     hypo: ["仮説", "💡"],
     hr: ["人事", "👥"],
@@ -960,7 +963,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "poster"].concat(
+    const pickOrder = ["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1317,6 +1320,7 @@ ${q}
     cowork: ["cowork", "画面でお願いして、ファイルまで仕上げる"],
     code: ["powershell", "黒い画面に1行貼って進める"],
     poster: ["poster", "A4縦の求人ポスターを1枚"],
+    canvaai: ["canva", "言語と学習オフ。王冠のないテンプレ"],
     intro: ["desktop", "日本語でお願いして作る"],
     secretary: ["secretary", "予定・メモ・振り返り"],
     secplus: ["mail", "カレンダーとGmail。送信はしない"],
@@ -1850,6 +1854,20 @@ ${q}
     }
     if (lessonId === "safety") return ["safety", "送る・消す・公開の前は、自分の目で"];
     if (lessonId === "trouble") return ["chat", "エラー文をそのまま伝える"];
+    if (courseId === "canvaai") {
+      const t = {
+        goal: ["canva", "テンプレは無料でも足りる"],
+        plan: ["plan", "王冠のないものが無料"],
+        setup: ["safety", "日本語。学習はオフ"],
+        template: ["canva", "王冠のないテンプレ"],
+        text: ["copy", "色は3〜5。枠は右端ダブルクリック"],
+        layer: ["site", "配置→レイヤーで上へ"],
+        photo: ["poster", "王冠のない写真。具体的に生成"],
+        magic: ["canva", "1枚絵をパーツに分ける"],
+        summary: ["canva", "PNGかPDF。SVGはレイヤー付き"]
+      };
+      return t[lessonId] || COURSE_ART.canvaai;
+    }
     if (lessonId === "summary" || lessonId === "recap" || lessonId === "wrap") return ["eyecheck", "できたことを確認して、次は小さく"];
     if (lessonId === "setup" || lessonId === "prep") return ["desktop", "まずは自分のパソコンで準備"];
     if (lessonId === "flow") return ["site", "上から順に、ひとつずつ"];
@@ -2133,7 +2151,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "faq"])}</div>
       </div>`;
   };
 
@@ -2193,6 +2211,7 @@ ${q}
       ["promptskill", "03c", "プロンプト", "型"],
       ["trainapp", "03d", "工程", "見る"],
       ["poster", "04", "ポスター", "初級"],
+      ["canvaai", "04b", "Canva", "設定"],
       ["market", "05", "マーケ", "届ける"],
       ["hypo", "06", "仮説", "問い"],
       ["hr", "07", "人事", "切り分け"],
@@ -2360,7 +2379,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "aicopy", "aisub", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2513,6 +2532,7 @@ ${q}
       applied: "cover-applied",
       claudemd: "cover-applied",
       poster: "cover-poster",
+      canvaai: "cover-poster",
       market: "cover-sns",
       hypo: "cover-applied",
       hr: "cover-crm",
@@ -2557,6 +2577,7 @@ ${q}
       applied: "応用",
       claudemd: "CLAUDE.md",
       poster: "ポスター",
+      canvaai: "Canva",
       market: "マーケ",
       hypo: "仮説",
       hr: "人事",
