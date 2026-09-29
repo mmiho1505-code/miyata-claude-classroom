@@ -1435,10 +1435,7 @@ body.is-chat .chat-fab {
   .ticker,
   .fun-mascot,
   .points,
-  .compare-board,
   .compare-banner,
-  body.is-home .stamp-sec,
-  body.is-home .desk-catalog,
   .chat-fab {
     display: none !important;
   }
@@ -1710,8 +1707,7 @@ body.is-home .stamp-grid {
 }
 
 @media (min-width: 901px) {
-  body.is-home .page > .stamp-sec .course-grid,
-  body.is-home .desk-catalog .course-grid {
+  body.is-home .page > .home-catalog .course-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px 18px;
   }

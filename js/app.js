@@ -951,12 +951,13 @@ ${q}
     const cur = continueStudy();
     if (!cur) return "";
     const n = cur.course.lessons.length;
+    const short = (STAMP_LABELS[cur.courseId] && STAMP_LABELS[cur.courseId][0]) || cur.course.title;
     const where =
       cur.kind === "quiz"
-        ? `${escapeHtml(cur.course.title)}　確認クイズ`
+        ? `${escapeHtml(short)}　確認クイズ`
         : cur.kind === "overview"
-          ? `${escapeHtml(cur.course.title)}　講座の案内`
-          : `${escapeHtml(cur.course.title)}　${cur.idx + 1} / ${n}　${escapeHtml(cur.lesson.title)}`;
+          ? `${escapeHtml(short)}　講座の案内`
+          : `${escapeHtml(short)}　${cur.idx + 1} / ${n}　${escapeHtml(cur.lesson.title)}`;
     const label = cur.kind === "quiz" ? "クイズを開く" : cur.kind === "overview" ? "講座を開く" : "続きを開く";
     const art = artFor(cur.courseId, cur.lesson && cur.lesson.id);
     return `
@@ -2396,7 +2397,7 @@ ${q}
             <p class="fun-kicker">きょうのひとこと</p>
             <p class="member-hello">${escapeHtml(helloLine())}</p>
             <h1>${dailyCatch()}</h1>
-            <p class="fun-lead">${dailyTip()} 迷ったら右のカードの「つづき」を押してください。</p>
+            <p class="fun-lead">${dailyTip()} 迷ったら、オレンジのボタンを押してください。</p>
             <div class="fun-actions">
               <a class="btn-orange" href="${ctaHref}" data-link>${ctaLabel}</a>
               <a class="btn-dark" href="#/guide" data-link>説明資料</a>
@@ -2414,8 +2415,7 @@ ${q}
             ${thinMeter(stats.overall, "hero-meter", "全体の進度")}
             <div class="mission">
               <small>きょうのミッション</small>
-              <strong>${nextTitle}</strong>
-              <a class="btn-orange" href="${ctaHref}" data-link>これだけやる</a>
+              <a class="mission-link" href="${ctaHref}" data-link><strong>${nextTitle}</strong></a>
       </div>
           </aside>
         </div>
@@ -2449,36 +2449,21 @@ ${q}
         </div>
       </section>
       <div class="page">
-        ${phonePicks()}
-        <section class="stamp-sec">
+        <section class="home-catalog">
           <div class="section-head">
             <h2>準備（はじめて）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <p class="home-sec-lead">アカウント、設定、ことば、座学。上から順で大丈夫です。</p>
-          <div class="course-grid">${cardsFor(["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "faq"])}</div>
+          <p class="home-sec-lead">アカウント、設定、ことば、座学。上から順で大丈夫です。今日の講義は、上の桃色のカードからも開けます。</p>
+          <div class="course-grid">${cardsFor(["account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "faq"])}</div>
         </section>
-        <section class="stamp-sec">
+        <section class="home-catalog">
           <div class="section-head">
             <h2>仕事の例（はじめて）</h2>
             <a href="#/guide" data-link>説明資料 →</a>
           </div>
           <p class="home-sec-lead">ポスター、Canva、マーケ、会議、売上、補助金など。必要なものだけ開けば十分です。</p>
           <div class="course-grid">${cardsFor(["poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"])}</div>
-        </section>
-        <section class="stamp-sec lane lane-cowork">
-          <div class="section-head">
-            <h2>事務のスタンプ</h2>
-            <a href="#/cowork" data-link>事務へ →</a>
-          </div>
-          ${stampBook(COWORK_IDS)}
-        </section>
-        <section class="stamp-sec lane lane-code">
-          <div class="section-head">
-            <h2>Claude Codeのスタンプ</h2>
-            <a href="#/code" data-link>Claude Codeへ →</a>
-          </div>
-          ${stampBook(CODE_IDS)}
         </section>
         <section class="route-sec">
           <div class="section-head">
@@ -2549,29 +2534,6 @@ ${q}
             </a>
           </div>
         </section>
-        <div class="desk-catalog">
-        <div class="lane lane-cowork">
-        <div class="section-head">
-          <h2>チャットで作業</h2>
-          <a href="#/cowork" data-link>一覧へ →</a>
-        </div>
-        <div class="course-grid">${cardsFor(COWORK_IDS)}</div>
-        </div>
-        <div class="lane lane-code">
-        <div class="section-head">
-          <h2>Claude Code（準備）</h2>
-          <a href="#/code" data-link>一覧へ →</a>
-        </div>
-        <div class="course-grid">${cardsFor(CODE_SETUP_IDS)}</div>
-        </div>
-        <div class="lane lane-code">
-        <div class="section-head">
-          <h2>Claude Codeで作る道具（かんたん順）</h2>
-          <a href="#/applied" data-link>一覧へ →</a>
-        </div>
-        <div class="course-grid">${cardsFor(CODE_MAKE_IDS)}</div>
-        </div>
-        </div>
         <section class="points">
           <h2>教室の特徴</h2>
           <div class="points-grid">

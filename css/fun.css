@@ -383,6 +383,16 @@ body.is-home .site-header {
   letter-spacing: 0.08em;
 }
 
+.mission a.mission-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mission a.mission-link:hover strong {
+  color: var(--orange);
+}
+
 .mission strong {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -411,6 +421,7 @@ body.is-home .site-header {
 }
 
 .stamp-sec,
+.home-catalog,
 .path-sec,
 .route-sec {
   margin: 28px 0;
