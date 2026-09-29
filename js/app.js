@@ -333,6 +333,7 @@ ${q}
     "settings",
     "webchat",
     "webwords",
+    "promptskill",
     "poster",
     "market",
     "hypo",
@@ -340,6 +341,7 @@ ${q}
     "sched",
     "slacksum",
     "aicopy",
+    "aisub",
     "cowork",
     "portalmake",
     "portalfix",
@@ -367,7 +369,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "promptskill", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -408,7 +410,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "webwords", "mdbase", "skillbase"].includes(courseId)) return "starter";
+    if (["poster", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "aisub", "webwords", "promptskill", "mdbase", "skillbase"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -417,7 +419,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "mdbase", "skillbase", "poster", "faq", "market", "hypo", "hr", "sched", "slacksum", "aicopy"];
+  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "promptskill", "mdbase", "skillbase", "poster", "faq", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "aisub"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -725,6 +727,7 @@ ${q}
     settings: ["cover-account", "設定", "左の一覧。一般・請求・メモリー・コネクタ。全部いじらなくてよい。", "plan"],
     webchat: ["cover-chat", "チャット", "同じ画面で日本語のお願いを一度。作業もここに入った。", "webchat"],
     webwords: ["cover-intro", "ことば", "HTMLは骨組み、CSSは見た目、JAVAは動き。コードは書かない。", "site"],
+    promptskill: ["cover-chat", "プロンプト", "目的・前提・形式。あいまいだと無難な答えになる。", "copy"],
     poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
@@ -732,6 +735,7 @@ ${q}
     sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
     slacksum: ["cover-cowork", "Slack", "予定済みで毎朝要約。決定・ToDo・返信だけ。雑談は外す。", "mail"],
     aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
+    aisub: ["cover-expense", "補助", "旧IT導入補助金。会計・勤怠・AI。支援事業者と一緒に申請。", "expense"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
     today: ["cover-cowork", "今日", "11枚・2時間。同じチャットとポータル。できれば Cursor に Claude Code。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "話しかけるだけで、社内お知らせページを1枚作る。", "cowork"],
@@ -766,6 +770,7 @@ ${q}
     settings: ["設定", "⚙️"],
     webchat: ["チャット", "💭"],
     webwords: ["HTML CSS JAVA", "🧱"],
+    promptskill: ["プロンプト力", "✏️"],
     poster: ["ポスター", "🎨"],
     market: ["マーケ", "📣"],
     hypo: ["仮説", "💡"],
@@ -773,6 +778,7 @@ ${q}
     sched: ["日程", "📅"],
     slacksum: ["Slack要約", "💬"],
     aicopy: ["著作", "⚖️"],
+    aisub: ["AI補助", "💴"],
     cowork: ["Cowork", "💬"],
     today: ["今日の講義", "📌"],
     portalmake: ["ポータル作る", "🏠"],
@@ -941,7 +947,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "account", "settings", "webwords", "mdbase", "skillbase", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "poster"].concat(
+    const pickOrder = ["today", "account", "settings", "webwords", "promptskill", "mdbase", "skillbase", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "aisub", "poster"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1316,6 +1322,7 @@ ${q}
     settings: ["plan", "設定の左の一覧。全部いじらなくてよい"],
     webchat: ["webchat", "下の入力欄に書いて送る"],
     webwords: ["site", "HTMLは骨組み、CSSは見た目、JAVAは動き"],
+    promptskill: ["copy", "目的・前提・形式"],
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     market: ["sns", "誰に・何を・どう届けるか"],
@@ -1324,6 +1331,7 @@ ${q}
     sched: ["mail", "空き時間をクリックしてメール文"],
     slacksum: ["mail", "Slackを毎朝3つだけ要約"],
     aicopy: ["safety", "見て・調べて・確認してから"],
+    aisub: ["expense", "デジタル化・AI導入補助金。公式で確認"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
     today: ["portalpage", "11枚。同じチャットと、できれば Cursor"],
     portalfix: ["copy", "同じ会話の続きで直す"],
@@ -1532,6 +1540,19 @@ ${q}
       };
       return t[lessonId] || COURSE_ART.webwords;
     }
+    if (courseId === "promptskill") {
+      const t = {
+        goal: ["copy", "あいまいだと無難な答え"],
+        trio: ["docs", "目的・前提・形式"],
+        notes: ["copy", "資料を渡す。議事録は誰向けか"],
+        official: ["eyecheck", "1か所ずつ直す"],
+        structure: ["docs", "まず文章。型は混ぜない"],
+        extra: ["copy", "過程・分割・不明"],
+        qa: ["quiz", "メモリと別スレッド"],
+        summary: ["copy", "すぐ使える一言"]
+      };
+      return t[lessonId] || COURSE_ART.promptskill;
+    }
     if (courseId === "market") {
       const t = {
         goal: ["sns", "誰に・何を・どう届けるか"],
@@ -1613,6 +1634,20 @@ ${q}
         summary: ["safety", "3つの分からないを先に潰す"]
       };
       return t[lessonId] || COURSE_ART.aicopy;
+    }
+    if (courseId === "aisub") {
+      const t = {
+        goal: ["expense", "名前が変わったIT導入補助金"],
+        who: ["crm", "中小・小規模・個人事業主"],
+        change: ["docs", "AIツール。2回目は計画と賃上げ"],
+        how: ["check", "支援事業者と一緒に申請"],
+        need: ["safety", "生産性3%。未達は一部返還"],
+        frames: ["abc", "枠ごとに上限と率が違う"],
+        when: ["calendar", "3月30日から。締切は複数回"],
+        class: ["attendapp", "会計・勤怠・AIなら候補"],
+        summary: ["expense", "公式を最後に見る"]
+      };
+      return t[lessonId] || COURSE_ART.aisub;
     }
     if (courseId === "portalmake") {
       const t = {
@@ -2001,7 +2036,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "aisub", "faq"])}</div>
       </div>`;
   };
 
@@ -2058,6 +2093,7 @@ ${q}
       ["settings", "02b", "設定", "一覧"],
       ["webchat", "03", "チャット", "入門"],
       ["webwords", "03b", "HTML", "ことば"],
+      ["promptskill", "03c", "プロンプト", "型"],
       ["poster", "04", "ポスター", "初級"],
       ["market", "05", "マーケ", "届ける"],
       ["hypo", "06", "仮説", "問い"],
@@ -2065,6 +2101,7 @@ ${q}
       ["sched", "08", "日程", "調整"],
       ["slacksum", "08b", "Slack", "要約"],
       ["aicopy", "09", "著作", "確認"],
+      ["aisub", "09b", "AI補助", "制度"],
       ["cowork", "10", "Cowork", "事務"],
       ["portalmake", "11", "ポータル", "作る"],
       ["portalfix", "12", "直す", "Cowork"],
@@ -2222,7 +2259,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "mdbase", "skillbase", "poster", "market", "hypo", "hr", "sched", "slacksum", "aicopy", "aisub", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2366,6 +2403,7 @@ ${q}
       settings: "cover-account",
       webchat: "cover-chat",
       webwords: "cover-intro",
+      promptskill: "cover-chat",
       cowork: "cover-cowork",
       today: "cover-cowork",
       code: "cover-code",
@@ -2379,6 +2417,7 @@ ${q}
       sched: "cover-chat",
       slacksum: "cover-cowork",
       aicopy: "cover-faq",
+      aisub: "cover-expense",
       intro: "cover-intro",
       secretary: "cover-secretary",
       secplus: "cover-secretary",
@@ -2404,6 +2443,7 @@ ${q}
       settings: "設定",
       webchat: "チャット",
       webwords: "ことば",
+      promptskill: "プロンプト",
       cowork: "Cowork",
       today: "今日",
       code: "Code",
