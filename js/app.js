@@ -1722,6 +1722,7 @@ ${q}
         when: ["calendar", "3月30日から。締切は複数回"],
         class: ["attendapp", "会計・勤怠以外も候補。1点に絞る"],
         tools: ["shop", "課題を1点。登録か確認してから"],
+        food: ["shop", "飲食は4ジャンル。公式で業種を絞る"],
         summary: ["expense", "公式を最後に見る"]
       };
       return t[lessonId] || COURSE_ART.aisub;
