@@ -146,16 +146,16 @@
             <h1>会計・勤怠だけではない。課題を1点に絞る</h1>
             <p>この教室で触る道具と、補助金の対象が重なることがあります。下の名前は例です。この教室が勧めているわけではありません。入れる製品が公式の登録ツールか、支援事業者に確認してください。</p>
             <ul>
-              <li><a href="#/course/invoicemake" data-link>請求書</a>・会計 … freee会計、マネーフォワード クラウド会計 など</li>
-              <li><a href="#/course/attend" data-link>出退勤</a>・シフト … KING OF TIME、ジョブカン勤怠、Airシフト、シフトボード など</li>
-              <li><a href="#/course/salary" data-link>給料</a>・労務 … マネーフォワード クラウド給与、freee人事労務、スマートHR など</li>
-              <li><a href="#/course/expense" data-link>経費</a> … レシート撮影で下書きが入るクラウド経費。科目は人が確認</li>
-              <li><a href="#/course/crm" data-link>顧客台帳</a>・案件 … kintone、名刺・案件のクラウドCRM など</li>
-              <li><a href="#/course/shop" data-link>店舗・予約</a> … トレタ、ebica、STORES予約 など</li>
+              <li>請求書・会計 … freee会計、マネーフォワード クラウド会計 など</li>
+              <li>出退勤・シフト … KING OF TIME、ジョブカン勤怠、Airシフト、シフトボード など</li>
+              <li>給料・労務 … マネーフォワード クラウド給与、freee人事労務、スマートHR など</li>
+              <li>経費 … レシート撮影で下書きが入るクラウド経費。科目は人が確認</li>
+              <li>顧客台帳・案件 … kintone、名刺・案件のクラウドCRM など</li>
+              <li>店舗・予約 … トレタ、ebica、STORES予約 など</li>
               <li>レジ・売上 … スマレジ、Airレジ など</li>
               <li>発注・在庫（飲食など） … sinops-CLOUD、HANZO AI など。数字は人が見てから確定</li>
               <li>電子契約・インボイスの請求 … クラウドサイン、GMOサイン、請求書クラウド など</li>
-              <li>社内のお知らせ … <a href="#/course/portalmake" data-link>ポータル</a>は自分で作る練習。買うなら登録された社内サイト・グループウェアか確認</li>
+              <li>社内のお知らせ … ポータルは自分で作る練習。買うなら登録された社内サイト・グループウェアか確認</li>
               <li>Claude などの AI … 登録された製品か、支援事業者に確認。教室のチャット練習とは別</li>
             </ul>
             <div class="callout">今いちばん負担なことを1つだけにします。一度に全部入れないでください。教室の作り方講座は「自分で作る練習」です。補助金は「買う・入れる費用」です。混ぜません。</div>
