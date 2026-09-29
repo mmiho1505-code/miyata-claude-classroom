@@ -2218,14 +2218,17 @@ ${q}
             <p>${canSeeCourse("code") ? "PowerShellに1行貼って、自分の道具を作ります。" : "受講コードが必要です。"}</p>
           </a>
         </div>
-        <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
+        <div class="section-head"><h2>準備（はじめて）</h2></div>
+        <div class="course-grid">${cardsFor(["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "faq"])}</div>
+        <div class="section-head"><h2>仕事の例（はじめて）</h2></div>
+        <div class="course-grid">${cardsFor(["poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"])}</div>
       </div>`;
   };
 
   const classCard = (href, cover, label, title, meta, blurb, p, pic) => {
     const id = (href.match(/#\/course\/([^/?#]+)/) || [])[1];
     const tool = id ? toolOf(id) : "";
+    const heading = (id && STAMP_LABELS[id] && STAMP_LABELS[id][0]) || label || title;
     const locked = id && !canSeeCourse(id);
     const chip =
       tool === "cowork"
@@ -2242,7 +2245,7 @@ ${q}
             <div class="class-body">
               ${chip}
               <span class="st-chip is-todo">鍵</span>
-              <h3>${title}</h3>
+              <h3 title="${escapeHtml(title)}">${escapeHtml(heading)}</h3>
               <p class="card-meta">受講コードが必要です</p>
             </div>
           </a>`;
@@ -2253,7 +2256,7 @@ ${q}
             <div class="class-body">
               ${chip}
               ${p == null ? "" : statusChip(courseKind(p))}
-              <h3>${title}</h3>
+              <h3 title="${escapeHtml(title)}">${escapeHtml(heading)}</h3>
               <p class="card-meta">${meta}${p == null ? "" : `　進度 ${p}%`}</p>
               <p class="card-blurb desk-only">${blurb}</p>
               ${p == null ? "" : thinMeter(p)}
@@ -2371,12 +2374,13 @@ ${q}
     const todayOpen = canSeeCourse("today") && percent("today") < 100;
     const ctaHref = started ? started.href : todayOpen ? "#/course/today" : next.href;
     const ctaLabel = started ? "続きを開く" : todayOpen ? "今日の講義を開く" : "アカウントから始める";
+    const nextShort = (STAMP_LABELS[next.courseId] && STAMP_LABELS[next.courseId][0]) || next.course.title;
     const nextTitle =
       next.kind === "quiz"
-        ? `${escapeHtml(next.course.title)}　確認クイズ`
+        ? `${escapeHtml(nextShort)}　確認クイズ`
         : next.lesson
-          ? `${escapeHtml(next.course.title)}　${escapeHtml(next.lesson.title)}`
-          : escapeHtml(next.course.title);
+          ? `${escapeHtml(nextShort)}　${escapeHtml(next.lesson.title)}`
+          : escapeHtml(nextShort);
     return `
       <section class="fun-sky">
         <span class="fun-blob b1"></span>
@@ -2415,7 +2419,6 @@ ${q}
       </div>
           </aside>
         </div>
-        ${compareTableHTML()}
         <div class="ticker" aria-hidden="true">
           <div class="ticker-track">
             <span>💮 読んだらハンコ　⭐ 1日1ページでOK　🔥 途中の講座はオレンジ　✏️ コピーして貼るだけ　📘 クイズは何度でも　</span>
@@ -2423,6 +2426,7 @@ ${q}
           </div>
         </div>
       </section>
+        ${compareTableHTML()}
       ${todaySpot()}
       <section class="hero-stage">
         <div class="wrap level-gates">
@@ -2448,10 +2452,19 @@ ${q}
         ${phonePicks()}
         <section class="stamp-sec">
           <div class="section-head">
-            <h2>はじめて（準備）</h2>
+            <h2>準備（はじめて）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
+          <p class="home-sec-lead">アカウント、設定、ことば、座学。上から順で大丈夫です。</p>
+          <div class="course-grid">${cardsFor(["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "faq"])}</div>
+        </section>
+        <section class="stamp-sec">
+          <div class="section-head">
+            <h2>仕事の例（はじめて）</h2>
+            <a href="#/guide" data-link>説明資料 →</a>
+          </div>
+          <p class="home-sec-lead">ポスター、Canva、マーケ、会議、売上、補助金など。必要なものだけ開けば十分です。</p>
+          <div class="course-grid">${cardsFor(["poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">

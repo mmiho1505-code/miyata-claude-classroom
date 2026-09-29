@@ -354,7 +354,7 @@ body.is-teacher mark.teach-mark:hover {
   text-align: center;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1040px) {
   .compare-cols {
     grid-template-columns: 1fr;
   }
@@ -1616,7 +1616,7 @@ body.is-chat .chat-fab {
 }
 
 .today-spot {
-  padding: 0 16px 12px;
+  padding: 8px 16px 20px;
   max-width: var(--max, 1120px);
   margin: 0 auto 8px;
 }
@@ -1685,6 +1685,51 @@ body.is-chat .chat-fab {
 
   .today-spot-card h2 {
     font-size: 1.35rem;
+  }
+}
+
+body.is-home .page-in .fun-copy,
+body.is-home .page-in .fun-board {
+  animation: none;
+}
+
+.compare-board {
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+.home-sec-lead {
+  margin: -4px 0 16px;
+  color: #5c534b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+body.is-home .stamp-grid {
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+}
+
+@media (min-width: 901px) {
+  body.is-home .page > .stamp-sec .course-grid,
+  body.is-home .desk-catalog .course-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 18px;
+  }
+
+  body.is-home .class-card {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  body.is-home .class-card .cover,
+  body.is-home .class-card .cover-art svg {
+    min-height: 76px;
+    height: 76px;
+  }
+
+  body.is-home .class-card h3 {
+    font-size: 16px;
+    line-height: 1.35;
   }
 }
 
