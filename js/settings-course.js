@@ -47,6 +47,7 @@
               <article class="op"><span class="num">2</span><h3>アカウント</h3><p>名前、メール、ログアウト、退会。パスワードやメールの変更はここです。</p></article>
               <article class="op"><span class="num">3</span><h3>プライバシー</h3><p>会話を学習に使ってよいか、などのスイッチ。会社のルールがある人は、担当に合わせてオフにすることがあります。</p></article>
             </div>
+            <p>「Claudeへの指示」の書き方は <a href="#/course/claudebase/instruct" data-link>基本設定</a> です。</p>
             <div class="callout warn">退会やデータの削除は、取り消せないことがあります。押す前に、画面の注意を最後まで読んでください。</div>
           `
       },

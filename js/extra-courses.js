@@ -98,7 +98,7 @@
             <h1>プラン名が出ていればOK</h1>
             <div data-pic="plan" data-cap="設定のプラン欄に Pro などと出ていれば成功"></div>
             <p>設定 → プラン に、今のプラン名が出ます。Free のままだと、Claude Code のログインで止まりやすいです。</p>
-            <p>左の一覧（一般・請求・メモリー・コネクタなど）の意味は、<a href="#/course/settings" data-link>Claudeの設定</a> です。</p>
+            <p>左の一覧（一般・請求・メモリー・コネクタなど）の意味は、<a href="#/course/settings" data-link>Claudeの設定</a> です。ログインできたら、<a href="#/course/claudebase" data-link>基本設定と便利な機能</a>（Claudeへの指示・プロジェクト）も見てください。</p>
             <p>うまくいかないときは <a href="#/course/faq" data-link>つまずき一覧</a> の「ログインできない」へ。</p>
           `
       },
@@ -114,7 +114,8 @@
               <li>自分のアカウントで入れる</li>
               <li>Code を使う人は、有料プランかを設定で確認した</li>
             </ol>
-            <p><a class="btn-orange" href="#/course/webchat" data-link>ブラウザのチャット入門へ</a></p>
+            <p><a class="btn-orange" href="#/course/claudebase" data-link>基本設定と便利な機能へ</a>
+            <a class="btn-dark" href="#/course/webchat" data-link>ブラウザのチャット入門へ</a></p>
           `
       }
     ]

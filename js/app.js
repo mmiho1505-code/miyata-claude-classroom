@@ -330,6 +330,7 @@ ${q}
   const HOME_ORDER = [
     "today",
     "account",
+    "claudebase",
     "settings",
     "webchat",
     "webwords",
@@ -375,7 +376,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "claudebase", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -417,7 +418,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "canvaai", "account", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
+    if (["poster", "canvaai", "account", "claudebase", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -426,7 +427,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"];
+  const OPEN_COURSE_IDS = ["account", "claudebase", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -731,6 +732,7 @@ ${q}
 
   const COURSE_META = {
     account: ["cover-account", "準備", "claude.ai に入って、有料プランの画面を確認。", "signup"],
+    claudebase: ["cover-chat", "基本", "Claudeへの指示とプロジェクト。ログイン直後にやる。", "webchat"],
     settings: ["cover-account", "設定", "左の一覧。一般・請求・メモリー・コネクタ。全部いじらなくてよい。", "plan"],
     webchat: ["cover-chat", "チャット", "同じ画面で日本語のお願いを一度。作業もここに入った。", "webchat"],
     webwords: ["cover-intro", "ことば", "HTMLは骨組み、CSSは見た目、JAVAは動き。コードは書かない。", "site"],
@@ -780,6 +782,7 @@ ${q}
 
   const STAMP_LABELS = {
     account: ["アカウント", "🔑"],
+    claudebase: ["Claude基本", "✨"],
     settings: ["設定", "⚙️"],
     webchat: ["チャット", "💭"],
     webwords: ["HTML CSS JAVA", "🧱"],
@@ -966,7 +969,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"].concat(
+    const pickOrder = ["today", "account", "claudebase", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1340,6 +1343,7 @@ ${q}
     claudemd: ["docs", "CLAUDE.md をフォルダのいちばん上に"],
     applied: ["desktop", "一度決めたら、次からラク"],
     account: ["signup", "claude.ai で登録して、プランを確認"],
+    claudebase: ["webchat", "指示を書いて、プロジェクトの箱を作る"],
     settings: ["plan", "設定の左の一覧。全部いじらなくてよい"],
     webchat: ["webchat", "下の入力欄に書いて送る"],
     webwords: ["site", "HTMLは骨組み、CSSは見た目、JAVAは動き"],
@@ -1463,6 +1467,19 @@ ${q}
         summary: ["webchat", "次はチャット入門"]
       };
       return t[lessonId] || COURSE_ART.account;
+    }
+    if (courseId === "claudebase") {
+      const t = {
+        goal: ["webchat", "長い資料。分からないは分からない"],
+        screen: ["plan", "左メニューと＋。改行はShift＋Enter"],
+        instruct: ["copy", "職業・道具・答え方を自分で"],
+        privacy: ["safety", "学習協力とメモリー"],
+        files: ["docs", "入れて聞く。検索は出典"],
+        artifact: ["shop", "右側にページや表"],
+        proj: ["folder", "箱ごとに指示。毎回同じ型"],
+        summary: ["webchat", "指示を書いて、箱を作る"]
+      };
+      return t[lessonId] || COURSE_ART.claudebase;
     }
     if (courseId === "settings") {
       const t = {
@@ -2169,7 +2186,7 @@ ${q}
           </a>
         </div>
         <div class="section-head"><h2>はじめて（どちらも共通）</h2></div>
-        <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
+        <div class="course-grid">${cardsFor(["today", "account", "claudebase", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
       </div>`;
   };
 
@@ -2223,6 +2240,7 @@ ${q}
     const items = [
       ["today", "01", "今日", "講義"],
       ["account", "02", "アカウント", "準備"],
+      ["claudebase", "02a", "基本", "指示"],
       ["settings", "02b", "設定", "一覧"],
       ["webchat", "03", "チャット", "入門"],
       ["webwords", "03b", "HTML", "ことば"],
@@ -2398,7 +2416,7 @@ ${q}
             <h2>はじめて（準備）</h2>
             <a href="#/course/faq" data-link>つまずき一覧 →</a>
           </div>
-          <div class="course-grid">${cardsFor(["today", "account", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
+          <div class="course-grid">${cardsFor(["today", "account", "claudebase", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "faq"])}</div>
         </section>
         <section class="stamp-sec lane lane-cowork">
           <div class="section-head">
@@ -2539,6 +2557,7 @@ ${q}
     const first = course.lessons[0];
     const covers = {
       account: "cover-account",
+      claudebase: "cover-chat",
       settings: "cover-account",
       webchat: "cover-chat",
       webwords: "cover-intro",
@@ -2585,6 +2604,7 @@ ${q}
     };
     const labels = {
       account: "準備",
+      claudebase: "基本",
       settings: "設定",
       webchat: "チャット",
       webwords: "ことば",
