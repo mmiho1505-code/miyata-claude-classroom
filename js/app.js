@@ -732,7 +732,7 @@ ${q}
     webwords: ["cover-intro", "ことば", "HTMLは骨組み、CSSは見た目、JAVAは動き。コードは書かない。", "site"],
     promptskill: ["cover-chat", "プロンプト", "目的・前提・形式。あいまいだと無難な答えになる。", "copy"],
     trainapp: ["cover-code", "工程", "見るだけ。作る／作らない。小さく頼む。直す前は改善案。", "desktop"],
-    poster: ["cover-poster", "ポスター", "お手本1枚と一問一答で、A4縦を1枚。", "poster"],
+    poster: ["cover-poster", "ポスター", "一問一答か、1枚絵をマジックレイヤー。A4を1枚。", "poster"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
     hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
@@ -1837,6 +1837,27 @@ ${q}
       return t[lessonId] || COURSE_ART.secplus;
     }
     if (courseId === "poster" && lessonId === "step5") return ["canva", "Canvaで文字を直す"];
+    if (courseId === "poster") {
+      const t = {
+        goal: ["poster", "道は2つ。最後は目で確認"],
+        prompt: ["copy", "プロンプトは注文書"],
+        flow: ["compare", "一問一答かマジックレイヤー"],
+        notes: ["poster", "文字は崩れる。人が読む"],
+        step1: ["pinterest", "お手本画像を保存"],
+        step2: ["chat", "ことばを考える係"],
+        step5: ["canva", "保存してから文字を直す"],
+        step9: ["canva", "他は？を飛ばさない"],
+        design: ["poster", "色は3色、言いたいことは1つ"],
+        canva: ["canva", "コピーを作成。Ctrl＋Z"],
+        flyerimg: ["chat", "案を3つ。画像を作成する"],
+        layer: ["canva", "マジックレイヤー"],
+        layerfix: ["eyecheck", "誤字とQRは目で見る"],
+        layerqa: ["quiz", "1か所は分ける前に直す"],
+        appeal: ["poster", "電話と住所は大きく"],
+        summary: ["poster", "2つの道。文字は人が読む"]
+      };
+      return t[lessonId] || COURSE_ART.poster;
+    }
     if (
       ["invoice", "expense", "crm", "shop", "survey", "abc", "sns", "snspost"].includes(courseId) &&
       /^step/.test(lessonId || "") &&
@@ -3002,6 +3023,12 @@ ${q}
           <h3>人が読む</h3>
           ${figureHTML("poster", "電話番号と住所")}
           <p>崩れた字はCanvaで打ち直します。色は3色、言いたいことは1つです。</p>
+        </article>
+        <article class="op">
+          <span class="num">5</span>
+          <h3>マジックレイヤー</h3>
+          ${figureHTML("canva", "1枚絵をパーツに")}
+          <p>ChatGPTで案を3つ出して画像にし、Canvaで分けます。文字とQRは目で確認します。</p>
         </article>
       </div>
       <p><a class="btn-orange" href="#/course/poster" data-link>ポスター講座へ</a></p>
