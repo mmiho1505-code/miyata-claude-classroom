@@ -1818,6 +1818,7 @@ ${q}
   const pickOpPic = (text) => {
     if (/出退勤|出勤|退勤/.test(text)) return "attendapp";
     if (/HTML|CSS|JAVA|JavaScript|骨組み/.test(text)) return "site";
+    if (/補助|IT導入|支援事業者/.test(text)) return "expense";
     if (/ポータル|お知らせ/.test(text)) return "portalpage";
     if (/ターミナル|Mac|Spotlight/.test(text)) return "terminal";
     if (/CLAUDE\.md|マークダウン|Markdown|業務マニュアル/.test(text)) return "docs";
@@ -2457,6 +2458,7 @@ ${q}
       sched: "日程",
       slacksum: "Slack",
       aicopy: "著作",
+      aisub: "補助",
       intro: "勉強会",
       secretary: "秘書",
       secplus: "秘書+",
@@ -2902,6 +2904,7 @@ ${q}
         <a class="btn-dark" href="#/course/webwords" data-link>HTML・CSS・JAVAへ</a>
         <a class="btn-dark" href="#/course/mdbase" data-link>CLAUDE.mdの基礎へ</a>
         <a class="btn-dark" href="#/course/skillbase" data-link>Skillsの基礎へ</a>
+        <a class="btn-dark" href="#/course/aisub" data-link>AI導入補助金へ</a>
         <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a>
       </p>
 

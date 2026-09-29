@@ -1,0 +1,198 @@
+(() => {
+  CLASSROOM.courses.aisub = {
+    id: "aisub",
+    title: "デジタル化・AI導入補助金",
+    subtitle: "旧IT導入補助金。会計・勤怠・AIツールの費用の一部を国が補助",
+    duration: "約12分",
+    audience: "中小企業・個人事業主／ツール導入を考えている人",
+    lessons: [
+      {
+        id: "goal",
+        title: "今日のゴール",
+        body: `
+            <p class="kicker">補助金　約12分</p>
+            <h1>名前が変わった「IT導入補助金」を知る</h1>
+            <p>「AI導入補助金」と呼ばれるものは、多くの場合、<strong>2026年度から IT導入補助金 が名前を変えた「デジタル化・AI導入補助金」</strong>のことです。</p>
+            <p>中小企業が ITツールや AIツールを入れるときに、費用の一部を国が補助する制度です。</p>
+            <div class="ops">
+              <article class="op"><span class="num">1</span><h3>誰が</h3><p>中小企業、小規模事業者、個人事業主など</p></article>
+              <article class="op"><span class="num">2</span><h3>何が</h3><p>会計ソフト、勤怠、AI機能つきのツールなど</p></article>
+              <article class="op"><span class="num">3</span><h3>どう</h3><p>登録された支援事業者と一緒に申請</p></article>
+            </div>
+            <div class="callout warn">金額・締切・要件は変わります。申請の前に、必ず <a href="https://it-shien.smrj.go.jp/" target="_blank" rel="noopener">公式サイト（IT導入補助金／デジタル化・AI導入補助金）</a> で最新を確認してください。この教室は地図です。最終判断は公式と専門家です。</div>
+          `
+      },
+      {
+        id: "who",
+        title: "対象になる人",
+        body: `
+            <p class="kicker">対象</p>
+            <h1>中小企業・小規模・個人事業主など</h1>
+            <ul>
+              <li>中小企業</li>
+              <li>小規模事業者</li>
+              <li>個人事業主</li>
+              <li>医療法人・社会福祉法人など</li>
+            </ul>
+            <p>塾生の会社で、<a href="#/course/invoicemake" data-link>会計・請求</a>、<a href="#/course/attend" data-link>勤怠</a>、AIツールの導入を検討しているなら、使える可能性があります。</p>
+            <div class="callout">「自分の会社が対象か」は、従業員数や資本金の条件があります。公式の対象者の説明を見てください。</div>
+          `
+      },
+      {
+        id: "change",
+        title: "2026年度の主な変更",
+        body: `
+            <p class="kicker">変更点</p>
+            <h1>AI機能つきツールが、はっきり対象に</h1>
+            <div class="ops">
+              <article class="op"><span class="num">1</span><h3>名前</h3><p>IT導入補助金 → デジタル化・AI導入補助金</p></article>
+              <article class="op"><span class="num">2</span><h3>AI</h3><p>AI機能つきのツールが、補助の対象として登録されやすくなりました</p></article>
+              <article class="op"><span class="num">3</span><h3>2回目以降</h3><p>3年間の事業計画と、賃上げ要件が必要になります</p></article>
+            </div>
+            <p>初めての申請と、2回目以降では条件が違います。前回もらった人は、計画のページを先に読んでください。</p>
+          `
+      },
+      {
+        id: "how",
+        title: "申請のしかた",
+        body: `
+            <p class="kicker">申請</p>
+            <h1>自社だけでは出せない</h1>
+            <p>登録された <strong>IT導入支援事業者</strong>（ITベンダーなど）と一緒に申請します。ソフト会社や導入を手伝う会社が、この登録を持っていることがあります。</p>
+            <ol>
+              <li>入れたいツール（会計、勤怠、AI など）を決める</li>
+              <li>そのツールを扱う、登録済みの支援事業者を探す（公式の一覧）</li>
+              <li>見積・計画を一緒に作り、申請する</li>
+            </ol>
+            <div class="callout">知らない業者から「必ず通る」と言われても、飛びつかないでください。公式の登録事業者か、自分の目で確認します。</div>
+          `
+      },
+      {
+        id: "need",
+        title: "守る要件",
+        body: `
+            <p class="kicker">要件</p>
+            <h1>生産性3%と、賃上げ</h1>
+            <ul>
+              <li><strong>労働生産性</strong>を 3% 以上向上させること</li>
+              <li>賃上げの目標を達成できないと、<strong>補助金の一部を返す</strong>ことになります</li>
+            </ul>
+            <p>もらって終わり、ではありません。入れたあとも、数字の報告があります。返さなくてよい条件を、申請前に支援事業者と一緒に読んでください。</p>
+            <div class="callout warn">「補助金が出るから」だけで高いツールを選ぶと、あとで返すリスクがあります。本当に使うか、先に決めてください。</div>
+          `
+      },
+      {
+        id: "frames",
+        title: "申請枠と補助額",
+        body: `
+            <p class="kicker">金額</p>
+            <h1>枠によって、上限と率が違う</h1>
+            <p>2026年度の案内でよく出る表です。数字は公式が正しいです。</p>
+            <table>
+              <thead>
+                <tr><th>申請枠</th><th>補助額の目安</th><th>補助率</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>通常枠</td>
+                  <td>5万〜150万円（業務プロセス1〜3つ）<br>150万〜450万円（4つ以上）</td>
+                  <td>1/2以内（最低賃金に近い賃金水準の事業者は 2/3以内）</td>
+                </tr>
+                <tr>
+                  <td>インボイス枠（インボイス対応類型）</td>
+                  <td>ITツール最大350万円＋PC・タブレット、レジ等</td>
+                  <td>2/3〜3/4以内（小規模事業者は 4/5以内）</td>
+                </tr>
+                <tr>
+                  <td>インボイス枠（電子取引類型）</td>
+                  <td>最大350万円</td>
+                  <td>2/3以内</td>
+                </tr>
+                <tr>
+                  <td>セキュリティ対策推進枠</td>
+                  <td>5万〜150万円</td>
+                  <td>1/2以内（小規模事業者は 2/3以内）</td>
+                </tr>
+                <tr>
+                  <td>複数者連携枠</td>
+                  <td>上限3,000万円</td>
+                  <td>1/2〜4/5以内</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>「何枠に入るか」は自分で決めきれないことが多いです。支援事業者に、今の業務（請求・勤怠・AI）を話して選んでもらいます。</p>
+          `
+      },
+      {
+        id: "when",
+        title: "2026年度のスケジュール",
+        body: `
+            <p class="kicker">日程</p>
+            <h1>3月30日から受付。締切は何回かある</h1>
+            <ul>
+              <li>受付開始：3月30日から</li>
+              <li>締切は複数回に分かれています</li>
+              <li>解説サイトによると、第6次の締切は <strong>10月30日 17:00</strong>。第7次以降は未定、とされることがあります</li>
+              <li>直近の採択率は、全体で約 <strong>44%</strong></li>
+            </ul>
+            <div class="callout warn">締切は公式で変わります。「まだある」と思わず、公式の今回の締切を見てください。採択率は毎回違います。44%は目安です。</div>
+          `
+      },
+      {
+        id: "class",
+        title: "教室とのつながり",
+        body: `
+            <p class="kicker">塾生向け</p>
+            <h1>会計・勤怠・AIを入れるなら、候補になる</h1>
+            <p>この教室で触る道具と、補助金の対象が重なることがあります。</p>
+            <ul>
+              <li><a href="#/course/invoicemake" data-link>請求書</a>・会計ソフト</li>
+              <li><a href="#/course/attend" data-link>出退勤</a>・勤怠管理</li>
+              <li>Claude などの AIツール（登録された製品か、支援事業者に確認）</li>
+            </ul>
+            <p>教室の作り方講座は「自分で作る練習」です。補助金は「買う・入れる費用」の話です。混ぜずに、入れる製品が公式の対象ツールかを見てください。</p>
+          `
+      },
+      {
+        id: "summary",
+        title: "まとめ",
+        body: `
+            <p class="kicker">覚えておくこと</p>
+            <h1>一緒に申請。公式を最後に見る</h1>
+            <ul>
+              <li>AI導入補助金 ≒ デジタル化・AI導入補助金（旧 IT導入補助金）</li>
+              <li>対象は中小・小規模・個人事業主など</li>
+              <li>自社だけでは出せない。登録された支援事業者と一緒</li>
+              <li>生産性 3% 以上。賃上げが未達だと一部返還</li>
+              <li>締切・金額は変わる。申請前に公式</li>
+            </ul>
+            <p><a class="btn-orange" href="https://it-shien.smrj.go.jp/" target="_blank" rel="noopener">公式サイトを開く</a>
+            <a class="btn-dark" href="#/course/attend" data-link>勤怠の講座へ</a></p>
+          `
+      }
+    ]
+  };
+
+  Object.assign(CLASSROOM.quizzes, {
+    aisub: [
+      {
+        q: "「AI導入補助金」がいちばん近いものは？",
+        choices: ["Claude の有料プランの名前", "2026年度から IT導入補助金が名前を変えたデジタル化・AI導入補助金", "教室サイトの受講コード"],
+        a: 1,
+        explain: "中小企業が IT／AI ツールを入れる費用の一部を、国が補助する制度です。"
+      },
+      {
+        q: "申請のしかたで正しいのは？",
+        choices: ["自社のホームページから一人で出す", "登録された IT導入支援事業者と一緒に申請する", "教室のチャットにカード番号を書いて頼む"],
+        a: 1,
+        explain: "自社だけでは申請できません。"
+      },
+      {
+        q: "賃上げ目標を達成できなかったとき、どうなりやすい？",
+        choices: ["何も起きない", "補助金の一部を返還することがある", "必ず倍額がもらえる"],
+        a: 1,
+        explain: "もらって終わりではありません。公式の返還条件を読んでから申請します。"
+      }
+    ]
+  });
+})();
