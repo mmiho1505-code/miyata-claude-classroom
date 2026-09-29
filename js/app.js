@@ -1684,7 +1684,7 @@ ${q}
     }
     if (courseId === "slacksum") {
       const t = {
-        goal: ["mail", "全部読まず3つだけ"],
+        goal: ["mail", "Slackは仕事の部屋チャット"],
         vs: ["compare", "聞くか、預けておくか"],
         connect: ["mail", "Slackとコネクタ"],
         channels: ["eyecheck", "雑談は外す"],
