@@ -1703,7 +1703,7 @@ ${q}
         need: ["safety", "生産性3%。未達は一部返還"],
         frames: ["abc", "枠ごとに上限と率が違う"],
         when: ["calendar", "3月30日から。締切は複数回"],
-        class: ["attendapp", "会計・勤怠・AIなら候補"],
+        class: ["attendapp", "会計・勤怠以外も候補。1点に絞る"],
         tools: ["shop", "課題を1点。登録か確認してから"],
         summary: ["expense", "公式を最後に見る"]
       };
