@@ -1484,7 +1484,7 @@ ${q}
         what: ["docs", "起動のたびに読む業務マニュアル"],
         md: ["copy", "## 見出し。**太字**。- 項目"],
         write: ["docs", "禁止・技術・作業のルール"],
-        point: ["copy", "必須ではない。/init で下書き"],
+        point: ["folder", "必須ではない。できたファイルは左から開く"],
         example: ["copy", "宮田財務ホームページの例"],
         summary: ["docs", "なくても動く。あると安定"]
       };
@@ -1712,6 +1712,7 @@ ${q}
         safety: ["safety", "秘密は書かない"],
         ask: ["copy", "先に質問してから作る"],
         init: ["copy", "/init で下書き"],
+        view: ["folder", "左の一覧から開く"],
         fill: ["copy", "〔　〕を自分の言葉に"],
         add: ["copy", "注意は1行足す"],
         review: ["eyecheck", "まだ直さないで一覧"],

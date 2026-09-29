@@ -278,7 +278,7 @@
                 <tr><td><code>/exit</code> または Ctrl＋C を2回</td><td>終了する</td></tr>
               </tbody>
             </table>
-            <p><code>/init</code> のあとの育て方は <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。</p>
+            <p><code>/init</code> のあとの育て方は <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。できたファイルは、左の一覧（Ctrl／⌘＋B）のいちばん上。<code>CLAUDE.md</code> をクリックすると本文が出ます。見方だけ先に見る人は <a href="#/course/claudemd/view" data-link>どこから見る</a>。</p>
             <h2>④ 起動後の最初の依頼例</h2>
             <p>入力欄をクリックしてから貼ります。ファイルを作ったり変えたりする前に、確認が出ます。内容を見てから承認します。送る・消す・公開はしません。</p>
             ${box(`このフォルダに、宮田財務の紹介用の1ページのWebサイトを作って。

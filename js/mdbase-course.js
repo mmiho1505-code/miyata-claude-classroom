@@ -78,6 +78,8 @@
               <article class="op"><span class="num">3</span><h3>この講座では</h3><p>アプリ作りのセクションで、実際に一緒に作ります。今日は意味が分かれば十分です。</p></article>
             </div>
             ${box(`/init`)}
+            <p>作ったあとは、Cursor の<strong>左のファイル一覧</strong>から見ます。一覧が無いときは Windows は Ctrl＋B、Mac は ⌘＋B。いちばん上の <code>CLAUDE.md</code> をクリックすると、真ん中に本文が出ます。claude.ai の設定には出ません。</p>
+            <p>くわしい見方は <a href="#/course/claudemd/view" data-link>CLAUDE.md の作り方（どこから見る）</a> です。</p>
           `
       },
       {
@@ -107,6 +109,7 @@
               <li>起動のたびに自動で読む。毎回の長い説明が減る</li>
               <li><code>.md</code> はマークダウン。ほぼ普通のテキスト</li>
               <li>必須ではない。<code>/init</code> で下書きできる</li>
+              <li>できたファイルは、Cursor の左の一覧（Ctrl／⌘＋B）から開く</li>
             </ul>
             <p>手を動かすのは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a>。次の座学は <a href="#/course/skillbase" data-link>Claude Code Skillsの基礎</a> です。</p>
             <p><a class="btn-orange" href="#/course/skillbase" data-link>Skillsの基礎へ</a>

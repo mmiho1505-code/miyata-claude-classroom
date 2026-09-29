@@ -66,7 +66,7 @@
             <p>ゼロから書かなくて大丈夫です。次のように頼んでも作れます。</p>
             ${box(`このフォルダで作業するときのルールをまとめた CLAUDE.md を作って。作る前に、会社名・目的・守ってほしいことを私に質問して。`)}
             <div class="callout ok">一度書けば、毎回の前置きが要らなくなります。足りないと思ったら、あとから1行足せば十分です。</div>
-            <p>置く場所・/init・/memory・書いてはいけないことは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。座学は <a href="#/course/mdbase" data-link>CLAUDE.mdの基礎</a> と <a href="#/course/skillbase" data-link>Skillsの基礎</a> です。</p>
+            <p>置く場所・/init・どこから見る・/memory・書いてはいけないことは <a href="#/course/claudemd" data-link>CLAUDE.md の作り方</a> です。座学は <a href="#/course/mdbase" data-link>CLAUDE.mdの基礎</a> と <a href="#/course/skillbase" data-link>Skillsの基礎</a> です。</p>
           `
       },
       {

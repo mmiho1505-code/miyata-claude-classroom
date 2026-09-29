@@ -120,9 +120,9 @@
       link: "著作権と利用規約"
     },
     {
-      keys: ["claude.md", "claudemd", "claude md", "ルールブック", "/init", "/memory", "業務マニュアル", "マークダウン", "markdown"],
+      keys: ["claude.md", "claudemd", "claude md", "ルールブック", "/init", "/memory", "業務マニュアル", "マークダウン", "markdown", "どこから見", "どこで見"],
       answer:
-        "CLAUDE.md は Claude Code に渡す業務マニュアルです。起動のたびに自動で読みます。必須ではありません。/init で下書きできます。座学は基礎（約5分）、手を動かすのは作り方です。",
+        "CLAUDE.md は Claude Code に渡す業務マニュアルです。起動のたびに自動で読みます。必須ではありません。/init で下書きできます。できたファイルは Cursor の左の一覧（Ctrl または ⌘ と B）のいちばん上をクリックします。claude.ai の設定には出ません。座学は基礎、手を動かすのは作り方です。",
       href: "#/course/mdbase",
       link: "CLAUDE.mdの基礎"
     },
