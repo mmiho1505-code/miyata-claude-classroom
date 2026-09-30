@@ -340,6 +340,7 @@ ${q}
     "poster",
     "canvaai",
     "market",
+    "peoplejob",
     "hypo",
     "hr",
     "sched",
@@ -378,7 +379,7 @@ ${q}
     "faq"
   ];
 
-  const BEGINNER_IDS = ["today", "account", "claudebase", "aipick", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
+  const BEGINNER_IDS = ["today", "account", "claudebase", "aipick", "settings", "webchat", "webwords", "promptskill", "trainapp", "poster", "canvaai", "market", "peoplejob", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "cowork", "portalmake", "portalfix", "attend", "salary", "invoicemake", "nodejs", "mdbase", "skillbase", "code", "codemac"];
   const ADVANCED_IDS = [
     "snspost",
     "survey",
@@ -421,7 +422,7 @@ ${q}
 
   const toolOf = (courseId) => {
     if (COWORK_IDS.includes(courseId)) return "cowork";
-    if (["poster", "canvaai", "account", "claudebase", "aipick", "settings", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
+    if (["poster", "canvaai", "account", "claudebase", "aipick", "settings", "faq", "market", "peoplejob", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub", "webwords", "promptskill", "trainapp", "mdbase", "skillbase"].includes(courseId)) return "starter";
     return "code";
   };
   const toolListHref = (courseId) => (toolOf(courseId) === "cowork" ? "#/cowork" : toolOf(courseId) === "starter" ? "#/" : "#/code");
@@ -430,7 +431,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = ["account", "claudebase", "aipick", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "faq", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"];
+  const OPEN_COURSE_IDS = ["account", "claudebase", "aipick", "settings", "webchat", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "faq", "market", "peoplejob", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"];
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: ["cowork", "today", "portalmake", "portalfix", "attend", "salary", "invoicemake"] },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -745,6 +746,7 @@ ${q}
     poster: ["cover-poster", "ポスター", "一問一答か、1枚絵をマジックレイヤー。A4を1枚。", "poster"],
     canvaai: ["cover-poster", "Canva", "無料とPro。学習オフ。テンプレから文字・書き出し。", "canva"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
+    peoplejob: ["cover-crm", "人の仕事", "調べる・資料はAI。人が残すのは感情と判断の軸。2026年9月。", "crm"],
     hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
     hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
     sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
@@ -797,6 +799,7 @@ ${q}
     poster: ["ポスター", "🎨"],
     canvaai: ["Canva基礎", "🧩"],
     market: ["マーケ", "📣"],
+    peoplejob: ["人の仕事", "🤝"],
     hypo: ["仮説", "💡"],
     hr: ["人事", "👥"],
     sched: ["日程", "📅"],
@@ -977,7 +980,7 @@ ${q}
   const phonePicks = () => {
     const lastId = (loadProgress().last || {}).courseId;
     const ids = [];
-    const pickOrder = ["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"].concat(
+    const pickOrder = ["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "poster", "canvaai", "market", "peoplejob", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"].concat(
       COWORK_IDS.filter((id) => id !== "today"),
       CODE_IDS
     );
@@ -1361,6 +1364,7 @@ ${q}
     codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     market: ["sns", "誰に・何を・どう届けるか"],
+    peoplejob: ["crm", "資料はAI。人が残すのは感情と軸"],
     hypo: ["copy", "私はこう思う。外れたら指摘して"],
     hr: ["crm", "AIと人で切り分ける"],
     sched: ["mail", "空き時間をクリックしてメール文"],
@@ -1642,6 +1646,20 @@ ${q}
         summary: ["sns", "同じチャットで①から⑤"]
       };
       return t[lessonId] || COURSE_ART.market;
+    }
+    if (courseId === "peoplejob") {
+      const t = {
+        goal: ["crm", "資料は誰でも同じ。残るのは人"],
+        aiwork: ["mail", "調べもの・議事録・下書き"],
+        first: ["eyecheck", "初対面はマイナスから"],
+        value: ["compare", "機能ではなく変化量"],
+        mind: ["quiz", "正しい資料だけでは動かない"],
+        trust: ["check", "信用の上に信頼"],
+        nurture: ["mail", "返信も面談も求めない"],
+        claim: ["copy", "判断の軸を言葉にする"],
+        summary: ["crm", "調べるのはAI。向き合うのは人"]
+      };
+      return t[lessonId] || COURSE_ART.peoplejob;
     }
     if (courseId === "hypo") {
       const t = {
@@ -2222,7 +2240,7 @@ ${q}
         <div class="section-head"><h2>準備（はじめて）</h2></div>
         <div class="course-grid">${cardsFor(["today", "account", "claudebase", "aipick", "settings", "webwords", "promptskill", "trainapp", "mdbase", "skillbase", "faq"])}</div>
         <div class="section-head"><h2>仕事の例（はじめて）</h2></div>
-        <div class="course-grid">${cardsFor(["poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"])}</div>
+        <div class="course-grid">${cardsFor(["poster", "canvaai", "market", "peoplejob", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"])}</div>
       </div>`;
   };
 
@@ -2287,6 +2305,7 @@ ${q}
       ["poster", "04", "ポスター", "初級"],
       ["canvaai", "04b", "Canva", "設定"],
       ["market", "05", "マーケ", "届ける"],
+      ["peoplejob", "05b", "人の仕事", "感情"],
       ["hypo", "06", "仮説", "問い"],
       ["hr", "07", "人事", "切り分け"],
       ["sched", "08", "日程", "調整"],
@@ -2463,7 +2482,7 @@ ${q}
             <a href="#/guide" data-link>説明資料 →</a>
           </div>
           <p class="home-sec-lead">ポスター、Canva、マーケ、会議、売上、補助金など。必要なものだけ開けば十分です。</p>
-          <div class="course-grid">${cardsFor(["poster", "canvaai", "market", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"])}</div>
+          <div class="course-grid">${cardsFor(["poster", "canvaai", "market", "peoplejob", "hypo", "hr", "sched", "slacksum", "minutes", "salesrep", "salescsv", "aicopy", "aisub"])}</div>
         </section>
         <section class="route-sec">
           <div class="section-head">
@@ -2583,6 +2602,7 @@ ${q}
       poster: "cover-poster",
       canvaai: "cover-poster",
       market: "cover-sns",
+      peoplejob: "cover-crm",
       hypo: "cover-applied",
       hr: "cover-crm",
       sched: "cover-chat",
@@ -2632,6 +2652,7 @@ ${q}
       poster: "ポスター",
       canvaai: "Canva",
       market: "マーケ",
+      peoplejob: "人の仕事",
       hypo: "仮説",
       hr: "人事",
       sched: "日程",
