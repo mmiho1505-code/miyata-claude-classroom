@@ -1,0 +1,628 @@
+/* すっきり大人の業務系。ほかのCSSのあとに読み込み、色・文字・角丸・影をそろえる */
+:root {
+  --ink: #1b2333;
+  --muted: #5b6577;
+  --line: #e3e7ee;
+  --bg: #ffffff;
+  --wash: #f6f7f9;
+  --cream: #f6f7f9;
+  --paper: #ffffff;
+  --navy: #1f3a5f;
+  --navy-2: #2c4f7c;
+  --navy-wash: #eef2f8;
+  --orange: #1f3a5f;
+  --orange-2: #2c4f7c;
+  --accent: #c8792f;
+  --ok: #2f7d62;
+  --danger: #b4483a;
+  --radius-card: 8px;
+  --shadow: none;
+  --display: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --serif: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg) !important;
+  color: var(--ink);
+  font-family: var(--sans) !important;
+  letter-spacing: 0.01em;
+}
+
+body *,
+body *::before,
+body *::after {
+  font-family: inherit;
+  letter-spacing: inherit;
+  text-shadow: none !important;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--sans) !important;
+  color: var(--ink);
+  letter-spacing: 0.01em !important;
+  font-weight: 700 !important;
+}
+
+a { color: var(--navy); }
+
+pre, code, kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
+
+/* 飾りを外す */
+.fun-blob,
+.fun-sticker,
+.ticker,
+.brand-promo,
+.new-badge,
+.header-progress {
+  display: none !important;
+}
+
+/* ヘッダー */
+.site-header,
+body.is-home .site-header {
+  background: #fff !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.site-nav a {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--muted) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  padding: 10px 2px !important;
+  margin-right: 22px;
+  border-bottom: 2px solid transparent !important;
+}
+
+.site-nav a:hover { color: var(--ink) !important; }
+
+.site-nav a.active {
+  color: var(--navy) !important;
+  border-bottom-color: var(--navy) !important;
+  background: transparent !important;
+}
+
+.member-chip,
+.tool-pill,
+.nav-toggle {
+  background: #fff !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  font-weight: 500 !important;
+}
+
+.header-fav,
+.header-fav.is-on {
+  background: #fff !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  min-height: 40px !important;
+}
+
+.header-fav .fav-star,
+.header-fav.is-on .fav-star { color: var(--accent) !important; }
+
+/* ボタン */
+.btn-orange,
+.btn-dark,
+.copy,
+button.btn-orange {
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transform: none !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.btn-orange {
+  background: var(--navy) !important;
+  border: 1px solid var(--navy) !important;
+  color: #fff !important;
+}
+
+.btn-orange:hover { background: var(--navy-2) !important; }
+
+.btn-dark {
+  background: #fff !important;
+  border: 1px solid #c9d0db !important;
+  color: var(--ink) !important;
+}
+
+.btn-dark:hover { border-color: var(--navy) !important; }
+
+/* カード類：細い線・小さな角丸・影なし */
+.class-card,
+.today-spot-card,
+.level-gate,
+.lesson-row,
+.fun-board,
+.stat-pill,
+.mission,
+.qa,
+.op,
+.stamp a,
+.fav-item,
+.guide-sheet,
+.proj-tile,
+.route-card,
+.compare-col {
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  transform: none !important;
+}
+
+.class-card:hover,
+.lesson-row:hover,
+.today-spot-card:hover {
+  border-color: #b9c3d3 !important;
+}
+
+.class-card .cover {
+  background: var(--wash) !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--line);
+}
+
+.class-card h3 { font-size: 16px !important; }
+
+.tool-chip,
+.st-chip,
+.level-tag,
+.today-spot-tag,
+.fun-kicker {
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.02em !important;
+}
+
+.tool-chip { background: var(--wash) !important; color: var(--muted) !important; border: 1px solid var(--line) !important; }
+.tool-chip.is-cowork { background: #fff !important; color: var(--accent) !important; border-color: #ecd6c2 !important; }
+.tool-chip.is-code { background: #fff !important; color: var(--navy) !important; border-color: #c9d5e6 !important; }
+.st-chip.is-done { background: #e8f3ee !important; color: var(--ok) !important; }
+.st-chip.is-now { background: var(--navy-wash) !important; color: var(--navy) !important; }
+.st-chip.is-todo,
+.st-chip.is-extra { background: var(--wash) !important; color: var(--muted) !important; }
+
+/* 進度バー */
+.meter,
+.thin-meter,
+.path-meter {
+  background: #e9edf3 !important;
+  border-radius: 2px !important;
+  height: 4px !important;
+  box-shadow: none !important;
+}
+
+.meter > span,
+.meter > i,
+.thin-meter > span {
+  background: var(--navy) !important;
+  border-radius: 2px !important;
+}
+
+/* 見出しまわり */
+.kicker,
+.lesson-body .kicker {
+  color: var(--accent) !important;
+  background: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.page h1,
+.lesson-body h1 {
+  font-size: clamp(24px, 3vw, 32px) !important;
+  line-height: 1.4 !important;
+}
+
+.section-head h2 {
+  font-size: 20px !important;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  width: 100%;
+}
+
+.home-sec-lead,
+.lede { color: var(--muted) !important; }
+
+/* レッスン本文 */
+.lesson-body {
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.callout {
+  border: 0 !important;
+  border-left: 3px solid var(--navy) !important;
+  border-radius: 0 6px 6px 0 !important;
+  background: var(--navy-wash) !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+.callout.warn { border-left-color: var(--accent) !important; background: #fbf4ec !important; }
+.callout.ok { border-left-color: var(--ok) !important; background: #eef6f2 !important; }
+
+.op .num {
+  background: var(--navy) !important;
+  color: #fff !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+.code-wrap {
+  border: 1px solid #2a3446 !important;
+  border-radius: 8px !important;
+  background: #182030 !important;
+  box-shadow: none !important;
+}
+
+.code-wrap pre {
+  background: transparent !important;
+  color: #e6ebf3 !important;
+}
+
+.code-wrap .copy {
+  background: #fff !important;
+  color: var(--ink) !important;
+  border: 0 !important;
+}
+
+/* ホーム */
+.home-hero {
+  background: var(--wash);
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0 48px;
+}
+
+.home-hero-in {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.home-hero .member-hello {
+  color: var(--muted) !important;
+  font-size: 14px !important;
+  margin: 0 0 8px;
+}
+
+.home-hero h1 {
+  font-size: clamp(28px, 4vw, 40px) !important;
+  margin: 0 0 12px;
+  line-height: 1.3 !important;
+}
+
+.home-hero-lead {
+  color: var(--muted);
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.home-hero-next {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  color: var(--ink) !important;
+  text-decoration: none;
+}
+
+.home-hero-next:hover { border-color: #b9c3d3; }
+
+.home-hero-next small {
+  display: block;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.home-hero-next strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.home-hero-meter {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.today-spot {
+  margin-top: 32px;
+}
+
+.today-spot-card {
+  background: var(--navy) !important;
+  border-color: var(--navy) !important;
+  color: #fff !important;
+}
+
+.today-spot-card h2,
+.today-spot-card p,
+.today-spot-card strong { color: #fff !important; }
+
+.today-spot-card .today-spot-tag {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+}
+
+.today-spot-card .btn-orange {
+  background: #fff !important;
+  color: var(--navy) !important;
+  border-color: #fff !important;
+}
+
+.today-spot-card .meter { background: rgba(255, 255, 255, 0.25) !important; }
+.today-spot-card .meter > span { background: #fff !important; }
+
+.home-catalog { margin-top: 48px; }
+
+/* フッター・チャット */
+.site-footer {
+  background: #141b28 !important;
+  border-radius: 0 !important;
+}
+
+.chat-fab {
+  background: var(--navy) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(20, 30, 50, 0.18) !important;
+}
+
+@media (max-width: 760px) {
+  .home-hero { padding: 32px 0 28px; }
+
+  .home-hero-in {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .home-hero-actions a { flex: 1 1 auto; text-align: center; }
+}
+
+@media (max-width: 900px) {
+  .site-nav a {
+    margin-right: 0;
+    border-bottom: 1px solid var(--line) !important;
+    padding: 14px 4px !important;
+  }
+
+  .site-nav a.active { border-bottom-color: var(--line) !important; }
+}
+
+/* レッスン画面 */
+.layout {
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr) !important;
+  gap: 32px !important;
+}
+
+.sidebar,
+.lesson-body,
+.quiz-card,
+.card {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.sidebar a {
+  border-radius: 4px !important;
+  color: var(--ink) !important;
+}
+
+.sidebar a.active {
+  background: var(--navy-wash) !important;
+  box-shadow: inset 2px 0 0 var(--navy) !important;
+}
+
+.crumbs,
+.crumbs a { color: var(--muted) !important; }
+.crumbs a:hover { color: var(--navy) !important; }
+
+.now-here {
+  background: var(--wash) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  color: var(--ink) !important;
+}
+
+.study-rail,
+.study-rail > span {
+  background: #e9edf3 !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+
+.study-rail > span { background: var(--navy) !important; }
+
+.pic,
+.pic-easy,
+.pic-compact,
+.pic-compare,
+.lesson-body > .pic-hero {
+  background: var(--wash) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.pic-badge {
+  background: #fff !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+.paste-hint {
+  color: var(--muted) !important;
+  font-weight: 500 !important;
+}
+
+.mark-read {
+  background: var(--wash) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.mark-read .primary,
+.pager .primary {
+  background: var(--navy) !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.mark-read.is-inked .primary { background: var(--ok) !important; }
+
+.pager {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* フッターの文字を読めるように */
+.site-footer,
+.site-footer p,
+.footer-note { color: #b8c2d3 !important; }
+
+.site-footer a { color: #fff !important; }
+
+.footer-brand img {
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+/* ヘッダーとナビを本文と同じ幅にそろえる */
+.site-nav {
+  max-width: var(--max) !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr !important; }
+  .site-nav { padding: 8px 16px !important; }
+}
+
+/* 進度バーはすべて濃紺の1色に */
+[class*="meter"]:not(.home-hero-meter):not(.home-hero-next) {
+  background-color: #e9edf3 !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+[class*="meter"] > span,
+[class*="meter"] > i {
+  background: var(--navy) !important;
+  box-shadow: none !important;
+}
+
+.header-top {
+  max-width: var(--max) !important;
+  margin: 0 auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+@media (max-width: 900px) {
+  .header-top { padding-left: 16px !important; padding-right: 16px !important; }
+}
+
+/* 講座トップ */
+.list-art {
+  background: var(--wash) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 6px !important;
+}
+
+.lesson-go { color: var(--muted) !important; }
+
+button.ghost {
+  background: #fff !important;
+  border: 1px solid #c9d0db !important;
+  border-radius: 6px !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+.course-lead .cover { border-radius: 6px !important; border: 1px solid var(--line); }
+
+/* フォームとお知らせ */
+.member-hello { color: var(--muted) !important; }
+
+.notice-card {
+  background: var(--wash) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.notice-card a { color: var(--navy) !important; }
+
+input[type="text"],
+input[type="search"],
+input:not([type]),
+textarea,
+select {
+  border: 1px solid #c9d0db !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid rgba(31, 58, 95, 0.25) !important;
+  border-color: var(--navy) !important;
+}
+
+button.primary,
+form button[type="submit"] {
+  background: var(--navy) !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}

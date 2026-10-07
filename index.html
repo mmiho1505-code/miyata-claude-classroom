@@ -24,13 +24,14 @@
     <link rel="manifest" href="manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css?v=stuck1" />
     <link rel="stylesheet" href="css/studio.css?v=screen1" />
     <link rel="stylesheet" href="css/fun.css?v=top3" />
     <link rel="stylesheet" href="css/pictures.css?v=ux1" />
-    <link rel="stylesheet" href="css/ux.css?v=top3" />
+    <link rel="stylesheet" href="css/ux.css?v=fav1" />
     <link rel="stylesheet" href="css/cursor.css?v=tmc1" />
+    <link rel="stylesheet" href="css/clean.css?v=merge5" />
   </head>
   <body>
     <a class="skip-link" href="#app">本文へ</a>
@@ -47,6 +48,10 @@
             <span class="header-progress-txt">全体 0%</span>
           </div>
           <a class="tool-pill tool-quiz" href="#/quiz/poster" data-link>確認クイズ</a>
+          <button type="button" class="header-fav" id="header-fav" aria-pressed="false" aria-label="このページをお気に入りに追加">
+            <span class="fav-star" aria-hidden="true">☆</span>
+            <span class="header-fav-txt">お気に入り追加</span>
+          </button>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">メニュー</button>
         </div>
       </div>
@@ -54,21 +59,10 @@
         <a href="#/" data-link>ホーム</a>
         <a href="#/course/today" data-link>今日の講義</a>
         <a href="#/me" data-link>マイページ</a>
-        <a href="#/notes" data-link>お気に入り</a>
-        <a href="#/chat" data-link>チャット</a>
-        <a href="#/cowork" data-link>Cowork</a>
-        <a href="#/code" data-link>Claude Code</a>
-        <a href="#/howto" data-link>操作のしかた</a>
         <a href="#/guide" data-link>説明資料</a>
         <a href="#/course/faq" data-link>つまずき</a>
-        <a href="#/prompts" data-link>テキストで学ぶ<span class="new-badge">NEW</span></a>
-        <a href="#/safety" data-link>安全の約束</a>
       </nav>
     </header>
-    <button type="button" class="header-fav" id="header-fav" aria-pressed="false" aria-label="このページをお気に入りに追加">
-      <span class="fav-star" aria-hidden="true">☆</span>
-      <span class="header-fav-txt">お気に入り追加</span>
-    </button>
     <main id="app"></main>
     <a class="chat-fab" href="#/chat" data-link>チャット</a>
     <footer class="site-footer">
@@ -87,8 +81,7 @@
           <li><a href="#/me" data-link>マイページ</a></li>
           <li><a href="#/notes" data-link>お気に入り</a></li>
           <li><a href="#/chat" data-link>チャット</a></li>
-          <li><a href="#/cowork" data-link>Cowork</a></li>
-          <li><a href="#/code" data-link>Claude Code</a></li>
+          <li><a href="#/prompts" data-link>テキストで学ぶ</a></li>
           <li><a href="#/howto" data-link>操作のしかた</a></li>
           <li><a href="#/guide" data-link>説明資料</a></li>
           <li><a href="#/course/faq" data-link>つまずき一覧</a></li>
@@ -100,44 +93,38 @@
         </div>
       </div>
     </footer>
-    <script src="js/data.js?v=people1"></script>
-    <script src="js/applied-course.js?v=scene1"></script>
-    <script src="js/claudemd-course.js?v=scene1"></script>
-    <script src="js/tool-courses.js?v=scene1"></script>
-    <script src="js/extra-courses.js?v=scene1"></script>
-    <script src="js/webwords-course.js?v=scene1"></script>
-    <script src="js/promptskill-course.js?v=scene1"></script>
-    <script src="js/trainapp-course.js?v=scene1"></script>
-    <script src="js/settings-course.js?v=scene1"></script>
-    <script src="js/mdbase-course.js?v=scene1"></script>
-    <script src="js/skillbase-course.js?v=scene1"></script>
-    <script src="js/nodejs-course.js?v=scene1"></script>
-    <script src="js/portal-courses.js?v=scene1"></script>
-    <script src="js/attend-course.js?v=scene1"></script>
-    <script src="js/salary-course.js?v=scene1"></script>
-    <script src="js/invoicemake-course.js?v=scene1"></script>
-    <script src="js/today-course.js?v=scene1"></script>
-    <script src="js/claudebase-course.js?v=scene1"></script>
-    <script src="js/aipick-course.js?v=scene1"></script>
-    <script src="js/canva-course.js?v=scene1"></script>
-    <script src="js/market-course.js?v=scene1"></script>
-    <script src="js/peoplejob-course.js?v=people1"></script>
-    <script src="js/hypo-course.js?v=scene1"></script>
-    <script src="js/hr-course.js?v=scene1"></script>
-    <script src="js/sched-course.js?v=scene1"></script>
-    <script src="js/slacksum-course.js?v=slack4"></script>
-    <script src="js/minutes-course.js?v=scene1"></script>
-    <script src="js/salesrep-course.js?v=scene1"></script>
-    <script src="js/salescsv-course.js?v=scene1"></script>
-    <script src="js/aicopy-course.js?v=scene1"></script>
-    <script src="js/aisub-course.js?v=scene1"></script>
-    <script src="js/researcher-course.js?v=scene1"></script>
-    <script src="js/portfolio-course.js?v=scene1"></script>
-    <script src="js/secplus-course.js?v=scene1"></script>
-    <script src="js/ui-edit-course.js?v=scene1"></script>
+    <script src="js/data.js?v=merge1"></script>
+    <script src="js/courses/claudebase.js?v=merge1"></script>
+    <script src="js/courses/aipick.js?v=merge1"></script>
+    <script src="js/courses/promptskill.js?v=merge1"></script>
+    <script src="js/courses/webwords.js?v=merge1"></script>
+    <script src="js/courses/skillbase.js?v=merge1"></script>
+    <script src="js/courses/poster.js?v=merge1"></script>
+    <script src="js/courses/market.js?v=merge1"></script>
+    <script src="js/courses/peoplejob.js?v=merge1"></script>
+    <script src="js/courses/minutes.js?v=merge1"></script>
+    <script src="js/courses/salesrep.js?v=merge1"></script>
+    <script src="js/courses/aicopy.js?v=merge1"></script>
+    <script src="js/courses/aisub.js?v=merge1"></script>
+    <script src="js/courses/faq.js?v=merge1"></script>
+    <script src="js/courses/today.js?v=merge1"></script>
+    <script src="js/courses/cowork.js?v=merge1"></script>
+    <script src="js/courses/portalmake.js?v=merge1"></script>
+    <script src="js/courses/attend.js?v=merge1"></script>
+    <script src="js/courses/invoicemake.js?v=merge1"></script>
+    <script src="js/courses/code.js?v=merge1"></script>
+    <script src="js/courses/applied.js?v=merge1"></script>
+    <script src="js/courses/invoice.js?v=merge1"></script>
+    <script src="js/courses/survey.js?v=merge1"></script>
+    <script src="js/courses/snspost.js?v=merge1"></script>
+    <script src="js/courses/crm.js?v=merge1"></script>
+    <script src="js/courses/shop.js?v=merge1"></script>
+    <script src="js/courses/secretary.js?v=merge1"></script>
+    <script src="js/courses/appedit.js?v=merge1"></script>
+    <script src="js/courses/quizzes.js?v=merge1"></script>
     <script src="js/illustrations.js?v=coworkask1"></script>
     <script src="js/bot.js?v=people1"></script>
-    <script src="js/app.js?v=people1"></script>
+    <script src="js/app.js?v=merge1"></script>
     <script src="js/cursor.js?v=tmc1"></script>
   </body>
 </html>

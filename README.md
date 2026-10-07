@@ -14,7 +14,8 @@ python3 -m http.server 4173
 
 ## 中身
 
-- Cowork講座（請求書・経費の自動化）
-- Claude Code講座（Windowsセットアップ）
-- プロンプト集
-- 確認クイズ（進捗はブラウザの localStorage に保存）
+- 講座は27本。本文は `js/courses/<講座id>.js`、確認クイズは `js/courses/quizzes.js`
+- 区分は「はじめて」「事務（チャットで作業）」「道具づくり（Claude Code）」の3つ
+- 統合前の講座のリンクと進度は、`js/app.js` の `COURSE_ALIAS` と各ページの `was` で統合先に引き継ぐ
+- 見た目の最終調整は `css/clean.css`（ほかのCSSのあとに読み込む）
+- 進度はブラウザの localStorage に保存

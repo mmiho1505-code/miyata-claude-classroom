@@ -503,10 +503,7 @@ body.is-teacher mark.teach-mark:hover {
 }
 
 .header-fav {
-  position: fixed;
-  top: 10px;
-  right: max(12px, env(safe-area-inset-right));
-  z-index: 90;
+  flex: none;
   display: inline-flex !important;
   align-items: center;
   gap: 6px;
@@ -546,8 +543,6 @@ body.is-teacher mark.teach-mark:hover {
 
 @media (max-width: 900px) {
   .header-fav {
-    top: max(8px, env(safe-area-inset-top));
-    right: max(56px, calc(env(safe-area-inset-right) + 50px));
     min-width: 44px;
     min-height: 44px;
     width: 44px;
