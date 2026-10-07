@@ -1829,6 +1829,7 @@ ${q}
         promptwork: ["copy", "やりたいことを一文で"],
         tips: ["copy", "どこを・前と後をはっきり"],
         later: ["portalpage", "見つからなければリンクを貼る"],
+        newstaff: ["safety", "最初のパスワードは手渡し、本人が変える"],
         trouble: ["quiz", "再読み込みしてから言い直す"],
         safety: ["safety", "直したら自分の目で"],
         practice: ["portalpage", "足す・変える・見た目・戻す"],
@@ -1888,6 +1889,8 @@ ${q}
         batch: ["invoice", "一覧からまとめてPDF"],
         send: ["folder", "PDFで送って、決まった場所に保存"],
         tips: ["copy", "品目追加も値引きも一文で"],
+        tategaki: ["docs", "縦書きはWordで作ってPDFに"],
+        mitsumori: ["invoice", "面積と単価表から松竹梅の3案"],
         safety: ["safety", "送るのは人。番号は原本で"],
         practice: ["invoice", "架空の会社で20分"],
         summary: ["check", "ひな形・明細・電卓してPDF"]
