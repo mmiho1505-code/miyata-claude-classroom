@@ -346,30 +346,12 @@ ${q}
   ];
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["today", "cowork", "portalmake", "attend", "invoicemake"];
+  const COWORK_IDS = ["cowork", "portalmake", "attend", "invoicemake"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
   const BEGINNER_IDS = STARTER_IDS.concat(COWORK_IDS, CODE_SETUP_IDS);
   const ADVANCED_IDS = CODE_MAKE_IDS.slice();
-  const TODAY_LESSON_ALIAS = {
-    chatmore: "chat",
-    vs: "install",
-    cando: "install",
-    screen: "install",
-    stuck: "install",
-    wait: "one",
-    share: "one",
-    break: "one",
-    edit: "promptwork",
-    round: "promptwork",
-    four: "three",
-    five: "three",
-    six: "three",
-    seven: "three",
-    nine: "summary",
-    tips: "summary"
-  };
 
   // 統合前の講座id → 統合先。古いリンクと進度の引き継ぎに使う
   const COURSE_ALIAS = {
@@ -450,7 +432,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq"]);
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "today"]);
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -754,6 +736,7 @@ ${q}
   };
 
   const COURSE_META = {
+    today: ["cover-applied", "今日", "120分。CLAUDE.mdとClaude Code（中級）。最後に自分の仕事で1つ作る。", "docs"],
     claudebase: ["cover-account", "基本", "アカウント・設定・指示とプロジェクト。ログイン直後にやる。", "signup"],
     aipick: ["cover-applied", "使い分け", "ChatGPT・Gemini・Claude。用途で選ぶ。表は疑う。", "compare"],
     webwords: ["cover-intro", "ことば", "HTML・CSS・JAVAの意味と、作る前の工程。コードは書かない。", "site"],
@@ -766,7 +749,6 @@ ${q}
     aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
     aisub: ["cover-expense", "補助", "旧IT導入補助金。会計・勤怠・AI。支援事業者と一緒に申請。", "expense"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
-    today: ["cover-cowork", "今日", "11枚・2時間。同じチャットとポータル。できれば Cursor に Claude Code。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
     invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
@@ -784,6 +766,7 @@ ${q}
   };
 
   const STAMP_LABELS = {
+    today: ["今日の講義", "📌"],
     claudebase: ["Claude基本", "✨"],
     aipick: ["使い分け", "🔀"],
     webwords: ["作る前の基礎", "🧱"],
@@ -796,7 +779,6 @@ ${q}
     aicopy: ["著作", "⚖️"],
     aisub: ["AI補助", "💴"],
     cowork: ["Cowork", "💬"],
-    today: ["今日の講義", "📌"],
     portalmake: ["ポータル", "🏠"],
     attend: ["出退勤と給料", "⏰"],
     invoicemake: ["請求書", "📄"],
@@ -829,8 +811,7 @@ ${q}
     if (!canSeeCourse(last.courseId)) return null;
     const courseId = last.courseId;
     if (last.lessonId) {
-      const mapped =
-        courseId === "today" && TODAY_LESSON_ALIAS[last.lessonId] ? TODAY_LESSON_ALIAS[last.lessonId] : last.lessonId;
+      const mapped = last.lessonId;
       const idx = course.lessons.findIndex((l) => l.id === mapped);
       if (idx >= 0) {
         const lesson = course.lessons[idx];
@@ -903,7 +884,7 @@ ${q}
     nav.querySelectorAll("a").forEach((a) => {
       const href = a.getAttribute("href").replace(/^#/, "") || "/";
       let active = href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
-      if (courseId && href === "/cowork" && toolOf(courseId) === "cowork" && courseId !== "today") active = true;
+      if (courseId && href === "/cowork" && toolOf(courseId) === "cowork") active = true;
       if (courseId && href === "/code" && toolOf(courseId) === "code") active = true;
       if (courseId && href === "/beginner" && BEGINNER_IDS.includes(courseId)) active = true;
       if (courseId && href === "/applied" && ADVANCED_IDS.includes(courseId)) active = true;
@@ -1127,6 +1108,7 @@ ${q}
     html.replace(/<p class="kicker">([\s\S]*?)<\/p>/g, (_, raw) => `<p class="kicker">${kickerJa(raw)}</p>`);
 
   const COURSE_ART = {
+    today: ["docs", "CLAUDE.mdと設定で、毎回の説明をなくす"],
     cowork: ["cowork", "画面でお願いして、ファイルまで仕上げる"],
     code: ["powershell", "黒い画面に1行貼って進める"],
     poster: ["poster", "A4縦の求人ポスターを1枚"],
@@ -1150,7 +1132,6 @@ ${q}
     aicopy: ["safety", "見て・調べて・確認してから"],
     aisub: ["expense", "デジタル化・AI導入補助金。公式で確認"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    today: ["portalpage", "11枚。同じチャットと、できれば Cursor"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
     invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"],
     skillbase: ["copy", "よく使う手順を /名前 で呼ぶ"],
@@ -1275,22 +1256,6 @@ ${q}
         summary: ["copy", "必須ではない。呼んだときだけ"]
       };
       return t[lessonId] || COURSE_ART.skillbase;
-    }
-    if (courseId === "today") {
-      const t = {
-        goal: ["site", "11枚。同じチャット → 作る → 直す"],
-        chat: ["webchat", "日本語で返事をもらう"],
-        install: ["desktop", "OpusとEffort、できた画面"],
-        cursorcode: ["copy", "入れる・フォルダを開く・claude"],
-        gmail: ["copy", "つなぐとメール・予定・資料が手元に"],
-        one: ["portalpage", "土台の1ページを作る"],
-        promptwork: ["copy", "同じ会話の続きで直す"],
-        two: ["attendapp", "出勤・休憩・退勤の打刻"],
-        three: ["copy", "申請・給与は余ったら"],
-        eight: ["pinterest", "Pinterestで雰囲気を1つ決める"],
-        summary: ["portalpage", "チャットから直し方まで"]
-      };
-      return t[lessonId] || COURSE_ART.today;
     }
     if (courseId === "webwords") {
       const t = {
@@ -1631,33 +1596,12 @@ ${q}
           </a>`;
   };
 
-  const todaySpot = () => {
-    const course = CLASSROOM.courses.today;
-    if (!course) return "";
-    const open = canSeeCourse("today");
-    const p = percent("today");
-    const href = open ? "#/course/today" : "#/me";
-    const label = !open ? "受講コードを入れる" : p > 0 && p < 100 ? "続きを開く" : "今日の講義を開く";
-    return `
-      <section class="today-spot wrap">
-        <a class="today-spot-card${open ? "" : " is-locked"}" href="${href}" data-link>
-          <span class="today-spot-tag">きょうの教室</span>
-          <h2>${escapeHtml(course.title)}</h2>
-          <p>11枚・2時間。同じチャットでポータルを作って直します。</p>
-          <strong>${open ? `進度 ${p}%` : "受講コードが必要です"}</strong>
-          ${open ? thinMeter(p, "meter", "今日の講義の進度") : ""}
-          <span class="btn-orange">${label}</span>
-        </a>
-      </section>`;
-  };
-
   const home = () => {
     const stats = courseStats();
     const next = nextRecommended();
     const started = continueStudy();
-    const todayOpen = canSeeCourse("today") && percent("today") < 100;
-    const ctaHref = started ? started.href : todayOpen ? "#/course/today" : next.href;
-    const ctaLabel = started ? "続きを開く" : todayOpen ? "今日の講義を開く" : "最初の講座から始める";
+    const ctaHref = started ? started.href : next.href;
+    const ctaLabel = started ? "続きを開く" : "最初の講座から始める";
     const nextShort = (STAMP_LABELS[next.courseId] && STAMP_LABELS[next.courseId][0]) || next.course.title;
     const nextTitle =
       next.lesson
@@ -1689,10 +1633,10 @@ ${q}
           </a>
         </div>
       </section>
-      ${todaySpot()}
       <div class="page">
+        ${section("今日の講義", "120分・8枚。CLAUDE.md と Claude Code（中級）。受講コードなしで開けます。", ["today"])}
         ${section("はじめて", "受講コードなしで読めます。上から順で大丈夫です。", STARTER_IDS.concat(["faq"]))}
-        ${section("事務（チャットで作業）", "画面で日本語のお願い。黒い画面は使いません。", COWORK_IDS.filter((id) => id !== "today"))}
+        ${section("事務（チャットで作業）", "画面で日本語のお願い。黒い画面は使いません。", COWORK_IDS)}
         ${section("道具づくり（Claude Code）", "最初に準備、そのあと作りやすい順です。", CODE_IDS)}
       </div>
     `;
@@ -1711,7 +1655,6 @@ ${q}
       promptskill: "cover-chat",
       trainapp: "cover-code",
       cowork: "cover-cowork",
-      today: "cover-cowork",
       code: "cover-code",
       codemac: "cover-mac",
       applied: "cover-applied",
@@ -1761,7 +1704,6 @@ ${q}
       promptskill: "プロンプト",
       trainapp: "工程",
       cowork: "Cowork",
-      today: "今日",
       code: "Code",
       codemac: "Mac",
       applied: "応用",
@@ -2856,16 +2798,16 @@ ${q}
       location.replace(`#/${parts[0] === "quiz" ? "course" : parts[0]}/${to}${lessonId ? `/${lessonId}` : ""}`);
       return;
     }
+    if (parts[0] === "course" && parts[2] && CLASSROOM.courses[parts[1]] && !CLASSROOM.courses[parts[1]].lessons.some((l) => l.id === parts[2])) {
+      location.replace(`#/course/${parts[1]}`);
+      return;
+    }
     if (["cowork", "code", "applied", "beginner"].includes(parts[0])) {
       location.replace("#/");
       return;
     }
     if (parts[0] === "quiz") {
       location.replace(parts[1] ? `#/course/${parts[1]}` : "#/");
-      return;
-    }
-    if (parts[0] === "course" && parts[1] === "today" && parts[2] && TODAY_LESSON_ALIAS[parts[2]]) {
-      location.replace(`#/course/today/${TODAY_LESSON_ALIAS[parts[2]]}`);
       return;
     }
     if ((parts[0] === "course" || parts[0] === "cert") && parts[1] && !canSeeCourse(parts[1])) {

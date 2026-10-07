@@ -142,7 +142,6 @@ button.btn-orange {
 
 /* カード類：細い線・小さな角丸・影なし */
 .class-card,
-.today-spot-card,
 .lesson-row,
 .qa,
 .op,
@@ -157,8 +156,7 @@ button.btn-orange {
 }
 
 .class-card:hover,
-.lesson-row:hover,
-.today-spot-card:hover {
+.lesson-row:hover{
   border-color: #b9c3d3 !important;
 }
 
@@ -171,8 +169,7 @@ button.btn-orange {
 .class-card h3 { font-size: 16px !important; }
 
 .tool-chip,
-.st-chip,
-.today-spot-tag{
+.st-chip{
   border-radius: 4px !important;
   box-shadow: none !important;
   font-weight: 500 !important;
@@ -346,34 +343,6 @@ button.btn-orange {
   font-size: 13px;
   margin-bottom: 8px;
 }
-
-.today-spot {
-  margin-top: 32px;
-}
-
-.today-spot-card {
-  background: var(--navy) !important;
-  border-color: var(--navy) !important;
-  color: #fff !important;
-}
-
-.today-spot-card h2,
-.today-spot-card p,
-.today-spot-card strong { color: #fff !important; }
-
-.today-spot-card .today-spot-tag {
-  background: rgba(255, 255, 255, 0.14) !important;
-  color: #fff !important;
-}
-
-.today-spot-card .btn-orange {
-  background: #fff !important;
-  color: var(--navy) !important;
-  border-color: #fff !important;
-}
-
-.today-spot-card .meter { background: rgba(255, 255, 255, 0.25) !important; }
-.today-spot-card .meter > span { background: #fff !important; }
 
 .home-catalog { margin-top: 48px; }
 

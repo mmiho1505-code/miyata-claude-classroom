@@ -25,14 +25,14 @@
       keys: ["irm", "iex", "command not found: irm", "zsh: command not found"],
       answer:
         "Mac の画面です。irm と iex は Windows の PowerShell 用です。Mac は curl -fsSL https://claude.ai/install.sh | bash を貼ります。すでに claude が入っている人は、新しいターミナルで claude とだけ打ちます。",
-      href: "#/course/today/cursorcode",
+      href: "#/course/code",
       link: "Cursor に Claude Code"
     },
     {
       keys: ["貼", "コピー", "ctrl", "ペースト", "⌘", "command", "貼り付け"],
       answer:
         "教室の「コピー」を押したあと、貼る場所（PowerShell・ターミナル・チャットの入力欄）を一度クリックしてから貼ります。Windows は右クリックまたは Ctrl＋V、Mac は ⌘＋V です。",
-      href: "#/course/faq/paste",
+      href: "#/course/faq/ps",
       link: "貼り付けできない"
     },
     {
@@ -46,7 +46,7 @@
       keys: ["設定", "settings", "一般", "請求", "使用量", "メモリー", "メモリ", "コネクタ", "コネクター", "スキル", "プラグイン", "デザインシステム", "claude in chrome"],
       answer:
         "名前から「設定」を開きます。請求はお金、使用量は今月のメーターです。メモリーは別チャットでも覚えさせること。コネクタはカレンダーやメールをつなぐ入口。開発者・プラグインは今やらなくてよいです。",
-      href: "#/course/settings",
+      href: "#/course/claudebase",
       link: "Claudeの設定"
     },
     {
@@ -74,36 +74,29 @@
       keys: ["mac", "マック", "ターミナル", "spotlight", "パスワードが見え"],
       answer:
         "Mac はテキストエディット（メモ）ではなく、赤い・黄色い・緑の丸がある「ターミナル」です。⌘＋スペースで「ターミナル」と検索します。パスワード入力中は文字が見えません。打ち終わって Enter です。",
-      href: "#/course/codemac",
+      href: "#/course/code",
       link: "Mac編"
     },
     {
       keys: ["cowork", "コワーク", "見当たら", "メニュー", "アプリ"],
       answer:
         "以前の Cowork は、今このチャットに入っています。別の場所を探さなくてよいです。資料作成も会話も、同じ画面です。",
-      href: "#/course/faq/coworkmiss",
+      href: "#/course/faq/login",
       link: "左にCoworkが無い"
     },
     {
       keys: ["trust", "trust this folder", "no, exit", "yes, i trust", "safety check", "accessing workspace"],
       answer:
         "エラーではありません。このフォルダを信頼するかの確認です。矢印の下で Yes, I trust this folder を選んで Enter します。No, exit を押した人は、もう一度 claude と打ちます。自分で開いた作業フォルダなら Yes で進みます。",
-      href: "#/course/today/cursorcode",
+      href: "#/course/code",
       link: "Cursor に Claude Code"
     },
     {
       keys: ["node -v", "nodejs", "node.js", "ノード", "入れてないとだめ"],
       answer:
         "だめではありません。node -v は、講座と同じく npm で入れる人の確認です。入れ方は環境構築②（約4分）です。いま推奨の公式は Mac が curl、Windows が irm で、こちらは Node 不要です。すでに claude と打って起動する人は、入れ直し不要です。",
-      href: "#/course/nodejs",
+      href: "#/course/code",
       link: "Node.jsのインストール"
-    },
-    {
-      keys: ["今日の講義", "きょうの講義", "土台：ポータル", "タイル型", "カーソルに", "cursor に"],
-      answer:
-        "今日の講義の Claude Code は、最初の1回だけ入れます。推奨は公式の1行（Mac は curl、Windows は irm）。Node.js は必須ではありません。作業フォルダを開いて claude。ファイルを変える前の確認は見てから承認します。",
-      href: "#/course/today",
-      link: "今日の講義"
     },
     {
       keys: ["マーケ", "マーケティング", "届ける", "ターゲット", "潜在ニーズ", "chatgpt"],
@@ -123,14 +116,14 @@
       keys: ["仮説", "丸投げ", "イシュー", "ファクトベース", "仮説思考"],
       answer:
         "仮説思考は、差がつくのはAIの性能ではなく問いの立て方、です。イシューは今本当に結論を出す価値がある問い。1つに絞り、「私はこう思う」を先に書き、「外れている点を根拠つきで指摘して」と頼む。",
-      href: "#/course/hypo",
+      href: "#/course/promptskill",
       link: "仮説思考"
     },
     {
       keys: ["人事", "CHRO", "オペレーター", "賞与", "職種別"],
       answer:
         "人事編は、業務をAIで軽くすることと、採用・配置・評価・報酬・労働時間の制度を作り直すこと、の二つです。人に残るのは意図・見直し・責任・巻き込み。いちばん人数が要るのはオペレーターです。",
-      href: "#/course/hr",
+      href: "#/course/peoplejob",
       link: "人事の切り分け"
     },
     {
@@ -144,14 +137,14 @@
       keys: ["トレーニング", "筋トレ", "prd", "pdr", "decisions.md", "作らないもの", "改善案", "trainapp"],
       answer:
         "見るだけの回です。アプリより工程の学び。作るもの／作らないものを先に書く。計算はコード、AIは推定と相談。小さく頼む。直す前は「まず改善案。コードはまだ変えないで」。Gitは実装の前。",
-      href: "#/course/trainapp",
+      href: "#/course/webwords",
       link: "トレーニング管理アプリ"
     },
     {
       keys: ["slack", "スラック", "予定済み", "スケジュール済み", "デイリーブリーフィング", "毎朝要約"],
       answer:
         "Slack（スラック）は仕事用のチャットです。部屋（チャンネル）に書き残し、あとから探せます。朝の未読は全部読まず、決定・自分のToDo・返信が必要なものだけ受け取ります。主役は予定済み。雑談チャンネルは外す。投稿や削除はしません。",
-      href: "#/course/slacksum",
+      href: "#/course/minutes",
       link: "Slackを毎朝要約"
     },
     {
@@ -172,14 +165,14 @@
       keys: ["売上csv", "寄与度", "ひとことインサイト", "前年同月", "前月比", "客単価"],
       answer:
         "作業フォルダにコピーを置く。行番号は書かない。コードで統合して検算。前月・前年・目標をグラフに。どの店・商品が効いたかを分解。打ち手が見えないときだけ客数と客単価など切り口を変える。数字は人が確認。削除は許可しません。",
-      href: "#/course/salescsv",
+      href: "#/course/salesrep",
       link: "売上CSVの分析"
     },
     {
       keys: ["日程", "カレンダー", "会議", "空き時間", "コネクター"],
       answer:
         "日程調整編は、大きなアプリから始めず、設定のコネクターでカレンダーをつなぎ、プロジェクトの手順を貼って「実行」と書きます。相手のカレンダーは読めません。確定したときだけ登録を頼みます。無料プランでもできますが、使用上限にはすぐ達しやすいです。",
-      href: "#/course/sched",
+      href: "#/course/minutes",
       link: "日程調整"
     },
     {
@@ -193,7 +186,7 @@
       keys: ["claude.md", "claudemd", "claude md", "ルールブック", "/init", "/memory", "業務マニュアル", "マークダウン", "markdown", "どこから見", "どこで見"],
       answer:
         "CLAUDE.md は Claude Code に渡す業務マニュアルです。起動のたびに自動で読みます。必須ではありません。/init で下書きできます。できたファイルは Cursor の左の一覧（Ctrl または ⌘ と B）のいちばん上をクリックします。claude.ai の設定には出ません。座学は基礎、手を動かすのは作り方です。",
-      href: "#/course/mdbase",
+      href: "#/course/skillbase",
       link: "CLAUDE.mdの基礎"
     },
     {
@@ -207,21 +200,21 @@
       keys: ["リサーチャー", "researcher", "/researcher", "競合調査", "裏取り", "ポジショニングマップ", "自社サービス.md"],
       answer:
         "上級です。Pro以上、Cursor、ターミナルの Claude Code。配られたコマンドでプラグインを入れ、再起動して /researcher:init。自社サービス.md が軸、リサーチの好み.md に調べ方。/researcher:research で候補を選び、調査・料金の裏取り・点検。report フォルダ。HTMLが出なければ好みに毎回HTMLも作ると書く。会社を増やしすぎない。Opusで足りることが多い。売上の保証はありません。",
-      href: "#/course/researcher",
+      href: "#/course/survey",
       link: "専属リサーチャー"
     },
     {
       keys: ["ポートフォリオ", "netlify", "ep269", "記入例_penta", "index.html", "github pages", "github.io", "vs code"],
       answer:
         "1ページの自己紹介サイトです。事前は Node・Pro・GitHub。VS Code か Cursor でフォルダを開く。テンプレを埋めて数回直す。公開は GitHub Pages（Settings→Pages）か Netlify にドロップ。公開リポジトリに秘密は入れません。EP269 は portfolio.md を人が書く流れです。",
-      href: "#/course/portfolio",
+      href: "#/course/shop",
       link: "ポートフォリオサイトを公開"
     },
     {
       keys: ["秘書+", "Desktop", "送信ブロック", "ツールの権限", "ChatWork"],
       answer:
         "秘書の応用編は、Claude CodeデスクトップのフォルダにカレンダーとGmailをつなぎます。読む・下書きは常に許可。送信・返信・転送と完全削除はブロック。顧客メールを渡すかは自分で決めます。",
-      href: "#/course/secplus",
+      href: "#/course/secretary",
       link: "秘書の応用編"
     },
     {
@@ -235,7 +228,7 @@
       keys: ["直し方", "直そう", "内線", "お知らせを追加", "元に戻"],
       answer:
         "直し方は、作った会話の続きに「〇〇を△△に変えて」と書くだけです。リンクは変わりません。直したらページを再読み込みして確認します。会話が見つからなければ、ポータルのリンクを貼って新しいタスクで頼んでください。",
-      href: "#/course/portalfix",
+      href: "#/course/portalmake",
       link: "ポータル直し方編"
     },
     {
@@ -249,7 +242,7 @@
       keys: ["給料", "給与", "時給", "支給額", "割増"],
       answer:
         "出退勤の記録から支給額までを、同じチャットに頼めます。税・保険・振込は今まで通りです。計算式が見えるExcelにし、渡す前に電卓で1人分を検算してください。マイナンバーや口座は入れません。",
-      href: "#/course/salary",
+      href: "#/course/attend",
       link: "給料計算編"
     },
     {
@@ -270,7 +263,7 @@
       keys: ["チャット", "相談", "文章", "ブラウザ"],
       answer:
         "入り口は2つです。チャットは会話も資料作成も同じ画面（以前の Cowork はここに入った）。Claude Code は黒い画面から道具をつくる相棒です。迷ったらチャット入門からどうぞ。",
-      href: "#/course/webchat",
+      href: "#/course/promptskill",
       link: "チャット入門"
     },
     {
@@ -284,7 +277,7 @@
       keys: ["canva基礎", "canva 基礎", "背景透過", "noto sans", "あなたのアカウント", "aiの利用状況", "王冠"],
       answer:
         "テンプレは無料でも足りることが多いです。王冠のないものを選ぶ。言語は日本語。プライバシーの学習はオフ。AIは上限にすぐ達するので1回ずつ。背景透過はPro。マジックレイヤーの精度は有料でも同じ。文字は人が確認します。",
-      href: "#/course/canvaai",
+      href: "#/course/poster",
       link: "Canva AI 基礎"
     },
     {
