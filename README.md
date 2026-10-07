@@ -14,7 +14,7 @@ python3 -m http.server 4173
 
 ## 中身
 
-- 講座は27本。本文は `js/courses/<講座id>.js`、確認クイズは `js/courses/quizzes.js`
+- 講座は27本。本文は `js/courses/<講座id>.js`
 - 区分は「はじめて」「事務（チャットで作業）」「道具づくり（Claude Code）」の3つ
 - 統合前の講座のリンクと進度は、`js/app.js` の `COURSE_ALIAS` と各ページの `was` で統合先に引き継ぐ
 - 見た目の最終調整は `css/clean.css`（ほかのCSSのあとに読み込む）

@@ -3,8 +3,8 @@
   "short_name": "宮田財務教室",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#fff7ef",
-  "theme_color": "#ff7a59",
+  "background_color": "#ffffff",
+  "theme_color": "#1f3a5f",
   "lang": "ja",
   "icons": [
     {

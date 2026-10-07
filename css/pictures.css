@@ -1,12 +1,9 @@
 .pic,
 .pic-easy,
 .op .pic,
-.points .pic,
-.vs-card .pic,
 .page > .pic,
 .lesson-body .pic,
-.lesson-body > .pic,
-.quiz-card + * .pic {
+.lesson-body > .pic{
   display: block !important;
 }
 
@@ -107,54 +104,6 @@
   font-size: 18px;
 }
 
-.easy-hero {
-  margin-bottom: 8px;
-}
-
-.level-gates {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 8px 0 12px;
-}
-
-.level-gate {
-  display: grid;
-  gap: 8px;
-  text-decoration: none;
-  background: #fff;
-  border-radius: 28px;
-  padding: 22px 20px 18px;
-  box-shadow: 0 12px 0 #f3ddd0;
-  border: 3px solid #ffe1cf;
-  min-height: 220px;
-  transition: transform 0.2s ease;
-}
-
-.level-gate:hover {
-  transform: translateY(-6px);
-}
-
-.level-gate.is-beginner {
-  background: linear-gradient(180deg, #fff8e8, #fff);
-}
-
-.level-gate.is-cowork {
-  background: linear-gradient(180deg, #fff5f3, #fff);
-  border-color: #ffc4b0;
-}
-
-.level-gate.is-code {
-  background: linear-gradient(180deg, #e8f1ff, #fff);
-  border-color: #b7d0f5;
-  box-shadow: 0 12px 0 #d5e4f7;
-}
-
-.level-gate.is-code .level-tag {
-  background: #3d6fd8;
-  color: #fff;
-}
-
 .site-header,
 body.is-home .site-header {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.16));
@@ -180,65 +129,6 @@ body.is-home .site-header {
   background: rgba(255, 255, 255, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
-}
-
-.compare-banner {
-  padding: 8px 0 4px;
-}
-
-.compare-banner .pic,
-.compare-banner .pic-easy {
-  margin: 0 auto 8px;
-  max-width: 520px;
-  background: rgba(255, 255, 255, 0.28) !important;
-  border: 1px solid rgba(255, 255, 255, 0.7) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.75),
-    0 16px 40px rgba(61, 52, 44, 0.06) !important;
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-}
-
-.compare-banner .pic-badge {
-  background: rgba(255, 200, 92, 0.72);
-  backdrop-filter: blur(8px);
-}
-
-.ticker {
-  background: rgba(61, 52, 44, 0.28) !important;
-  color: #fff;
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(14px) saturate(1.2);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
-}
-
-.desk-catalog {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.desk-catalog .lane {
-  margin: 0;
-  padding: 22px 18px 20px;
-  overflow: visible;
-}
-
-.desk-catalog .section-head {
-  margin: 0 0 16px;
-  scroll-margin-top: 96px;
-}
-
-.desk-catalog .course-grid + .section-head,
-.track-page .course-grid + .section-head,
-.track-page .stamp-grid + .section-head {
-  margin-top: 36px;
-  padding-top: 8px;
-}
-
-.lane .section-head h2 {
-  margin: 0;
 }
 
 .is-cowork-page {
@@ -268,60 +158,6 @@ body.is-home .site-header {
 .tool-chip.is-starter {
   background: #ffe9b8;
   color: #8a5a00;
-}
-
-.level-gate.is-advanced {
-  background: linear-gradient(180deg, #eefaf3, #fff);
-  border-color: #cde8d8;
-  box-shadow: 0 12px 0 #d7eee2;
-}
-
-.level-tag {
-  display: inline-flex;
-  width: fit-content;
-  background: #ffc85c;
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.level-gate.is-advanced .level-tag {
-  background: #5bb58a;
-  color: #fff;
-}
-
-.level-gate h2 {
-  margin: 0;
-  font-size: 28px;
-}
-
-.level-gate p {
-  margin: 0;
-  color: #6b5d52;
-}
-
-.level-gate .meter {
-  display: block;
-  height: 8px;
-  background: #ffe8dc;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.track-page .meter {
-  max-width: 320px;
-  margin: 0 0 16px;
-}
-
-.stamp-grid {
-  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
-}
-
-@media (max-width: 900px) {
-  .level-gates {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 900px) {
@@ -371,11 +207,9 @@ body.is-home .site-header {
   }
 
   .op .pic,
-  .points .pic,
-  .page > .pic,
-  .vs-card .pic,
-  .lesson-body > .pic,
-  .lesson-body .pic {
+.page > .pic,
+.lesson-body > .pic,
+.lesson-body .pic{
     display: block !important;
     max-width: none;
     margin: 10px auto 16px;

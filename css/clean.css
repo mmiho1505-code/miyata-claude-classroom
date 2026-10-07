@@ -52,12 +52,8 @@ pre, code, kbd {
 }
 
 /* 飾りを外す */
-.fun-blob,
-.fun-sticker,
-.ticker,
 .brand-promo,
-.new-badge,
-.header-progress {
+.header-progress{
   display: none !important;
 }
 
@@ -92,8 +88,7 @@ body.is-home .site-header {
 }
 
 .member-chip,
-.tool-pill,
-.nav-toggle {
+.nav-toggle{
   background: #fff !important;
   color: var(--ink) !important;
   border: 1px solid var(--line) !important;
@@ -148,19 +143,12 @@ button.btn-orange {
 /* カード類：細い線・小さな角丸・影なし */
 .class-card,
 .today-spot-card,
-.level-gate,
 .lesson-row,
-.fun-board,
-.stat-pill,
-.mission,
 .qa,
 .op,
-.stamp a,
 .fav-item,
 .guide-sheet,
-.proj-tile,
-.route-card,
-.compare-col {
+.route-card{
   border: 1px solid var(--line) !important;
   border-radius: 8px !important;
   box-shadow: none !important;
@@ -184,9 +172,7 @@ button.btn-orange {
 
 .tool-chip,
 .st-chip,
-.level-tag,
-.today-spot-tag,
-.fun-kicker {
+.today-spot-tag{
   border-radius: 4px !important;
   box-shadow: none !important;
   font-weight: 500 !important;
@@ -203,9 +189,7 @@ button.btn-orange {
 .st-chip.is-extra { background: var(--wash) !important; color: var(--muted) !important; }
 
 /* 進度バー */
-.meter,
-.thin-meter,
-.path-meter {
+.meter{
   background: #e9edf3 !important;
   border-radius: 2px !important;
   height: 4px !important;
@@ -213,8 +197,7 @@ button.btn-orange {
 }
 
 .meter > span,
-.meter > i,
-.thin-meter > span {
+.meter > i{
   background: var(--navy) !important;
   border-radius: 2px !important;
 }
@@ -435,8 +418,7 @@ button.btn-orange {
 
 .sidebar,
 .lesson-body,
-.quiz-card,
-.card {
+.card{
   border-radius: 8px !important;
   box-shadow: none !important;
 }

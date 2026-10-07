@@ -3,13 +3,12 @@
   const app = document.getElementById("app");
   const nav = document.getElementById("site-nav");
   const toggle = document.querySelector(".nav-toggle");
-  const quizPill = document.querySelector(".tool-quiz");
 
   const loadProgress = () => {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { cowork: {}, code: {}, quizzes: {} };
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { cowork: {}, code: {} };
     } catch {
-      return { cowork: {}, code: {}, quizzes: {} };
+      return { cowork: {}, code: {} };
     }
   };
 
@@ -169,17 +168,6 @@
       return `<a class="work-shot" href="${href}" download="${name}"><img src="${href}" alt="${name}" /></a>`;
     }
     return `<a class="work-file" href="${href}" download="${name}">${name} を開く</a>`;
-  };
-
-  const loadBotChat = () => {
-    const p = loadProgress();
-    return Array.isArray(p.botChat) ? p.botChat : [];
-  };
-
-  const saveBotChat = (msgs) => {
-    const p = loadProgress();
-    p.botChat = msgs.slice(-24);
-    saveProgress(p);
   };
 
   const botBubble = (m) => {
@@ -766,112 +754,64 @@ ${q}
   };
 
   const COURSE_META = {
-    account: ["cover-account", "準備", "claude.ai に入って、有料プランの画面を確認。", "signup"],
     claudebase: ["cover-account", "基本", "アカウント・設定・指示とプロジェクト。ログイン直後にやる。", "signup"],
     aipick: ["cover-applied", "使い分け", "ChatGPT・Gemini・Claude。用途で選ぶ。表は疑う。", "compare"],
-    settings: ["cover-account", "設定", "左の一覧。一般・請求・メモリー・コネクタ。全部いじらなくてよい。", "plan"],
-    webchat: ["cover-chat", "チャット", "同じ画面で日本語のお願いを一度。作業もここに入った。", "webchat"],
     webwords: ["cover-intro", "ことば", "HTML・CSS・JAVAの意味と、作る前の工程。コードは書かない。", "site"],
     promptskill: ["cover-chat", "頼み方", "チャットに1回頼む。目的・前提・形式。先に自分の仮説。", "webchat"],
-    trainapp: ["cover-code", "工程", "見るだけ。作る／作らない。小さく頼む。直す前は改善案。", "desktop"],
     poster: ["cover-poster", "ポスター", "Claudeで原稿、Canvaで仕上げ。A4を1枚。", "poster"],
-    canvaai: ["cover-poster", "Canva", "無料とPro。学習オフ。テンプレから文字・書き出し。", "canva"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     peoplejob: ["cover-crm", "人の仕事", "AIに任せる仕事と、人が残す判断。人事の例つき。", "crm"],
-    hypo: ["cover-applied", "仮説", "丸投げせず、私はこう思う、を先に書く。外れたら根拠つきで指摘。", "copy"],
-    hr: ["cover-crm", "人事", "業務を軽くするだけでなく、採用・配置・評価・報酬の制度を作り直す。", "crm"],
-    sched: ["cover-chat", "日程", "カレンダーをつないで、空き時間をクリックしてメール文まで。無料プラン可。", "mail"],
-    slacksum: ["cover-cowork", "Slack", "予定済みで毎朝要約。決定・ToDo・返信だけ。雑談は外す。", "mail"],
     minutes: ["cover-chat", "会議", "日程調整・議事録・Slack要約。配る前に人が確認。", "mail"],
     salesrep: ["cover-invoice", "売上", "売上データをグラフ付きレポートに。セル番地は書かない。", "invoice"],
-    salescsv: ["cover-survey", "CSV", "集計→グラフ→寄与度。行番号は書かない。", "survey"],
     aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
     aisub: ["cover-expense", "補助", "旧IT導入補助金。会計・勤怠・AI。支援事業者と一緒に申請。", "expense"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
     today: ["cover-cowork", "今日", "11枚・2時間。同じチャットとポータル。できれば Cursor に Claude Code。", "portalpage"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
-    portalfix: ["cover-appedit", "直す", "お知らせの追加も番号の変更も、会話の続きで頼む。", "mouse"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
-    salary: ["cover-invoice", "給料", "出退勤の記録から支給額まで。電卓で検算してから渡す。", "expense"],
     invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
-    nodejs: ["cover-code", "Node", "Claude Codeの前。ターミナルで node -v。公式からインストーラー。", "terminal"],
-    mdbase: ["cover-applied", "MD", "業務マニュアル。なくても動く。あると安定。/init で作れる。", "docs"],
     skillbase: ["cover-applied", "MD・Skills", "CLAUDE.mdは業務マニュアル、Skillsはよく使う手順。", "docs"],
-    intro: ["cover-intro", "勉強会", "日本語でお願いして、作って・見て・直す感覚。", "desktop"],
     code: ["cover-code", "Code", "Windows・Macに入れて、使える状態まで。", "powershell"],
-    codemac: ["cover-mac", "Mac", "ターミナルに1行貼って、使える状態まで。", "terminal"],
-    claudemd: ["cover-applied", "MD", "フォルダのルールブック。CLAUDE.md を1枚書く。", "docs"],
     applied: ["cover-applied", "使いこなし", "CLAUDE.mdを1枚書き、いつもの手順を登録する。", "desktop"],
     invoice: ["cover-invoice", "請求・経費", "リストから1社1PDF。レシートを科目ごとに集計。", "invoice"],
-    expense: ["cover-expense", "経費", "レシートや明細を読み取り、科目ごとに月次集計。", "expense"],
     crm: ["cover-crm", "CRM", "登録・検索・絞り込みできる、自分専用の台帳。", "crm"],
     shop: ["cover-shop", "サイト", "店舗サイトや自己紹介ページを作って公開。", "shop"],
-    portfolio: ["cover-shop", "公開", "1ページの自己紹介。GitHub Pages か Netlify。", "shop"],
     survey: ["cover-survey", "集計・分析", "アンケート集計、ABC分析、競合の料金比較。", "survey"],
-    abc: ["cover-abc", "ABC", "売上や得意先をA・B・Cに分けて、力の入れどころを見える化。", "abc"],
-    sns: ["cover-sns", "SNS", "投稿と反応から、伸びた投稿の傾向と次のヒントを見える化。", "sns"],
     snspost: ["cover-snspost", "SNS", "ネタから投稿文。反応から伸びた投稿の傾向。", "snspost"],
     secretary: ["cover-secretary", "秘書", "秘書アプリを作り、カレンダーとGmailにつなぐ。", "secretary"],
-    secplus: ["cover-secretary", "秘書+", "DesktopのフォルダにカレンダーとGmail。送信はブロック。", "mail"],
     appedit: ["cover-appedit", "画面", "作ったアプリの文字・色・部品を、日本語のお願いで直す。", "mouse"],
-    researcher: ["cover-survey", "競合", "料金と特徴を裏取りして比べる。手加減なしのレポート。", "survey"],
     faq: ["cover-faq", "つまずき", "PowerShellが開かない、ログインできない、など。", "quiz"]
   };
 
   const STAMP_LABELS = {
-    account: ["アカウント", "🔑"],
     claudebase: ["Claude基本", "✨"],
     aipick: ["使い分け", "🔀"],
-    settings: ["設定", "⚙️"],
-    webchat: ["チャット", "💭"],
     webwords: ["作る前の基礎", "🧱"],
     promptskill: ["頼み方", "✏️"],
-    trainapp: ["工程", "🏋️"],
     poster: ["ポスター", "🎨"],
-    canvaai: ["Canva基礎", "🧩"],
     market: ["マーケ", "📣"],
     peoplejob: ["人の仕事", "🤝"],
-    hypo: ["仮説", "💡"],
-    hr: ["人事", "👥"],
-    sched: ["日程", "📅"],
-    slacksum: ["Slack要約", "💬"],
     minutes: ["会議と連絡", "📝"],
     salesrep: ["売上レポート", "📊"],
-    salescsv: ["売上CSV", "📈"],
     aicopy: ["著作", "⚖️"],
     aisub: ["AI補助", "💴"],
     cowork: ["Cowork", "💬"],
     today: ["今日の講義", "📌"],
     portalmake: ["ポータル", "🏠"],
-    portalfix: ["ポータル直す", "🔧"],
     attend: ["出退勤と給料", "⏰"],
-    salary: ["給料", "💴"],
     invoicemake: ["請求書", "📄"],
-    nodejs: ["Node.js", "🟢"],
-    mdbase: ["CLAUDE.md基礎", "📘"],
     skillbase: ["MDとSkills", "📘"],
-    intro: ["勉強会", "📘"],
     code: ["Code準備", "💻"],
-    codemac: ["Mac", ""],
-    claudemd: ["CLAUDE.md", "📝"],
     applied: ["使いこなし", "🧩"],
     invoice: ["請求と経費", "📄"],
-    expense: ["経費", "🧾"],
     crm: ["CRM", "📒"],
     shop: ["サイト公開", "🏪"],
-    portfolio: ["ポートフォリオ", "🌐"],
     survey: ["集計と分析", "📊"],
-    abc: ["ABC", "🥇"],
-    sns: ["SNS", "📱"],
     snspost: ["SNS", "📱"],
     secretary: ["秘書", "🤝"],
-    secplus: ["秘書+", "📬"],
     appedit: ["画面", "✏️"],
-    researcher: ["リサーチ", "🔎"],
     faq: ["つまずき", "🆘"]
   };
-
-  const levelOf = (courseId) => (ADVANCED_IDS.includes(courseId) ? "applied" : "beginner");
 
   const rememberLast = (courseId, lessonId) => {
     if (!CLASSROOM.courses[courseId]) return;
@@ -888,16 +828,6 @@ ${q}
     if (!course || last.courseId === "intro") return null;
     if (!canSeeCourse(last.courseId)) return null;
     const courseId = last.courseId;
-    if (last.lessonId === "quiz" && CLASSROOM.quizzes[courseId]) {
-      return {
-        courseId,
-        course,
-        lesson: null,
-        idx: course.lessons.length,
-        href: `#/quiz/${courseId}`,
-        kind: "quiz"
-      };
-    }
     if (last.lessonId) {
       const mapped =
         courseId === "today" && TODAY_LESSON_ALIAS[last.lessonId] ? TODAY_LESSON_ALIAS[last.lessonId] : last.lessonId;
@@ -945,20 +875,6 @@ ${q}
     el.querySelector(".header-progress-txt").textContent = `全体 ${overall}%`;
   };
 
-  const progressRing = (p) => {
-    const r = 40;
-    const c = 2 * Math.PI * r;
-    const offset = c * (1 - p / 100);
-    return `
-      <div class="progress-ring-wrap" aria-hidden="true">
-        <svg class="progress-ring" viewBox="0 0 100 100">
-          <circle class="progress-ring-track" cx="50" cy="50" r="${r}"></circle>
-          <circle class="progress-ring-value" cx="50" cy="50" r="${r}" stroke-dasharray="${c.toFixed(2)}" stroke-dashoffset="${offset.toFixed(2)}"></circle>
-        </svg>
-        <div class="progress-ring-label"><strong>${p}</strong><span>%</span></div>
-      </div>`;
-  };
-
   const thinMeter = (p, cls = "meter", label = "進度") => `
       <div class="${cls}" role="progressbar" aria-label="${escapeHtml(String(label))}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Number(p) || 0}">
         <span style="--p:${Number(p) || 0}%"></span>
@@ -981,100 +897,9 @@ ${q}
     };
   };
 
-  const continuePanel = () => {
-    const cur = continueStudy();
-    if (!cur) return "";
-    const n = cur.course.lessons.length;
-    const short = (STAMP_LABELS[cur.courseId] && STAMP_LABELS[cur.courseId][0]) || cur.course.title;
-    const where =
-      cur.kind === "quiz"
-        ? `${escapeHtml(short)}　確認クイズ`
-        : cur.kind === "overview"
-          ? `${escapeHtml(short)}　講座の案内`
-          : `${escapeHtml(short)}　${cur.idx + 1} / ${n}　${escapeHtml(cur.lesson.title)}`;
-    const label = cur.kind === "quiz" ? "クイズを開く" : cur.kind === "overview" ? "講座を開く" : "続きを開く";
-    const art = artFor(cur.courseId, cur.lesson && cur.lesson.id);
-    return `
-      <section class="continue-bar">
-        <div class="wrap continue-card">
-          <div class="continue-art">${coverArt(art[0])}</div>
-          <p class="kicker">いまのページ</p>
-          <h2>続きから勉強する</h2>
-          <p>${where}</p>
-          <div class="meter continue-meter" aria-label="進度"><span style="--p:${percent(cur.courseId)}%"></span></div>
-          <p><a class="btn-orange" href="${cur.href}" data-link>${label}</a>
-          <a class="btn-dark" href="#/course/${cur.courseId}" data-link>講座の最初</a></p>
-        </div>
-      </section>`;
-  };
-
-  const phonePicks = () => {
-    const lastId = (loadProgress().last || {}).courseId;
-    const ids = [];
-    const pickOrder = HOME_ORDER.filter((id) => id !== "faq");
-    for (const id of pickOrder) {
-      if (!CLASSROOM.courses[id] || !canSeeCourse(id)) continue;
-      if (id === lastId) continue;
-      if (percent(id) < 100) ids.push(id);
-      if (ids.length >= 3) break;
-    }
-    for (const id of pickOrder) {
-      if (ids.length >= 3) break;
-      if (!CLASSROOM.courses[id] || !canSeeCourse(id) || ids.includes(id) || id === lastId) continue;
-      ids.push(id);
-    }
-    if (!ids.length) return "";
-    const c = CLASSROOM.courses;
-    return `
-      <div class="phone-picks phone-only">
-        <div class="section-head">
-          <h2>次のおすすめ</h2>
-        </div>
-        <div class="course-grid start-grid">
-          ${ids
-            .map((id) =>
-              classCard(
-                `#/course/${id}`,
-                `cover-${id}`,
-                c[id].title,
-                c[id].title,
-                `レッスン${c[id].lessons.length}本 ／ ${c[id].duration}`,
-                c[id].subtitle,
-                percent(id),
-                (COURSE_ART[id] || ["desktop"])[0]
-              )
-            )
-            .join("")}
-        </div>
-      </div>`;
-  };
-
-  const syncQuizPill = (parts) => {
-    if (!quizPill) return;
-    const onHome = parts.length === 0;
-    let id = null;
-    if (parts[0] === "course" || parts[0] === "quiz") {
-      if (CLASSROOM.quizzes[parts[1]]) id = parts[1];
-      else {
-        quizPill.hidden = true;
-        return;
-      }
-    } else if (!onHome) {
-      const lastId = (loadProgress().last || {}).courseId;
-      if (lastId && CLASSROOM.quizzes[lastId]) id = lastId;
-    }
-    if (onHome || !id) {
-      quizPill.hidden = true;
-      return;
-    }
-    quizPill.hidden = false;
-    quizPill.setAttribute("href", `#/quiz/${id}`);
-    quizPill.textContent = "この講座のクイズ";
-  };
-
   const setActiveNav = (hash) => {
     const path = hash.replace(/^#/, "") || "/";
-    const courseId = path.match(/^\/course\/([^/]+)/)?.[1] || path.match(/^\/quiz\/([^/]+)/)?.[1];
+    const courseId = path.match(/^\/course\/([^/]+)/)?.[1];
     nav.querySelectorAll("a").forEach((a) => {
       const href = a.getAttribute("href").replace(/^#/, "") || "/";
       let active = href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
@@ -1089,51 +914,6 @@ ${q}
 
   const escapeHtml = (s) =>
     s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-
-  const compareTableHTML = () => `
-      <div class="wrap compare-board" role="region" aria-label="チャットとClaude Codeの比較">
-        <p class="kicker">くらべる</p>
-        <h2 class="compare-board-title">チャットと Code</h2>
-        <p class="compare-board-lead">以前の Cowork は、今チャットに入っています。別の場所に切り替えなくてよいです。黒い画面の Code だけが別です。</p>
-        <div class="compare-cols">
-          <article class="compare-col is-chat">
-            <span class="compare-tag">会話と作業</span>
-            <h3>チャット</h3>
-            <p class="compare-one">相談も、資料作成・ファイル出力も同じ画面</p>
-            <dl>
-              <div><dt>画面</dt><dd>ブラウザまたはアプリ</dd></div>
-              <div><dt>返ってくるもの</dt><dd>文章、できたページやファイル</dd></div>
-              <div><dt>向いていること</dt><dd>質問・下書き・請求書・整理</dd></div>
-              <div><dt>自分ですること</dt><dd>確認して使う・送る</dd></div>
-            </dl>
-            <a class="btn-dark" href="#/course/promptskill" data-link>チャット入門へ</a>
-          </article>
-          <article class="compare-col is-cowork">
-            <span class="compare-tag">事務の講座</span>
-            <h3>事務（旧Cowork）</h3>
-            <p class="compare-one">やり方は同じチャット。請求書などの型がある</p>
-            <dl>
-              <div><dt>画面</dt><dd>チャットのまま</dd></div>
-              <div><dt>返ってくるもの</dt><dd>できたファイル</dd></div>
-              <div><dt>向いていること</dt><dd>請求書・整理</dd></div>
-              <div><dt>自分ですること</dt><dd>確認して送る</dd></div>
-            </dl>
-            <a class="btn-dark" href="#/cowork" data-link>事務の講座へ</a>
-          </article>
-          <article class="compare-col is-code">
-            <span class="compare-tag">道具</span>
-            <h3>Claude Code</h3>
-            <p class="compare-one">黒い画面から、道具をつくる相棒</p>
-            <dl>
-              <div><dt>画面</dt><dd>ターミナル</dd></div>
-              <div><dt>返ってくるもの</dt><dd>ツール・サイト</dd></div>
-              <div><dt>向いていること</dt><dd>自動化・アプリ</dd></div>
-              <div><dt>自分ですること</dt><dd>1行貼って起動</dd></div>
-            </dl>
-            <a class="btn-dark" href="#/code" data-link>Claude Codeへ</a>
-          </article>
-        </div>
-      </div>`;
 
   const loadNotes = () => {
     const p = loadProgress();
@@ -1187,11 +967,8 @@ ${q}
     if (parts[0] === "cert") {
       return { key: `cert/${parts[1] || ""}`, title: "修了証", href: `#/cert/${parts[1] || ""}` };
     }
-    if ((parts[0] === "course" || parts[0] === "quiz") && parts[1] && CLASSROOM.courses[parts[1]]) {
+    if (parts[0] === "course" && parts[1] && CLASSROOM.courses[parts[1]]) {
       const c = CLASSROOM.courses[parts[1]];
-      if (parts[0] === "quiz") {
-        return { key: `quiz/${parts[1]}`, title: `${c.title}　確認クイズ`, href: `#/quiz/${parts[1]}` };
-      }
       if (parts[2]) {
         const lesson = c.lessons.find((x) => x.id === parts[2]);
         return {
@@ -1353,51 +1130,29 @@ ${q}
     cowork: ["cowork", "画面でお願いして、ファイルまで仕上げる"],
     code: ["powershell", "黒い画面に1行貼って進める"],
     poster: ["poster", "A4縦の求人ポスターを1枚"],
-    canvaai: ["canva", "言語と学習オフ。王冠のないテンプレ"],
-    intro: ["desktop", "日本語でお願いして作る"],
     secretary: ["secretary", "予定・メモ・振り返り"],
-    secplus: ["mail", "カレンダーとGmail。送信はしない"],
     appedit: ["mouse", "日本語で画面を直す"],
     invoice: ["invoice", "リストから1社1PDF"],
-    expense: ["expense", "レシートを仕分けて集計"],
     crm: ["crm", "顧客と案件を一覧で"],
     shop: ["shop", "紹介ページと予約フォーム"],
-    portfolio: ["shop", "自己紹介＋作品。Pages か Netlify"],
     survey: ["survey", "回答をグラフにする"],
-    abc: ["abc", "大きい順に A・B・C"],
-    sns: ["sns", "伸びた投稿の共通点を見る"],
     snspost: ["snspost", "ネタから複数案。出す前は自分で"],
-    claudemd: ["docs", "CLAUDE.md をフォルダのいちばん上に"],
     applied: ["desktop", "一度決めたら、次からラク"],
-    account: ["signup", "claude.ai で登録して、プランを確認"],
     claudebase: ["webchat", "指示を書いて、プロジェクトの箱を作る"],
     aipick: ["compare", "用途で選ぶ。表は疑って作り直す"],
-    settings: ["plan", "設定の左の一覧。全部いじらなくてよい"],
-    webchat: ["webchat", "下の入力欄に書いて送る"],
     webwords: ["site", "HTMLは骨組み、CSSは見た目、JAVAは動き"],
     promptskill: ["copy", "目的・前提・形式"],
-    trainapp: ["desktop", "見るだけ。工程の注意点"],
-    codemac: ["terminal", "Macのターミナルに1行貼る"],
     faq: ["quiz", "止まっている症状から選ぶ"],
     market: ["sns", "誰に・何を・どう届けるか"],
     peoplejob: ["crm", "資料はAI。人が残すのは感情と軸"],
-    hypo: ["copy", "私はこう思う。外れたら指摘して"],
-    hr: ["crm", "AIと人で切り分ける"],
-    sched: ["mail", "空き時間をクリックしてメール文"],
-    slacksum: ["mail", "Slackを毎朝3つだけ要約"],
     minutes: ["copy", "決定とToDoが抜けない議事録"],
     salesrep: ["invoice", "調べて固めてスキル。セル番地は書かない"],
-    salescsv: ["survey", "CSVを集計してグラフとひとこと"],
     aicopy: ["safety", "見て・調べて・確認してから"],
     aisub: ["expense", "デジタル化・AI導入補助金。公式で確認"],
     portalmake: ["cowork", "話しかけるだけで社内ポータル"],
     today: ["portalpage", "11枚。同じチャットと、できれば Cursor"],
-    portalfix: ["copy", "同じ会話の続きで直す"],
     attend: ["attendapp", "ボタンを押すだけの出退勤"],
-    salary: ["expense", "時間×時給を表にする"],
     invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"],
-    nodejs: ["terminal", "node -v。入っていなければ公式から"],
-    mdbase: ["docs", "業務マニュアル。なくても動く。あると安定"],
     skillbase: ["copy", "よく使う手順を /名前 で呼ぶ"],
     researcher: ["survey", "料金は裏取り。report フォルダ"]
   };
@@ -1486,18 +1241,6 @@ ${q}
       };
       return t[lessonId] || ["quiz", "つまずき一覧"];
     }
-    if (courseId === "account") {
-      const t = {
-        goal: ["signup", "ブラウザで claude.ai"],
-        open: ["browser", "アドレス欄に claude.ai"],
-        signup: ["signup", "Google かメールで続ける"],
-        free: ["webchat", "無料でも会話は始められる"],
-        plan: ["plan", "設定からプランを開く"],
-        check: ["plan", "Pro などと出ていればOK"],
-        summary: ["webchat", "次はチャット入門"]
-      };
-      return t[lessonId] || COURSE_ART.account;
-    }
     if (courseId === "claudebase") {
       const t = {
         goal: ["webchat", "長い資料。分からないは分からない"],
@@ -1521,69 +1264,6 @@ ${q}
         summary: ["compare", "合う1つを自分の言葉で"]
       };
       return t[lessonId] || COURSE_ART.aipick;
-    }
-    if (courseId === "settings") {
-      const t = {
-        goal: ["plan", "左の一覧は設定の目次"],
-        open: ["signup", "名前から設定を開く"],
-        everyday: ["signup", "一般・アカウント・プライバシー"],
-        bill: ["plan", "請求はお金。使用量はメーター"],
-        memory: ["docs", "メモリーと機能。デザインは後回し"],
-        apps: ["desktop", "Code・Chrome・デスクトップ"],
-        system: ["safety", "システム・拡張・開発者"],
-        add: ["mail", "スキル・コネクタ・プラグイン"],
-        summary: ["plan", "地図だけ持って帰る"]
-      };
-      return t[lessonId] || COURSE_ART.settings;
-    }
-    if (courseId === "webchat") {
-      const t = {
-        goal: ["webchat", "日本語で1回、返事をもらう"],
-        open: ["webchat", "下が入力欄"],
-        ask: ["copy", "コピーして貼って送る"],
-        copy: ["copy", "Ctrl＋V または ⌘＋V"],
-        vs: ["webchat", "会話も作業も同じチャット"],
-        safety: ["safety", "パスワードは書かない"],
-        summary: ["cowork", "次は Cowork"]
-      };
-      return t[lessonId] || COURSE_ART.webchat;
-    }
-    if (courseId === "codemac") {
-      const t = {
-        goal: ["mac", "Macの人向けです"],
-        what: ["terminal", "赤い丸・黄・緑があればターミナル"],
-        prep: ["plan", "有料プランとネット"],
-        open: ["mac", "⌘＋スペースでターミナル"],
-        install: ["copy", "1行貼って Enter"],
-        login: ["terminal", "claude と打つ"],
-        check: ["terminal", "version が出れば成功"],
-        summary: ["compare", "WindowsはPowerShellへ"]
-      };
-      return t[lessonId] || COURSE_ART.codemac;
-    }
-    if (courseId === "nodejs") {
-      const t = {
-        goal: ["terminal", "Claude Codeの前に土台を入れる"],
-        what: ["site", "JavaScriptを動かす土台"],
-        check: ["copy", "node -v で確認"],
-        download: ["browser", "nodejs.org。Dockerは無視"],
-        install: ["mouse", "次へ。toolsのチェックは不要"],
-        restart: ["desktop", "Cursorを完全に終了してから"],
-        summary: ["terminal", "確認→入れる→終了→再確認"]
-      };
-      return t[lessonId] || COURSE_ART.nodejs;
-    }
-    if (courseId === "mdbase") {
-      const t = {
-        goal: ["docs", "名前と役割だけ覚える"],
-        what: ["docs", "起動のたびに読む業務マニュアル"],
-        md: ["copy", "## 見出し。**太字**。- 項目"],
-        write: ["docs", "禁止・技術・作業のルール"],
-        point: ["folder", "必須ではない。できたファイルは左から開く"],
-        example: ["copy", "宮田財務ホームページの例"],
-        summary: ["docs", "なくても動く。あると安定"]
-      };
-      return t[lessonId] || COURSE_ART.mdbase;
     }
     if (courseId === "skillbase") {
       const t = {
@@ -1636,19 +1316,6 @@ ${q}
       };
       return t[lessonId] || COURSE_ART.promptskill;
     }
-    if (courseId === "trainapp") {
-      const t = {
-        goal: ["desktop", "アプリより工程の学び"],
-        flow: ["compare", "企画から運用まで7つ"],
-        plan: ["docs", "作らないものを先に書く"],
-        design: ["docs", "CLAUDE.mdとdecisions.md"],
-        build: ["copy", "小さく。まず改善案"],
-        ai: ["eyecheck", "推定は保存前に人が確認"],
-        ops: ["browser", "ログ→原因→案→承認"],
-        summary: ["desktop", "作らない。小さく。先に案"]
-      };
-      return t[lessonId] || COURSE_ART.trainapp;
-    }
     if (courseId === "market") {
       const t = {
         goal: ["sns", "誰に・何を・どう届けるか"],
@@ -1677,58 +1344,6 @@ ${q}
       };
       return t[lessonId] || COURSE_ART.peoplejob;
     }
-    if (courseId === "hypo") {
-      const t = {
-        goal: ["copy", "差がつくのは問いの立て方"],
-        can: ["quiz", "得意はたたき台。事情は知らない"],
-        words: ["copy", "イシュー・仮説・ファクトベース"],
-        try: ["copy", "丸投げと仮説ありを比べる"],
-        when: ["eyecheck", "要約は丸投げ。判断は仮説"],
-        long: ["copy", "要点だけ箇条書き。Skills"],
-        summary: ["copy", "私はこう思う。外れたら指摘して"]
-      };
-      return t[lessonId] || COURSE_ART.hypo;
-    }
-    if (courseId === "hr") {
-      const t = {
-        goal: ["crm", "業務を軽くする。制度を作り直す"],
-        field: ["quiz", "書類・問い合わせ・評価"],
-        system: ["abc", "件数と時間から離れる"],
-        four: ["compare", "意図・見直し・責任・巻き込み"],
-        types: ["secretary", "決める・組む・回す"],
-        bonus: ["expense", "全員還元と貢献加算"],
-        time: ["attendapp", "仕事・学び・休み"],
-        qa: ["copy", "反対・測り方・機会"],
-        summary: ["crm", "軽くするだけではない"]
-      };
-      return t[lessonId] || COURSE_ART.hr;
-    }
-    if (courseId === "sched") {
-      const t = {
-        goal: ["mail", "小さな作業から成功体験"],
-        prep: ["signup", "ClaudeとGoogleのアカウント"],
-        connect: ["mail", "コネクターでカレンダー"],
-        project: ["copy", "手順に3つを貼る"],
-        run: ["copy", "実行と書くだけ"],
-        tune: ["copy", "期間・区切り・敬語"],
-        qa: ["quiz", "相手のカレンダーは読めない"],
-        summary: ["mail", "つなぐ・貼る・実行"]
-      };
-      return t[lessonId] || COURSE_ART.sched;
-    }
-    if (courseId === "slacksum") {
-      const t = {
-        goal: ["mail", "朝の山を、3つだけ"],
-        vs: ["compare", "聞くか、預けておくか"],
-        connect: ["mail", "Slackとコネクタ"],
-        channels: ["eyecheck", "雑談は外す"],
-        prompt: ["copy", "3つ。なければなし"],
-        schedule: ["calendar", "予定済みに登録"],
-        caution: ["safety", "朝9時。学習オフ"],
-        summary: ["mail", "つなぐ・絞る・予定済み"]
-      };
-      return t[lessonId] || COURSE_ART.slacksum;
-    }
     if (courseId === "minutes") {
       const t = {
         goal: ["copy", "要点・決定・ToDo・未確定"],
@@ -1753,19 +1368,6 @@ ${q}
         summary: ["invoice", "初回だけ調べて、2回目は一言"]
       };
       return t[lessonId] || COURSE_ART.salesrep;
-    }
-    if (courseId === "salescsv") {
-      const t = {
-        goal: ["survey", "分析をフォルダの中で任せる"],
-        prep: ["folder", "コピーを作業フォルダへ"],
-        p1: ["docs", "統合して検算。番地は書かない"],
-        p2: ["survey", "前月・前年・目標をグラフに"],
-        p3: ["copy", "どの店・商品が効いたか"],
-        p4: ["copy", "打ち手が見えないとき切り口を変える"],
-        next: ["copy", "翌月は②〜④。スキルにできる"],
-        summary: ["survey", "集計、グラフ、寄与度、深掘り"]
-      };
-      return t[lessonId] || COURSE_ART.salescsv;
     }
     if (courseId === "aicopy") {
       const t = {
@@ -1799,25 +1401,6 @@ ${q}
       };
       return t[lessonId] || COURSE_ART.aisub;
     }
-    if (courseId === "portfolio") {
-      const t = {
-        goal: ["shop", "1ページ。Pages か Netlify"],
-        prep: ["terminal", "claude と打って確認"],
-        vscode: ["desktop", "VS Code に拡張を入れる"],
-        fill: ["copy", "【　】を埋める。普段のAIに反映"],
-        polish: ["copy", "数回足す。公開前は人が見る"],
-        ghpages: ["git", "MCPでpush。Settings→Pages"],
-        cans: ["compare", "静的は可。WordPressは不可"],
-        kit: ["folder", "portfolio フォルダを Code で開く"],
-        images: ["folder", "images。名前は半角英数字"],
-        md: ["docs", "portfolio.md は人が書く"],
-        make: ["copy", "index.html の1ファイル"],
-        netlify: ["browser", "フォルダをドロップして公開"],
-        qa: ["quiz", "Codex・載せるもの・情報収集"],
-        summary: ["shop", "人が設計。Codeが作る。ドロップ"]
-      };
-      return t[lessonId] || COURSE_ART.portfolio;
-    }
     if (courseId === "portalmake") {
       const t = {
         goal: ["cowork", "作る・確かめる・見せる"],
@@ -1835,23 +1418,6 @@ ${q}
         summary: ["portalpage", "Cowork・貼る・見てから渡す"]
       };
       return t[lessonId] || COURSE_ART.portalmake;
-    }
-    if (courseId === "portalfix") {
-      const t = {
-        prep: ["folder", "リンクと、作ったときの会話"],
-        goal: ["copy", "足す・変える・消す／戻す"],
-        what: ["cowork", "話しかけるだけで直る"],
-        flow: ["copy", "同じ会話の続きに書く"],
-        promptwork: ["copy", "やりたいことを一文で"],
-        tips: ["copy", "どこを・前と後をはっきり"],
-        later: ["portalpage", "見つからなければリンクを貼る"],
-        newstaff: ["safety", "最初のパスワードは手渡し、本人が変える"],
-        trouble: ["quiz", "再読み込みしてから言い直す"],
-        safety: ["safety", "直したら自分の目で"],
-        practice: ["portalpage", "足す・変える・見た目・戻す"],
-        summary: ["eyecheck", "続き・具体・再読み込み"]
-      };
-      return t[lessonId] || COURSE_ART.portalfix;
     }
     if (courseId === "attend") {
       const t = {
@@ -1872,25 +1438,6 @@ ${q}
         summary: ["eyecheck", "保存・テスト・Excel"]
       };
       return t[lessonId] || COURSE_ART.attend;
-    }
-    if (courseId === "salary") {
-      const t = {
-        goal: ["expense", "そろえる・計算する・確かめる"],
-        scope: ["safety", "支給額まで。税は今まで通り"],
-        flow: ["folder", "取り出して、表にして、確かめる"],
-        prep: ["excel", "記録・条件・会社のルール"],
-        rules: ["check", "割増は法律の最低ライン"],
-        ask: ["copy", "計算式が見えるExcelで"],
-        files: ["folder", "入力欄にドラッグして渡す"],
-        result: ["excel", "一人1行の支給額の表"],
-        check: ["check", "電卓で1人分を検算する"],
-        pitfalls: ["quiz", "休憩・端数・月給・夜勤"],
-        nextmonth: ["copy", "先月と同じ方法で"],
-        safety: ["safety", "名前・時間・時給だけ"],
-        practice: ["expense", "架空のデータで練習"],
-        summary: ["check", "支給額・式・電卓"]
-      };
-      return t[lessonId] || COURSE_ART.salary;
     }
     if (courseId === "invoicemake") {
       const t = {
@@ -1929,51 +1476,8 @@ ${q}
       };
       return t[lessonId] || COURSE_ART.appedit;
     }
-    if (courseId === "claudemd") {
-      const t = {
-        goal: ["docs", "毎回読まれる取扱説明書"],
-        where: ["folder", "いちばん上に CLAUDE.md"],
-        safety: ["safety", "秘密は書かない"],
-        ask: ["copy", "先に質問してから作る"],
-        init: ["copy", "/init で下書き"],
-        view: ["folder", "左の一覧から開く"],
-        fill: ["copy", "〔　〕を自分の言葉に"],
-        add: ["copy", "注意は1行足す"],
-        review: ["eyecheck", "まだ直さないで一覧"],
-        memory: ["copy", "/memory で読まれたか"],
-        summary: ["docs", "作る・足す・見直す"]
-      };
-      return t[lessonId] || COURSE_ART.claudemd;
-    }
-    if (courseId === "researcher") {
-      const t = {
-        goal: ["survey", "3形式。料金は裏取り"],
-        prep: ["terminal", "Pro、Cursor、claude"],
-        plugin: ["folder", "配られたコマンド。/researcher:init"],
-        write: ["docs", "自社が軸。好みにHTML"],
-        run: ["survey", "候補を選ぶ。report へ"],
-        more: ["copy", "指定・テーマ・前回比"],
-        qa: ["compare", "スキルは型。プラグインはパック"],
-        summary: ["eyecheck", "2枚書いて回す"]
-      };
-      return t[lessonId] || COURSE_ART.researcher;
-    }
     if (lessonId === "safety") return ["safety", "送る・消す・公開の前は、自分の目で"];
     if (lessonId === "trouble") return ["chat", "エラー文をそのまま伝える"];
-    if (courseId === "canvaai") {
-      const t = {
-        goal: ["canva", "テンプレは無料でも足りる"],
-        plan: ["plan", "王冠のないものが無料"],
-        setup: ["safety", "日本語。学習はオフ"],
-        template: ["canva", "王冠のないテンプレ"],
-        text: ["copy", "色は3〜5。枠は右端ダブルクリック"],
-        layer: ["site", "配置→レイヤーで上へ"],
-        photo: ["poster", "王冠のない写真。具体的に生成"],
-        magic: ["canva", "1枚絵をパーツに分ける"],
-        summary: ["canva", "PNGかPDF。SVGはレイヤー付き"]
-      };
-      return t[lessonId] || COURSE_ART.canvaai;
-    }
     if (lessonId === "summary" || lessonId === "recap" || lessonId === "wrap") return ["eyecheck", "できたことを確認して、次は小さく"];
     if (lessonId === "setup" || lessonId === "prep") return ["desktop", "まずは自分のパソコンで準備"];
     if (lessonId === "flow") return ["site", "上から順に、ひとつずつ"];
@@ -1988,18 +1492,6 @@ ${q}
     if (courseId === "secretary" && lessonId === "step1") return ["secretary", "予定・メモ・振り返り"];
     if (courseId === "secretary" && lessonId === "step4") return ["git", "GitHubに保存する"];
     if (courseId === "secretary" && lessonId === "step5") return ["browser", "公開してスマホで見る"];
-    if (courseId === "secplus") {
-      const t = {
-        goal: ["secretary", "予定とメールで段取り"],
-        can: ["mail", "読む・ずらす・組む・数える"],
-        cal: ["calendar", "コネクターでカレンダー"],
-        gmail: ["mail", "同じ手順でGmail"],
-        perms: ["safety", "送信・返信・転送はブロック"],
-        qa: ["quiz", "渡すか・説明・ChatWork"],
-        summary: ["secretary", "読む・下書きは許可。送るのは人"]
-      };
-      return t[lessonId] || COURSE_ART.secplus;
-    }
     if (courseId === "poster" && lessonId === "step5") return ["canva", "Canvaで文字を直す"];
     if (courseId === "poster") {
       const t = {
@@ -2081,91 +1573,6 @@ ${q}
     return `<div class="cover-art" aria-hidden="true">${decorative}</div>`;
   };
 
-  const progChip = (href, mark, name, p) => `
-            <a class="prog-chip" href="${href}" data-link>
-              <span class="prog-mark">${mark}</span>
-              <span class="prog-body">
-                <span class="prog-name">${name}</span>
-                <span class="prog-bar" aria-hidden="true"><span style="--p:${p}%"></span></span>
-              </span>
-              <span class="prog-pct">${p}<small>%</small></span>
-              <span class="prog-stamp">${p >= 100 ? "できた" : p > 0 ? "いいね" : "これから"}</span>
-            </a>`;
-
-  const textLink = (href, cap) =>
-    `<a href="${href}" data-link>${cap}</a>`;
-
-  const coverCard = (href, cover, tag, title, small, cap, pic) => `
-          <a class="cover-card" href="${href}" data-link>
-            <div class="cover ${cover}">
-              ${pic ? coverArt(pic) : ""}
-              <span class="tag">${tag}</span>
-            </div>
-            <h3>${title}</h3>
-            <p>${small}　${cap}</p>
-          </a>`;
-
-  const dailyCatch = () => {
-    const lines = [
-      "一歩ずつ、できることが増えていく。",
-      "小さな「できた」を、積み重ねる。",
-      "ひとつずつ、確かに前へ。",
-      "ゆっくりでも、前に進んでる。",
-      "あせらず、1ページずつ。",
-      "今日の1ページが、明日のラクにつながる。",
-      "むずかしくない。1ページ進めばいい。",
-      "ちいさな一歩が、いちばんの近道。",
-      "進むって、たのしい。",
-      "1ページ、また前へ。"
-    ];
-    const now = new Date();
-    const key = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
-    let h = 0;
-    for (let i = 0; i < key.length; i++) h = (h * 33 + key.charCodeAt(i)) >>> 0;
-    const line = lines[h % lines.length];
-    const cut = line.indexOf("。");
-    if (cut >= 0 && cut < line.length - 1) {
-      return `${escapeHtml(line.slice(0, cut + 1))}<br />${escapeHtml(line.slice(cut + 1))}`;
-    }
-    return escapeHtml(line);
-  };
-
-  const dailyTip = () => {
-    const tips = [
-      "1ページだけ読めば、今日は合格です。",
-      "わからなくても大丈夫。下のボタンで次へ進めます。",
-      "コピーして貼るだけ。自分で全部書かなくていいです。",
-      "迷ったらポスターから。いちばんやさしい入口です。",
-      "読んだら「このページを読んだ」を押すと、ハンコが色づきます。",
-      "クイズは何度でもやり直せます。満点じゃなくてOK。",
-      "送る前のチェックだけは、自分の目で。"
-    ];
-    return tips[new Date().getDay() % tips.length];
-  };
-
-  const stampBook = (ids) => {
-    const list = ids || HOME_ORDER;
-    return `
-      <ul class="stamp-grid">
-        ${list
-          .map((id) => {
-            if (!CLASSROOM.courses[id]) return "";
-            const [name, face] = STAMP_LABELS[id] || [id, "📘"];
-            const p = percent(id);
-            const state = p >= 100 ? "is-done" : p > 0 ? "is-now" : "is-todo";
-            const mark = !canSeeCourse(id) ? "🔒" : p >= 100 ? "💮" : p > 0 ? "🔥" : face;
-            const href = canSeeCourse(id) ? `#/course/${id}` : "#/me";
-            return `<li class="stamp ${canSeeCourse(id) ? state : "is-locked"}">
-              <a href="${href}" data-link>
-                <span class="face">${mark}</span>
-                ${name}<br /><small>${p >= 100 ? "完了" : p > 0 ? "学習中" : "これから"} ${p}%</small>
-              </a>
-            </li>`;
-          })
-          .join("")}
-      </ul>`;
-  };
-
   const cardsFor = (ids) =>
     ids
       .filter((id) => CLASSROOM.courses[id] && COURSE_META[id])
@@ -2184,84 +1591,6 @@ ${q}
         );
       })
       .join("");
-
-  const laneView = (tool, opts = {}) => {
-    const isCowork = tool === "cowork";
-    const setupIds = isCowork ? COWORK_IDS : CODE_SETUP_IDS;
-    const makeIds = isCowork ? [] : CODE_MAKE_IDS;
-    const ids = opts.appliedOnly ? makeIds : setupIds.concat(makeIds);
-    const stats = courseStats(ids);
-    const firstId = ids.find((id) => CLASSROOM.courses[id] && percent(id) < 100) || ids[0];
-    return `
-      <div class="page track-page ${isCowork ? "is-cowork-page" : "is-code-page"}">
-        <p class="kicker">${isCowork ? "事務" : "CLAUDE CODE"}</p>
-        <h1>${isCowork ? "チャットで作業（旧Cowork）" : "Claude Code"}</h1>
-        ${figureHTML(
-          isCowork ? "webchat" : "powershell",
-          isCowork ? "同じチャットで、ファイルまで仕上げる" : "黒い画面に1行貼って、道具をつくる"
-        )}
-        <p class="lede">${
-          isCowork
-            ? "以前の Cowork は、今このチャットに統合されています。資料・整理・請求書など、事務を日本語で任せます。PowerShellは使いません。別の場所に切り替えなくてよいです。"
-            : opts.appliedOnly
-              ? "人気順ではありません。かんたんに作れる順です。いちばんやさしいのは投稿文。つづきは集計・経費・請求書、分析、サイト、秘書、最後に使いこなしです。"
-              : "PowerShell（黒い画面）を使います。インストール → 道具づくり、の順です。事務作業は同じチャットへ。"
-        }</p>
-        <p class="easy-meta">進度 ${stats.overall}%　読んだ ${stats.done} / ${stats.total}</p>
-        <div class="meter" aria-label="このレーンの進度"><span style="--p:${stats.overall}%"></span></div>
-        <p>
-          <a class="btn-orange" href="#/course/${firstId}" data-link>${isCowork ? "1つ目から始める" : "Codeの1つ目から"}</a>
-          <a class="btn-dark" href="#/${isCowork ? "code" : "cowork"}" data-link>${isCowork ? "Claude Codeを見る" : "Coworkを見る"}</a>
-        </p>
-        ${
-          isCowork
-            ? `<div class="section-head"><h2>講座</h2></div>
-        ${stampBook(COWORK_IDS)}
-        <div class="course-grid">${cardsFor(COWORK_IDS)}</div>`
-            : opts.appliedOnly
-              ? `<div class="section-head"><h2>応用のスタンプ</h2></div>
-        ${stampBook(CODE_MAKE_IDS)}
-        <div class="section-head"><h2>かんたんに作れる順</h2></div>
-        <div class="course-grid">${cardsFor(CODE_MAKE_IDS)}</div>`
-              : `<div class="section-head"><h2>初級（準備）</h2></div>
-        ${stampBook(CODE_SETUP_IDS)}
-        <div class="course-grid">${cardsFor(CODE_SETUP_IDS)}</div>
-        <div class="section-head"><h2>道具づくり（かんたんに作れる順）</h2></div>
-        ${stampBook(CODE_MAKE_IDS)}
-        <div class="course-grid">${cardsFor(CODE_MAKE_IDS)}</div>`
-        }
-      </div>
-    `;
-  };
-
-  const trackView = (level) => {
-    if (level === "applied") return laneView("code", { appliedOnly: true });
-    return `
-      <div class="page track-page">
-        <p class="kicker">BEGINNER</p>
-        <h1>初級編</h1>
-        ${compareTableHTML()}
-        <p class="lede">同じClaudeでも、入り口が違います。下の2つから選びます。</p>
-        <div class="level-gates">
-          <a class="level-gate is-cowork${canSeeCourse("cowork") ? "" : " is-locked"}" href="${canSeeCourse("cowork") ? "#/cowork" : "#/me"}" data-link>
-            ${coverArt("cowork")}
-            <span class="level-tag">事務・ファイル</span>
-            <h2>チャットで作業</h2>
-            <p>${canSeeCourse("cowork") ? "画面で日本語のお願い。黒い画面は使いません。" : "受講コードが必要です。"}</p>
-          </a>
-          <a class="level-gate is-code${canSeeCourse("code") ? "" : " is-locked"}" href="${canSeeCourse("code") ? "#/code" : "#/me"}" data-link>
-            ${coverArt("powershell")}
-            <span class="level-tag">道具づくり</span>
-            <h2>Claude Code</h2>
-            <p>${canSeeCourse("code") ? "PowerShellに1行貼って、自分の道具を作ります。" : "受講コードが必要です。"}</p>
-          </a>
-        </div>
-        <div class="section-head"><h2>準備（はじめて）</h2></div>
-        <div class="course-grid">${cardsFor(["today"].concat(STARTER_IDS.slice(0, 5), ["faq"]))}</div>
-        <div class="section-head"><h2>仕事の例（はじめて）</h2></div>
-        <div class="course-grid">${cardsFor(STARTER_IDS.slice(5))}</div>
-      </div>`;
-  };
 
   const classCard = (href, cover, label, title, meta, blurb, p, pic) => {
     const id = (href.match(/#\/course\/([^/?#]+)/) || [])[1];
@@ -2302,88 +1631,6 @@ ${q}
           </a>`;
   };
 
-  const projTile = (href, tone, kicker, title, text, pic) => `
-          <a class="proj-tile tone-${tone}" href="${href}" data-link>
-            <span class="proj-kicker">${kicker}</span>
-            <h3>${title}</h3>
-            <p>${text}</p>
-            <div class="proj-art">${coverArt(pic)}</div>
-          </a>`;
-
-  const studioPath = () => {
-    const items = [
-      ["today", "01", "今日", "講義"],
-      ["account", "02", "アカウント", "準備"],
-      ["claudebase", "02a", "基本", "指示"],
-      ["aipick", "02c", "使い分け", "3つ"],
-      ["settings", "02b", "設定", "一覧"],
-      ["webchat", "03", "チャット", "入門"],
-      ["webwords", "03b", "HTML", "ことば"],
-      ["promptskill", "03c", "プロンプト", "型"],
-      ["trainapp", "03d", "工程", "見る"],
-      ["poster", "04", "ポスター", "初級"],
-      ["canvaai", "04b", "Canva", "設定"],
-      ["market", "05", "マーケ", "届ける"],
-      ["peoplejob", "05b", "人の仕事", "感情"],
-      ["hypo", "06", "仮説", "問い"],
-      ["hr", "07", "人事", "切り分け"],
-      ["sched", "08", "日程", "調整"],
-      ["slacksum", "08b", "Slack", "要約"],
-      ["minutes", "08c", "議事録", "型"],
-      ["salesrep", "08d", "売上", "レポート"],
-      ["salescsv", "08e", "CSV", "分析"],
-      ["aicopy", "09", "著作", "確認"],
-      ["aisub", "09b", "AI補助", "制度"],
-      ["cowork", "10", "Cowork", "事務"],
-      ["portalmake", "11", "ポータル", "作る"],
-      ["portalfix", "12", "直す", "Cowork"],
-      ["attend", "13", "出退勤", "作る"],
-      ["salary", "14", "給料", "計算"],
-      ["invoicemake", "15", "請求書", "Cowork"],
-      ["nodejs", "16", "Node", "準備"],
-      ["mdbase", "16b", "MD基礎", "座学"],
-      ["skillbase", "16c", "Skills", "座学"],
-      ["code", "17", "Windows", "準備"],
-      ["codemac", "18", "Mac", "準備"],
-      ["snspost", "19", "投稿文", "やさしい"],
-      ["survey", "20", "集計", "やさしい"],
-      ["expense", "21", "経費", "作る"],
-      ["invoice", "22", "請求書", "Code"],
-      ["abc", "23", "ABC", "分析"],
-      ["sns", "24", "SNS", "分析"],
-      ["crm", "25", "CRM", "作る"],
-      ["shop", "26", "店舗", "公開"],
-      ["portfolio", "26b", "PF公開", "上級"],
-      ["secretary", "27", "秘書", "実践"],
-      ["secplus", "28", "秘書+", "つなぐ"],
-      ["appedit", "29", "画面", "直す"],
-      ["claudemd", "30", "CLAUDE.md", "メモ"],
-      ["applied", "31", "使いこなし", "中級"],
-      ["researcher", "31b", "リサーチ", "上級"],
-      ["faq", "32", "つまずき", "補助"]
-    ];
-    return `
-      <ol class="studio-path">
-        ${items
-          .map(([id, num, name, tag]) => {
-            const p = percent(id);
-            const state = p >= 100 ? "is-done" : p > 0 ? "is-now" : "is-todo";
-            const pic = (COURSE_ART[id] || ["desktop"])[0];
-            return `<li class="path-node ${state}">
-              <a href="#/course/${id}" data-link>
-                <span class="path-art">${coverArt(pic)}</span>
-                <span class="path-rank">${num.replace(/^0/, "")}</span>
-                <span class="path-num">${tag}</span>
-                <strong>${name}</strong>
-                <small>${p}%</small>
-                <span class="path-meter" aria-hidden="true"><span style="--p:${p}%"></span></span>
-              </a>
-            </li>`;
-          })
-          .join("")}
-      </ol>`;
-  };
-
   const todaySpot = () => {
     const course = CLASSROOM.courses.today;
     if (!course) return "";
@@ -2413,9 +1660,7 @@ ${q}
     const ctaLabel = started ? "続きを開く" : todayOpen ? "今日の講義を開く" : "最初の講座から始める";
     const nextShort = (STAMP_LABELS[next.courseId] && STAMP_LABELS[next.courseId][0]) || next.course.title;
     const nextTitle =
-      next.kind === "quiz"
-        ? `${escapeHtml(nextShort)}　確認クイズ`
-        : next.lesson
+      next.lesson
           ? `${escapeHtml(nextShort)}　${escapeHtml(next.lesson.title)}`
           : escapeHtml(nextShort);
     const section = (title, lead, ids) => `
@@ -2631,7 +1876,6 @@ ${q}
               <summary>もくじ　${idx + 1} / ${course.lessons.length}</summary>
               <p class="toc-course">${escapeHtml(course.title)}</p>
               ${sidebar}
-              <p class="toc-quiz"><a href="#/quiz/${courseId}" data-link>確認クイズへ</a></p>
             </details>
           </aside>
           <article class="lesson-body" data-course="${courseId}" data-lesson="${lessonId}">
@@ -2663,7 +1907,7 @@ ${q}
                 ${
                   next
                     ? `<a class="btn-orange" href="#/course/${courseId}/${next.id}" data-link>次へ</a>`
-                    : `<a class="btn-orange" href="#/quiz/${courseId}" data-link>クイズへ</a>`
+                    : `<a class="btn-orange" href="#/" data-link>ホームへ</a>`
                 }
               </div>
             </div>
@@ -2671,93 +1915,6 @@ ${q}
         </div>
       </div>
     `;
-  };
-
-  const quizView = (courseId) => {
-    const questions = CLASSROOM.quizzes[courseId];
-    const title = CLASSROOM.courses[courseId].title;
-    return `
-      <div class="page">
-        ${crumbs([
-          { href: "#/", label: "ホーム" },
-          { href: `#/course/${courseId}`, label: CLASSROOM.courses[courseId].title },
-          { href: `#/quiz/${courseId}`, label: "確認クイズ" }
-        ])}
-        <p class="kicker">QUIZ</p>
-        <h1>${escapeHtml(title)}　確認クイズ</h1>
-        <p class="easy-meta">目安 約5分　${questions.length}問</p>
-        <p class="lede">全部で${questions.length}問です。答えを押すと、すぐ解説が出ます。まちがえても大丈夫。何度でもやり直せます。</p>
-        <div id="quiz-root"></div>
-        <div class="pager">
-          <div><a class="btn-dark" href="#/course/${courseId}" data-link>前へ（講座へ）</a></div>
-          <div><a class="btn-orange" href="#/" data-link>ホーム</a></div>
-        </div>
-      </div>
-    `;
-  };
-
-  const renderQuiz = (courseId) => {
-    const root = document.getElementById("quiz-root");
-    if (!root) return;
-    const questions = CLASSROOM.quizzes[courseId];
-    let i = 0;
-    let score = 0;
-    const draw = () => {
-      if (i >= questions.length) {
-        const p = loadProgress();
-        p.quizzes[courseId] = score;
-        saveProgress(p);
-        root.innerHTML = `
-          <article class="quiz-card" style="padding:24px">
-            <h2>結果：${score} / ${questions.length}</h2>
-            <p>${score === questions.length ? "よく理解できています。次の講座か、貼る文のページへ進みましょう。" : "解説をもう一度読んで、ページに戻っても大丈夫です。"}</p>
-            <p>
-              <button class="primary" type="button" id="retry">もう一度やる</button>
-              <a class="btn-dark" href="#/course/${courseId}" data-link>講座の最初</a>
-              <a class="btn-orange" href="#/" data-link>ホーム</a>
-            </p>
-          </article>`;
-        root.querySelector("#retry").onclick = () => {
-          i = 0;
-          score = 0;
-          draw();
-        };
-        return;
-      }
-      const item = questions[i];
-      root.innerHTML = `
-        <article class="quiz-card" style="padding:24px">
-          <p class="quiz-q"><strong>問 ${i + 1} / ${questions.length}</strong><br>${escapeHtml(item.q)}</p>
-          <div class="choices">
-            ${item.choices.map((c, idx) => `<button type="button" data-idx="${idx}">${escapeHtml(c)}</button>`).join("")}
-          </div>
-          <p class="feedback" hidden></p>
-          <p><button class="primary" type="button" id="next-q" hidden>次の問題へ</button></p>
-        </article>`;
-      let answered = false;
-      root.querySelectorAll(".choices button").forEach((btn) => {
-        btn.onclick = () => {
-          if (answered) return;
-          answered = true;
-          const idx = Number(btn.dataset.idx);
-          const ok = idx === item.a;
-          if (ok) score += 1;
-          root.querySelectorAll(".choices button").forEach((b, j) => {
-            if (j === item.a) b.classList.add("correct");
-            if (j === idx && !ok) b.classList.add("wrong");
-          });
-          const fb = root.querySelector(".feedback");
-          fb.hidden = false;
-          fb.textContent = (ok ? "あたり。 " : "ざんねん。 ") + item.explain;
-          root.querySelector("#next-q").hidden = false;
-        };
-      });
-      root.querySelector("#next-q").onclick = () => {
-        i += 1;
-        draw();
-      };
-    };
-    draw();
   };
 
   const promptsView = () => {
@@ -2819,38 +1976,15 @@ ${q}
       ])}
       <p class="kicker">SAFETY</p>
       <h1>安全に使うための約束</h1>
-      <p class="easy-meta">目安 約5分　送る前に読む</p>
       ${figureHTML("safety", "送る・消す・公開の前は、必ず自分の目で")}
-      <p class="lede">AIはまちがえることがあります。送る・消す・公開する前は、必ず自分の目で見てください。下は教室全体の約束です。</p>
-      <div class="ops">
-        <article class="op">
-          <span class="num">1</span>
-          <h3>コピーを残す</h3>
-          ${figureHTML("folder", "元のファイルはコピーしてから")}
-          <p>消したり上書きする前に、作業用のコピーを作ります。</p>
-        </article>
-        <article class="op">
-          <span class="num">2</span>
-          <h3>渡さないもの</h3>
-          ${figureHTML("safety", "パスワードや口座は渡さない")}
-          <p>個人情報・口座・パスワード・APIキーは書きません。</p>
-        </article>
-        <article class="op">
-          <span class="num">3</span>
-          <h3>数字を照合</h3>
-          ${figureHTML("check", "金額と宛名は指差し確認")}
-          <p>請求書の金額・宛名は、元データと必ず見比べます。</p>
-        </article>
-      </div>
+      <p class="lede">AIはまちがえることがあります。教室全体で、次の5つを守ります。</p>
       <div class="card">
         <ul class="checklist">
-          <li>作業前に「何をするか」を確認させ、承認してから進める</li>
-          <li>元のファイルは必ずコピーを取ってから任せる</li>
-          <li>顧客の個人情報や口座情報、パスワード、APIキーは渡さない</li>
-          <li>出てきた数字は、元データと必ず照合する（請求書の金額・宛名は特に）</li>
+          <li>作業の前に「何をするか」を出させ、確認してから進める</li>
+          <li>元のファイルはコピーを取ってから任せる。最初は練習用フォルダで小さく試す</li>
+          <li>個人情報・口座・パスワード・APIキーは渡さない</li>
+          <li>出てきた数字は元データと照合する（請求書の金額・宛名は特に）</li>
           <li>送信・購入・削除・公開・提出の最終判断は、自分で行う</li>
-          <li>最初はテスト用フォルダ、1社・1か月など小さく試す</li>
-          <li>Claude Code は無料プランでは使えない。有料プランを先に確認する</li>
         </ul>
       </div>
       ${termsNoticeHTML()}
@@ -2876,28 +2010,17 @@ ${q}
       ])}
       <p class="kicker">迷ったらここ</p>
       <h1>進み方</h1>
-      <p class="lede">事務は同じチャットです。上から1つずつ進めます。</p>
+      <p class="lede">上から1つずつ進めます。</p>
       <p class="guide-actions">
         <button class="btn-orange" type="button" id="guide-print">このページを印刷</button>
         <a class="btn-dark" href="#/howto" data-link>操作のしかた</a>
       </p>
 
-      <section class="guide-pick" aria-label="進み方">
-        <article class="guide-pick-card is-cowork">
-          <span class="guide-pick-tag">事務</span>
-          <h2>ファイルまで任せたい</h2>
-          <p>画面で日本語のお願い。黒い画面は使いません。</p>
-          <p class="guide-pick-tool">使うもの　同じチャット（以前のCowork）</p>
-          <a class="btn-orange" href="#/cowork" data-link>講座一覧へ</a>
-        </article>
-      </section>
-
       <article class="guide-sheet">
-        <h2>事務の順番</h2>
-        <p class="easy-meta">上から1つずつ。はじめての人も、ここからです。</p>
+        <h2>はじめての順番</h2>
         <ol class="guide-flow">
-          ${guideStepHTML("1", "#/course/account", "アカウント", "claude.ai に入る")}
-          ${guideStepHTML("2", "#/course/webchat", "チャット", "ブラウザで日本語を1回")}
+          ${guideStepHTML("1", "#/course/claudebase", "Claude基本", "claude.ai に入って、設定をする")}
+          ${guideStepHTML("2", "#/course/promptskill", "頼み方", "チャットに日本語で1回頼む")}
           ${guideStepHTML("3", "#/course/poster", "ポスター", "いちばんやさしい課題")}
           ${guideStepHTML("4", "#/course/cowork", "事務", "請求書・経費などの本番")}
         </ol>
@@ -2906,10 +2029,10 @@ ${q}
           <section>
             <h2>教室の押し方</h2>
             <ul>
-              <li>オレンジのボタンは、タップ（左クリック）</li>
+              <li>紺のボタンは、タップ（左クリック）</li>
               <li>黒い枠の「コピー」→ 自分の画面に貼る</li>
-              <li>ページ下「このページを読んだ」でハンコ</li>
-              <li>続きは <a href="#/me" data-link>マイページ</a> から1タップ</li>
+              <li>ページ下「このページを読んだ」で進度が付く</li>
+              <li>続きは <a href="#/me" data-link>マイページ</a> から</li>
             </ul>
           </section>
           <section>
@@ -2917,7 +2040,6 @@ ${q}
             <ul>
               <li>パスワード・口座・マイナンバーは渡さない</li>
               <li>送る・消す・公開の前は、自分の目で確認</li>
-              <li>金額と宛名は指差し確認</li>
             </ul>
           </section>
         </div>
@@ -2925,7 +2047,6 @@ ${q}
         <h2>困ったとき</h2>
         <div class="guide-help">
           <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a>
-          <a class="btn-dark" href="#/howto" data-link>操作のしかた</a>
           <a class="btn-dark" href="#/chat" data-link>チャット</a>
         </div>
         <p class="easy-meta">講師の宮田先生へは、いつもの連絡手段でも送れます。</p>
@@ -2945,246 +2066,38 @@ ${q}
         { href: "#/howto", label: "操作のしかた" }
       ])}
       <p class="kicker">HOW TO</p>
-      <h1>操作のしかた（絵で見る）</h1>
-      <p class="easy-meta">目安 約8分　絵を見ながら操作</p>
-      <p>
-        <a class="btn-orange" href="#/guide" data-link>説明資料を読む</a>
-      </p>
-      ${figureHTML("mouse", "オレンジのボタンは左クリック")}
-      <p class="lede">マウスは左ボタンです。つまずいたら <a href="#/course/faq" data-link>つまずき一覧</a> も見てください。</p>
-
-      <h2>0. はじめての準備</h2>
+      <h1>この教室の使い方</h1>
+      <p class="lede">4つだけです。各講座の操作は、講座の中で絵つきで説明しています。</p>
       <div class="ops">
         <article class="op">
           <span class="num">1</span>
-          <h3>アカウント</h3>
-          ${figureHTML("signup", "ブラウザで claude.ai")}
-          <p>全員共通です。ログインと、Code を使う人の有料プラン確認。左の一覧は <a href="#/course/settings" data-link>Claudeの設定</a>。</p>
+          <h3>講座を選ぶ</h3>
+          ${figureHTML("site", "ホームのカード")}
+          <p>ホームの「はじめて」「事務」「道具づくり」から選びます。</p>
         </article>
         <article class="op">
           <span class="num">2</span>
-          <h3>チャット</h3>
-          ${figureHTML("webchat", "下の入力欄に書いて送る")}
-          <p>Cowork の前に、ブラウザで日本語のお願いを1回します。</p>
-        </article>
-        <article class="op">
-          <span class="num">3</span>
-          <h3>HTML・CSS・JAVA</h3>
-          ${figureHTML("site", "骨組み・見た目・動き")}
-          <p>ページは3つでできています。コードは書かなくてよいです。</p>
-        </article>
-      </div>
-      <p>
-        <a class="btn-orange" href="#/course/account" data-link>アカウントへ</a>
-        <a class="btn-dark" href="#/course/settings" data-link>Claudeの設定へ</a>
-        <a class="btn-dark" href="#/course/webchat" data-link>チャット入門へ</a>
-        <a class="btn-dark" href="#/course/webwords" data-link>HTML・CSS・JAVAへ</a>
-        <a class="btn-dark" href="#/course/mdbase" data-link>CLAUDE.mdの基礎へ</a>
-        <a class="btn-dark" href="#/course/skillbase" data-link>Skillsの基礎へ</a>
-        <a class="btn-dark" href="#/course/aisub" data-link>AI導入補助金へ</a>
-        <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a>
-      </p>
-
-      <h2>A. この教室サイト</h2>
-      <div class="ops">
-        <article class="op">
-          <span class="num">1</span>
-          <h3>カードを押す</h3>
-          ${figureHTML("site", "ホームの色つきカード")}
-          <p>上の2つの箱から選びます。事務は同じチャット、Codeはツールづくりです。</p>
-        </article>
-        <article class="op">
-          <span class="num">2</span>
-          <h3>左クリック</h3>
-          ${figureHTML("mouse", "オレンジのボタンを押す")}
-          <p>「講座を開く」「次へ」「このレッスンを完了」は、どれも左クリックです。</p>
-        </article>
-        <article class="op">
-          <span class="num">3</span>
           <h3>文章をコピー</h3>
           ${figureHTML("copy", "コピー → 自分の画面に貼る")}
-          <p>黒い枠の右上「コピー」を押し、ClaudeやPowerShellの画面で Ctrl＋V（貼り付け）します。</p>
-        </article>
-        <article class="op">
-          <span class="num">4</span>
-          <h3>完了する</h3>
-          ${figureHTML("desktop", "読んだら完了ボタン")}
-          <p>レッスンのいちばん下「このレッスンを完了」を押すと、左の一覧に「済」が付きます。</p>
-        </article>
-      </div>
-
-      <h2>B. 求人ポスター（いちばん初級）</h2>
-      <div class="ops">
-        <article class="op">
-          <span class="num">1</span>
-          <h3>お手本は1枚</h3>
-          ${figureHTML("pinterest", "右クリックで画像を保存")}
-          <p>Pinterestで「こんな感じ」を1枚だけ保存します。2枚以上は迷います。</p>
-        </article>
-        <article class="op">
-          <span class="num">2</span>
-          <h3>質問に答える</h3>
-          ${figureHTML("chat", "枠の文をそのまま貼る")}
-          <p>ChatGPTに教室の文を貼り、聞かれたことにふつうの言葉で答えます。</p>
+          <p>黒い枠の「コピー」を押し、自分の Claude に貼ります（Ctrl＋V／⌘＋V）。</p>
         </article>
         <article class="op">
           <span class="num">3</span>
-          <h3>保存してから開く</h3>
-          ${figureHTML("canva", "「保存して」がポイント")}
-          <p>Canvaで開く前に、必ず「保存して」と送ります。無いときはほぼこれです。</p>
+          <h3>読んだら押す</h3>
+          ${figureHTML("check", "このページを読んだ")}
+          <p>ページ下の「このページを読んだ」で、進度が付きます。</p>
         </article>
         <article class="op">
           <span class="num">4</span>
-          <h3>人が読む</h3>
-          ${figureHTML("poster", "電話番号と住所")}
-          <p>崩れた字はCanvaで打ち直します。色は3色、言いたいことは1つです。</p>
-        </article>
-        <article class="op">
-          <span class="num">5</span>
-          <h3>マジックレイヤー</h3>
-          ${figureHTML("canva", "1枚絵をパーツに")}
-          <p>ChatGPTで案を3つ出して画像にし、Canvaで分けます。文字とQRは目で確認します。</p>
-        </article>
-      </div>
-      <p><a class="btn-orange" href="#/course/poster" data-link>ポスター講座へ</a></p>
-
-      <h2>C. チャットで作業（以前のCowork）</h2>
-      <div class="ops">
-        <article class="op">
-          <span class="num">1</span>
-          <h3>Claudeを開く</h3>
-          ${figureHTML("desktop", "自分のパソコン")}
-          <p>スマホよりパソコンがおすすめです。claude.ai でもアプリでも、今は同じチャットです。</p>
-        </article>
-        <article class="op">
-          <span class="num">2</span>
-          <h3>新しいチャット</h3>
-          ${figureHTML("webchat", "同じ画面で始める")}
-          <p>左に Cowork が無くても探さない。今はチャットの中です。</p>
-        </article>
-        <article class="op">
-          <span class="num">3</span>
-          <h3>フォルダを接続</h3>
-          ${figureHTML("folder", "請求書・経費の入ったフォルダ")}
-          <p>「接続する」を押し、作業用フォルダを許可します。これが無いとファイルが見つかりません。</p>
-        </article>
-        <article class="op">
-          <span class="num">4</span>
-          <h3>送る前に確認</h3>
-          ${figureHTML("check", "金額と宛名")}
-          <p>できた請求書は、送付の前に必ず自分の目で見ます。</p>
-        </article>
-      </div>
-      <p><a class="btn-dark" href="#/course/cowork" data-link>事務の講座へ</a></p>
-
-      <h2>D. 環境構築② Node.js（約4分）</h2>
-      <div class="ops">
-        <article class="op">
-          <span class="num">1</span>
-          <h3>確認</h3>
-          ${figureHTML("copy", "node -v")}
-          <p>Cursor のターミナル（Ctrl／⌘＋J）で確認。数字が出たら飛ばしてよいです。</p>
-        </article>
-        <article class="op">
-          <span class="num">2</span>
-          <h3>公式から入れる</h3>
-          ${figureHTML("browser", "nodejs.org")}
-          <p>Docker は無視。OS を選んでインストーラー。「tools」のチェックは不要。</p>
-        </article>
-        <article class="op">
-          <span class="num">3</span>
-          <h3>Cursor を終了</h3>
-          ${figureHTML("desktop", "完全に終了してから開き直す")}
-          <p>Mac は Dock を右クリックして「終了」。もう一度 node -v。</p>
-        </article>
-      </div>
-      <p><a class="btn-orange" href="#/course/nodejs" data-link>Node.jsのインストールへ</a>
-      <a class="btn-dark" href="#/course/mdbase" data-link>CLAUDE.mdの基礎へ</a>
-      <a class="btn-dark" href="#/course/skillbase" data-link>Skillsの基礎へ</a></p>
-
-      <h2>E. Claude Code（Windows）</h2>
-      <div class="ops">
-        <article class="op">
-          <span class="num">1</span>
-          <h3>スタートを押す</h3>
-          ${figureHTML("start", "左下のスタート → PowerShell")}
-          <p>画面左下のWindowsボタン（スタート）をクリックし、「PowerShell」と入力します。</p>
-        </article>
-        <article class="op">
-          <span class="num">2</span>
-          <h3>黒い画面を確認</h3>
-          ${figureHTML("powershell", "行頭が PS C:\\ なら成功")}
-          <p>「Windows PowerShell」を開きます。行頭が PS で始まっているか見てください。</p>
-        </article>
-        <article class="op">
-          <span class="num">3</span>
-          <h3>1行を貼る</h3>
-          ${figureHTML("copy", "コピーして Enter")}
-          <p>教室のコマンドをコピーし、PowerShellで右クリック（または Ctrl＋V）して Enter です。Mac の <code>%</code> の画面には貼りません。</p>
-        </article>
-        <article class="op">
-          <span class="num">4</span>
-          <h3>ブラウザでログイン</h3>
-          ${figureHTML("browser", "claude と打つとブラウザが開く")}
-          <p>作業フォルダで claude と入力。ブラウザが開いたら、有料プランのアカウントでログインします。</p>
-        </article>
-        <article class="op">
-          <span class="num">5</span>
-          <h3>Git は任意</h3>
-          ${figureHTML("git", "変更の履歴が残る")}
-          <p>必須ではありません。入れるとやり直しがしやすいです。手順は Claude Code講座の「Git for Windows（任意）」へ。</p>
+          <h3>困ったら</h3>
+          ${figureHTML("chat", "つまずき一覧とチャット")}
+          <p><a href="#/course/faq" data-link>つまずき一覧</a> か、右下の「チャット」へ。</p>
         </article>
       </div>
       <p>
-        <a class="btn-dark" href="#/course/code" data-link>Windows編へ</a>
-        <a class="btn-dark" href="#/course/codemac" data-link>Mac編へ</a>
-        <a class="btn-dark" href="#/course/applied" data-link>応用編へ</a>
-        <a class="btn-dark" href="#/course/invoice" data-link>請求書ツールへ</a>
-        <a class="btn-dark" href="#/course/secretary" data-link>秘書アプリへ</a>
+        <a class="btn-orange" href="#/course/claudebase" data-link>最初の講座へ</a>
+        <a class="btn-dark" href="#/guide" data-link>説明資料</a>
       </p>
-      <h2>F. Claude Code（Mac）</h2>
-      <div class="ops">
-        <article class="op">
-          <span class="num">1</span>
-          <h3>ターミナルを開く</h3>
-          ${figureHTML("mac", "⌘＋スペース → ターミナル")}
-          <p>Command とスペースを同時に押し、「ターミナル」と入れます。</p>
-        </article>
-        <article class="op">
-          <span class="num">2</span>
-          <h3>赤い丸・黄・緑</h3>
-          ${figureHTML("terminal", "この窓に1行を貼る")}
-          <p>テキストエディット（メモ）ではありません。3つの丸がある窓です。</p>
-        </article>
-        <article class="op">
-          <span class="num">3</span>
-          <h3>1行を貼る</h3>
-          ${figureHTML("copy", "⌘＋V して Enter")}
-          <p>Mac編の <code>curl</code> の1行です。<code>irm</code> ではありません。</p>
-        </article>
-      </div>
-      <p><a class="btn-orange" href="#/course/codemac" data-link>Mac編へ</a>
-      <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a></p>
-      <section class="points">
-        <h2>教室の使い方（3つだけ）</h2>
-        <div class="points-grid">
-          <div>
-            <span class="point-label">1</span>
-            ${figureHTML("compare", "事務はCowork、アプリはCode")}
-            <p>ポスターで慣れたら、事務はCowork。アプリやサイトを作りたくなったらCodeです。</p>
-          </div>
-          <div>
-            <span class="point-label">2</span>
-            ${figureHTML("copy", "コピーして自分の画面に貼る")}
-            <p>黒い枠の「コピー」を押して、自分のClaudeに貼ります。読み終わったら「このページを読んだ」。</p>
-          </div>
-          <div>
-            <span class="point-label">3</span>
-            ${figureHTML("quiz", "選ぶとすぐ解説が出ます")}
-            <p>最後は確認クイズ。満点でなくても大丈夫。解説を読んでやり直せます。</p>
-          </div>
-        </div>
-      </section>
     </div>
   `;
 
@@ -3363,8 +2276,6 @@ ${q}
     const works = loadWorks();
     const where = !cur
       ? ""
-      : cur.kind === "quiz"
-        ? `${escapeHtml(cur.course.title)}　確認クイズ`
         : cur.kind === "overview"
           ? `${escapeHtml(cur.course.title)}　講座の案内`
           : `${escapeHtml(cur.course.title)}　${cur.idx + 1} / ${cur.course.lessons.length}　${escapeHtml(cur.lesson.title)}`;
@@ -3464,7 +2375,7 @@ ${q}
               ? `<p>${escapeHtml(nxt.why)}</p>
             <p><strong>${escapeHtml(nxt.course.title)}</strong>　${escapeHtml(nxt.course.duration || "")}</p>
             <p><a class="btn-orange" href="#/course/${nxt.id}" data-link>この講座を開く</a></p>`
-              : `<p>全部修了しています。クイズやプロンプト集で復習できます。</p>
+              : `<p>全部修了しています。プロンプト集で復習できます。</p>
             <p><a class="btn-orange" href="#/prompts" data-link>プロンプト集</a></p>`
           }
         </div>
@@ -3781,8 +2692,6 @@ ${q}
       const lesson = parts[2] && c.lessons.find((l) => l.id === parts[2]);
       title = lesson ? `${lesson.title}｜${c.title}` : `${c.title}｜${site}`;
       desc = c.subtitle || desc;
-    } else if (parts[0] === "quiz" && CLASSROOM.courses[parts[1]]) {
-      title = `確認クイズ｜${CLASSROOM.courses[parts[1]].title}`;
     }
     document.title = title;
     const set = (sel, val) => {
@@ -3947,24 +2856,25 @@ ${q}
       location.replace(`#/${parts[0] === "quiz" ? "course" : parts[0]}/${to}${lessonId ? `/${lessonId}` : ""}`);
       return;
     }
+    if (["cowork", "code", "applied", "beginner"].includes(parts[0])) {
+      location.replace("#/");
+      return;
+    }
+    if (parts[0] === "quiz") {
+      location.replace(parts[1] ? `#/course/${parts[1]}` : "#/");
+      return;
+    }
     if (parts[0] === "course" && parts[1] === "today" && parts[2] && TODAY_LESSON_ALIAS[parts[2]]) {
       location.replace(`#/course/today/${TODAY_LESSON_ALIAS[parts[2]]}`);
       return;
     }
-    if (parts[0] === "cowork" && !canSeeCourse("cowork")) html = lockedView("jimu");
-    else if ((parts[0] === "code" || parts[0] === "applied") && !canSeeCourse("code")) html = lockedView("dougu");
-    else if ((parts[0] === "course" || parts[0] === "quiz" || parts[0] === "cert") && parts[1] && !canSeeCourse(parts[1])) {
+    if ((parts[0] === "course" || parts[0] === "cert") && parts[1] && !canSeeCourse(parts[1])) {
       html = lockedView(toolOf(parts[1]) === "code" ? "dougu" : "jimu");
     }
     else if (parts.length === 0) html = home();
-    else if (parts[0] === "beginner") html = trackView("beginner");
-    else if (parts[0] === "applied") html = trackView("applied");
-    else if (parts[0] === "cowork") html = laneView("cowork");
-    else if (parts[0] === "code") html = laneView("code");
-    else if ((parts[0] === "course" || parts[0] === "quiz") && parts[1] && !CLASSROOM.courses[parts[1]]) html = notFound();
+    else if (parts[0] === "course" && parts[1] && !CLASSROOM.courses[parts[1]]) html = notFound();
     else if (parts[0] === "course" && parts[1] && !parts[2]) html = courseOverview(parts[1]);
     else if (parts[0] === "course" && parts[1] && parts[2]) html = lessonView(parts[1], parts[2]);
-    else if (parts[0] === "quiz" && parts[1]) html = quizView(parts[1]);
     else if (parts[0] === "prompts") html = promptsView();
     else if (parts[0] === "safety") html = safetyView();
     else if (parts[0] === "howto") html = howtoView();
@@ -3984,7 +2894,6 @@ ${q}
     document.body.classList.toggle("is-home", parts.length === 0);
     document.body.classList.toggle("is-chat", parts[0] === "chat");
     if (parts[0] === "course" && parts[1] && CLASSROOM.courses[parts[1]]) rememberLast(parts[1], parts[2] || null);
-    else if (parts[0] === "quiz" && parts[1] && CLASSROOM.courses[parts[1]]) rememberLast(parts[1], "quiz");
     hydratePics();
     bindCopies();
     bindComplete();
@@ -4011,17 +2920,12 @@ ${q}
         render({ keepScroll: true });
       };
     }
-    if (parts[0] === "quiz" && CLASSROOM.quizzes[parts[1]]) renderQuiz(parts[1]);
     app.classList.remove("page-in");
     void app.offsetWidth;
     app.classList.add("page-in");
     if (sessionStorage.getItem("classroom-cheer")) playWin();
-    const navHash =
-      parts[0] === "quiz" && parts[1]
-        ? `#/course/${parts[1]}`
-        : hash.split("?")[0] || "#/";
+    const navHash = hash.split("?")[0] || "#/";
     setActiveNav(navHash);
-    syncQuizPill(parts);
     syncHeaderProgress();
     syncMemberChip();
     syncHeaderFav(parts);
