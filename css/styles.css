@@ -271,25 +271,6 @@ body.is-home .site-header {
   overflow-wrap: anywhere;
 }
 
-.cover-art {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cover-art svg {
-  width: 100%;
-  height: auto;
-  max-height: 92px;
-  display: block;
-}
-
-.class-card .cover-art svg {
-  max-height: 100px;
-}
-
 .cover-cowork {
   background: #f3e6d4;
 }
@@ -338,10 +319,6 @@ body.is-home .site-header {
   background: #e4eef8;
 }
 
-.cover-abc {
-  background: #f3e6d4;
-}
-
 .cover-sns {
   background: #efe8f6;
 }
@@ -356,10 +333,6 @@ body.is-home .site-header {
 
 .cover-chat {
   background: #eef3f8;
-}
-
-.cover-mac {
-  background: #eceff3;
 }
 
 .cover-faq {
@@ -466,21 +439,6 @@ h1 {
   max-width: 40em;
   font-size: 1.05em;
   line-height: 1.8;
-}
-
-.now-here {
-  display: inline-flex;
-  max-width: 100%;
-  box-sizing: border-box;
-  background: #fff8f1;
-  color: var(--ink);
-  padding: 8px 14px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 14px;
-  margin: 0 0 14px;
-  line-height: 1.5;
-  border: 2px solid #ffe1cf;
 }
 
 .easy-meta {
@@ -902,25 +860,6 @@ pre {
   font-size: 13px;
 }
 
-.list-art{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.list-art {
-  width: 48px;
-}
-
-.list-art svg{
-  width: 100%;
-  max-width: 48px;
-  max-height: 40px;
-  height: auto;
-  display: block;
-}
-
 .lesson-list a {
   align-items: center;
 }
@@ -929,15 +868,6 @@ pre {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.sidebar a .list-art {
-  width: 36px;
-}
-
-.sidebar a .list-art svg {
-  max-width: 36px;
-  max-height: 28px;
 }
 
 .op .pic {
@@ -1066,8 +996,7 @@ pre {
     box-shadow: none;
   }
 
-  .class-card .cover-art,
-  .class-card .cover strong {
+  .class-card .cover strong{
     display: none;
   }
 
@@ -1094,11 +1023,7 @@ pre {
     max-width: 180px;
   }
 
-  .now-here {
-    font-size: 14px;
-    padding: 8px 12px;
-    margin-bottom: 10px;
-  }
+  
 
   .kicker {
     font-size: 12px;

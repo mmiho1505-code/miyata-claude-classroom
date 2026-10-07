@@ -79,15 +79,6 @@
   line-height: 1.4;
 }
 
-.list-art {
-  width: 32px;
-}
-
-.list-art svg {
-  max-width: 32px;
-  max-height: 28px;
-}
-
 .lesson-list a {
   padding: 8px 2px !important;
   gap: 8px !important;
@@ -135,31 +126,6 @@ body.is-home .site-header {
   border-top: 8px solid #ff7a59;
 }
 
-.tool-chip {
-  display: inline-flex;
-  width: fit-content;
-  border-radius: 999px;
-  padding: 2px 8px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-
-.tool-chip.is-cowork {
-  background: #ffe1d6;
-  color: #c44520;
-}
-
-.tool-chip.is-code {
-  background: #d9e6ff;
-  color: #1f4fb0;
-}
-
-.tool-chip.is-starter {
-  background: #ffe9b8;
-  color: #8a5a00;
-}
-
 @media (max-width: 900px) {
   .class-card {
     grid-template-columns: 72px minmax(0, 1fr) !important;
@@ -192,15 +158,9 @@ body.is-home .site-header {
     min-height: 72px !important;
   }
 
-  .class-card .cover-art {
-    display: flex !important;
-  }
+  
 
-  .class-card .cover-art svg {
-    display: block !important;
-    max-height: 56px !important;
-    max-width: 64px;
-  }
+  
 
   .class-card .cover strong {
     display: none;

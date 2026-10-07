@@ -117,7 +117,7 @@
     if (kind === "done") return `<span class="st-chip is-done"><span aria-hidden="true">✓</span>完了</span>`;
     if (kind === "now") return `<span class="st-chip is-now"><span aria-hidden="true">▶</span>学習中</span>`;
     if (kind === "extra") return `<span class="st-chip is-extra">余ったら</span>`;
-    return `<span class="st-chip is-todo">これから</span>`;
+    return "";
   };
 
   const lessonChip = (courseId, lesson) => {
@@ -1107,391 +1107,6 @@ ${q}
   const easyKickers = (html) =>
     html.replace(/<p class="kicker">([\s\S]*?)<\/p>/g, (_, raw) => `<p class="kicker">${kickerJa(raw)}</p>`);
 
-  const COURSE_ART = {
-    today: ["docs", "CLAUDE.mdと設定で、毎回の説明をなくす"],
-    cowork: ["cowork", "画面でお願いして、ファイルまで仕上げる"],
-    code: ["powershell", "黒い画面に1行貼って進める"],
-    poster: ["poster", "A4縦の求人ポスターを1枚"],
-    secretary: ["secretary", "予定・メモ・振り返り"],
-    appedit: ["mouse", "日本語で画面を直す"],
-    invoice: ["invoice", "リストから1社1PDF"],
-    crm: ["crm", "顧客と案件を一覧で"],
-    shop: ["shop", "紹介ページと予約フォーム"],
-    survey: ["survey", "回答をグラフにする"],
-    snspost: ["snspost", "ネタから複数案。出す前は自分で"],
-    applied: ["desktop", "一度決めたら、次からラク"],
-    claudebase: ["webchat", "指示を書いて、プロジェクトの箱を作る"],
-    aipick: ["compare", "用途で選ぶ。表は疑って作り直す"],
-    webwords: ["site", "HTMLは骨組み、CSSは見た目、JAVAは動き"],
-    promptskill: ["copy", "目的・前提・形式"],
-    faq: ["quiz", "止まっている症状から選ぶ"],
-    market: ["sns", "誰に・何を・どう届けるか"],
-    peoplejob: ["crm", "資料はAI。人が残すのは感情と軸"],
-    minutes: ["copy", "決定とToDoが抜けない議事録"],
-    salesrep: ["invoice", "調べて固めてスキル。セル番地は書かない"],
-    aicopy: ["safety", "見て・調べて・確認してから"],
-    aisub: ["expense", "デジタル化・AI導入補助金。公式で確認"],
-    portalmake: ["cowork", "話しかけるだけで社内ポータル"],
-    attend: ["attendapp", "ボタンを押すだけの出退勤"],
-    invoicemake: ["invoice", "ひな形を一度、毎月は明細だけ"],
-    skillbase: ["copy", "よく使う手順を /名前 で呼ぶ"],
-    researcher: ["survey", "料金は裏取り。report フォルダ"]
-  };
-
-  const LESSON_ART = {
-    compare: ["compare", "会話も作業も同じ画面"],
-    what: ["cowork", "新しいチャットで作業する"],
-    goal: ["cowork", "任せて、ラクをする"],
-    cando: ["cowork", "資料・整理・連携・定期実行"],
-    map: ["cowork", "できることはこの4つ"],
-    docs: ["docs", "要点を渡してドラフト"],
-    finance: ["docs", "試算表から財務資料へ"],
-    files: ["folder", "フォルダを種類ごとに整理"],
-    apps: ["mail", "下書きまで。送信はしない"],
-    schedule: ["calendar", "毎月1日などに予約する"],
-    briefing: ["briefing", "毎朝1分で読めるまとめ"],
-    theme: ["check", "まずは1社ぶんから"],
-    step1: ["invoice", "1社の請求書から試す"],
-    step2: ["expense", "経費を科目ごとにまとめる"],
-    step3: ["calendar", "手順を保存して毎月使う"],
-    tips: ["copy", "ゴール・素材・形式を伝える"],
-    safety: ["safety", "送る前は自分の目で確認"],
-    trouble: ["chat", "エラー文をそのまま伝える"],
-    summary: ["eyecheck", "小さく試してから広げる"],
-    words: ["folder", "ひな形・差し込み・リスト"],
-    setup: ["desktop", "パソコンでフォルダを接続"],
-    flow: ["desktop", "順番にひとつずつ"],
-    gitwin: ["git", "変更の履歴が残る"],
-    prep: ["desktop", "準備ができているか確認"],
-    start: ["start", "スタートから PowerShell"],
-    prompt: ["chat", "枠の文をそのまま貼る"],
-    notes: ["poster", "お手本は1枚だけ"],
-    design: ["poster", "色は3色、言いたいことは1つ"],
-    canva: ["canva", "保存してから Canva で開く"],
-    vibe: ["desktop", "作って → 見て → 直す"],
-    talk: ["chat", "ゴールを先に、具体的に"],
-    modes: ["compare", "チャット・Cowork・Code"],
-    recap: ["eyecheck", "次の一歩は小さく"],
-    aim: ["desktop", "自分仕様に育てる"],
-    themes: ["compare", "6つのテーマ"],
-    claudemd: ["docs", "取扱説明書を1枚"],
-    skills: ["copy", "いつもの手順をコマンドに"],
-    rules: ["safety", "やってはいけないことを先に"],
-    commands: ["powershell", "/help と /config"],
-    stages: ["desktop", "段階で止めて確認"],
-    gituse: ["git", "こまめに保存して戻せる"],
-    connect: ["excel", "今あるサービスとつなぐ"],
-    deepen: ["chat", "役割・制約・形式を添える"],
-    stuck: ["chat", "エラー文をそのまま伝える"],
-    guard: ["safety", "送る・消す・公開は確認してから"],
-    wrap: ["eyecheck", "まずは CLAUDE.md から"],
-    make: ["desktop", "日本語でお願いして作る"],
-    job: ["secretary", "自分の仕事に置き換える"],
-    tools: ["powershell", "黒い画面が作業場"],
-    promptwork: ["copy", "コピーして自分の画面に貼る"],
-    appeal: ["poster", "電話と住所は大きく"],
-    step4: ["browser", "ブラウザでログイン・公開"],
-    step5: ["canva", "保存してから仕上げ"],
-    step6: ["browser", "公開してスマホで見る"],
-    step9: ["poster", "誤字・電話・住所を確認"]
-  };
-
-  const GENERIC_LESSON = {
-    goal: true,
-    what: true,
-    words: true,
-    setup: true,
-    flow: true,
-    summary: true,
-    safety: true,
-    trouble: true
-  };
-
-  const artFor = (courseId, lessonId) => {
-    if (courseId === "faq") {
-      const t = {
-        map: ["quiz", "症状からページを選ぶ"],
-        ps: ["powershell", "行頭が PS ならOK"],
-        paste: ["copy", "貼る欄をクリックしてから"],
-        notfound: ["powershell", "窓を閉じて開き直す"],
-        login: ["plan", "有料プランの同じメールか"],
-        macfail: ["terminal", "赤い丸・黄・緑の窓"],
-        coworkmiss: ["cowork", "左にCoworkが無くても探さない"],
-        net: ["safety", "社内ルールを優先"],
-        summary: ["check", "エラー文を残す"]
-      };
-      return t[lessonId] || ["quiz", "つまずき一覧"];
-    }
-    if (courseId === "claudebase") {
-      const t = {
-        goal: ["webchat", "長い資料。分からないは分からない"],
-        screen: ["plan", "左メニューと＋。改行はShift＋Enter"],
-        instruct: ["copy", "職業・道具・答え方を自分で"],
-        privacy: ["safety", "学習協力とメモリー"],
-        files: ["docs", "入れて聞く。検索は出典"],
-        artifact: ["shop", "右側にページや表"],
-        proj: ["folder", "箱ごとに指示。毎回同じ型"],
-        summary: ["webchat", "指示を書いて、箱を作る"]
-      };
-      return t[lessonId] || COURSE_ART.claudebase;
-    }
-    if (courseId === "aipick") {
-      const t = {
-        goal: ["compare", "用途で選ぶ。最強はない"],
-        read: ["docs", "講師の当日まとめ。正解ではない"],
-        caution: ["eyecheck", "表にも嘘。動画と音声は疑う"],
-        w1: ["copy", "日付を入れて19項目"],
-        w2: ["copy", "具体的に書いて1つに絞る"],
-        summary: ["compare", "合う1つを自分の言葉で"]
-      };
-      return t[lessonId] || COURSE_ART.aipick;
-    }
-    if (courseId === "skillbase") {
-      const t = {
-        goal: ["copy", "手順の型。座学"],
-        what: ["copy", "よく使う手順をコマンドに"],
-        vs: ["compare", "毎回読むマニュアルと、呼んだとき"],
-        use: ["copy", "/名前 で呼び出す"],
-        make: ["copy", "日本語で Skill にしてもらう"],
-        summary: ["copy", "必須ではない。呼んだときだけ"]
-      };
-      return t[lessonId] || COURSE_ART.skillbase;
-    }
-    if (courseId === "webwords") {
-      const t = {
-        goal: ["site", "骨組み・見た目・動き"],
-        html: ["docs", "何が載っているか"],
-        css: ["poster", "色と大きさ"],
-        java: ["mouse", "押したら動く"],
-        ask: ["copy", "日本語で1つずつ"],
-        summary: ["site", "コードは書かなくてよい"]
-      };
-      return t[lessonId] || COURSE_ART.webwords;
-    }
-    if (courseId === "promptskill") {
-      const t = {
-        goal: ["copy", "あいまいだと無難な答え"],
-        trio: ["docs", "目的・前提・形式"],
-        notes: ["copy", "資料を渡す。議事録は誰向けか"],
-        official: ["eyecheck", "1か所ずつ直す"],
-        structure: ["docs", "まず文章。型は混ぜない"],
-        extra: ["copy", "過程・分割・不明"],
-        qa: ["quiz", "メモリと別スレッド"],
-        summary: ["copy", "すぐ使える一言"]
-      };
-      return t[lessonId] || COURSE_ART.promptskill;
-    }
-    if (courseId === "market") {
-      const t = {
-        goal: ["sns", "誰に・何を・どう届けるか"],
-        miss: ["quiz", "知られない・伝わらない・場所がずれる"],
-        one: ["copy", "ターゲットを3案。4点で確かめる"],
-        two: ["copy", "潜在ニーズを5つ以上"],
-        three: ["copy", "時間・費用・成果・安心・負担"],
-        four: ["sns", "媒体を1つ選んで作る"],
-        five: ["eyecheck", "見られない／反応が無い"],
-        qa: ["quiz", "地方・転用・商品の探し方"],
-        summary: ["sns", "同じチャットで①から⑤"]
-      };
-      return t[lessonId] || COURSE_ART.market;
-    }
-    if (courseId === "peoplejob") {
-      const t = {
-        goal: ["crm", "資料は誰でも同じ。残るのは人"],
-        aiwork: ["mail", "調べもの・議事録・下書き"],
-        first: ["eyecheck", "初対面はマイナスから"],
-        value: ["compare", "機能ではなく変化量"],
-        mind: ["quiz", "正しい資料だけでは動かない"],
-        trust: ["check", "信用の上に信頼"],
-        nurture: ["mail", "返信も面談も求めない"],
-        claim: ["copy", "判断の軸を言葉にする"],
-        summary: ["crm", "調べるのはAI。向き合うのは人"]
-      };
-      return t[lessonId] || COURSE_ART.peoplejob;
-    }
-    if (courseId === "minutes") {
-      const t = {
-        goal: ["copy", "要点・決定・ToDo・未確定"],
-        flow: ["compare", "起こす→まとめる→人が見る"],
-        transcribe: ["docs", "環境に合った起こし方"],
-        prompt: ["copy", "ある情報だけ。未確定と書く"],
-        demo: ["eyecheck", "話者名がないと私が誰か分からない"],
-        qa: ["quiz", "原文引用で要確認"],
-        summary: ["copy", "形は人が決める。配る前に確認"]
-      };
-      return t[lessonId] || COURSE_ART.minutes;
-    }
-    if (courseId === "salesrep") {
-      const t = {
-        goal: ["invoice", "セル番地は書かない"],
-        cowork: ["folder", "指定フォルダの中だけ"],
-        p1: ["docs", "ひな形を調べて検算"],
-        p2: ["copy", "手順とスクリプトに固める"],
-        p3: ["invoice", "月を指定。ひな形が変わったら止める"],
-        p4: ["copy", "ZIPでスキル。一言で回す"],
-        caution: ["safety", "プレビューではなくファイルを開く"],
-        summary: ["invoice", "初回だけ調べて、2回目は一言"]
-      };
-      return t[lessonId] || COURSE_ART.salesrep;
-    }
-    if (courseId === "aicopy") {
-      const t = {
-        goal: ["safety", "決めつけない。確かめてから"],
-        case: ["quiz", "入力・そっくり・商用の3つが不明"],
-        others: ["eyecheck", "類似性と依拠性"],
-        two: ["docs", "話題が同じだけでは足りない"],
-        style: ["poster", "画風と固有の特徴は別"],
-        own: ["quiz", "契約と著作権法は別"],
-        terms: ["copy", "規約は4点。原文で確かめる"],
-        refimg: ["copy", "用途を分けて許可を聞く"],
-        check: ["check", "納品前の4点"],
-        qa: ["quiz", "似ていたら使わない"],
-        summary: ["safety", "3つの分からないを先に潰す"]
-      };
-      return t[lessonId] || COURSE_ART.aicopy;
-    }
-    if (courseId === "aisub") {
-      const t = {
-        goal: ["expense", "名前が変わったIT導入補助金"],
-        who: ["crm", "中小・小規模・個人事業主"],
-        change: ["docs", "AIツール。2回目は計画と賃上げ"],
-        how: ["check", "支援事業者と一緒に申請"],
-        need: ["safety", "生産性3%。未達は一部返還"],
-        frames: ["abc", "枠ごとに上限と率が違う"],
-        when: ["calendar", "3月30日から。締切は複数回"],
-        class: ["attendapp", "会計と勤怠以外もある。買う前に対象か確認"],
-        tools: ["shop", "よく出るソフトの例。買う指示ではない"],
-        food: ["shop", "飲食は4ジャンル。公式で業種を絞る"],
-        summary: ["expense", "公式を最後に見る"]
-      };
-      return t[lessonId] || COURSE_ART.aisub;
-    }
-    if (courseId === "portalmake") {
-      const t = {
-        goal: ["cowork", "作る・確かめる・見せる"],
-        what: ["compare", "会話も作業も同じ画面"],
-        image: ["portalpage", "お知らせ・予定・リンク・連絡先"],
-        flow: ["desktop", "開く → 頼む → 確かめる → 渡す"],
-        open: ["cowork", "新しいチャットで頼む"],
-        ask: ["copy", "見本文を貼って送る"],
-        tips: ["copy", "誰が・何を・どんな感じで"],
-        answer: ["coworkask", "分からなければおまかせ"],
-        share: ["portalpage", "見てからリンクを渡す"],
-        trouble: ["quiz", "アプリ側か、文を貼り直すか"],
-        safety: ["safety", "個人情報は載せない"],
-        practice: ["cowork", "20分で1ページ"],
-        summary: ["portalpage", "Cowork・貼る・見てから渡す"]
-      };
-      return t[lessonId] || COURSE_ART.portalmake;
-    }
-    if (courseId === "attend") {
-      const t = {
-        goal: ["attendapp", "作る・記録する・集計する"],
-        image: ["attendapp", "名前を選んでボタンを押す"],
-        vs: ["folder", "みんなで書き込むから保存が大事"],
-        flow: ["desktop", "作って、試して、使い始める"],
-        prep: ["folder", "誰が・何を押す・月末に何が欲しい"],
-        ask: ["copy", "全員分を保存して消えないように"],
-        answer: ["coworkask", "分からなければおまかせ"],
-        check: ["attendapp", "押し直しても記録が残るか"],
-        share: ["phone", "共有して、最初は並行運用"],
-        excel: ["excel", "月末は話しかけるか、Excelで出す"],
-        tips: ["copy", "名前の追加も押し忘れも一文で"],
-        addfeat: ["copy", "ポータルに出退勤を足すお願い文"],
-        safety: ["safety", "名前だけ。控えは社内に"],
-        practice: ["attendapp", "作る・テスト・直す・集計"],
-        summary: ["eyecheck", "保存・テスト・Excel"]
-      };
-      return t[lessonId] || COURSE_ART.attend;
-    }
-    if (courseId === "invoicemake") {
-      const t = {
-        goal: ["invoice", "ひな形・毎月作る・確かめて送る"],
-        flow: ["folder", "最初だけ準備、あとは毎月"],
-        prep: ["folder", "自社情報・取引先・今月の明細"],
-        rules: ["docs", "インボイスの記載事項6つ"],
-        ask: ["copy", "ひな形をExcelで一度作る"],
-        monthly: ["copy", "宛先と明細を伝えるだけ"],
-        image: ["invoice", "数量×単価で自動計算"],
-        check: ["check", "宛名・金額・税率・日付・番号"],
-        batch: ["invoice", "一覧からまとめてPDF"],
-        send: ["folder", "PDFで送って、決まった場所に保存"],
-        tips: ["copy", "品目追加も値引きも一文で"],
-        tategaki: ["docs", "縦書きはWordで作ってPDFに"],
-        mitsumori: ["invoice", "面積と単価表から松竹梅の3案"],
-        safety: ["safety", "送るのは人。番号は原本で"],
-        practice: ["invoice", "架空の会社で20分"],
-        summary: ["check", "ひな形・明細・電卓してPDF"]
-      };
-      return t[lessonId] || COURSE_ART.invoicemake;
-    }
-    if (courseId === "appedit") {
-      const t = {
-        goal: ["mouse", "コードを書かず、対話で直す"],
-        cando: ["desktop", "文字・見た目・部品"],
-        words: ["eyecheck", "見て・頼んで・戻せる"],
-        flow: ["copy", "小さく直して確認する"],
-        text: ["copy", "〜を〜に、と頼む"],
-        parts: ["mouse", "部品もスマホもお願いだけ"],
-        where: ["mouse", "画面の言葉で指す"],
-        tips: ["copy", "違ったら戻せばいい"],
-        safety: ["safety", "直す前に保存する"],
-        trouble: ["quiz", "状況をそのまま渡す"],
-        summary: ["eyecheck", "まずは文字をひとつ"]
-      };
-      return t[lessonId] || COURSE_ART.appedit;
-    }
-    if (lessonId === "safety") return ["safety", "送る・消す・公開の前は、自分の目で"];
-    if (lessonId === "trouble") return ["chat", "エラー文をそのまま伝える"];
-    if (lessonId === "summary" || lessonId === "recap" || lessonId === "wrap") return ["eyecheck", "できたことを確認して、次は小さく"];
-    if (lessonId === "setup" || lessonId === "prep") return ["desktop", "まずは自分のパソコンで準備"];
-    if (lessonId === "flow") return ["site", "上から順に、ひとつずつ"];
-    if (courseId === "code" && lessonId === "step1") return ["start", "スタートから PowerShell"];
-    if (courseId === "code" && lessonId === "step2") return ["copy", "1行を貼って Enter"];
-    if (courseId === "code" && lessonId === "step3") return ["browser", "ブラウザでログイン"];
-    if (courseId === "code" && lessonId === "step4") return ["desktop", "モデルと権限を決める"];
-    if (courseId === "poster" && lessonId === "step1") return ["pinterest", "お手本画像を保存"];
-    if (courseId === "poster" && lessonId === "step2") return ["chat", "ことばを考える係"];
-    if (courseId === "cowork" && lessonId === "step1") return ["invoice", "1社の請求書から試す"];
-    if (courseId === "cowork" && lessonId === "step2") return ["expense", "経費を科目ごとにまとめる"];
-    if (courseId === "secretary" && lessonId === "step1") return ["secretary", "予定・メモ・振り返り"];
-    if (courseId === "secretary" && lessonId === "step4") return ["git", "GitHubに保存する"];
-    if (courseId === "secretary" && lessonId === "step5") return ["browser", "公開してスマホで見る"];
-    if (courseId === "poster" && lessonId === "step5") return ["canva", "Canvaで文字を直す"];
-    if (courseId === "poster") {
-      const t = {
-        goal: ["poster", "道は2つ。最後は目で確認"],
-        prompt: ["copy", "プロンプトは注文書"],
-        flow: ["compare", "一問一答かマジックレイヤー"],
-        notes: ["poster", "文字は崩れる。人が読む"],
-        step1: ["pinterest", "お手本画像を保存"],
-        step2: ["chat", "ことばを考える係"],
-        step5: ["canva", "保存してから文字を直す"],
-        step9: ["canva", "他は？を飛ばさない"],
-        design: ["poster", "色は3色、言いたいことは1つ"],
-        canva: ["canva", "コピーを作成。Ctrl＋Z"],
-        flyerimg: ["chat", "案を3つ。画像を作成する"],
-        layer: ["canva", "マジックレイヤー"],
-        layerfix: ["eyecheck", "誤字とQRは目で見る"],
-        layerqa: ["quiz", "1か所は分ける前に直す"],
-        appeal: ["poster", "電話と住所は大きく"],
-        summary: ["poster", "2つの道。文字は人が読む"]
-      };
-      return t[lessonId] || COURSE_ART.poster;
-    }
-    if (
-      ["invoice", "expense", "crm", "shop", "survey", "abc", "sns", "snspost"].includes(courseId) &&
-      /^step/.test(lessonId || "") &&
-      COURSE_ART[courseId]
-    ) {
-      return COURSE_ART[courseId];
-    }
-    if (lessonId && LESSON_ART[lessonId] && !GENERIC_LESSON[lessonId]) return LESSON_ART[lessonId];
-    if (COURSE_ART[courseId]) return COURSE_ART[courseId];
-    if (lessonId && LESSON_ART[lessonId]) return LESSON_ART[lessonId];
-    return ["mouse", "オレンジのボタンを左クリック"];
-  };
-
   const pickOpPic = (text) => {
     if (/出退勤|出勤|退勤/.test(text)) return "attendapp";
     if (/HTML|CSS|JAVA|JavaScript|骨組み/.test(text)) return "site";
@@ -1531,13 +1146,6 @@ ${q}
     return "eyecheck";
   };
 
-  const coverArt = (name) => {
-    const svg = window.ILLUSTRATIONS && window.ILLUSTRATIONS[name];
-    if (!svg) return "";
-    const decorative = svg.replace(/\srole="img"/g, "").replace(/\saria-label="[^"]*"/g, "");
-    return `<div class="cover-art" aria-hidden="true">${decorative}</div>`;
-  };
-
   const cardsFor = (ids) =>
     ids
       .filter((id) => CLASSROOM.courses[id] && COURSE_META[id])
@@ -1549,7 +1157,7 @@ ${q}
           cover,
           label,
           course.title,
-          `レッスン${course.lessons.length}本 ／ ${course.duration}`,
+          `${course.lessons.length}ページ ／ ${course.duration}`,
           blurb,
           percent(id),
           pic
@@ -1559,23 +1167,12 @@ ${q}
 
   const classCard = (href, cover, label, title, meta, blurb, p, pic) => {
     const id = (href.match(/#\/course\/([^/?#]+)/) || [])[1];
-    const tool = id ? toolOf(id) : "";
     const heading = (id && STAMP_LABELS[id] && STAMP_LABELS[id][0]) || label || title;
     const locked = id && !canSeeCourse(id);
-    const chip =
-      tool === "cowork"
-        ? `<span class="tool-chip is-cowork">Cowork</span>`
-        : tool === "code"
-          ? `<span class="tool-chip is-code">Claude Code</span>`
-          : id
-            ? `<span class="tool-chip is-starter">はじめて</span>`
-            : "";
     if (locked) {
       return `
           <a class="class-card is-locked" href="#/me" data-link>
-            <div class="cover ${cover}">${pic ? coverArt(pic) : `<strong>${label}</strong>`}</div>
             <div class="class-body">
-              ${chip}
               <span class="st-chip is-todo">鍵</span>
               <h3 title="${escapeHtml(title)}">${escapeHtml(heading)}</h3>
               <p class="card-meta">受講コードが必要です</p>
@@ -1584,9 +1181,7 @@ ${q}
     }
     return `
           <a class="class-card ${p >= 100 ? "is-complete" : p > 0 ? "is-going" : "is-fresh"}" href="${href}" data-link>
-            <div class="cover ${cover}">${pic ? coverArt(pic) : `<strong>${label}</strong>`}</div>
             <div class="class-body">
-              ${chip}
               ${p == null ? "" : statusChip(courseKind(p))}
               <h3 title="${escapeHtml(title)}">${escapeHtml(heading)}</h3>
               <p class="card-meta">${meta}${p == null ? "" : `　進度 ${p}%`}</p>
@@ -1645,107 +1240,6 @@ ${q}
   const courseOverview = (courseId) => {
     const course = CLASSROOM.courses[courseId];
     const first = course.lessons[0];
-    const covers = {
-      account: "cover-account",
-      claudebase: "cover-chat",
-      aipick: "cover-applied",
-      settings: "cover-account",
-      webchat: "cover-chat",
-      webwords: "cover-intro",
-      promptskill: "cover-chat",
-      trainapp: "cover-code",
-      cowork: "cover-cowork",
-      code: "cover-code",
-      codemac: "cover-mac",
-      applied: "cover-applied",
-      claudemd: "cover-applied",
-      poster: "cover-poster",
-      canvaai: "cover-poster",
-      market: "cover-sns",
-      peoplejob: "cover-crm",
-      hypo: "cover-applied",
-      hr: "cover-crm",
-      sched: "cover-chat",
-      slacksum: "cover-cowork",
-      minutes: "cover-chat",
-      salesrep: "cover-invoice",
-      salescsv: "cover-survey",
-      aicopy: "cover-faq",
-      aisub: "cover-expense",
-      intro: "cover-intro",
-      secretary: "cover-secretary",
-      secplus: "cover-secretary",
-      appedit: "cover-appedit",
-      invoice: "cover-invoice",
-      expense: "cover-expense",
-      crm: "cover-crm",
-      shop: "cover-shop",
-      portfolio: "cover-shop",
-      survey: "cover-survey",
-      abc: "cover-abc",
-      sns: "cover-sns",
-      snspost: "cover-snspost",
-      attend: "cover-expense",
-      salary: "cover-invoice",
-      invoicemake: "cover-invoice",
-      nodejs: "cover-code",
-      mdbase: "cover-applied",
-      skillbase: "cover-applied",
-      researcher: "cover-survey",
-      faq: "cover-faq"
-    };
-    const labels = {
-      account: "準備",
-      claudebase: "基本",
-      aipick: "使い分け",
-      settings: "設定",
-      webchat: "チャット",
-      webwords: "ことば",
-      promptskill: "プロンプト",
-      trainapp: "工程",
-      cowork: "Cowork",
-      code: "Code",
-      codemac: "Mac",
-      applied: "応用",
-      claudemd: "CLAUDE.md",
-      poster: "ポスター",
-      canvaai: "Canva",
-      market: "マーケ",
-      peoplejob: "人の仕事",
-      hypo: "仮説",
-      hr: "人事",
-      sched: "日程",
-      slacksum: "Slack",
-      minutes: "議事録",
-      salesrep: "売上",
-      salescsv: "CSV分析",
-      aicopy: "著作",
-      aisub: "補助",
-      intro: "勉強会",
-      secretary: "秘書",
-      secplus: "秘書+",
-      appedit: "画面",
-      invoice: "請求書",
-      expense: "経費",
-      crm: "CRM",
-      shop: "店舗",
-      portfolio: "公開",
-      survey: "集計",
-      abc: "ABC",
-      sns: "SNS",
-      snspost: "投稿文",
-      attend: "出退勤",
-      salary: "給料",
-      invoicemake: "請求書",
-      nodejs: "Node.js",
-      mdbase: "CLAUDE.md",
-      skillbase: "Skills",
-      researcher: "リサーチ",
-      faq: "つまずき"
-    };
-    const cover = covers[courseId] || "cover-cowork";
-    const label = labels[courseId] || course.title;
-    const [pic, cap] = artFor(courseId);
     const p = percent(courseId);
     const kind = courseKind(p);
     return `
@@ -1758,7 +1252,6 @@ ${q}
           { href: `#/course/${courseId}`, label: course.title }
         ])}
         <div class="class-card course-lead">
-          <div class="cover ${cover}">${coverArt(pic) || `<strong>${label}</strong>`}</div>
           <div>
             <p class="kicker">${toolKicker(courseId)}</p>
             ${statusChip(kind)}
@@ -1778,9 +1271,8 @@ ${q}
           <ul class="lesson-list">
             ${course.lessons
               .map((l, i) => {
-                const [icon] = artFor(courseId, l.id);
                 const st = lessonKind(courseId, l.id);
-                return `<li><a class="lesson-row is-${st}" href="#/course/${courseId}/${l.id}" data-link><span class="list-art">${coverArt(icon)}</span><span class="lesson-row-main"><span class="lesson-row-title">${i + 1}. ${escapeHtml(l.title)}${
+                return `<li><a class="lesson-row is-${st}" href="#/course/${courseId}/${l.id}" data-link><span class="lesson-row-main"><span class="lesson-row-title">${i + 1}. ${escapeHtml(l.title)}${
                     l.optional ? "（余ったら）" : l.practice ? "（やってみる）" : ""
                   }</span></span>${lessonChip(courseId, l)}<span class="lesson-go" aria-hidden="true">›</span></a></li>`;
               })
@@ -1794,19 +1286,18 @@ ${q}
   const lessonView = (courseId, lessonId) => {
     const course = CLASSROOM.courses[courseId];
     const idx = course.lessons.findIndex((l) => l.id === lessonId);
-    if (idx < 0) return `<p>レッスンが見つかりません。</p>`;
+    if (idx < 0) return `<p>ページが見つかりません。</p>`;
     const lesson = course.lessons[idx];
     const prev = course.lessons[idx - 1];
     const next = course.lessons[idx + 1];
     const done = loadProgress()[courseId] || {};
     const tocOpen = typeof window.matchMedia === "function" && window.matchMedia("(min-width: 901px)").matches;
-    const [pic, cap] = artFor(courseId, lessonId);
     const sidebar = course.lessons
       .map((l) => {
         const st = lessonKind(courseId, l.id);
         return `<a href="#/course/${courseId}/${l.id}" data-link class="${l.id === lessonId ? "active" : ""} ${
             done[l.id] ? "done" : ""
-        }"><span class="list-art">${coverArt(artFor(courseId, l.id)[0])}</span><span>${escapeHtml(l.title)}</span>${lessonChip(courseId, l)}</a>`;
+        }"><span>${escapeHtml(l.title)}</span>${lessonChip(courseId, l)}</a>`;
       })
       .join("");
     const p = percent(courseId);
@@ -1826,11 +1317,8 @@ ${q}
               { href: `#/course/${courseId}`, label: course.title },
               { href: `#/course/${courseId}/${lessonId}`, label: lesson.title }
             ])}
-            <p class="now-here">いま ${idx + 1} / ${course.lessons.length}　${escapeHtml(lesson.title)}</p>
             <p class="easy-meta">目安 ${escapeHtml(course.duration)}　この講座 ${p}%</p>
             ${thinMeter(p, "course-meter is-lesson", "この講座の進度")}
-            <div class="study-rail" aria-hidden="true"><span style="--p:${Math.round(((idx + 1) / course.lessons.length) * 100)}%"></span></div>
-            ${figureHTML(pic, cap || "このページでやること", lessonId === "stuck" ? "compact" : "hero")}
             ${lesson.body}
             <div class="mark-read ${done[lessonId] ? "is-inked" : ""}">
               <span class="mark-read-stamp" aria-hidden="true">💮</span>
@@ -2054,32 +1542,6 @@ ${q}
         }
       }
       el.outerHTML = figureHTML(el.dataset.pic, el.dataset.cap || "絵で見てください");
-    });
-    document.querySelectorAll(".op").forEach((el) => {
-      if (el.querySelector(".pic") || el.querySelector("[data-pic]")) return;
-      const body = el.closest(".lesson-body");
-      if (body && body.querySelector(":scope > .pic-hero")) return;
-      const h3 = el.querySelector("h3");
-      const pic = pickOpPic(el.textContent || "");
-      if (!pic || pic === "eyecheck") return;
-      const html = figureHTML(pic, h3 ? `${h3.textContent}のイメージ` : "絵で見てください");
-      if (h3) h3.insertAdjacentHTML("afterend", html);
-      else el.insertAdjacentHTML("afterbegin", html);
-    });
-    const hasHero = !!document.querySelector(".lesson-body > .pic-hero");
-    const heads = document.querySelectorAll(".lesson-body h2");
-    let added = 0;
-    heads.forEach((h) => {
-      if (hasHero) return;
-      if (added >= 4) return;
-      if (h.closest(".course-overview")) return;
-      if (/一覧|もくじ|目次|付箋|お気に入り/.test(h.textContent || "")) return;
-      if (h.closest(".fav-bar, .member-page, .guide-page")) return;
-      const next = h.nextElementSibling;
-      if (next && (next.classList.contains("pic") || (next.querySelector && next.querySelector(".pic")))) return;
-      if (next && next.matches && next.matches("ul, ol, .lesson-list, .ops, .code-wrap, .callout")) return;
-      h.insertAdjacentHTML("afterend", figureHTML(pickOpPic(h.textContent || ""), `${h.textContent.trim()}のイメージ`));
-      added += 1;
     });
   };
 

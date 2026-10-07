@@ -175,10 +175,6 @@ body.is-home .site-header {
   padding: 8px;
 }
 
-.class-card .cover-art svg {
-  max-height: 100px;
-}
-
 .class-card h3 {
   font-size: 15px;
   font-weight: 700;
@@ -223,12 +219,12 @@ body.is-home .site-header {
 .cover-crm { background: #f1eef6; color: var(--ink); }
 .cover-shop { background: #eaf6f1; color: var(--ink); }
 .cover-survey { background: #eaf1f8; color: var(--ink); }
-.cover-abc { background: #f6f0e4; color: var(--ink); }
+
 .cover-sns { background: #f3eef8; color: var(--ink); }
 .cover-snspost { background: #f8ecec; color: var(--ink); }
 .cover-account { background: #f7f0e4; color: var(--ink); }
 .cover-chat { background: #eef3f8; color: var(--ink); }
-.cover-mac { background: #eceff3; color: var(--ink); }
+
 .cover-faq { background: #f8eee8; color: var(--ink); }
 
 .site-footer {
@@ -243,28 +239,6 @@ body.is-home .site-header {
 .site-footer a,
 .footer-nav a {
   color: #fff;
-}
-
-.now-here {
-  background: #fff8f1;
-  color: var(--ink);
-  border-radius: 12px;
-  font-weight: 700;
-}
-
-.study-rail {
-  height: 3px;
-  background: #eee;
-  border-radius: 100px;
-  overflow: hidden;
-  margin: 0 0 16px;
-}
-
-.study-rail > span {
-  display: block;
-  height: 100%;
-  width: var(--p, 0%);
-  background: var(--orange);
 }
 
 .lesson-body,

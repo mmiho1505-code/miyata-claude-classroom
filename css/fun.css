@@ -233,13 +233,6 @@ body.is-home .site-header {
   outline: 0;
 }
 
-.now-here {
-  background: #fff8f1;
-  color: var(--ink);
-  border-radius: 14px;
-  border: 2px solid #ffe1cf;
-}
-
 .course-overview {
   display: flex;
   flex-direction: column;
@@ -342,10 +335,6 @@ body.is-home .site-header {
 
 .mark-read .primary {
   width: fit-content;
-}
-
-.study-rail > span {
-  background: linear-gradient(90deg, #ff9bb8, #ff7a59, #ffc85c);
 }
 
 .sidebar a.active {

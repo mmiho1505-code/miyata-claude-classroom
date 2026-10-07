@@ -168,7 +168,6 @@ button.btn-orange {
 
 .class-card h3 { font-size: 16px !important; }
 
-.tool-chip,
 .st-chip{
   border-radius: 4px !important;
   box-shadow: none !important;
@@ -177,9 +176,6 @@ button.btn-orange {
   letter-spacing: 0.02em !important;
 }
 
-.tool-chip { background: var(--wash) !important; color: var(--muted) !important; border: 1px solid var(--line) !important; }
-.tool-chip.is-cowork { background: #fff !important; color: var(--accent) !important; border-color: #ecd6c2 !important; }
-.tool-chip.is-code { background: #fff !important; color: var(--navy) !important; border-color: #c9d5e6 !important; }
 .st-chip.is-done { background: #e8f3ee !important; color: var(--ok) !important; }
 .st-chip.is-now { background: var(--navy-wash) !important; color: var(--navy) !important; }
 .st-chip.is-todo,
@@ -406,23 +402,6 @@ button.btn-orange {
 .crumbs a { color: var(--muted) !important; }
 .crumbs a:hover { color: var(--navy) !important; }
 
-.now-here {
-  background: var(--wash) !important;
-  border: 1px solid var(--line) !important;
-  border-radius: 4px !important;
-  box-shadow: none !important;
-  color: var(--ink) !important;
-}
-
-.study-rail,
-.study-rail > span {
-  background: #e9edf3 !important;
-  border-radius: 2px !important;
-  box-shadow: none !important;
-}
-
-.study-rail > span { background: var(--navy) !important; }
-
 .pic,
 .pic-easy,
 .pic-compact,
@@ -520,11 +499,6 @@ button.btn-orange {
 }
 
 /* 講座トップ */
-.list-art {
-  background: var(--wash) !important;
-  border: 1px solid var(--line) !important;
-  border-radius: 6px !important;
-}
 
 .lesson-go { color: var(--muted) !important; }
 
@@ -577,3 +551,32 @@ form button[type="submit"] {
   box-shadow: none !important;
   transform: none !important;
 }
+
+/* 絵をなくしたカードは1列に */
+.class-card,
+.class-card.course-lead,
+.course-lead {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+.class-card .class-body,
+.course-lead > div {
+  padding: 18px 20px !important;
+}
+
+.class-card .card-blurb { margin-bottom: 12px; }
+
+/* 講座の進度バーは本文の幅いっぱいに */
+.course-meter { max-width: none !important; width: 100% !important; }
+
+/* ページ一覧：題名・状態・矢印の3列 */
+.lesson-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 16px !important;
+}
+
+.sidebar a { grid-template-columns: minmax(0, 1fr) auto !important; }

@@ -176,23 +176,6 @@ body.is-teacher mark.teach-mark:hover {
   line-height: 1;
 }
 
-.lesson-list .list-art {
-  width: 96px !important;
-  height: 72px !important;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #fff8f1;
-  border: 1px solid #ffe1cf;
-}
-
-.lesson-list .list-art svg,
-.lesson-list .list-art .cover-art svg {
-  width: 100%;
-  max-width: 96px !important;
-  max-height: 70px !important;
-  height: auto;
-}
-
 .pic-easy {
   padding-top: 32px;
 }
@@ -349,18 +332,7 @@ body.is-teacher mark.teach-mark:hover {
     display: none;
   }
 
-  .lesson-list .list-art {
-    width: 72px !important;
-    height: 56px !important;
-  }
-}
-
-.fav-bar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  margin: 16px 0 8px;
+  
 }
 
 .header-fav {
@@ -1285,8 +1257,7 @@ body.is-chat .chat-fab {
     gap: 12px;
   }
 
-  body.is-home .class-card .cover,
-  body.is-home .class-card .cover-art svg {
+  body.is-home .class-card .cover{
     min-height: 76px;
     height: 76px;
   }
