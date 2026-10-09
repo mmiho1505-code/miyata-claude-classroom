@@ -8,7 +8,7 @@
   CLASSROOM.courses.webwords = {
     id: "webwords",
     title: "画面のことばと開発の流れ",
-    subtitle: "HTML・CSS・JAVAの役割と、アプリを作る工程の注意点",
+    subtitle: "HTML・CSS・JavaScriptの役割と、アプリを作る工程の注意点",
     duration: "約20分",
     audience: "はじめて／ポータルやアプリを直す人。開発の回は見るだけ",
     lessons: [
@@ -24,9 +24,9 @@
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>HTML</h3><p>骨組み。見出し、文章、ボタン、表など、何が載っているか</p></article>
               <article class="op"><span class="num">2</span><h3>CSS</h3><p>見た目。色、大きさ、並び、余白、スマホで崩れないか</p></article>
-              <article class="op"><span class="num">3</span><h3>JAVA（JavaScript）</h3><p>動き。押したら時刻が残る、タブで画面が切り替わる</p></article>
+              <article class="op"><span class="num">3</span><h3>JavaScript</h3><p>動き。押したら時刻が残る、タブで画面が切り替わる。読みは「ジャバスクリプト」、略して JS</p></article>
             </div>
-            <div class="callout">Java（ジャバ）は名前が似ている<strong>別の言語</strong>です。社内ポータルの1ページでは、ほとんど出てきません。</div>
+            <div class="callout">JavaScript を「ジャバ」と略すと、<strong>別の言語</strong>の Java（ジャバ）と混ざります。Java は、社内ポータルの1ページではほとんど出てきません。</div>
           `
       },
       {
@@ -41,7 +41,7 @@
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>中身</h3><p>「お知らせを一番上に足して」（HTML）</p></article>
               <article class="op"><span class="num">2</span><h3>見た目</h3><p>「文字を大きく、落ち着いた緑に」（CSS）</p></article>
-              <article class="op"><span class="num">3</span><h3>動き</h3><p>「このボタンを押したら、点検日を記録して」（JAVA）</p></article>
+              <article class="op"><span class="num">3</span><h3>動き</h3><p>「このボタンを押したら、点検日を記録して」（JavaScript）</p></article>
             </div>
             <p>3つを一度に頼むと混ざります。1つずつ頼み、できた画面を目で見ます。</p>
             <p>作り方は <a href="#/course/portalmake" data-link>ポータル作り方編</a>、直し方は <a href="#/course/appedit" data-link>アプリ画面の編集</a> です。</p>
@@ -54,7 +54,7 @@
         body: `
             <p class="kicker">見るだけ　3／7</p>
             <h1>一気に最後まで頼まない</h1>
-            <p>講師が Claude Code で作った筋トレ・食事記録アプリ（EP275）の工程を見ます。作らなくて構いません。持ち帰るのは、各工程の注意点です。</p>
+            <p>Claude Code で作った筋トレ・食事記録アプリを例に、工程を見ます。作らなくて構いません。持ち帰るのは、各工程の注意点です。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>企画・要件</h3><p>作るもの／作らないものを先に決める</p></article>
               <article class="op"><span class="num">2</span><h3>設計</h3><p>実装の前にルールを整える</p></article>
@@ -73,7 +73,7 @@
         body: `
             <p class="kicker">企画　4／7　練習</p>
             <h1>作るもの／作らないものを先に書く</h1>
-            <p>講師はチャットAIと壁打ちして企画書（PRD）を1本にしました。作るものは記録・進捗・AIコーチ・重量提案・週の振り返り。作らないものは SNS、課金、スマートウォッチ連携。画面は5つに絞りました。</p>
+            <p>この例では、チャットAIと壁打ちして企画書（PRD）を1本にしました。作るものは記録・進捗・AIコーチ・重量提案・週の振り返り。作らないものは SNS、課金、スマートウォッチ連携。画面は5つに絞りました。</p>
             ${box(`このアプリの企画書を1本にまとめてください。まだコードは書かないでください。
 ・作るもの：〔記録・進捗・相談〕
 ・作らないもの：〔SNS、課金、外部機器〕
@@ -121,7 +121,7 @@
             <p class="kicker">まとめ　7／7</p>
             <h1>作らないものを先に。小さく。先に案。</h1>
             <ol>
-              <li>画面は HTML（中身）・CSS（見た目）・JAVA（動き）。頼むときは日本語で1つずつ</li>
+              <li>画面は HTML（中身）・CSS（見た目）・JavaScript（動き）。頼むときは日本語で1つずつ</li>
               <li>作るもの／作らないものを企画書に書く。画面は絞る</li>
               <li>CLAUDE.md と decisions.md。計算はコード、AIは推定と相談</li>
               <li>1機能ずつ。推定値は保存前に人が確認</li>

@@ -580,3 +580,86 @@ form button[type="submit"] {
 }
 
 .sidebar a { grid-template-columns: minmax(0, 1fr) auto !important; }
+
+/* ---- 読みやすさ：小さかった文字を大きく ---- */
+.code-wrap pre {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+}
+
+.code-wrap .copy {
+  font-size: 15px !important;
+  min-height: 40px;
+  padding: 8px 16px !important;
+}
+
+.paste-hint,
+.mark-read-note { font-size: 15px !important; }
+
+.sidebar a,
+.toc-course { font-size: 14px !important; }
+
+.btn-orange,
+.btn-dark,
+.mark-read .primary { font-size: 15px !important; }
+
+/* ---- マイページ：畳める欄 ---- */
+details.fold > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+details.fold > summary::-webkit-details-marker { display: none; }
+
+details.fold > summary::after {
+  content: "開く";
+  flex: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid #c9d0db;
+  border-radius: 6px;
+  padding: 4px 12px;
+  background: #fff;
+}
+
+details.fold[open] > summary::after { content: "閉じる"; }
+
+details.fold > summary h2 {
+  margin: 0 !important;
+  font-size: 18px !important;
+}
+
+details.card.fold > .fold-body { margin-top: 14px; }
+
+details.fold-inline { margin: 14px 0 4px; }
+
+details.fold-inline > summary {
+  font-weight: 700;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+details.fold-inline[open] > summary { margin-bottom: 12px; }
+
+.report-title {
+  font-size: 16px !important;
+  margin: 20px 0 6px;
+}
+
+@media print {
+  details.fold > summary::after { display: none; }
+}
+
+/* スマホで、名前とコードの入力欄が縦に伸びていたのを1行分に */
+@media (max-width: 900px) {
+  .member-row input {
+    flex: 0 0 auto !important;
+    min-height: 48px;
+  }
+}

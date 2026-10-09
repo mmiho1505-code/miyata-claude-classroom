@@ -128,7 +128,7 @@
             <p>Claude Code に競合の料金と特徴を調べさせ、料金の裏取りまでしたレポート（HTML・Markdown・PDF）を出させます。必要なのは Claude Pro 以上、Cursor、ターミナルで動く Claude Code です。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>フォルダを開く</h3><p>中身を公開してよい練習用の作業フォルダを Cursor で開き、ターミナルで <code>claude</code>。初回の「このフォルダを信頼しますか」はエラーではない</p></article>
-              <article class="op"><span class="num">2</span><h3>プラグインを入れる</h3><p>講師が配ったコマンドで入れる（全文は配布PDFと案内された GitHub のページ）</p></article>
+              <article class="op"><span class="num">2</span><h3>プラグインを入れる</h3><p>講義で配られたコマンドで入れる（全文は配布PDFと案内された GitHub のページ）</p></article>
               <article class="op"><span class="num">3</span><h3>再起動して初期化</h3><p>一度終了し、もう一度起動してから下を打つ。作業用のファイル一式ができる</p></article>
             </div>
             ${box(`/researcher:init`)}

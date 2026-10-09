@@ -24,17 +24,17 @@
               <article class="op"><span class="num">1</span><h3>知る</h3><p>よくある使い方19項目の表を作らせる</p></article>
               <article class="op"><span class="num">2</span><h3>近づける</h3><p>自分の仕事と環境を書いて、1つに絞る</p></article>
             </div>
-            <div class="callout warn">表にも嘘が混じります（講師の例：作れる動画が △、できる音声会話が ×）。画像・動画・音声は公式で確認し、表はときどき作り直します。</div>
+            <div class="callout warn">表にも嘘が混じります（講義で出た例：作れる動画が △、できる音声会話が ×）。画像・動画・音声は公式で確認し、表はときどき作り直します。</div>
           `
       },
       {
         id: "read",
-        title: "講師の当日のまとめ",
+        title: "講義のまとめ（参考）",
         was: ["aipick/read"],
         body: `
             <p class="kicker">参考　2／5</p>
             <h1>文章まわりは、3つとも近い</h1>
-            <p>講師の当日のまとめです。正解ではなく、見比べ用です。</p>
+            <p>講義で出たまとめです。正解ではなく、見比べ用です。</p>
             <ul>
               <li><strong>ChatGPT</strong> … 万能型。迷ったらまずこれ</li>
               <li><strong>Gemini</strong> … 検索に強い。Gmail・ドキュメントと直結</li>

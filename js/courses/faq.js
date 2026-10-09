@@ -22,7 +22,7 @@
             <div data-pic="quiz" data-cap="上から近いものを選んでください"></div>
             <p>インストールの途中で、赤い英文が出て止まりました。近い症状のページへ進みます。</p>
             <ul>
-              <li>HTML・CSS・JAVA の意味が分からない → <a href="#/course/webwords" data-link>HTML・CSS・JAVA</a></li>
+              <li>HTML・CSS・JavaScript の意味が分からない → <a href="#/course/webwords" data-link>HTML・CSS・JavaScript</a></li>
               <li>PowerShell が開かない・CMDになる／貼れない → 2枚目</li>
               <li>claude が認識されない／Macのターミナルで失敗する → 3枚目</li>
               <li>ログインできない／左に Cowork が無い → 4枚目</li>
@@ -101,7 +101,7 @@
             <h1>担当者に相談。エラー文は残す</h1>
             <div data-pic="safety" data-cap="止まっても、パスワードを緩めて突破しない"></div>
             <p>会社のパソコンでは、情報システムの担当者に「Claude Code / claude.ai を教室で使いたい」と相談します。無断で制限を外さないでください。</p>
-            <h2>講師に聞くとき</h2>
+            <h2>先生に聞くとき</h2>
             <ol>
               <li>Windows か Mac か</li>
               <li>今やっていた講座名</li>

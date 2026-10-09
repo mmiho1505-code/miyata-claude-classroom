@@ -210,7 +210,7 @@ ${q}
 
   const greetDirect = () => ({
     role: "bot",
-    text: "この画面の中で答えます。claude.ai には飛びません。文章の相談や、教室のつまずきも、ここに書いて送ってください。"
+    text: "よくある質問に、用意した答えをすぐ返します。短い言葉で書いてください（例：貼れない、ログインできない）。合う答えがないときは、「先生に直接聞く」を使ってください。"
   });
 
   const loadDirectChat = () => {
@@ -226,7 +226,7 @@ ${q}
 
   const chatTabsHTML = () => `
           <div class="bot-tabs" role="tablist" aria-label="チャットの種類">
-            <button type="button" class="bot-tab is-on" data-chat-tab="ai">AIチャット</button>
+            <button type="button" class="bot-tab is-on" data-chat-tab="ai">自動応答</button>
             <button type="button" class="bot-tab" data-chat-tab="teacher">先生に直接聞く</button>
           </div>`;
 
@@ -272,18 +272,18 @@ ${q}
 
   const directChatHTML = () => `
           <div class="bot-pane is-direct">
-            <h3>AIチャット</h3>
-            <p class="easy-meta">この画面の中で答えます。外のサイトには飛びません。パスワードは書かないでください。</p>
+            <h3>自動応答（よくある質問）</h3>
+            <p class="easy-meta">よくある質問に、用意した答えをすぐ返します。AIが考えて答えるものではなく、言葉が合った答えを選ぶ仕組みです。合う答えがないときは「先生に直接聞く」へ。パスワードは書かないでください。</p>
             <div class="bot-shell is-direct">
               <div id="direct-log" class="bot-log" aria-live="polite"></div>
               <div class="bot-chips">
-                <button type="button" class="bot-chip" data-direct-q="請求書と見積書の違いをやさしく教えて">請求書と見積書</button>
-                <button type="button" class="bot-chip" data-direct-q="お願い文を短くやさしくする型を教えて">短くやさしく</button>
-                <button type="button" class="bot-chip" data-direct-q="例を1つ、手順つきで教えて">例を1つ</button>
+                ${((window.CLASSROOM_BOT && window.CLASSROOM_BOT.chips) || [])
+                  .map((c) => `<button type="button" class="bot-chip" data-direct-q="${escapeHtml(c)}">${escapeHtml(c)}</button>`)
+                  .join("")}
               </div>
               <form id="direct-form" class="bot-form">
-                <label class="sr-only" for="direct-q">AIチャットへの質問</label>
-                <textarea id="direct-q" name="q" rows="2" maxlength="800" placeholder="聞きたいことを書く"></textarea>
+                <label class="sr-only" for="direct-q">自動応答への質問</label>
+                <textarea id="direct-q" name="q" rows="2" maxlength="800" placeholder="困っていることを、短い言葉で書く"></textarea>
                 <button class="btn-orange" type="submit">送る</button>
               </form>
             </div>
@@ -301,7 +301,7 @@ ${q}
   };
 
   const nextToLearn = () => {
-    const id = HOME_ORDER.find(
+    const id = START_ORDER.find(
       (courseId) => CLASSROOM.courses[courseId] && courseId !== "faq" && canSeeCourse(courseId) && percent(courseId) < 100
     );
     if (!id) return null;
@@ -315,8 +315,11 @@ ${q}
     return { id, course, why };
   };
 
-  const HOME_ORDER = [
-    "today",
+  // 講義の日に先生と開く資料。先頭が「今日の講義」、2つ目からは「これまでの講義」に並ぶ。
+  // 新しい講義を足すときは、js/courses/ に講座ファイルを足し、ここの先頭に id を入れる。
+  const LECTURE_IDS = ["today"];
+
+  const HOME_ORDER = LECTURE_IDS.concat([
     "claudebase",
     "aipick",
     "promptskill",
@@ -343,7 +346,16 @@ ${q}
     "appedit",
     "applied",
     "faq"
-  ];
+  ]);
+
+  // 「最初の講座」「次におすすめ」を選ぶ順番。講義の資料（中級）は入れず、Claude基本から始める。
+  const START_ORDER = HOME_ORDER.filter((id) => !LECTURE_IDS.includes(id));
+
+  // 講座に held: "2026-10-09" の形で日付を書くと、「2026年10月9日」と表示する
+  const heldLabel = (course) => {
+    const m = String((course && course.held) || "").match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+    return m ? `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日` : "";
+  };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
   const COWORK_IDS = ["cowork", "portalmake", "attend", "invoicemake"];
@@ -432,7 +444,7 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "today"]);
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq"], LECTURE_IDS);
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -739,7 +751,7 @@ ${q}
     today: ["cover-applied", "今日", "120分。CLAUDE.mdとClaude Code（中級）。最後に自分の仕事で1つ作る。", "docs"],
     claudebase: ["cover-account", "基本", "アカウント・設定・指示とプロジェクト。ログイン直後にやる。", "signup"],
     aipick: ["cover-applied", "使い分け", "ChatGPT・Gemini・Claude。用途で選ぶ。表は疑う。", "compare"],
-    webwords: ["cover-intro", "ことば", "HTML・CSS・JAVAの意味と、作る前の工程。コードは書かない。", "site"],
+    webwords: ["cover-intro", "ことば", "HTML・CSS・JavaScriptの意味と、作る前の工程。コードは書かない。", "site"],
     promptskill: ["cover-chat", "頼み方", "チャットに1回頼む。目的・前提・形式。先に自分の仮説。", "webchat"],
     poster: ["cover-poster", "ポスター", "Claudeで原稿、Canvaで仕上げ。A4を1枚。", "poster"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
@@ -865,7 +877,7 @@ ${q}
     const cur = continueStudy();
     if (cur) return cur;
     const id =
-      HOME_ORDER.find((courseId) => CLASSROOM.courses[courseId] && canSeeCourse(courseId) && percent(courseId) < 100) ||
+      START_ORDER.find((courseId) => CLASSROOM.courses[courseId] && canSeeCourse(courseId) && percent(courseId) < 100) ||
       "poster";
     const course = CLASSROOM.courses[id];
     return {
@@ -1148,16 +1160,17 @@ ${q}
 
   const cardsFor = (ids) =>
     ids
-      .filter((id) => CLASSROOM.courses[id] && COURSE_META[id])
+      .filter((id) => CLASSROOM.courses[id] && (COURSE_META[id] || LECTURE_IDS.includes(id)))
       .map((id) => {
         const course = CLASSROOM.courses[id];
-        const [cover, label, blurb, pic] = COURSE_META[id];
+        const [cover, label, blurb, pic] = COURSE_META[id] || ["cover-applied", course.title, escapeHtml(course.subtitle || ""), "docs"];
+        const held = heldLabel(course);
         return classCard(
           `#/course/${id}`,
           cover,
           label,
           course.title,
-          `${course.lessons.length}ページ ／ ${course.duration}`,
+          `${held ? `${held}　` : ""}${course.lessons.length}ページ ／ ${course.duration}`,
           blurb,
           percent(id),
           pic
@@ -1202,6 +1215,10 @@ ${q}
       next.lesson
           ? `${escapeHtml(nextShort)}　${escapeHtml(next.lesson.title)}`
           : escapeHtml(nextShort);
+    const lectureHeld = heldLabel(CLASSROOM.courses[LECTURE_IDS[0]]);
+    const lectureLead = `${
+      lectureHeld ? `${lectureHeld}の講義です。` : "講義の日に、先生と一緒に開く資料です。"
+    }中級（Claude Code を起動できる人向け）。はじめての人は、下の「はじめて」からどうぞ。`;
     const section = (title, lead, ids) => `
         <section class="home-catalog">
           <div class="section-head"><h2>${title}</h2></div>
@@ -1229,8 +1246,9 @@ ${q}
         </div>
       </section>
       <div class="page">
-        ${section("今日の講義", "120分・8枚。CLAUDE.md と Claude Code（中級）。受講コードなしで開けます。", ["today"])}
-        ${section("はじめて", "受講コードなしで読めます。上から順で大丈夫です。", STARTER_IDS.concat(["faq"]))}
+        ${section("今日の講義", lectureLead, LECTURE_IDS.slice(0, 1))}
+        ${LECTURE_IDS.length > 1 ? section("これまでの講義", "過去の講義の資料です。受講コードなしで開けます。", LECTURE_IDS.slice(1)) : ""}
+        ${section("はじめて", "受講コードなしで読めます。はじめての人はここから。上から順で大丈夫です。", STARTER_IDS.concat(["faq"]))}
         ${section("事務（チャットで作業）", "画面で日本語のお願い。黒い画面は使いません。", COWORK_IDS)}
         ${section("道具づくり（Claude Code）", "最初に準備、そのあと作りやすい順です。", CODE_IDS)}
       </div>
@@ -1257,7 +1275,7 @@ ${q}
             ${statusChip(kind)}
             <h1>${escapeHtml(course.title)}</h1>
             <p class="lede">${escapeHtml(course.subtitle)}</p>
-            <p class="easy-meta">${escapeHtml(course.duration)}　進度 ${p}%</p>
+            <p class="easy-meta">${heldLabel(course) ? `${heldLabel(course)}の講義　` : ""}${escapeHtml(course.duration)}　進度 ${p}%</p>
             ${thinMeter(p, "course-meter", `${course.title}の進度`)}
             <p class="cta-row">
               <a class="btn-orange" href="#/course/${courseId}/${first.id}" data-link>1つ目から始める</a>
@@ -1377,8 +1395,8 @@ ${q}
         <p class="kicker">テキストで学ぶ</p>
         <h1>そのまま貼れるお願い文</h1>
         <p class="easy-meta">目安 約10分　コピーして貼るだけ</p>
-        ${figureHTML("copy", "オレンジの「コピー」→ 自分のClaudeに貼る")}
-        <p class="lede">オレンジの「コピー」を押して、自分のClaudeに貼ります。〔　〕の中だけ、自分の会社やファイル名に書き換えてください。</p>
+        ${figureHTML("copy", "「コピー」→ 自分のClaudeに貼る")}
+        <p class="lede">黒い枠の右上にある「コピー」を押して、自分のClaudeに貼ります。〔　〕の中だけ、自分の会社やファイル名に書き換えてください。</p>
         ${groups}
       </div>
     `;
@@ -1391,7 +1409,7 @@ ${q}
           ${compact ? "" : "<h2>ご利用上の注意</h2>"}
           <ul class="notice-list">
             <li>この学習アプリは、<strong>ご契約期間中のみ</strong>閲覧できます。期間が終わると、教材はご覧いただけません。</li>
-            <li>先生へのご質問・メールは、<strong>原則24時間以内</strong>に返信します。AIチャットは、この画面ですぐ返します。</li>
+            <li>先生へのご質問・メールは、<strong>原則24時間以内</strong>に返信します。自動応答（よくある質問）は、この画面ですぐ返します。</li>
             <li>教材・画面・文章の<strong>無断転載・複製・配布・公開は禁止</strong>です。契約者ご本人の学習以外には使わないでください。</li>
           </ul>
           ${compact ? `<p><a href="#/safety" data-link>注意事項の全体 →</a></p>` : ""}
@@ -1460,7 +1478,7 @@ ${q}
             <h2>教室の押し方</h2>
             <ul>
               <li>紺のボタンは、タップ（左クリック）</li>
-              <li>黒い枠の「コピー」→ 自分の画面に貼る</li>
+              <li>黒い枠の右上の「コピー」→ 自分の画面に貼る</li>
               <li>ページ下「このページを読んだ」で進度が付く</li>
               <li>続きは <a href="#/me" data-link>マイページ</a> から</li>
             </ul>
@@ -1509,7 +1527,7 @@ ${q}
           <span class="num">2</span>
           <h3>文章をコピー</h3>
           ${figureHTML("copy", "コピー → 自分の画面に貼る")}
-          <p>黒い枠の「コピー」を押し、自分の Claude に貼ります（Ctrl＋V／⌘＋V）。</p>
+          <p>黒い枠の右上の「コピー」を押し、自分の Claude に貼ります（Ctrl＋V／⌘＋V）。</p>
         </article>
         <article class="op">
           <span class="num">3</span>
@@ -1659,7 +1677,7 @@ ${q}
       ${crumbs([{ href: "#/", label: "ホーム" }, { href: "#/chat", label: "チャット" }])}
       <p class="kicker">CHAT</p>
       <h1>チャット</h1>
-      <p class="lede">AIチャットと、宮田先生へ直接聞く文面づくりが使えます。</p>
+      <p class="lede">すぐ返る自動応答（よくある質問）と、宮田先生へ直接聞くメールづくりが使えます。</p>
       ${termsNoticeHTML("compact")}
       ${chatTabsHTML()}
       <div class="bot-pair is-page is-teacher">
@@ -1710,7 +1728,6 @@ ${q}
         <p class="member-hello">${escapeHtml(helloLine())}</p>
         <h1>${n ? "あなたの学びの拠点" : "お名前を入れて、マイページにします"}</h1>
         <p class="lede">進度・続き・修了証は、この端末に残ります。名前を入れるとあいさつが変わります。</p>
-        ${termsNoticeHTML("compact")}
         <form class="member-form card" id="member-form">
           <label for="member-name">お名前（20文字まで）</label>
           <div class="member-row">
@@ -1719,45 +1736,6 @@ ${q}
           </div>
           ${n ? `<p><button class="btn-dark" type="button" id="member-clear">名前を消す</button></p>` : ""}
         </form>
-
-        <form class="member-form card" id="gate-form">
-          <h2>受講コード</h2>
-          <p class="easy-meta">いま開けるもの：${
-            loadGates().length ? loadGates().map((g) => escapeHtml((GATE_PACKS[g] || {}).label || g)).join("、") : "はじめて（準備）だけ"
-          }</p>
-          <label for="gate-code">塾からもらったコード</label>
-          <div class="member-row">
-            <input id="gate-code" name="gate" type="text" maxlength="20" autocomplete="off" placeholder="案内されたコード" />
-            <button class="primary" type="submit">開ける</button>
-          </div>
-          <p class="easy-meta" id="gate-err" hidden>コードが違います。塾の案内を見てください。</p>
-        </form>
-        ${
-          isTeacher()
-            ? `<div class="card teach-card">
-          <h2>説明用マーカー</h2>
-          <p class="easy-meta">ONです。講座の本文で文字を選ぶと黄色く塗れます。受講者の画面には出ません。このパソコンにだけ残ります。</p>
-          <p><button class="btn-dark" type="button" id="teacher-off">マーカーをOFFにする</button></p>
-        </div>`
-            : ""
-        }
-
-        <div class="card">
-          <h2>ほかの人に送る</h2>
-          <p class="easy-meta">携帯では、下のリンクを使ってください。GitHub に公開してあるページです。パソコンの「localhost」や Cursor のプレビューは、携帯から開けません。</p>
-          <ul class="hub-files invite-list">
-            ${inviteLinks()
-              .map(
-                ([label, url], i) =>
-                  `<li>
-                    <span>${escapeHtml(label)}</span>
-                    <button type="button" class="btn-dark" data-copy-link="${escapeHtml(url)}">リンクをコピー</button>
-                    ${i === 0 && typeof navigator !== "undefined" && navigator.share ? `<button type="button" class="btn-orange" data-share-invite="${escapeHtml(url)}">アプリで送る</button>` : ""}
-                  </li>`
-              )
-              .join("")}
-          </ul>
-        </div>
 
         <div class="card hub-resume">
           <h2>続きから再開</h2>
@@ -1784,41 +1762,63 @@ ${q}
           }
         </div>
 
+        <form class="member-form card" id="gate-form">
+          <h2>受講コード</h2>
+          <p class="easy-meta">いま開けるもの：${
+            loadGates().length ? loadGates().map((g) => escapeHtml((GATE_PACKS[g] || {}).label || g)).join("、") : "はじめて（準備）だけ"
+          }</p>
+          <label for="gate-code">塾からもらったコード</label>
+          <div class="member-row">
+            <input id="gate-code" name="gate" type="text" maxlength="20" autocomplete="off" placeholder="案内されたコード" />
+            <button class="primary" type="submit">開ける</button>
+          </div>
+          <p class="easy-meta" id="gate-err" hidden>コードが違います。塾の案内を見てください。</p>
+        </form>
+        ${
+          isTeacher()
+            ? `<div class="card teach-card">
+          <h2>説明用マーカー</h2>
+          <p class="easy-meta">ONです。講座の本文で文字を選ぶと黄色く塗れます。受講者の画面には出ません。このパソコンにだけ残ります。</p>
+          <p><button class="btn-dark" type="button" id="teacher-off">マーカーをOFFにする</button></p>
+        </div>`
+            : ""
+        }
+
         <div class="card">
           <h2>学習進捗</h2>
-          <p class="easy-meta">全体 ${stats.overall}%　読んだ ${stats.done} / ${stats.total}　この端末に残ります</p>
+          <p class="easy-meta">全体 ${stats.overall}%　読んだ ${stats.done} / ${stats.total}　修了 ${doneIds.length} 講座　この端末に残ります</p>
           ${thinMeter(stats.overall, "hero-meter", "全体の進度")}
-          <ul class="hub-courses">${courseRows}</ul>
+          <details class="fold fold-inline" data-fold="courses" ${openFolds.has("courses") ? "open" : ""}>
+            <summary>講座ごとの進度を見る</summary>
+            <ul class="hub-courses">${courseRows}</ul>
+          </details>
+          <h3 class="report-title">進度を先生に知らせる</h3>
+          <p class="easy-meta">進度はこの端末にしか残らないので、先生からは見えません。下のボタンで、いまの進度を文面にして送れます。</p>
+          <p class="cta-row">
+            <button class="btn-orange" type="button" id="report-mail">先生にメールで送る</button>
+            <button class="btn-dark" type="button" id="report-copy">文面をコピー</button>
+          </p>
+          <p class="easy-meta" id="report-hint" role="status"></p>
         </div>
 
-        <div class="card">
-          <h2>修了バッジ・修了証</h2>
-          ${
-            doneIds.length
-              ? `<div class="learn-badges">${doneIds
-                  .map((id) => {
-                    const [name, face] = STAMP_LABELS[id] || [id, "💮"];
-                    return `<a class="learn-badge" href="#/cert/${id}" data-link><span aria-hidden="true">${face}</span>${escapeHtml(name)} 修了</a>`;
-                  })
-                  .join("")}</div>
+        ${foldCard(
+          "badges",
+          `修了バッジ・修了証（${doneIds.length}）`,
+          doneIds.length
+            ? `<div class="learn-badges">${doneIds
+                .map((id) => {
+                  const [name, face] = STAMP_LABELS[id] || [id, "💮"];
+                  return `<a class="learn-badge" href="#/cert/${id}" data-link><span aria-hidden="true">${face}</span>${escapeHtml(name)} 修了</a>`;
+                })
+                .join("")}</div>
             <p class="easy-meta">バッジを押すと修了証を表示・印刷できます。</p>`
-              : `<p>コースを最後まで読むと、ここにバッジと修了証が出ます。</p>`
-          }
-        </div>
+            : `<p>講座を最後まで読むと、ここにバッジと修了証が出ます。</p>`
+        )}
 
-        <div class="card">
-          <h2>資料ダウンロード</h2>
-          <ul class="hub-files">
-            <li><a href="#/prompts" data-link>お願い文（プロンプト集）</a></li>
-            <li><a href="materials/invoice-template.txt" download>請求書ひな形（テキスト）</a></li>
-            <li><a href="materials/expense-sample.csv" download>経費のサンプルCSV</a></li>
-            <li><a href="materials/abc-sample.csv" download>ABC分析のサンプルCSV</a></li>
-          </ul>
-        </div>
-
-        <div class="card bot-card">
-          <h2>質問・相談</h2>
-          <p class="easy-meta">AIチャットはすぐ返します。宮田先生へ直接聞く場合は、原則24時間以内に返信します。外のサイトには飛びません。</p>
+        ${foldCard(
+          "ask",
+          "質問・相談",
+          `<p class="easy-meta">自動応答はすぐ返します。宮田先生へ直接聞く場合は、原則24時間以内に返信します。外のサイトには飛びません。</p>
           ${chatTabsHTML()}
           <div class="bot-pair is-teacher">
             ${directChatHTML()}
@@ -1826,12 +1826,14 @@ ${q}
           </div>
           <p><a class="btn-dark" href="#/chat" data-link>チャットページで大きく見る</a>
           <a class="btn-dark" href="#/course/faq" data-link>つまずき一覧</a>
-          <a class="btn-dark" href="#/safety" data-link>安全の約束</a></p>
-        </div>
+          <a class="btn-dark" href="#/safety" data-link>安全の約束</a></p>`,
+          "bot-card"
+        )}
 
-        <div class="card">
-          <h2>やってみた</h2>
-          <p class="easy-meta">自分の成果メモです。この端末に残ります。写真・PDF・CSVも添付できます（1枚あたり1MBまで）。</p>
+        ${foldCard(
+          "works",
+          `やってみた（${works.length}）`,
+          `<p class="easy-meta">自分の成果メモです。この端末に残ります。写真・PDF・CSVも添付できます（1枚あたり1MBまで）。</p>
           <form id="works-form" class="works-form">
             <label for="works-text">ひとこと（何を作ったか）</label>
             <textarea id="works-text" name="work" rows="2" maxlength="200" placeholder="例：ポスターの下書きを1枚作った"></textarea>
@@ -1856,13 +1858,48 @@ ${q}
                     .join("")
                 : `<li class="easy-meta">まだありません。できたことや、できたファイルを残してください。</li>`
             }
-          </ul>
-        </div>
+          </ul>`
+        )}
+
+        ${foldCard(
+          "files",
+          "資料ダウンロード",
+          `<ul class="hub-files">
+            <li><a href="#/prompts" data-link>お願い文（プロンプト集）</a></li>
+            <li><a href="materials/invoice-template.txt" download>請求書ひな形（テキスト）</a></li>
+            <li><a href="materials/expense-sample.csv" download>経費のサンプルCSV</a></li>
+            <li><a href="materials/abc-sample.csv" download>ABC分析のサンプルCSV</a></li>
+          </ul>`
+        )}
+
+        ${foldCard(
+          "invite",
+          "ほかの人に送る",
+          `<p class="easy-meta">${
+            isTeacher()
+              ? "先生用の表示です。受講コードつきのリンク（事務・道具・全部）は、受講者の画面には出ません。そのコースを契約した人にだけ送ってください。"
+              : "教室の入口のリンクです。受講コードは入っていません。講座を開くコードは、塾の案内をご覧ください。"
+          }</p>
+          <p class="easy-meta">携帯では、下のリンクを使ってください。パソコンの「localhost」や Cursor のプレビューは、携帯から開けません。</p>
+          <ul class="hub-files invite-list">
+            ${inviteLinks()
+              .map(
+                ([label, url], i) =>
+                  `<li>
+                    <span>${escapeHtml(label)}</span>
+                    <button type="button" class="btn-dark" data-copy-link="${escapeHtml(url)}">リンクをコピー</button>
+                    ${i === 0 && typeof navigator !== "undefined" && navigator.share ? `<button type="button" class="btn-orange" data-share-invite="${escapeHtml(url)}">アプリで送る</button>` : ""}
+                  </li>`
+              )
+              .join("")}
+          </ul>`
+        )}
 
         <div class="card">
           <h2>お気に入り</h2>
           <p>右上の「お気に入り追加」を押したページは <a href="#/notes" data-link>お気に入り</a> で全部見られます。いま ${loadFavs().length} 件です。</p>
         </div>
+        ${termsNoticeHTML("compact")}
       </div>
     `;
   };
@@ -1899,6 +1936,65 @@ ${q}
         }
       </div>
     `;
+  };
+
+  // マイページの進度を、先生に送る文面にする
+  const progressReport = () => {
+    const stats = courseStats();
+    const lines = HOME_ORDER.filter((id) => CLASSROOM.courses[id] && id !== "faq" && canSeeCourse(id)).map((id) => {
+      const short = (STAMP_LABELS[id] || [CLASSROOM.courses[id].title])[0];
+      return `・${short}：${percent(id)}%${percent(id) >= 100 ? "　修了" : ""}`;
+    });
+    return `【教室の進度】
+名前：${memberName() || "（未記入）"}
+日付：${new Date().toLocaleDateString("ja-JP")}
+全体：${stats.overall}%（読んだ ${stats.done} / ${stats.total} ページ）
+
+${lines.join("\n")}
+
+（パスワード・口座は書いていません）`;
+  };
+
+  const bindReport = () => {
+    const hint = document.getElementById("report-hint");
+    const mailBtn = document.getElementById("report-mail");
+    if (mailBtn) {
+      mailBtn.onclick = () => {
+        const name = memberName();
+        const subject = encodeURIComponent(`教室の進度${name ? `（${name}）` : ""}`);
+        if (hint) hint.textContent = `${TEACHER_MAIL} 宛のメールを開きます。送信を押すと先生に届きます。`;
+        location.href = `mailto:${TEACHER_MAIL}?subject=${subject}&body=${encodeURIComponent(progressReport())}`;
+      };
+    }
+    const copyBtn = document.getElementById("report-copy");
+    if (copyBtn) {
+      copyBtn.onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(progressReport());
+          if (hint) hint.textContent = "進度の文面をコピーしました。いつもの連絡手段に貼って送れます。";
+        } catch {
+          if (hint) hint.textContent = "コピーできませんでした。「先生にメールで送る」を使ってください。";
+        }
+      };
+    }
+  };
+
+  // マイページの畳んだ欄。開いたものは、画面を描き直しても開いたままにする
+  const openFolds = new Set();
+
+  const foldCard = (id, title, inner, cls = "") => `
+        <details class="card fold ${cls}" data-fold="${id}" ${openFolds.has(id) ? "open" : ""}>
+          <summary><h2>${title}</h2></summary>
+          <div class="fold-body">${inner}</div>
+        </details>`;
+
+  const bindFolds = () => {
+    document.querySelectorAll("details[data-fold]").forEach((el) => {
+      el.ontoggle = () => {
+        if (el.open) openFolds.add(el.dataset.fold);
+        else openFolds.delete(el.dataset.fold);
+      };
+    });
   };
 
   const bindWorks = () => {
@@ -2021,7 +2117,7 @@ ${q}
       const hit =
         window.CLASSROOM_BOT && window.CLASSROOM_BOT.talk
           ? window.CLASSROOM_BOT.talk(q)
-          : { text: "この画面の中で案内します。つまずき一覧も見てください。", href: "#/course/faq", link: "つまずき一覧" };
+          : { text: "いまは答えを用意できていません。つまずき一覧を見るか、「先生に直接聞く」を使ってください。", href: "#/course/faq", link: "つまずき一覧" };
       const msgs = loadDirectChat();
       msgs.push({ role: "user", text: q });
       msgs.push({ role: "bot", text: hit.text, href: hit.href, link: hit.link });
@@ -2075,7 +2171,7 @@ ${q}
       desc = "続き・進度・修了証・資料がある、自分の学びの拠点です。";
     } else if (parts[0] === "chat") {
       title = `チャット｜${site}`;
-      desc = "教室の中で話せるチャットです。";
+      desc = "よくある質問の自動応答と、先生への質問ができます。";
     } else if (parts[0] === "cert") {
       title = `修了証｜${site}`;
       desc = "講座の修了証です。";
@@ -2123,14 +2219,16 @@ ${q}
     return `${origin}${location.pathname.replace(/[^/]*$/, "")}`.replace(/\/?$/, "/");
   };
 
+  // 受講コードつきのリンクは、先生用の表示のときだけ出す。受講者には入口のリンクだけ。
   const inviteLinks = () => {
     const base = siteBase();
-    return [
-      ["教室の入口（準備だけ）", base],
+    const open = [["教室の入口（準備だけ）", base]];
+    if (!isTeacher()) return open;
+    return open.concat([
       ["事務コース（Cowork）", `${base}?key=jimu`],
       ["道具コース（Claude Code）", `${base}?key=dougu`],
       ["全部開ける", `${base}?key=zenbu`]
-    ];
+    ]);
   };
 
   const bindShare = () => {
@@ -2304,6 +2402,8 @@ ${q}
     bindTeachMarks();
     bindMember();
     bindWorks();
+    bindReport();
+    bindFolds();
     bindTeacherAsk();
     bindDirectChat();
     bindChatTabs();
