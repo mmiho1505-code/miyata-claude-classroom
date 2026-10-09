@@ -39,6 +39,7 @@
             <p class="kicker">レポート　2／7　練習</p>
             <h1>初回だけ、ひな形を読み解く（10〜40分）</h1>
             <p>ひな形の Excel と今月の売上データをフォルダに置き、下を貼ります。</p>
+            <p>練習用：<a href="materials/practice/sales-report-template.xlsx" download>レポートのひな形（Excel）</a>　<a href="materials/practice/sales-2026-09.csv" download>今月の売上データ（2026年9月）</a>　架空の店のデータです。</p>
             ${box(`このフォルダの中だけを見てください。フォルダの外は触らないでください。ファイルの削除はしないでください。
 
 グラフ付きの売上レポートのひな形と、今月の売上データがあります。
@@ -100,6 +101,7 @@
             <p class="kicker">分析　5／7　練習</p>
             <h1>CSVを1つにまとめ、切り口ごとに集計して検算</h1>
             <p>ひな形が無く、レジから出した CSV（前年の月別・当月・目標）から比較と打ち手案まで出す道です。題材は架空のアパレル店（店舗別・商品別・販売員別）です。</p>
+            <p>練習用：<a href="materials/practice/sales-2026-09.csv" download>当月（2026年9月）</a>　<a href="materials/practice/sales-2026-08.csv" download>前月（8月）</a>　<a href="materials/practice/sales-2025-09.csv" download>前年同月（2025年9月）</a>　<a href="materials/practice/sales-target-2026-09.csv" download>店舗別の目標</a></p>
             <ul>
               <li>原本は別の場所に残し、<strong>コピー</strong>を作業用フォルダへ</li>
               <li>Sonnet。Effort は「中」で足りることが多い。データが多くても上位モデル必須ではない</li>

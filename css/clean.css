@@ -663,3 +663,14 @@ details.fold-inline[open] > summary { margin-bottom: 12px; }
     min-height: 48px;
   }
 }
+
+/* マイページ「資料ダウンロード」の小見出し */
+.files-h {
+  margin: 18px 0 6px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2b2118;
+}
+.files-h:first-of-type {
+  margin-top: 8px;
+}

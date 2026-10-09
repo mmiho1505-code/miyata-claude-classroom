@@ -35,6 +35,7 @@
               <article class="op"><span class="num">2</span><h3>中身を確認させる</h3><p>Claude Code を起動して、下の1つ目を貼る</p></article>
               <article class="op"><span class="num">3</span><h3>集計ツールを作らせる</h3><p>どんなグラフで見たいかを書いた2つ目を貼る</p></article>
             </div>
+            <p>練習用：<a href="materials/practice/survey.csv" download>アンケートの回答（survey.csv・60件）</a>　架空の店の回答です。名前は入っていません。</p>
             ${box(`アンケート結果を集計してグラフにするツールを作りたいです。survey.csv の中身を確認して、どんな設問があるか、集計できそうか教えて。`)}
             ${box(`survey.csv を読み込んで、設問ごとに集計してグラフにするツールを作って。選択式は円グラフや棒グラフ、割合(%)も表示。結果をまとめたレポート(PDFかHTML)も出して。`)}
           `
@@ -85,6 +86,7 @@
               <article class="op"><span class="num">2</span><h3>使う列を確認させる</h3><p>まだ分けない</p></article>
               <article class="op"><span class="num">3</span><h3>分けて検品</h3><p>件数・金額の合計が元の表と合うかを自分でも見る</p></article>
             </div>
+            <p>練習用：<a href="materials/practice/sales.xlsx" download>商品別の売上（sales.xlsx・20品目）</a>　架空の数字です。</p>
             ${box(`ABC分析の表とグラフを作りたいです。sales.xlsx の中身を確認して、どの列が名前で、どの列が金額か、分析できそうか教えて。まだ分けないで。`)}
             ${box(`sales.xlsx を使ってABC分析して。金額の大きい順に並べ、構成比と累積構成比を出して。累積70％までをA、90％までをB、残りをCにして。結果はExcelで保存して。件数・金額の合計が元データと合うかも教えて。境目はあとで変えられるようにして。`)}
           `

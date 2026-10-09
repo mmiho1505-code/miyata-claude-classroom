@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>Cowork勉強会 給料計算編</title>
+<link rel="stylesheet" href="node_modules/@fontsource/m-plus-rounded-1c/800.css" />
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-jp/400.css" />
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-jp/700.css" />
+<style>
+  @page { size: 960px 540px; margin: 0; }
+  :root {
+    --navy: #1f2b45;
+    --navy-2: #2a3a5c;
+    --yellow: #f3c14e;
+    --cream: #f6f5f0;
+    --pale: #ebf0f4;
+    --green: #2f7d62;
+    --ink: #1f2b45;
+    --text: #3a4356;
+    --muted: #6b7385;
+    --line: #d9dde4;
+    --warn: #c0562b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    color: var(--text);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .slide {
+    position: relative;
+    width: 960px;
+    height: 540px;
+    padding: 62px 64px 0;
+    background: var(--cream);
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+  }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  .slide.pale { background: var(--pale); }
+  .kicker {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--green);
+  }
+  h1 {
+    margin: 0 0 22px;
+    font-family: "M PLUS Rounded 1c", "Noto Sans JP", sans-serif;
+    font-weight: 800;
+    font-size: 27px;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  p { margin: 0; }
+  .note {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .note b, td b, li b { color: var(--ink); }
+  .foot {
+    position: absolute;
+    left: 64px;
+    bottom: 30px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* 表紙・演習 */
+  .slide.dark { background: var(--navy); }
+  .slide.cover { padding: 0 64px 0 70px; }
+  .slide.cover::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: var(--yellow);
+  }
+  .cover .kicker { color: var(--yellow); font-size: 15px; letter-spacing: 0.12em; padding-top: 172px; margin-bottom: 16px; }
+  .cover h1 { color: #fff; font-size: 44px; line-height: 1.32; margin-bottom: 22px; }
+  .cover .sub { color: #c9d1e0; font-size: 17px; }
+  .cover .who { position: absolute; left: 70px; bottom: 46px; color: #dfe4ee; font-size: 13px; }
+  .dark .kicker { color: var(--yellow); }
+  .dark h1 { color: #fff; }
+  .dark .foot { color: #aab3c5; }
+
+  /* カード */
+  .cards { display: grid; gap: 16px; }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .card {
+    background: #fff;
+    border: 1px solid #ecebe5;
+    border-radius: 10px;
+    padding: 22px 24px;
+  }
+  .card h2 {
+    margin: 0 0 10px;
+    font-family: "M PLUS Rounded 1c", "Noto Sans JP", sans-serif;
+    font-weight: 800;
+    font-size: 19px;
+    color: var(--ink);
+  }
+  .card p { font-size: 13px; line-height: 1.8; }
+  .card svg { display: block; margin-bottom: 12px; }
+  .card.green h2 { color: var(--green); }
+  .card.out { border: 1.5px solid var(--green); }
+  .card ul { margin: 0; padding-left: 1.2em; font-size: 13.5px; line-height: 2; }
+  .dark .card { background: var(--navy-2); border-color: var(--navy-2); }
+  .dark .card h2 { color: var(--yellow); font-size: 17px; margin-bottom: 6px; }
+  .dark .card p { color: #e3e8f1; }
+
+  /* 流れ */
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .step {
+    background: #fff;
+    border: 1px solid #ecebe5;
+    border-radius: 10px;
+    padding: 22px 10px 20px;
+    text-align: center;
+    min-height: 168px;
+  }
+  .step .n {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--green);
+  }
+  .step svg { display: block; margin: 10px auto 12px; }
+  .step p { font-size: 12.5px; font-weight: 700; line-height: 1.6; color: var(--ink); }
+  .step.last { background: var(--navy); border-color: var(--navy); }
+  .step.last .n { color: var(--yellow); }
+  .step.last p { color: #fff; }
+
+  /* 表 */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; }
+  th {
+    background: var(--navy);
+    color: #fff;
+    text-align: left;
+    font-weight: 700;
+    padding: 8px 14px;
+    font-size: 12.5px;
+  }
+  td { padding: 8px 14px; border: 1px solid var(--line); line-height: 1.6; }
+  tr:nth-child(even) td { background: #f3f5f8; }
+  td.num, th.num { text-align: right; }
+  td.k { width: 30%; }
+
+  /* お願い文の枠 */
+  .ask {
+    background: #fff;
+    border: 1.5px solid var(--green);
+    border-radius: 10px;
+    padding: 20px 26px;
+    font-size: 13px;
+    line-height: 1.95;
+  }
+  .ask ul { margin: 6px 0; padding-left: 1.2em; }
+  .quote {
+    background: #fff;
+    border-left: 4px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+  .hint {
+    background: #fdf3d3;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 16px;
+  }
+
+  /* チェック・約束 */
+  .list { display: grid; gap: 10px; }
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid #ecebe5;
+    border-radius: 8px;
+    padding: 11px 20px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .item svg { flex: none; }
+  .item.warn { border-left: 4px solid var(--warn); border-radius: 0 8px 8px 0; }
+
+  /* まとめ */
+  .sum { display: grid; gap: 18px; margin-top: 6px; }
+  .sum div { display: flex; align-items: baseline; gap: 20px; font-size: 15px; line-height: 1.7; }
+  .sum span {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--green);
+    flex: none;
+    width: 22px;
+  }
+
+  .two { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .side { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .side p { font-size: 13px; line-height: 1.8; background: #fff; border-radius: 8px; padding: 12px 16px; }
+  .sheet { background: #fff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 6px 18px rgba(31, 43, 69, 0.10); }
+  .sheet h3 { margin: 0 0 10px; font-size: 14px; color: var(--ink); }
+  .sheet table { font-size: 13px; }
+  .sheet td, .sheet th { padding: 7px 12px; white-space: nowrap; }
+  .sheet .cap { margin-top: 10px; font-size: 11.5px; color: var(--muted); line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide dark cover">
+  <p class="kicker">Cowork 勉強会 ｜ 給料計算編</p>
+  <h1>出退勤の記録から<br />「給料計算表」を作ろう</h1>
+  <p class="sub">月末の時間×時給を、計算式が見える Excel にする</p>
+  <p class="who">講師：宮田 久雄</p>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <p class="kicker">今日のゴール</p>
+  <h1>帰るときに、この3つができるように</h1>
+  <div class="cards c3">
+    <div class="card">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v4H4zM4 11h16v4H4zM4 17h16v2H4z"/></svg>
+      <h2>① そろえる</h2>
+      <p>出退勤の記録・給与条件の表・会社のルールの3つを用意する</p>
+    </div>
+    <div class="card">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15h0"/></svg>
+      <h2>② 計算表を頼む</h2>
+      <p>計算式が見える Excel で、一人1行の支給額まで作ってもらう</p>
+    </div>
+    <div class="card">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg>
+      <h2>③ 確かめて渡す</h2>
+      <p>1人分を電卓で検算し、先月と比べてから渡す</p>
+    </div>
+  </div>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 2</p>
+</section>
+
+<!-- 3 -->
+<section class="slide pale">
+  <p class="kicker">任せる範囲</p>
+  <h1>任せるのは「支給額の計算」まで</h1>
+  <div class="cards c2">
+    <div class="card out green">
+      <h2>Claude に頼む</h2>
+      <ul>
+        <li>勤務時間・残業の集計</li>
+        <li>時間 × 時給</li>
+        <li>割増の計算</li>
+        <li>手当の足し算</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>今まで通りの方法で（人）</h2>
+      <ul>
+        <li>社会保険料・雇用保険料</li>
+        <li>所得税・住民税の天引き</li>
+        <li>最終的な支給額の決定</li>
+        <li>振込・給与明細の発行</li>
+      </ul>
+    </div>
+  </div>
+  <p class="hint">計算表は<b>下書き</b>です。最後は人が決めます。</p>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 3</p>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <p class="kicker">全体の流れ</p>
+  <h1>3つそろえて頼み、確かめてから渡す</h1>
+  <div class="flow">
+    <div class="step"><div class="n">1</div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f2b45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v4H4zM4 11h16v4H4zM4 17h16v2H4z"/></svg>
+      <p>3つを<br />そろえる</p></div>
+    <div class="step"><div class="n">2</div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f2b45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>
+      <p>お願いを<br />書く</p></div>
+    <div class="step"><div class="n">3</div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f2b45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+      <p>計算表を<br />受け取る</p></div>
+    <div class="step"><div class="n">4</div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f2b45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+      <p>検算して<br />確かめる</p></div>
+    <div class="step last"><div class="n">5</div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v5h-5"/></svg>
+      <p>翌月は<br />変わった所だけ</p></div>
+  </div>
+  <p class="note">毎月は 1〜4 のくり返しです。2か月目からは、変わった所を伝えるだけになります。</p>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 4</p>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <p class="kicker">ステップ 1</p>
+  <h1>準備するのは、この3つ</h1>
+  <table>
+    <tr><th>準備するもの</th><th>中身</th></tr>
+    <tr><td class="k">① 出退勤の記録</td><td>出退勤アプリから取り出した、今月分の Excel</td></tr>
+    <tr><td class="k">② 給与条件の表</td><td>社員ごとの時給（月給）、通勤手当などの手当</td></tr>
+    <tr><td class="k">③ 会社のルール</td><td>所定の勤務時間、休憩、残業の扱い、端数の処理</td></tr>
+  </table>
+  <p class="hint">練習用の①と②は、教室の「出退勤と給料計算」4ページ目から取り出せます。</p>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 5</p>
+</section>
+
+<!-- 6 -->
+<section class="slide pale">
+  <p class="kicker">知っておきたい基本ルール</p>
+  <h1>割増の最低ライン</h1>
+  <table>
+    <tr><th>どんな時間か</th><th>割増の率</th></tr>
+    <tr><td>1日8時間・週40時間を超えた時間</td><td>25% 以上</td></tr>
+    <tr><td>22時〜5時の時間</td><td>25% 以上</td></tr>
+    <tr><td>法定休日の勤務</td><td>35% 以上</td></tr>
+    <tr><td>時間外が月60時間を超えた分</td><td>50% 以上</td></tr>
+  </table>
+  <p class="note">会社のルールは、<b>就業規則と社労士さん</b>に確認します。</p>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 6</p>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <p class="kicker">ステップ 2</p>
+  <h1>お願いを書く（このまま真似してOK）</h1>
+  <div class="ask">
+    添付の出退勤記録（10月分）と給与条件表から、給料計算表を Excel で作ってください。
+    <ul>
+      <li>時給制の人：勤務時間 × 時給</li>
+      <li>1日8時間を超えた分は25%増し、22時〜5時は25%増し</li>
+      <li>休憩は1時間を引く。通勤手当を足す</li>
+      <li>一人1行で、勤務時間・残業時間・割増分・手当・支給額を並べる</li>
+      <li><b>計算式が見えるように（数字の直打ちはしない）</b></li>
+    </ul>
+    <b>出勤か退勤の押し忘れがある日は、計算せずに一覧で教えてください。</b>
+  </div>
+  <p class="note">2つのファイルを入力欄にドラッグして、この文と一緒に送ります。数字は自分の会社のものに直します。</p>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 7</p>
+</section>
+
+<!-- 8 -->
+<section class="slide pale">
+  <p class="kicker">できあがりのイメージ</p>
+  <h1>一人1行で、支給額まで並びます</h1>
+  <div class="two">
+    <div class="sheet">
+      <h3>給料計算表（10月分）</h3>
+      <table>
+        <tr><th>氏名</th><th class="num">勤務時間</th><th class="num">残業</th><th class="num">時間×時給</th><th class="num">割増分</th><th class="num">通勤手当</th><th class="num">支給額</th></tr>
+        <tr><td>佐藤</td><td class="num">39時間</td><td class="num">0時間</td><td class="num">42,900</td><td class="num">0</td><td class="num">3,000</td><td class="num"><b>45,900</b></td></tr>
+      </table>
+      <p class="cap">練習用データの佐藤さん（時給1,100円・休憩1時間・通勤手当3,000円）の場合。39時間 × 1,100円 ＝ 42,900円、通勤手当を足して 45,900円。</p>
+    </div>
+    <div class="side">
+      <p>割増分の例：<br /><b style="white-space:nowrap">残業6時間 × 1,200円 × 25%</b><br /><b>＝ 1,800円</b></p>
+      <p>計算式が見えるので、<b>どこを直せばよいか</b>が分かります。</p>
+      <p>できた表は開いて、自分のパソコンに保存します。</p>
+    </div>
+  </div>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 8</p>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <p class="kicker">ステップ 3</p>
+  <h1>渡す前に、必ずこの5つを確かめる</h1>
+  <div class="list">
+    <div class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>1人は電卓で検算</b>して、表の数字と合うか</span></div>
+    <div class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>先月と比べて</b>、大きく増減した人がいないか</span></div>
+    <div class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>押し忘れの日</b>を、本人に確認して直したか</span></div>
+    <div class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>時給・手当</b>が最新か（昇給・引っ越しなど）</span></div>
+    <div class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f7d62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>時給が<b>最低賃金</b>を下回っていないか</span></div>
+  </div>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 9</p>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <p class="kicker">間違えやすいところ</p>
+  <h1>一言添えると、計算がそろう</h1>
+  <table>
+    <tr><th>場面</th><th>こう伝える</th></tr>
+    <tr><td class="k">休憩</td><td>「6時間を超える日は休憩45分を引いて」</td></tr>
+    <tr><td class="k">端数</td><td>毎日の時間は1分単位が基本。丸め方は社労士に確認する</td></tr>
+    <tr><td class="k">月給制の人</td><td>「月給制の人は残業分だけ計算」</td></tr>
+    <tr><td class="k">夜勤</td><td>「夜勤は出勤した日の勤務として数えて」</td></tr>
+    <tr><td class="k">時給が変わった</td><td>「山田さんは10/16から時給1,250円」</td></tr>
+  </table>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 10</p>
+</section>
+
+<!-- 11 -->
+<section class="slide pale">
+  <p class="kicker">2か月目から</p>
+  <h1>同じ会話に、今月のファイルと変わった所だけ</h1>
+  <div class="quote">「先月と同じ方法で、添付の11月分の出退勤から給料計算表を作って。<br />今月から佐藤さんの時給は1,150円。ほかは先月と同じ。」</div>
+  <div class="cards c2">
+    <div class="card green"><h2>同じ会話の続きで</h2><p>「先月と同じ方法で」と書けば、ルールを書き直さなくて済む</p></div>
+    <div class="card green"><h2>最初の数か月は</h2><p>今までの計算と並べて、答え合わせをする</p></div>
+  </div>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 11</p>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+  <p class="kicker" style="color:#c0562b">注意点</p>
+  <h1>給与データだからこその3つの約束</h1>
+  <div class="list">
+    <div class="item warn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0562b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg><span><b>社長に確認：</b>給与データを Claude で扱ってよいか、先に確認する</span></div>
+    <div class="item warn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0562b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><b>入れるのは名前・時間・時給だけ：</b>マイナンバーや口座番号は入れない</span></div>
+    <div class="item warn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0562b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><span><b>確認の記録を残す：</b>確認した人の名前と日付を残す</span></div>
+  </div>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 12</p>
+</section>
+
+<!-- 13 -->
+<section class="slide dark">
+  <p class="kicker">演習</p>
+  <h1>実際にやってみましょう</h1>
+  <div class="cards c3">
+    <div class="card"><h2>1. 計算する</h2><p>練習用データと見本のお願い文で、計算表を作る</p></div>
+    <div class="card"><h2>2. 検算する</h2><p>1人分を電卓で計算して、表と比べる</p></div>
+    <div class="card"><h2>3. 変える</h2><p>「1人の時給を上げて」と頼み、表が変わるか確認する</p></div>
+  </div>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 13</p>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+  <p class="kicker">まとめ</p>
+  <h1>覚えておくのは、この3つだけ</h1>
+  <div class="sum">
+    <div><span>1</span><p>任せるのは<b>支給額の計算まで</b>。保険料・税の天引きと振込は今まで通り</p></div>
+    <div><span>2</span><p><b>計算式が見える Excel</b> にして、押し忘れの日は計算しない</p></div>
+    <div><span>3</span><p>渡す前に<b>1人分を電卓で検算</b>し、先月と比べる</p></div>
+  </div>
+  <p class="note" style="margin-top:26px">最初の数か月は、今までの計算と並べて答え合わせしましょう。</p>
+  <p class="foot">Cowork勉強会 給料計算編 ｜ 14</p>
+</section>
+
+</body>
+</html>

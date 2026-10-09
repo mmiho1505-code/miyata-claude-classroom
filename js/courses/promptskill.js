@@ -155,6 +155,7 @@
             </ol>
             <p>〔　〕を自分の言葉に変えて貼ります。</p>
             ${box(`〔データアナリスト〕として、【社内の非エンジニア】向けに【役員提案】のための〔3分メモ〕を作って。背景は〔昨日の会議〕、参考は〔この資料〕。形式は〔決定事項とタスクの箇条書き〕、トーンは〔丁寧で短い〕。わからない点は「不明」と書いて。`)}
+            <p><a href="materials/promptskill.pdf" download>スライドPDF（頼み方編）</a>　<a href="materials/cheat-prompt.pdf" download>早見表：お願い文の型（A4・1枚）</a></p>
             <p><a class="btn-orange" href="#/course/cowork" data-link>事務の講座へ</a>
             <a class="btn-dark" href="#/course/skillbase" data-link>Skillsの講座へ</a></p>
           `

@@ -35,6 +35,7 @@
               <article class="op"><span class="num">2</span><h3>らしさを読ませる</h3><p>Claude Code を起動して、下の1つ目を貼る</p></article>
               <article class="op"><span class="num">3</span><h3>ツールを作らせる</h3><p>2つ目を貼る</p></article>
             </div>
+            <p>練習用：<a href="materials/practice/sample_posts.txt" download>過去の投稿の見本（sample_posts.txt）</a>　自分の投稿が手元にない人は、これで試せます。</p>
             ${box(`私のこれまでの投稿（sample_posts.txt）を渡します。文体や雰囲気の特徴を読み取って、どんな“らしさ”があるか教えて。`)}
             ${box(`箇条書きのネタを渡すと、SNS投稿文を3案作るツールを作って。丁寧で親しみやすいトーン、140字以内、最後にハッシュタグを3つ添えて。投稿はしないで。`)}
           `
@@ -62,6 +63,7 @@
             <p class="kicker">分析　3／5</p>
             <h1>投稿と反応のCSVから、伸びた投稿の共通点を出す</h1>
             <p>各SNSのインサイト画面から、投稿文・日時・いいね・保存・コメント数を自分で書き出し、1行1投稿の posts.csv にして sns フォルダに置きます。ログイン情報は渡しません。</p>
+            <p>練習用：<a href="materials/practice/posts.csv" download>投稿と反応（posts.csv・40件）</a>　架空のデータです。</p>
             <div data-pic="sns" data-cap="投稿と反応を読み込み、次のヒントまで"></div>
             ${box(`XやInstagramの投稿データ（投稿文・投稿日時・いいね・保存・コメント数）をCSVにしました。posts.csv の中身を確認して、分析できそうか教えて。`)}
             ${box(`posts.csv を読み込んで、反応が多かった投稿トップ10、平均反応数、伸びた投稿の共通点を分析するツールを作って。結果をまとめたレポート（PDFかHTML）も出して。`)}

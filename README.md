@@ -14,7 +14,7 @@ python3 -m http.server 4173
 
 ## 中身
 
-- 講座は27本。本文は `js/courses/<講座id>.js`
+- 講座は34本。本文は `js/courses/<講座id>.js`
 - 区分は「はじめて」「事務（チャットで作業）」「道具づくり（Claude Code）」の3つ
 - 統合前の講座のリンクと進度は、`js/app.js` の `COURSE_ALIAS` と各ページの `was` で統合先に引き継ぐ
 - 見た目の最終調整は `css/clean.css`（ほかのCSSのあとに読み込む）
@@ -22,3 +22,7 @@ python3 -m http.server 4173
 - 講義の資料は `js/app.js` の `LECTURE_IDS`。先頭が「今日の講義」、2つ目からはホームの「これまでの講義」に並ぶ。講座ファイルに `held: "2026-10-09"` の形で日付を書くと、ホームと講座の案内に表示される
 - 質問メールと進度報告の宛先は `js/app.js` の `TEACHER_MAIL`
 - チャットの「自動応答」は `js/bot.js`。キーワードが合った答えを返す仕組みで、AIではない
+- 資料は `materials/`。スライドPDF、A4・1枚の早見表（`cheat-*.pdf`）、講義の前の準備チェック表（`junbi-check.pdf`）、練習用データ（`materials/practice/`。すべて架空）
+- マイページの「資料ダウンロード」に出す一覧は `js/app.js` の `MATERIAL_GROUPS`。3つ目に講座idを書くと、その講座を開ける人にだけ出る
+- 資料を作り直す道具は `tools/`（サイトの表示には使わない）
+- 講座の足し方、録音から講座ページを作る頼み方、質問メールのまとめ方、毎月の中身チェックは `UNEI-MEMO.md`

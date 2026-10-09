@@ -46,6 +46,7 @@
             ${box(`このフォルダを種類ごとに整理して、ファイル名に日付(YYYY-MM-DD)を付けて。`)}
             ${box(`契約書フォルダで、arbitration（仲裁）に触れているものを教えて。該当箇所の要点も。`)}
             ${box(`この売上CSVを月別・商品別に集計してグラフにして。空欄や表記ゆれも直して。`)}
+            <p>練習用：<a href="materials/practice/sales-2026-09.csv" download>売上CSV（架空の店の1か月分）</a></p>
             ${box(`このスキャンPDF(領収書)から、日付・金額・宛名を読み取って一覧表(Excel)にして。`)}
           `
       },
@@ -97,6 +98,7 @@
             <h1>請求書を自動で作る</h1>
             <p>「いつ・どの形式・どこに保存」まで書くと、仕上がりが安定します。</p>
             ${box(`添付の取引先リスト（clients.xlsx）をもとに、9月分の請求書を作ってください。ひな形は invoice_template.xlsx を使い、取引先ごとに1ファイルずつPDFで、invoices/2026-09 フォルダに保存して。`)}
+            <p>練習用：<a href="materials/practice/clients.xlsx" download>取引先リスト（clients.xlsx）</a>　<a href="materials/practice/invoice_template.xlsx" download>請求書ひな形（invoice_template.xlsx）</a>　会社名も金額も架空です。</p>
             <div data-pic="check" data-cap="操作：PDFを開いて、宛名と金額を指差し確認してから送る"></div>
           `
       },

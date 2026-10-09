@@ -177,6 +177,7 @@ _</pre>
             ${box(`今の変更点を、専門用語を使わずに一覧にしてください。まだコミットしないでください。`)}
             ${box(`作業を始める前に、今の状態を履歴として残してください。メッセージは「作業前のバックアップ」でお願いします。`)}
             <p>GitHub へのアップロードは今日はしません。</p>
+            <p><a href="materials/cheat-code.pdf" download>早見表：Claude Code コマンド（A4・1枚）</a></p>
             <p><a class="btn-orange" href="#/course/applied" data-link>応用編へ</a>
             <a class="btn-dark" href="#/course/invoice" data-link>請求書ツールを作る</a></p>
           `

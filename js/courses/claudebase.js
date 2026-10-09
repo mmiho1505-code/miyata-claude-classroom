@@ -139,6 +139,7 @@
 日時・参加者・議題・要点・決定事項・ToDo・確認事項の形式でまとめる。
 500〜800字。あいまいな表現はしない。不明な点は「不明」と書く。
 過去の議事録は参照せず、今回貼ったメモだけで作成する。`)}
+            <p><a href="materials/claudebase.pdf" download>スライドPDF（基本設定編）</a>　<a href="materials/cheat-safety.pdf" download>早見表：安全に使うための約束（A4・1枚）</a></p>
             <p><a class="btn-orange" href="#/course/promptskill" data-link>チャットとお願い文の講座へ</a>
             <a class="btn-dark" href="#/course/aipick" data-link>AIの使い分けへ</a></p>
           `

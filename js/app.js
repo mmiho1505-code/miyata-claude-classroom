@@ -336,6 +336,13 @@ ${q}
     "portalmake",
     "attend",
     "invoicemake",
+    "manualmake",
+    "replyfaq",
+    "proposal",
+    "contractcheck",
+    "bizplan",
+    "subsidydraft",
+    "bcp",
     "code",
     "snspost",
     "survey",
@@ -358,7 +365,7 @@ ${q}
   };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["cowork", "portalmake", "attend", "invoicemake"];
+  const COWORK_IDS = ["cowork", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -764,6 +771,13 @@ ${q}
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
     invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
+    manualmake: ["cover-applied", "手順書", "メモ・写真・話した内容から、新人が1人でできる手順書に。", "steps"],
+    replyfaq: ["cover-chat", "返信", "問い合わせ・クレームへの返信の下書きと、よくある質問集。送るのは人。", "mail"],
+    proposal: ["cover-poster", "提案書", "相手の課題から骨子。A4・1枚の提案書とスライドに。", "briefing"],
+    contractcheck: ["cover-faq", "契約書", "気をつける条項を洗い出し、質問と相談メモを用意。判断は専門家と人。", "eyecheck"],
+    bizplan: ["cover-survey", "事業計画", "壁打ちで考えを出し、数字の表とA4・1枚に。数字は自分で入れる。", "plan"],
+    subsidydraft: ["cover-expense", "申請書", "公募要領を読ませ、自社の事実だけで下書き。出すのは人。", "docs"],
+    bcp: ["cover-crm", "BCP", "止まると困る仕事から。連絡と復旧の段取りを1枚に。", "safety"],
     skillbase: ["cover-applied", "MD・Skills", "CLAUDE.mdは業務マニュアル、Skillsはよく使う手順。", "docs"],
     code: ["cover-code", "Code", "Windows・Macに入れて、使える状態まで。", "powershell"],
     applied: ["cover-applied", "使いこなし", "CLAUDE.mdを1枚書き、いつもの手順を登録する。", "desktop"],
@@ -794,6 +808,13 @@ ${q}
     portalmake: ["ポータル", "🏠"],
     attend: ["出退勤と給料", "⏰"],
     invoicemake: ["請求書", "📄"],
+    manualmake: ["手順書", "📋"],
+    replyfaq: ["返信とFAQ", "✉️"],
+    proposal: ["提案書", "📑"],
+    contractcheck: ["契約書", "🔍"],
+    bizplan: ["事業計画", "🧭"],
+    subsidydraft: ["申請書の下書き", "🖋️"],
+    bcp: ["BCP", "🛟"],
     skillbase: ["MDとSkills", "📘"],
     code: ["Code準備", "💻"],
     applied: ["使いこなし", "🧩"],
@@ -805,6 +826,74 @@ ${q}
     secretary: ["秘書", "🤝"],
     appedit: ["画面", "✏️"],
     faq: ["つまずき", "🆘"]
+  };
+
+  // マイページ「資料ダウンロード」。受講コードが要る講座の資料は、その講座を開ける人にだけ出す。
+  // 行の形：[表示名, ファイル, 見せる条件にする講座id（省略すると全員）]
+  const MATERIAL_GROUPS = [
+    [
+      "早見表・チェック表（A4・1枚。印刷して手元に）",
+      [
+        ["講義の前の準備チェック表", "materials/junbi-check.pdf"],
+        ["早見表：お願い文の型", "materials/cheat-prompt.pdf"],
+        ["早見表：安全に使うための約束", "materials/cheat-safety.pdf"],
+        ["早見表：Claude Code コマンド", "materials/cheat-code.pdf"]
+      ]
+    ],
+    [
+      "スライド（PDF）",
+      [
+        ["基本設定編", "materials/claudebase.pdf"],
+        ["頼み方編", "materials/promptskill.pdf"],
+        ["社内ポータル 作り方編", "materials/portal-make.pdf", "portalmake"],
+        ["社内ポータル 直し方編", "materials/portal-fix.pdf", "portalmake"],
+        ["出退勤管理編", "materials/attend.pdf", "attend"],
+        ["給料計算編", "materials/salary.pdf", "attend"],
+        ["請求書編", "materials/invoicemake.pdf", "invoicemake"]
+      ]
+    ],
+    [
+      "練習用データ（すべて架空です。本物の代わりに使えます）",
+      [
+        ["売上：当月の明細（2026年9月）", "materials/practice/sales-2026-09.csv"],
+        ["売上：前月の明細（2026年8月）", "materials/practice/sales-2026-08.csv"],
+        ["売上：前年同月の明細（2025年9月）", "materials/practice/sales-2025-09.csv"],
+        ["売上：店舗別の目標", "materials/practice/sales-target-2026-09.csv"],
+        ["売上：レポートのひな形（Excel）", "materials/practice/sales-report-template.xlsx"],
+        ["請求書：取引先リスト（Excel）", "materials/practice/clients.xlsx", "cowork invoice"],
+        ["請求書：ひな形（Excel）", "materials/practice/invoice_template.xlsx", "cowork invoice"],
+        ["請求書：ひな形（テキスト）", "materials/invoice-template.txt"],
+        ["見積：外壁塗装の単価表（Excel）", "materials/practice/tanka-gaiheki.xlsx", "invoicemake"],
+        ["給料：出退勤のサンプル", "materials/salary-attend-sample.csv", "attend"],
+        ["給料：給与条件のサンプル", "materials/salary-rates-sample.csv", "attend"],
+        ["経費のサンプルCSV", "materials/expense-sample.csv"],
+        ["アンケートの回答（60件）", "materials/practice/survey.csv", "survey"],
+        ["ABC分析：商品別の売上（Excel）", "materials/practice/sales.xlsx", "survey"],
+        ["ABC分析のサンプルCSV", "materials/abc-sample.csv"],
+        ["SNS：投稿と反応（40件）", "materials/practice/posts.csv", "snspost"],
+        ["SNS：過去の投稿の見本", "materials/practice/sample_posts.txt", "snspost"]
+      ]
+    ]
+  ];
+
+  const materialsHTML = () => {
+    const canSee = (ids) => !ids || ids.split(" ").some((id) => canSeeCourse(id));
+    const all = MATERIAL_GROUPS[2][1].every((row) => canSee(row[2]));
+    const groups = MATERIAL_GROUPS.map(([title, rows]) => {
+      const items = rows
+        .filter((row) => canSee(row[2]))
+        .map(([label, href]) => `<li><a href="${href}" download>${escapeHtml(label)}</a></li>`)
+        .join("");
+      return items ? `<h3 class="files-h">${escapeHtml(title)}</h3><ul class="hub-files">${items}</ul>` : "";
+    }).join("");
+    return `
+          <p class="easy-meta">開ける講座の資料だけが並びます。練習用データは、名前も数字も架空です。</p>
+          ${groups}
+          ${all ? `<p><a class="btn-dark" href="materials/practice/practice-all.zip" download>練習用データをまとめて（ZIP）</a></p>` : ""}
+          <h3 class="files-h">そのほか</h3>
+          <ul class="hub-files">
+            <li><a href="#/prompts" data-link>お願い文（プロンプト集）</a></li>
+          </ul>`;
   };
 
   const rememberLast = (courseId, lessonId) => {
@@ -1249,7 +1338,7 @@ ${q}
         ${section("今日の講義", lectureLead, LECTURE_IDS.slice(0, 1))}
         ${LECTURE_IDS.length > 1 ? section("これまでの講義", "過去の講義の資料です。受講コードなしで開けます。", LECTURE_IDS.slice(1)) : ""}
         ${section("はじめて", "受講コードなしで読めます。はじめての人はここから。上から順で大丈夫です。", STARTER_IDS.concat(["faq"]))}
-        ${section("事務（チャットで作業）", "画面で日本語のお願い。黒い画面は使いません。", COWORK_IDS)}
+        ${section("事務（チャットで作業）", "画面で日本語のお願い。黒い画面は使いません。書類づくりは、下書きまでが Claude、確かめて出すのは人です。", COWORK_IDS)}
         ${section("道具づくり（Claude Code）", "最初に準備、そのあと作りやすい順です。", CODE_IDS)}
       </div>
     `;
@@ -1502,7 +1591,7 @@ ${q}
 
       <details class="guide-printbox">
         <summary>印刷用テキスト</summary>
-        <p><a href="materials/guide.html" target="_blank" rel="noopener">印刷用ページ</a>　<a href="materials/guide.txt" download>テキスト</a></p>
+        <p><a href="materials/guide.html" target="_blank" rel="noopener">印刷用ページ</a>　<a href="materials/guide.txt" download>テキスト</a>　<a href="materials/junbi-check.pdf" download>講義の前の準備チェック表（PDF）</a></p>
       </details>
     </div>
   `;
@@ -1864,12 +1953,7 @@ ${q}
         ${foldCard(
           "files",
           "資料ダウンロード",
-          `<ul class="hub-files">
-            <li><a href="#/prompts" data-link>お願い文（プロンプト集）</a></li>
-            <li><a href="materials/invoice-template.txt" download>請求書ひな形（テキスト）</a></li>
-            <li><a href="materials/expense-sample.csv" download>経費のサンプルCSV</a></li>
-            <li><a href="materials/abc-sample.csv" download>ABC分析のサンプルCSV</a></li>
-          </ul>`
+          materialsHTML()
         )}
 
         ${foldCard(

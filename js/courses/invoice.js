@@ -35,6 +35,7 @@
               <article class="op"><span class="num">2</span><h3>中身を確認させる</h3><p>Claude Code を起動して、下の1つ目を貼る</p></article>
               <article class="op"><span class="num">3</span><h3>ツールを作らせる</h3><p>「いつ・どの形式・どこに保存」まで書いた2つ目を貼る</p></article>
             </div>
+            <p>練習用：<a href="materials/practice/clients.xlsx" download>取引先リスト（clients.xlsx）</a>　<a href="materials/practice/invoice_template.xlsx" download>請求書ひな形（invoice_template.xlsx）</a>　会社名も金額も架空です。</p>
             ${box(`請求書を一括で作るツールを作りたいです。まず、用意した取引先リスト(clients.xlsx)とひな形(invoice_template.xlsx)の中身を確認して、作れそうか教えて。`)}
             ${box(`clients.xlsx の取引先リストと invoice_template.xlsx を使い、月を指定すると全社ぶんの請求書をPDFで作るツールを作って。1社1ファイルで invoices/年-月 に保存。まずは自分のPCで動く形で。`)}
           `
