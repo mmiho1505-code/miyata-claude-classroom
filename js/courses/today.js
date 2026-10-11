@@ -17,7 +17,7 @@
         title: "今日のゴールと準備",
         practice: true,
         body: `
-            <p class="kicker">GOAL　0〜10分　1／8</p>
+            <p class="kicker">GOAL　0〜10分　1／7</p>
             <h1>コワークで作った社内ポータルを、任せられる形にする</h1>
             <p>前回コワークで作った社内ポータルを、今日は Claude Code で直していきます。同じ説明をしない、勝手に動かせない、お知らせの追加は呼ぶだけにする。そのための仕組みを、手を動かして学びます。</p>
             <div class="ops">
@@ -56,7 +56,7 @@ claude`)}
         title: "CLAUDE.md の置き場所",
         practice: true,
         body: `
-            <p class="kicker">CLAUDE.md　10〜30分　2／8　練習</p>
+            <p class="kicker">CLAUDE.md　10〜30分　2／7　練習</p>
             <h1>CLAUDE.md は、Claude への「申し送りメモ」</h1>
             <p>Claude Code は起動するたびに、このメモを読んでから仕事を始めます。毎回言っていたことをここに書けば、言わなくて済みます。</p>
             <p>メモは置く場所で役目が変わります。まずは2つだけ覚えれば十分です。</p>
@@ -96,7 +96,7 @@ claude`)}
         title: "会話の文脈を管理する",
         practice: true,
         body: `
-            <p class="kicker">文脈　30〜45分　3／8　練習</p>
+            <p class="kicker">文脈　30〜45分　3／7　練習</p>
             <h1>渡すものを選び、たまったら切る</h1>
             <ul>
               <li><code>@</code> ＋ファイル名：見てほしいファイルを指定する（例：<code>@index.html</code>）</li>
@@ -111,21 +111,11 @@ claude`)}
         was: []
       },
       {
-        id: "break",
-        title: "休憩",
-        body: `
-            <p class="kicker">休憩　45〜50分　4／8</p>
-            <h1>5分休憩</h1>
-            <p>ここまでで、CLAUDE.md と会話の管理ができました。後半は、勝手に動かない範囲を決めて、くり返す作業を Skill にします。</p>
-          `,
-        was: []
-      },
-      {
         id: "safety",
         title: "権限と計画モード",
         practice: true,
         body: `
-            <p class="kicker">権限　50〜70分　5／8　練習</p>
+            <p class="kicker">権限　45〜65分　4／7　練習</p>
             <h1>勝手に動かない範囲を決める</h1>
             <p><strong>Shift＋Tab</strong> で動き方（権限モード）を切り替えます。大きな変更は、計画だけ出させて読んでから進めます。</p>
             ${box(`よく使うリンクに「年末調整」を足し、終わった予定を消したいです。まだファイルは変えずに、どこをどう直すかの計画だけ出してください。`)}
@@ -149,7 +139,7 @@ claude`)}
         title: "Skill を作って呼ぶ",
         practice: true,
         body: `
-            <p class="kicker">Skill　70〜90分　6／8　練習</p>
+            <p class="kicker">Skill　65〜85分　5／7　練習</p>
             <h1>くり返す作業は、名前で呼ぶ</h1>
             <p>Skill は <code>.claude/skills/〈名前〉/SKILL.md</code> に置きます。先頭に name と description を書き、<code>/名前</code> で呼びます。自分のコマンドも、今は Skill にまとまっています。</p>
             ${box(`社内ポータルにお知らせを1件追加する手順を、Skill にしてください。名前は news-add。
@@ -165,7 +155,7 @@ claude`)}
         id: "demo",
         title: "サブエージェント・フック・MCP（見るだけ）",
         body: `
-            <p class="kicker">デモ　90〜100分　7／8</p>
+            <p class="kicker">デモ　85〜95分　6／7</p>
             <h1>もっと任せたくなったときの道具</h1>
             <p>今日は先生のデモを見るだけです。使いどころだけ覚えます。</p>
             <ul>
@@ -181,7 +171,7 @@ claude`)}
         title: "自分の仕事で1つ作る・まとめ",
         practice: true,
         body: `
-            <p class="kicker">実践　100〜120分　8／8　練習</p>
+            <p class="kicker">実践　95〜120分　7／7　練習</p>
             <h1>自分の仕事で、CLAUDE.md と Skill を1つずつ</h1>
             <p>自分の業務のフォルダを開き、今日の手順で作ります。迷ったら下を貼ります。</p>
             ${box(`このフォルダは〔自分の仕事の内容〕に使っています。
