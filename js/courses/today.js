@@ -29,7 +29,11 @@
             <p>最初に、ターミナルで状態を確かめます。インストールがまだの人は <a href="#/course/code" data-link>Code準備</a> へ。</p>
             ${box(`claude update
 claude doctor`)}
-            <p>問題がなければ、練習用のフォルダを開いて <code>claude</code> と打ちます。</p>
+            <ul>
+              <li><strong>claude update</strong>：最新版にそろえる。版が違うと、画面やコマンドが講義と合わなくなる</li>
+              <li><strong>claude doctor</strong>：二重インストールや設定の書き間違いがないか、最初に点検する</li>
+            </ul>
+            <p>問題がなければ、練習用のフォルダを開いて <code>claude</code> と打ちます。起動したフォルダの CLAUDE.md が読まれ、そのフォルダが作業場所になるためです。</p>
           `,
         was: []
       },
