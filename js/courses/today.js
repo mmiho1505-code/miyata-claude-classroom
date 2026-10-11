@@ -8,7 +8,7 @@
   CLASSROOM.courses.today = {
     id: "today",
     title: "今日の講義：CLAUDE.md と Claude Code（中級）",
-    subtitle: "CLAUDE.md の重ね方、会話の文脈、権限と計画モード、Skills。最後に自分の仕事で1つ作る",
+    subtitle: "コワークで作った社内ポータルを、Claude Code で育てる。CLAUDE.md、会話の文脈、権限と計画モード、Skills",
     duration: "約120分",
     audience: "パソコンに慣れていて、Claude Code を起動できる人",
     lessons: [
@@ -18,14 +18,19 @@
         practice: true,
         body: `
             <p class="kicker">GOAL　0〜10分　1／8</p>
-            <h1>毎回の説明をなくし、任せられる形にする</h1>
-            <p>自社のホームページを、更新のたびに外注せず、Claude Code に頼んで直していきます。同じ説明をしない、勝手に動かせない、くり返す作業は呼ぶだけにする。そのための仕組みを、手を動かして学びます。</p>
+            <h1>コワークで作った社内ポータルを、任せられる形にする</h1>
+            <p>前回コワークで作った社内ポータルを、今日は Claude Code で直していきます。同じ説明をしない、勝手に動かせない、お知らせの追加は呼ぶだけにする。そのための仕組みを、手を動かして学びます。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>CLAUDE.md</h3><p>毎回の説明を、ファイルに書いて省く</p></article>
               <article class="op"><span class="num">2</span><h3>文脈と権限</h3><p>会話の中身と、勝手に動かない範囲を管理する</p></article>
               <article class="op"><span class="num">3</span><h3>Skill</h3><p>くり返す作業を、名前で呼べるようにする</p></article>
               <article class="op"><span class="num">4</span><h3>自分の仕事</h3><p>最後の20分で、自分用を1つずつ作る</p></article>
             </div>
+            <h3>ポータルをフォルダに入れる</h3>
+            <p>デスクトップに「社内ポータル」というフォルダを作り、前回のポータルを index.html という名前で入れます。前回の会話の続きに、次のように頼むと作ってくれます。</p>
+            ${box(`このポータルを1つのHTMLファイルにして、デスクトップの「社内ポータル」フォルダに index.html という名前で保存してください。`)}
+            <p>前回のポータルが見つからない人は、<a href="materials/practice/portal.html" download="index.html">見本のポータル（index.html）</a>をダウンロードして、同じフォルダに入れます。</p>
+            <h3>Claude Code を確かめる</h3>
             <p>最初に、ターミナルで状態を確かめます。インストールがまだの人は <a href="#/course/code" data-link>Code準備</a> へ。</p>
             ${box(`claude update
 claude doctor`)}
@@ -33,7 +38,9 @@ claude doctor`)}
               <li><strong>claude update</strong>：最新版にそろえる。版が違うと、画面やコマンドが講義と合わなくなる</li>
               <li><strong>claude doctor</strong>：二重インストールや設定の書き間違いがないか、最初に点検する</li>
             </ul>
-            <p>問題がなければ、練習用のフォルダを開いて <code>claude</code> と打ちます。起動したフォルダの CLAUDE.md が読まれ、そのフォルダが作業場所になるためです。</p>
+            <p>問題がなければ、ポータルのフォルダに移って <code>claude</code> と打ちます。起動したフォルダの CLAUDE.md が読まれ、そのフォルダが作業場所になるためです。</p>
+            ${box(`cd ~/Desktop/社内ポータル
+claude`)}
           `,
         was: []
       },
@@ -47,7 +54,7 @@ claude doctor`)}
             <p>Claude Code は起動するたびに、このメモを読んでから仕事を始めます。毎回言っていたことをここに書けば、言わなくて済みます。</p>
             <p>メモは置く場所で役目が変わります。まずは2つだけ覚えれば十分です。</p>
             <ul>
-              <li><strong>フォルダの中（./CLAUDE.md）</strong>：このホームページだけの決まり</li>
+              <li><strong>フォルダの中（./CLAUDE.md）</strong>：この社内ポータルだけの決まり</li>
               <li><strong>自分の設定（~/.claude/CLAUDE.md）</strong>：どのフォルダでも守ってほしいこと（口調など）</li>
             </ul>
             <p>両方あれば、両方とも読まれます。</p>
@@ -57,9 +64,12 @@ claude doctor`)}
               <li>できたら、下の文をコピーして貼る</li>
             </ol>
             ${box(`CLAUDE.md を次の方針で直してください。
-・このフォルダは自社のホームページ
-・文章は「です・ます」。専門用語にはかっこで説明を付ける
-・電話番号・住所・料金を変えるときは、変更前と変更後を並べて見せ、私のOKを待つ
+・このフォルダは、全社員が毎朝開く社内ポータル（index.html）
+・ブロックは4つだけ。上から お知らせ → 今月の予定 → よく使うリンク → 部署の連絡先。5つ目は作らない
+・お知らせは3件まで。日付つきで、新しいものが上
+・携帯番号・パスワード・給与は載せない
+・内線やメールを変えるときは、変更前と変更後を並べて見せ、私のOKを待つ
+・見た目は今のまま（落ち着いた緑、文字は大きめ）。スマホでも読めるように
 ・公開（アップロード）と、ファイルの削除はしない
 ・CLAUDE.md は短く保つ。長い説明は別ファイルにして @ で読み込む`)}
             <p>あとでメモを見たり直したりしたいときは <code>/memory</code> と打ちます。余裕があれば、自分の設定のほうに「どのフォルダでも守ってほしいこと」を3行だけ書きます。</p>
@@ -75,14 +85,14 @@ claude doctor`)}
             <p class="kicker">文脈　30〜45分　3／8　練習</p>
             <h1>渡すものを選び、たまったら切る</h1>
             <ul>
-              <li><code>@</code> ＋ファイル名：見てほしいファイルを指定する（フォルダも指定できる）</li>
+              <li><code>@</code> ＋ファイル名：見てほしいファイルを指定する（例：<code>@index.html</code>）</li>
               <li><code>/context</code>：いま会話にどれだけ詰まっているかを見る</li>
               <li><code>/clear</code>：別の作業に移るときに、会話を空にする。CLAUDE.md は次も読まれる</li>
               <li><code>/resume</code>：前の会話に戻る。<code>claude --continue</code> で、このフォルダの直前の会話から再開</li>
               <li><code>/model</code>：モデルを切り替える。<code>/usage</code>：使用量を見る</li>
             </ul>
-            <p>順番に試します。① <code>@</code> でトップページのファイルを指定して要約させる → ② <code>/context</code> で中身を見る → ③ <code>/clear</code> → ④ <code>/resume</code> で戻れることを確かめる。</p>
-            <div class="callout">1つの会話に1つの作業。トップページを直し終えたら <code>/clear</code> してから、会社概要に移ります。</div>
+            <p>順番に試します。① <code>@index.html</code> を指定して「今のお知らせと予定を教えて」と頼む → ② <code>/context</code> で中身を見る → ③ <code>/clear</code> → ④ <code>/resume</code> で戻れることを確かめる。</p>
+            <div class="callout">1つの会話に1つの作業。お知らせを直し終えたら <code>/clear</code> してから、連絡先の直しに移ります。</div>
           `,
         was: []
       },
@@ -104,7 +114,7 @@ claude doctor`)}
             <p class="kicker">権限　50〜70分　5／8　練習</p>
             <h1>勝手に動かない範囲を決める</h1>
             <p><strong>Shift＋Tab</strong> で動き方（権限モード）を切り替えます。大きな変更は、計画だけ出させて読んでから進めます。</p>
-            ${box(`トップページのお知らせ欄を新しくしたいです。まだファイルは変えずに、どのファイルをどう直すかの計画だけ出してください。`)}
+            ${box(`よく使うリンクに「経費精算」を足し、終わった予定を消したいです。まだファイルは変えずに、どこをどう直すかの計画だけ出してください。`)}
             <p>許可・禁止は <code>/permissions</code> で見られます。決まりとして残すなら設定ファイルに書きます。</p>
             <ul>
               <li><strong>~/.claude/settings.json</strong>：自分のパソコン全体</li>
@@ -128,11 +138,12 @@ claude doctor`)}
             <p class="kicker">Skill　70〜90分　6／8　練習</p>
             <h1>くり返す作業は、名前で呼ぶ</h1>
             <p>Skill は <code>.claude/skills/〈名前〉/SKILL.md</code> に置きます。先頭に name と description を書き、<code>/名前</code> で呼びます。自分のコマンドも、今は Skill にまとまっています。</p>
-            ${box(`お知らせを1件追加する手順を、Skill にしてください。名前は news-add。
-・日付・タイトル・本文を聞いてから作業する
+            ${box(`社内ポータルにお知らせを1件追加する手順を、Skill にしてください。名前は news-add。
+・日付と本文を聞いてから作業する
+・一番上に足す。4件目になったら、一番古いものを消してよいか私に聞く
 ・追加したら、スマホの幅でも崩れていないか確認する
 ・公開（アップロード）はしない`)}
-            <p>できたら <code>/news-add</code> と打って、実際にお知らせを1件追加します。思いどおりでなければ、SKILL.md を直してもう一度呼びます。</p>
+            <p>できたら <code>/news-add</code> と打って、実際にお知らせを1件追加します。ブラウザで index.html を開き直して確かめます。思いどおりでなければ、SKILL.md を直してもう一度呼びます。</p>
           `,
         was: []
       },
@@ -165,10 +176,10 @@ claude doctor`)}
 ファイルの削除と、外への送信・公開はしないでください。`)}
             <h2>今日やったこと</h2>
             <ul>
-              <li>CLAUDE.md を自分用・フォルダ用・ルールに分けて置いた</li>
+              <li>コワークで作ったポータルをフォルダに入れ、CLAUDE.md にポータルの決まりを書いた</li>
               <li><code>@</code>・<code>/context</code>・<code>/clear</code> で、会話に渡すものを管理した</li>
               <li>Shift＋Tab と設定ファイルで、勝手に動かない範囲を決めた</li>
-              <li>くり返す作業を Skill にして、名前で呼んだ</li>
+              <li>お知らせの追加を Skill にして、名前で呼んだ</li>
             </ul>
             <div class="callout">公開・送信・削除は人が決めます。Claude には計画と下書きまで。</div>
           `,
