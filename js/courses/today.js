@@ -127,20 +127,47 @@ claude --continue`)}
         body: `
             <p class="kicker">権限　45〜65分　4／7　練習</p>
             <h1>勝手に動かない範囲を決める</h1>
-            <p><strong>Shift＋Tab</strong> で動き方（権限モード）を切り替えます。大きな変更は、計画だけ出させて読んでから進めます。</p>
+            <p>新人さんに仕事を頼むときと同じです。「毎回聞いてね」「書類の直しは任せるよ」「まず段取りを見せて」と、任せ方を変えます。Claude Code では <strong>Shift＋Tab</strong> を押すたびに、この3つが切り替わります。今どれになっているかは、画面の下に出ます。</p>
+            <table>
+              <thead><tr><th>画面の下の表示</th><th>任せ方</th><th>使うとき</th></tr></thead>
+              <tbody>
+                <tr><td>（何も出ない）</td><td>ふつう：ファイルを変える前に、毎回聞く</td><td>最初はこれ</td></tr>
+                <tr><td>accept edits on</td><td>ファイルの直しは聞かずに進める</td><td>慣れた小さい作業</td></tr>
+                <tr><td>plan mode on</td><td>計画モード：計画を出すだけで、ファイルは変えない</td><td>大きな変更の前</td></tr>
+              </tbody>
+            </table>
+            <h3>やってみる①：計画モード</h3>
+            <ol>
+              <li>Shift＋Tab を何回か押して、下に <strong>plan mode on</strong> が出るようにする</li>
+              <li>下を貼る</li>
+            </ol>
             ${box(`よく使うリンクに「年末調整」を足し、終わった予定を消したいです。まだファイルは変えずに、どこをどう直すかの計画だけ出してください。`)}
-            <p>許可・禁止は <code>/permissions</code> で見られます。決まりとして残すなら設定ファイルに書きます。</p>
-            <ul>
-              <li><strong>~/.claude/settings.json</strong>：自分のパソコン全体</li>
-              <li><strong>.claude/settings.json</strong>：このフォルダだけ（チームで共有できる）</li>
-            </ul>
+            <ol start="3">
+              <li>出てきた計画を読む。よければ「この計画で進めて」、違えば「〇〇は消さないで」と直してから進める</li>
+            </ol>
+            <h3>やってみる②：「いつも OK」と「いつも禁止」を決める</h3>
+            <p>毎回聞かれるのが面倒なことは「いつも OK」に、絶対にしてほしくないことは「禁止」に登録します。自分で書くより、Claude に頼むのが簡単です。</p>
+            ${box(`このフォルダの .claude/settings.json に、次の権限を足してください。
+・git のコマンドは、聞かずに使ってよい
+・rm（ファイルを消すコマンド）は禁止
+すでに書いてある設定は消さないでください。足す前に、何を書くかを見せてください。`)}
+            <p>Claude は、次のような中身を書きます。</p>
             ${box(`{
   "permissions": {
     "allow": ["Bash(git *)"],
     "deny": ["Bash(rm *)"]
   }
 }`)}
-            <p>書いたら <code>/permissions</code> を開き、禁止が入っていることを確かめます。</p>
+            <ul>
+              <li><strong>allow</strong>＝いつも OK。<code>Bash(git *)</code> は「git で始まるコマンド」</li>
+              <li><strong>deny</strong>＝禁止。<code>Bash(rm *)</code> は「rm（消す）で始まるコマンド」</li>
+            </ul>
+            <p>書けたら <code>/permissions</code> と打ち、禁止に rm が入っているか確かめます。</p>
+            <p>置き場所は2つあります（CLAUDE.md と同じ考え方です）。</p>
+            <ul>
+              <li><strong>.claude/settings.json</strong>：このフォルダだけ</li>
+              <li><strong>~/.claude/settings.json</strong>：自分のパソコン全体</li>
+            </ul>
             <h3>早く終わった人へ</h3>
             <p>計画を読んで、直してから進める練習です。計画モードのまま下を貼り、出てきた計画に「内線は400番台にして」など1つ注文をつけてから OK します。</p>
             ${box(`部署の連絡先に「広報部」を1つ足したいです。まだファイルは変えずに、どこに何を足すかの計画だけ出してください。`)}
