@@ -27,9 +27,13 @@
               <article class="op"><span class="num">4</span><h3>自分の仕事</h3><p>最後の20分で、自分用を1つずつ作る</p></article>
             </div>
             <h3>ポータルをフォルダに入れる</h3>
-            <p>デスクトップに「社内ポータル」というフォルダを作り、前回のポータルを index.html という名前で入れます。前回の会話の続きに、次のように頼むと作ってくれます。</p>
+            <ol>
+              <li>デスクトップに「社内ポータル」というフォルダを作る</li>
+              <li><a href="materials/practice/portal.html" download="index.html">見本のポータル（index.html）</a>をダウンロードして、そのフォルダに入れる</li>
+            </ol>
+            <p>見本は、前回と同じ4つのブロック（お知らせ・今月の予定・よく使うリンク・部署の連絡先）でできています。今日は全員これで進めます。</p>
+            <p>自分のポータルを使いたい人は、あとで差し替えます。Cowork で作った人は、前回の作業の続きに次のように頼みます。チャットで作った人は、今日は見本のままで大丈夫です。</p>
             ${box(`このポータルを1つのHTMLファイルにして、デスクトップの「社内ポータル」フォルダに index.html という名前で保存してください。`)}
-            <p>前回のポータルが見つからない人は、<a href="materials/practice/portal.html" download="index.html">見本のポータル（index.html）</a>をダウンロードして、同じフォルダに入れます。</p>
             <h3>Claude Code を確かめる</h3>
             <p>最初に、ターミナルで状態を確かめます。インストールがまだの人は <a href="#/course/code" data-link>Code準備</a> へ。</p>
             ${box(`claude update
