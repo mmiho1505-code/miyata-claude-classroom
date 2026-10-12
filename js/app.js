@@ -317,7 +317,7 @@ ${q}
 
   // 講義の日に先生と開く資料。先頭が「今日の講義」、2つ目からは「これまでの講義」に並ぶ。
   // 新しい講義を足すときは、js/courses/ に講座ファイルを足し、ここの先頭に id を入れる。
-  const LECTURE_IDS = ["connect", "today"];
+  const LECTURE_IDS = ["bizapps", "connect", "today"];
 
   const HOME_ORDER = LECTURE_IDS.concat([
     "claudebase",
@@ -348,7 +348,6 @@ ${q}
     "survey",
     "invoice",
     "crm",
-    "bizapps",
     "shop",
     "secretary",
     "appedit",
@@ -368,7 +367,7 @@ ${q}
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
   const COWORK_IDS = ["cowork", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
-  const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "bizapps", "shop", "secretary", "appedit", "applied"];
+  const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
   const BEGINNER_IDS = STARTER_IDS.concat(COWORK_IDS, CODE_SETUP_IDS);
   const ADVANCED_IDS = CODE_MAKE_IDS.slice();
