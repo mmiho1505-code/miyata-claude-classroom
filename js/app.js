@@ -451,11 +451,13 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq"], LECTURE_IDS);
+  // 「今日の講義」の枠（LECTURE_IDS の先頭）だけは、受講コードで開ける。「これまでの講義」はコードなし。
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq"], LECTURE_IDS.slice(1));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
-    zenbu: { label: "全部", ids: HOME_ORDER.slice() }
+    zenbu: { label: "全部", ids: HOME_ORDER.slice() },
+    kougi: { label: "今日の講義", ids: LECTURE_IDS.slice(0, 1) }
   };
   const GATE_ALIASES = {
     jimu: "jimu",
@@ -469,7 +471,8 @@ ${q}
     zenbu: "zenbu",
     ぜんぶ: "zenbu",
     all: "zenbu",
-    全部: "zenbu"
+    全部: "zenbu",
+    hsk1013: "kougi"
   };
 
   const decodeGate = (raw) => {
@@ -2457,7 +2460,7 @@ ${lines.join("\n")}
       return;
     }
     if ((parts[0] === "course" || parts[0] === "cert") && parts[1] && !canSeeCourse(parts[1])) {
-      html = lockedView(toolOf(parts[1]) === "code" ? "dougu" : "jimu");
+      html = lockedView(LECTURE_IDS[0] === parts[1] ? "kougi" : toolOf(parts[1]) === "code" ? "dougu" : "jimu");
     }
     else if (parts.length === 0) html = home();
     else if (parts[0] === "course" && parts[1] && !CLASSROOM.courses[parts[1]]) html = notFound();
