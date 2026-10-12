@@ -880,6 +880,17 @@ ${q}
         ["SNS：投稿と反応（40件）", "materials/practice/posts.csv", "snspost"],
         ["SNS：過去の投稿の見本", "materials/practice/sample_posts.txt", "snspost"]
       ]
+    ],
+    [
+      "講座「3つのアプリ」の資料（練習用データは架空です）",
+      [
+        ["提案書：3つのアプリで進める（Word）", "materials/proposal-3apps.docx", "bizapps"],
+        ["経理集計：売上金・両替金", "materials/practice/cash-check-2026-10.csv", "bizapps"],
+        ["経理集計：テナント入金", "materials/practice/tenant-payments-2026-09.csv", "bizapps"],
+        ["予約と声：ホールの予約", "materials/practice/reservations-2026-10.csv", "bizapps"],
+        ["予約と声：お客様の声", "materials/practice/voices-2026-10.csv", "bizapps"],
+        ["予約と声：お客様の一覧", "materials/practice/customers-2026.csv", "bizapps"]
+      ]
     ]
   ];
 
