@@ -788,7 +788,7 @@ ${q}
     applied: ["cover-applied", "使いこなし", "CLAUDE.mdを1枚書き、いつもの手順を登録する。", "desktop"],
     invoice: ["cover-invoice", "請求・経費", "リストから1社1PDF。レシートを科目ごとに集計。", "invoice"],
     crm: ["cover-crm", "CRM", "登録・検索・絞り込みできる、自分専用の台帳。", "crm"],
-    bizapps: ["cover-survey", "3つのアプリ", "仕事の一覧を月の時間に直し、3つに分けて、経理集計から順に作る。", "survey"],
+    bizapps: ["cover-survey", "アプリとSkill", "仕事の一覧を月の時間に直して3つに分け、アプリ2つと Skill 1つで減らす。", "survey"],
     shop: ["cover-shop", "サイト", "店舗サイトや自己紹介ページを作って公開。", "shop"],
     survey: ["cover-survey", "集計・分析", "アンケート集計、ABC分析、競合の料金比較。", "survey"],
     snspost: ["cover-snspost", "SNS", "ネタから投稿文。反応から伸びた投稿の傾向。", "snspost"],
@@ -826,7 +826,7 @@ ${q}
     applied: ["使いこなし", "🧩"],
     invoice: ["請求と経費", "📄"],
     crm: ["CRM", "📒"],
-    bizapps: ["3つのアプリ", "🗂️"],
+    bizapps: ["アプリとSkill", "🗂️"],
     shop: ["サイト公開", "🏪"],
     survey: ["集計と分析", "📊"],
     snspost: ["SNS", "📱"],
@@ -882,7 +882,7 @@ ${q}
       ]
     ],
     [
-      "講座「3つのアプリ」の資料（練習用データは架空です）",
+      "講座「仕事の一覧から、アプリと Skill を作る」の資料（練習用データは架空です）",
       [
         ["提案書：3つのアプリで進める（Word）", "materials/proposal-3apps.docx", "bizapps"],
         ["経理集計：売上金・両替金", "materials/practice/cash-check-2026-10.csv", "bizapps"],
