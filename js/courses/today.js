@@ -8,7 +8,7 @@
   CLASSROOM.courses.today = {
     id: "today",
     title: "今日の講義：CLAUDE.md と Claude Code（中級）",
-    subtitle: "コワークで作った社内ポータルを、Claude Code で育てる。CLAUDE.md、会話の文脈、権限と計画モード、Skills",
+    subtitle: "コワークで作った社内ポータルを、Claude Code で育てる。CLAUDE.md、会話の文脈、権限と計画モード、やり直しと Git、Skills、点検係とフック",
     duration: "約120分",
     audience: "パソコンに慣れていて、Claude Code を起動できる人",
     lessons: [
@@ -17,19 +17,19 @@
         title: "今日のゴールと準備",
         practice: true,
         body: `
-            <p class="kicker">GOAL　0〜10分　1／7</p>
+            <p class="kicker">GOAL　0〜10分　1／8</p>
             <h1>コワークで作った社内ポータルを、任せられる形にする</h1>
             <p>前回コワークで作った社内ポータルを、今日は Claude Code で直していきます。同じ説明をしない、勝手に動かせない、お知らせの追加は呼ぶだけにする。そのための仕組みを、手を動かして学びます。</p>
             <div class="ops">
               <article class="op"><span class="num">1</span><h3>CLAUDE.md</h3><p>毎回の説明を、ファイルに書いて省く</p></article>
-              <article class="op"><span class="num">2</span><h3>文脈と権限</h3><p>会話の中身と、勝手に動かない範囲を管理する</p></article>
-              <article class="op"><span class="num">3</span><h3>Skill</h3><p>くり返す作業を、名前で呼べるようにする</p></article>
+              <article class="op"><span class="num">2</span><h3>文脈・権限・Git</h3><p>会話の中身と、勝手に動かない範囲を管理し、失敗しても戻せるようにする</p></article>
+              <article class="op"><span class="num">3</span><h3>Skill・点検係・フック</h3><p>くり返す作業を名前で呼び、点検と記録は自動にする</p></article>
               <article class="op"><span class="num">4</span><h3>自分の仕事</h3><p>最後の20分で、自分用を1つずつ作る</p></article>
             </div>
             <h3>ポータルをフォルダに入れる</h3>
             <ol>
               <li>デスクトップに「社内ポータル」というフォルダを作る</li>
-              <li><a href="materials/practice/portal.html" download="index.html">見本のポータル（index.html）</a>をダウンロードして、そのフォルダに入れる</li>
+              <li><a href="materials/practice/portal.html" download="index.html">見本のポータル（index.html）</a>をダウンロードして（index.html は、ホームページの中身を書いたファイル）、そのフォルダに入れる</li>
             </ol>
             <p>見本は、前回と同じ4つのブロック（お知らせ・今月の予定・よく使うリンク・部署の連絡先）でできています。今日は全員これで進めます。</p>
             <p>自分のポータルを使いたい人は、あとで差し替えます。Cowork で作った人は、前回の作業の続きに次のように頼みます。チャットで作った人は、今日は見本のままで大丈夫です。</p>
@@ -38,14 +38,14 @@
 保存したら、保存した場所を教えてください。`)}
             <p>前回の会話は、Claude アプリ左の Cowork のタスク一覧から開きます（新しいタスクでは前回のポータルがわかりません）。フォルダの許可を聞かれたら「社内ポータル」を選びます。保存できたら index.html をダブルクリックして、自分のポータルが出るか確かめます。</p>
             <h3>Claude Code を確かめる</h3>
-            <p>最初に、ターミナルで状態を確かめます。インストールがまだの人は <a href="#/course/code" data-link>Code準備</a> へ。</p>
+            <p>最初に、ターミナル（文字を打って、パソコンに指示を出す画面）で状態を確かめます。インストールがまだの人は <a href="#/course/code" data-link>Code準備</a> へ。</p>
             ${box(`claude update
 claude doctor`)}
             <ul>
               <li><strong>claude update</strong>：最新版にそろえる。版が違うと、画面やコマンドが講義と合わなくなる</li>
-              <li><strong>claude doctor</strong>：二重インストールや設定の書き間違いがないか、最初に点検する</li>
+              <li><strong>claude doctor</strong>：二重インストール（同じアプリが2つ入ってしまっている状態）や設定の書き間違いがないか、最初に点検する</li>
             </ul>
-            <p>問題がなければ、ポータルのフォルダに移って <code>claude</code> と打ちます。起動したフォルダの CLAUDE.md が読まれ、そのフォルダが作業場所になるためです。</p>
+            <p>問題がなければ、ポータルのフォルダに移って <code>claude</code> と打ちます。起動したフォルダの CLAUDE.md が読まれ、そのフォルダが作業場所になるためです。<code>cd</code> は「このフォルダに移って」という命令です。</p>
             ${box(`cd ~/Desktop/社内ポータル
 claude`)}
           `,
@@ -56,7 +56,7 @@ claude`)}
         title: "CLAUDE.md の置き場所",
         practice: true,
         body: `
-            <p class="kicker">CLAUDE.md　10〜30分　2／7　練習</p>
+            <p class="kicker">CLAUDE.md　10〜25分　2／8　練習</p>
             <h1>CLAUDE.md は、Claude への「申し送りメモ」</h1>
             <p>Claude Code は起動するたびに、このメモを読んでから仕事を始めます。毎回言っていたことをここに書けば、言わなくて済みます。</p>
             <p>メモは置く場所で役目が変わります。まずは2つだけ覚えれば十分です。</p>
@@ -64,10 +64,11 @@ claude`)}
               <li><strong>フォルダの中（./CLAUDE.md）</strong>：この社内ポータルだけの決まり</li>
               <li><strong>自分の設定（~/.claude/CLAUDE.md）</strong>：どのフォルダでも守ってほしいこと（口調など）</li>
             </ul>
+            <p><code>~</code> は自分のホームフォルダ（自分の名前のフォルダ）のことです。<code>.</code> で始まるフォルダ（.claude など）は、ふだんは隠れていて見えません。</p>
             <p>両方あれば、両方とも読まれます。</p>
             <h3>やってみる</h3>
             <ol>
-              <li>Claude Code に <code>/init</code> と打つ。フォルダの中身を見て、メモのたたき台を作ってくれます</li>
+              <li>Claude Code に <code>/init</code> と打つ（<code>/</code> で始まる言葉は、Claude Code への「操作の合図」で、コマンドといいます）。フォルダの中身を見て、メモのたたき台を作ってくれます</li>
               <li>できたら、下の文をコピーして貼る</li>
             </ol>
             ${box(`CLAUDE.md を次の方針で直してください。
@@ -87,7 +88,7 @@ claude`)}
 ・ファイルの削除と、外への送信・公開はしない
 すでに書いてあることがあれば消さずに、下に足してください。`)}
             <p>書けたら <code>/memory</code> と打ちます。フォルダの CLAUDE.md と自分の設定の CLAUDE.md が両方並んでいれば成功です。あとで直したいときも、ここから開けます。</p>
-            <p>慣れてきたら：メモが長くなったら別ファイルに分け、<code>@ファイル名</code> で読み込ませます。特定の場所だけのルールは <code>.claude/rules/</code> に置けます。</p>
+            <p>慣れてきたら：メモが長くなったら別ファイルに分け、<code>@ファイル名</code> で読み込ませます。特定の場所だけのルールは <code>.claude/rules/</code>（決まりだけを入れておくフォルダ）に置けます。</p>
             <h3>早く終わった人へ</h3>
             <p>CLAUDE.md の中身を別ファイルに分けて、<code>@</code> で読み込ませてみます。</p>
             ${box(`CLAUDE.md のうち、お知らせと連絡先の決まりを rules.md という別ファイルに移してください。
@@ -102,14 +103,15 @@ CLAUDE.md には @rules.md の1行を残して、読み込まれるようにし�
         title: "会話の文脈を管理する",
         practice: true,
         body: `
-            <p class="kicker">文脈　30〜45分　3／7　練習</p>
+            <p class="kicker">文脈　25〜35分　3／8　練習</p>
             <h1>渡すものを選び、たまったら切る</h1>
+            <p>文脈（コンテキスト）＝Claude がいま覚えている会話の中身のことです。</p>
             <ul>
               <li><code>@</code> ＋ファイル名：見てほしいファイルを指定する（例：<code>@index.html</code>）</li>
               <li><code>/context</code>：いま会話にどれだけ詰まっているかを見る</li>
               <li><code>/clear</code>：別の作業に移るときに、会話を空にする。CLAUDE.md は次も読まれる</li>
               <li><code>/resume</code>：前の会話に戻る。<code>claude --continue</code> で、このフォルダの直前の会話から再開</li>
-              <li><code>/model</code>：モデルを切り替える。<code>/usage</code>：使用量を見る</li>
+              <li><code>/model</code>：モデル（Claude の頭の種類。速いもの、よく考えるものなどがある）を切り替える。<code>/usage</code>：使用量を見る</li>
             </ul>
             <p>順番に試します。① <code>@index.html</code> を指定して「今のお知らせと予定を教えて」と頼む → ② <code>/context</code> で中身を見る → ③ <code>/clear</code> → ④ <code>/resume</code> で戻れることを確かめる。</p>
             <div class="callout">1つの会話に1つの作業。お知らせを直し終えたら <code>/clear</code> してから、連絡先の直しに移ります。</div>
@@ -125,9 +127,9 @@ claude --continue`)}
         title: "権限と計画モード",
         practice: true,
         body: `
-            <p class="kicker">権限　45〜65分　4／7　練習</p>
+            <p class="kicker">権限　35〜50分　4／8　練習</p>
             <h1>勝手に動かない範囲を決める</h1>
-            <p>新人さんに仕事を頼むときと同じです。「毎回聞いてね」「書類の直しは任せるよ」「まず段取りを見せて」と、任せ方を変えます。Claude Code では <strong>Shift＋Tab</strong> を押すたびに、この3つが切り替わります。今どれになっているかは、画面の下に出ます。</p>
+            <p>権限（Claude に、どこまでしてよいかの許可）を決めます。新人さんに仕事を頼むときと同じです。「毎回聞いてね」「書類の直しは任せるよ」「まず段取りを見せて」と、任せ方を変えます。Claude Code では <strong>Shift＋Tab</strong> を押すたびに、この3つが切り替わります。今どれになっているかは、画面の下に出ます。</p>
             <table>
               <thead><tr><th>画面の下の表示</th><th>任せ方</th><th>使うとき</th></tr></thead>
               <tbody>
@@ -146,7 +148,7 @@ claude --continue`)}
               <li>出てきた計画を読む。よければ「この計画で進めて」、違えば「〇〇は消さないで」と直してから進める</li>
             </ol>
             <h3>やってみる②：「いつも OK」と「いつも禁止」を決める</h3>
-            <p>毎回聞かれるのが面倒なことは「いつも OK」に、絶対にしてほしくないことは「禁止」に登録します。自分で書くより、Claude に頼むのが簡単です。</p>
+            <p>毎回聞かれるのが面倒なことは「いつも OK」に、絶対にしてほしくないことは「禁止」に登録します。登録先は .claude/settings.json（Claude Code の設定を書いておくファイル）です。自分で書くより、Claude に頼むのが簡単です。</p>
             ${box(`このフォルダの .claude/settings.json に、次の権限を足してください。
 ・git のコマンドは、聞かずに使ってよい
 ・rm（ファイルを消すコマンド）は禁止
@@ -159,7 +161,7 @@ claude --continue`)}
   }
 }`)}
             <ul>
-              <li><strong>allow</strong>＝いつも OK。<code>Bash(git *)</code> は「git で始まるコマンド」</li>
+              <li><strong>allow</strong>＝いつも OK。Bash は、ターミナルで打つコマンドのこと。<code>Bash(git *)</code> は「git で始まるコマンド」</li>
               <li><strong>deny</strong>＝禁止。<code>Bash(rm *)</code> は「rm（消す）で始まるコマンド」</li>
             </ul>
             <p>書けたら <code>/permissions</code> と打ち、禁止に rm が入っているか確かめます。</p>
@@ -175,13 +177,58 @@ claude --continue`)}
         was: []
       },
       {
+        id: "undo",
+        title: "やり直しと Git",
+        practice: true,
+        body: `
+            <p class="kicker">やり直し　50〜65分　5／8　練習</p>
+            <h1>失敗しても、戻せるようにしておく</h1>
+            <p>Git（ギット）は、ファイルの「セーブポイント」を残しておく道具です。ゲームのセーブと同じで、うまくいった所で記録しておけば、あとで失敗しても前の状態に戻せます。</p>
+            <ul>
+              <li><strong>コミット</strong>：今の状態にセーブポイントを作る。「何を変えたか」のメモもつける</li>
+              <li><strong>プッシュ</strong>：手元のセーブポイントを、GitHub に送る</li>
+            </ul>
+            <h3>Git と GitHub のちがい</h3>
+            <table>
+              <thead><tr><th></th><th>Git</th><th>GitHub</th></tr></thead>
+              <tbody>
+                <tr><td>ひとことで</td><td>セーブポイントを作る道具</td><td>セーブポイントを預けておく、インターネット上の置き場</td></tr>
+                <tr><td>どこにある</td><td>自分のパソコンの中</td><td>インターネットの上（github.com）</td></tr>
+                <tr><td>外に出る？</td><td>出ない。自分だけが見られる</td><td>送ったものが置かれる。公開の設定なら、だれでも見られる</td></tr>
+                <tr><td>使う操作</td><td>コミット</td><td>プッシュ（送る）</td></tr>
+                <tr><td>うれしいこと</td><td>いつでも前の状態に戻せる。履歴がメモつきで残る</td><td>パソコンが壊れても残る。チームで共有できる。サイトとして公開もできる</td></tr>
+              </tbody>
+            </table>
+            <p>今日は Git だけを使います。パソコンの中だけで動くので、外には何も送られません。</p>
+            <h3>やってみる①：セーブポイントを作る</h3>
+            ${box(`このフォルダで Git を始めて、今の状態をコミットしてください。メモは「講義の最初の状態」にしてください。
+GitHub への送信（プッシュ）はしないでください。`)}
+            <p>名前やメールアドレスを聞かれたら、自分のものを答えます。終わったら「今までのコミットを一覧で見せて」と頼み、1つ並んでいれば成功です。</p>
+            <h3>やってみる②：やり直す</h3>
+            <ol>
+              <li>「お知らせの1件目を『テスト』に変えて」と頼み、ブラウザで変わったことを確かめる</li>
+              <li><strong>Esc を2回</strong>押す（または <code>/rewind</code> と打つ）</li>
+              <li>戻りたい所（「テスト」と頼む前）を選び、ファイルも戻すほうを選ぶ</li>
+              <li>ブラウザで開き直し、元のお知らせに戻っていれば成功</li>
+            </ol>
+            <h3>2つのちがい</h3>
+            <ul>
+              <li><strong>Esc 2回（/rewind）</strong>：この会話の中で、少し前に戻る。手軽だけど、会話を閉じると使えない</li>
+              <li><strong>Git</strong>：セーブした所なら、いつでも戻れる。区切りのよい所でコミットしておく</li>
+            </ul>
+            <div class="callout">大きな変更の前は「先にコミットしておいて」と頼む。これだけで、安心して任せられます。</div>
+          `,
+        was: []
+      },
+      {
         id: "extend",
         title: "Skill を作って呼ぶ",
         practice: true,
         body: `
-            <p class="kicker">Skill　65〜85分　5／7　練習</p>
+            <p class="kicker">Skill　65〜80分　6／8　練習</p>
             <h1>くり返す作業は、名前で呼ぶ</h1>
-            <p>Skill は <code>.claude/skills/〈名前〉/SKILL.md</code> に置きます。先頭に name と description を書き、<code>/名前</code> で呼びます。自分のコマンドも、今は Skill にまとまっています。</p>
+            <p>Skill（スキル）は、よくやる作業の手順書です。名前をつけておくと、呼ぶだけでその手順で動きます。</p>
+            <p>Skill は <code>.claude/skills/〈名前〉/SKILL.md</code> に置きます。先頭に name（名前）と description（いつ使うかの説明）を書き、<code>/名前</code> で呼びます。自分のコマンドも、今は Skill にまとまっています。</p>
             ${box(`社内ポータルにお知らせを1件追加する手順を、Skill にしてください。名前は news-add。
 ・日付と本文を聞いてから作業する
 ・一番上に足す。4件目になったら、一番古いものを消してよいか私に聞く
@@ -195,10 +242,10 @@ claude --continue`)}
       },
       {
         id: "demo",
-        title: "サブエージェントで点検係を作る",
+        title: "点検係とフック",
         practice: true,
         body: `
-            <p class="kicker">サブエージェント　85〜100分　6／7　練習</p>
+            <p class="kicker">点検係とフック　80〜100分　7／8　練習</p>
             <h1>点検は、別の係に任せる</h1>
             <p>サブエージェントは、役割を決めて仕事を分ける「係」です。<code>.claude/agents/</code> に置きます。今日は、ポータルが決まりを守っているかを見る「点検係」を作ります。ファイルは変えず、見て報告するだけなので安全です。</p>
             ${box(`このフォルダ用のサブエージェントを作ってください。名前は portal-check。
@@ -209,7 +256,7 @@ claude --continue`)}
             <p>できたら <code>/agents</code> で portal-check が並んでいるか確かめ、次のように頼みます。</p>
             ${box(`portal-check に、今の index.html を点検させてください。`)}
             <p>試しに、お知らせを4件にしたり、連絡先に「090-0000-0000」を足したりしてから点検させると、見つけてくれるかがわかります（確かめたら元に戻します）。</p>
-            <h3>ほかの道具（今日は先生のデモ。家で試すときの手順つき）</h3>
+            <h3>やってみる：フックを作る</h3>
             <p><strong>フック</strong>＝「〜したら、必ず〜する」という自動のきまり。例：ファイルを変えたら、必ず時刻を「変更記録.txt」に書く</p>
             <ol>
               <li>Claude Code に下を貼る</li>
@@ -219,16 +266,19 @@ claude --continue`)}
 ・「変更記録.txt」に、今の日時を1行足す
 ・すでに書いてある設定は消さない
 足す前に、何を書くかを先に見せてください。`)}
+            <p>Edit と Write は、Claude がファイルを書きかえるときの操作の名前です。</p>
             <ol start="2">
               <li><code>/hooks</code> と打って、足したフックが並んでいるか確かめる（出てこなければ、一度 <code>/exit</code> してから <code>claude</code> で起動し直す）</li>
               <li>「お知らせの日付を今日にして」など、何か1つ直してもらう</li>
               <li>フォルダに「変更記録.txt」ができて、日時が書かれていれば成功</li>
             </ol>
+            <h3>ほかの道具（今日は先生のデモ。家で試すときの手順つき）</h3>
             <p><strong>MCP</strong>＝Claude と、ほかのサービスをつなぐ「差し込み口」。例：Notion のページを読んで、ポータルのお知らせに写す</p>
             <ol>
               <li>ターミナルで、Claude Code の<strong>外</strong>で下を打つ</li>
             </ol>
             ${box(`claude mcp add --transport http notion https://mcp.notion.com/mcp`)}
+            <p>MCP の差し込み口を登録する命令です。https〜 は Notion の受付の住所です。</p>
             <ol start="2">
               <li><code>claude</code> で起動し、<code>/mcp</code> と打つ。notion を選んでログインする（ブラウザが開きます）</li>
               <li>下を貼って試す</li>
@@ -238,6 +288,9 @@ claude --continue`)}
               <li>やめたいときは <code>claude mcp remove notion</code></li>
             </ol>
             <div class="callout warn">つないだサービスの中身は Claude が読めるようになります。会社のアカウントでつなぐ前に、会社のルールを確かめます。</div>
+            <p><strong>スケジュール</strong>＝決まった時間に、呼ばなくても自動で動かす。<code>/schedule</code> で登録します。例：毎朝9時に、点検係にポータルのお知らせを点検させる。Skill は「呼んだら動く」、スケジュールは「呼ばなくても動く」です。</p>
+            <p><strong>プラグイン</strong>＝今日作った CLAUDE.md・Skill・点検係・フックを1つにまとめて、チームの人に配れる形にしたもの。もらった人は <code>/plugin</code> から入れるだけで、同じ仕組みが使えます。</p>
+            <p>どちらも GitHub への登録などの準備がいるので、今日は先生のデモで見るだけにします。</p>
           `,
         was: []
       },
@@ -246,7 +299,7 @@ claude --continue`)}
         title: "自分の仕事で1つ作る・まとめ",
         practice: true,
         body: `
-            <p class="kicker">実践　100〜120分　7／7　練習</p>
+            <p class="kicker">実践　100〜120分　8／8　練習</p>
             <h1>自分の仕事で、CLAUDE.md と Skill を1つずつ</h1>
             <p>自分の業務のフォルダを開き、今日の手順で作ります。迷ったら下を貼ります。</p>
             ${box(`このフォルダは〔自分の仕事の内容〕に使っています。
@@ -259,7 +312,9 @@ claude --continue`)}
               <li><code>@</code>・<code>/context</code>・<code>/clear</code> で、会話に渡すものを管理した</li>
               <li>Shift＋Tab と設定ファイルで、勝手に動かない範囲を決めた</li>
               <li>お知らせの追加を Skill にして、名前で呼んだ</li>
+              <li>Git でセーブポイントを作り、Esc 2回で直す前に戻した</li>
               <li>点検係のサブエージェントを作り、決まりを守っているか見てもらった</li>
+              <li>フックで「ファイルを変えたら、必ず記録する」を自動にした</li>
             </ul>
             <div class="callout">公開・送信・削除は人が決めます。Claude には計画と下書きまで。</div>
           `,
