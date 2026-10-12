@@ -315,9 +315,11 @@ ${q}
     return { id, course, why };
   };
 
-  // 講義の日に先生と開く資料。先頭が「今日の講義」、2つ目からは「これまでの講義」に並ぶ。
+  // 講義の日に先生と開く資料。先頭から TODAY_COUNT 個が「今日の講義」、残りは「これまでの講義」に並ぶ。
   // 新しい講義を足すときは、js/courses/ に講座ファイルを足し、ここの先頭に id を入れる。
-  const LECTURE_IDS = ["bizapps", "connect", "today"];
+  const LECTURE_IDS = ["bizapps", "today", "connect"];
+  const TODAY_COUNT = 2;
+  const TODAY_IDS = LECTURE_IDS.slice(0, TODAY_COUNT);
 
   const HOME_ORDER = LECTURE_IDS.concat([
     "claudebase",
@@ -451,13 +453,13 @@ ${q}
   const toolKicker = (courseId) =>
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
-  // 「今日の講義」の枠（LECTURE_IDS の先頭）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq"], LECTURE_IDS.slice(1));
+  // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
     zenbu: { label: "全部", ids: HOME_ORDER.slice() },
-    kougi: { label: "今日の講義", ids: LECTURE_IDS.slice(0, 1) }
+    kougi: { label: "今日の講義", ids: TODAY_IDS.slice() }
   };
   const GATE_ALIASES = {
     jimu: "jimu",
@@ -1340,8 +1342,8 @@ ${q}
         </div>
       </section>
       <div class="page">
-        ${section("今日の講義", lectureLead, LECTURE_IDS.slice(0, 1))}
-        ${LECTURE_IDS.length > 1 ? section("これまでの講義", "過去の講義の資料です。受講コードなしで開けます。", LECTURE_IDS.slice(1)) : ""}
+        ${section("今日の講義", lectureLead, TODAY_IDS)}
+        ${LECTURE_IDS.length > TODAY_COUNT ? section("これまでの講義", "過去の講義の資料です。受講コードなしで開けます。", LECTURE_IDS.slice(TODAY_COUNT)) : ""}
         ${section("はじめて", "受講コードなしで読めます。はじめての人はここから。上から順で大丈夫です。", STARTER_IDS.concat(["faq"]))}
         ${section("事務（チャットで作業）", "画面で日本語のお願い。黒い画面は使いません。書類づくりは、下書きまでが Claude、確かめて出すのは人です。", COWORK_IDS)}
         ${section("道具づくり（Claude Code）", "最初に準備、そのあと作りやすい順です。", CODE_IDS)}
@@ -2460,7 +2462,7 @@ ${lines.join("\n")}
       return;
     }
     if ((parts[0] === "course" || parts[0] === "cert") && parts[1] && !canSeeCourse(parts[1])) {
-      html = lockedView(LECTURE_IDS[0] === parts[1] ? "kougi" : toolOf(parts[1]) === "code" ? "dougu" : "jimu");
+      html = lockedView(TODAY_IDS.includes(parts[1]) ? "kougi" : toolOf(parts[1]) === "code" ? "dougu" : "jimu");
     }
     else if (parts.length === 0) html = home();
     else if (parts[0] === "course" && parts[1] && !CLASSROOM.courses[parts[1]]) html = notFound();
