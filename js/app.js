@@ -317,7 +317,7 @@ ${q}
 
   // 講義の日に先生と開く資料。先頭が「今日の講義」、2つ目からは「これまでの講義」に並ぶ。
   // 新しい講義を足すときは、js/courses/ に講座ファイルを足し、ここの先頭に id を入れる。
-  const LECTURE_IDS = ["today"];
+  const LECTURE_IDS = ["connect", "today"];
 
   const HOME_ORDER = LECTURE_IDS.concat([
     "claudebase",
