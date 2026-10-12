@@ -176,6 +176,12 @@ claude`)}
             <h1>呼ばなくても、決まった時間に動かす</h1>
             <p>スケジュールは、決まった時間に Claude を自動で動かす仕組みです。Skill は「呼んだら動く」、スケジュールは「呼ばなくても動く」です。自分のパソコンが閉じていても、インターネットの上（クラウド）で動きます。</p>
             <p>そのため、クラウドの Claude は自分のパソコンの中を見られません。2ページ目で GitHub に預けたポータルを読みに行きます。</p>
+            <h3>使える人と準備</h3>
+            <ul>
+              <li>Claude の Pro・Max・Team・Enterprise のプランで使えます。Team・Enterprise の会社は、管理者がこの機能をオンにしておく必要があります</li>
+              <li>非公開の置き場を読ませるために、最初に1回だけ下を打ちます。自分の GitHub の鍵（gh のログイン）を、クラウドの Claude に渡す命令です</li>
+            </ul>
+            ${box(`/web-setup`)}
             <h3>やってみる①：点検だけを登録する</h3>
             <p>最初は「見て報告するだけ」にします。ファイルを変えない仕事なら、自動にしても安心です。</p>
             ${box(`/schedule 毎朝9時に、GitHub の shanai-portal のポータルを点検して報告してください。
@@ -183,18 +189,24 @@ claude`)}
 ・日付が過ぎたお知らせが残っていないか
 ・ファイルは変えない。コミットもプッシュもしない
 ・報告だけする`)}
-            <p>【要確認】登録の途中で、GitHub のどのリポジトリを使うかや、通知の受け取り方を聞かれます。shanai-portal を選びます。</p>
-            <h3>やってみる②：今すぐ1回動かす</h3>
+            <p>登録の前に、Claude が「いつ動かすか」「どの GitHub の置き場を使うか」「何を頼むか」を順に確かめてきます。置き場は shanai-portal を選びます。</p>
+            <h3>やってみる②：今すぐ1回動かして、結果を見る</h3>
             <p>明日の朝まで待たずに、1回だけ動かして確かめます。</p>
-            ${box(`さっき登録したスケジュールを、今すぐ1回動かしてください。`)}
-            <p>報告が届き、「過ぎたお知らせ」などが書かれていれば成功です。</p>
+            ${box(`/schedule run`)}
+            <p>メールなどの知らせは来ません。動くたびに、claude.ai/code に会話が1つできるので、そこを開いて報告を読みます。ブラウザで <strong>claude.ai/code/routines</strong> を開くと、登録したものと、これまでに動いた記録が並んでいます。</p>
+            <p>報告に「過ぎたお知らせ」などが書かれていれば成功です。</p>
             <h3>やってみる③：止め方を覚える</h3>
-            <p>自動の仕組みは、止め方を知ってから使います。登録したものの一覧を見て、止めます。</p>
-            ${box(`登録しているスケジュールを一覧で見せてください。
-そのあと、さっきの点検のスケジュールを止めてください。`)}
+            <p>自動の仕組みは、止め方を知ってから使います。</p>
+            ${box(`/schedule list`)}
+            <ol>
+              <li><code>/schedule list</code> で、登録したものが並んでいるか確かめる</li>
+              <li>ブラウザで claude.ai/code/routines を開き、さっきの点検を選ぶ</li>
+              <li>上にあるオン／オフのスイッチを「オフ」にする。これで止まります</li>
+              <li>もう使わないときは、名前の横のメニューから <strong>Delete</strong>（消す）を選ぶ</li>
+            </ol>
             <div class="callout">自動で動かすのは「見て報告する」まで。直す・送る・消すは、報告を読んだ人が決めます。</div>
             <h3>早く終わった人へ</h3>
-            <p>点検の時間を「毎週月曜の朝8時」に変えて、もう一度登録します。終わったら、一覧で時間が変わっているか確かめてから止めます。</p>
+            <p>点検の時間を「毎週月曜の朝8時」に変えます。<code>/schedule update</code> と打ち、聞かれたら新しい時間を伝えます。終わったら <code>/schedule list</code> で時間が変わっているか確かめてから、claude.ai/code/routines のスイッチで止めます。</p>
           `,
         was: []
       },
@@ -218,13 +230,49 @@ claude`)}
             ${box(`このフォルダで作った Skill・点検係・フックを、1つのプラグインにまとめてください。名前は portal-kit。
 ・ポータルのフォルダとは別に、デスクトップに「portal-kit」フォルダを作って、そこにまとめる
 ・まとめる前に、何をどのファイルに入れるかを見せる
-・内線や名前など、社内の情報はプラグインに入れない`)}
-            <h3>やってみる②：となりの人に配る</h3>
-            <p>プラグインは、GitHub の置き場から配ります。2ページ目と同じ手順で、portal-kit も<strong>非公開</strong>のリポジトリにしてプッシュします。</p>
-            ${box(`portal-kit を、GitHub に非公開のリポジトリとして送ってください。
-となりの人が入れられるように、入れ方の手順も教えてください。`)}
-            <p>非公開なので、となりの人を GitHub の「Collaborators」（いっしょに使う人）に招きます。招かれた人は、メールの招待を受けてから、<code>/plugin</code> と打って portal-kit を入れます。【要確認】入れ方の画面は、Claude が教えてくれた手順に合わせます。</p>
-            <p>入れた人が、自分のポータルで <code>/news-add</code> を呼べたら成功です。</p>
+・内線や名前など、社内の情報はプラグインに入れない
+・人に配れるように、カタログ（.claude-plugin/marketplace.json）と中身（plugins/portal-kit）の2段の形にする。カタログの名前は portal-tools
+・できたら claude plugin validate で形を点検する`)}
+            <p>配るには、決まった形のフォルダが必要です。「カタログ」（どんなプラグインがあるかの一覧）と「中身」（Skill・点検係・フック）の2段になります。</p>
+            ${box(`portal-kit/
+├── .claude-plugin/marketplace.json  … カタログ
+└── plugins/portal-kit/
+    ├── .claude-plugin/plugin.json    … 名前と説明
+    ├── skills/news-add/SKILL.md      … Skill
+    ├── agents/checker.md             … 点検係
+    └── hooks/hooks.json              … フック`)}
+            <p>点検の最後に <strong>✔ Validation passed</strong>（形に問題なし）と出れば合格です。</p>
+            <h3>やってみる②：GitHub に送る</h3>
+            <p>プラグインは、GitHub の置き場から配ります。2ページ目と同じく、<strong>非公開</strong>のリポジトリにします。</p>
+            ${box(`デスクトップの portal-kit フォルダを、GitHub に非公開のリポジトリとして送ってください。名前は portal-kit にしてください。
+作る前に、どんな設定で作るかを見せてください。`)}
+            <p>非公開なので、となりの人を招きます。github.com の portal-kit を開き、Settings → Collaborators（いっしょに使う人）から、となりの人の GitHub の名前を足します。</p>
+            <h3>やってみる③：となりの人が入れる</h3>
+            <p>ここからは、もらう人が自分のパソコンでします。</p>
+            <ol>
+              <li>メールで届いた招待を受ける</li>
+              <li>GitHub にログインしておく（2ページ目の <code>! gh auth login</code>）。非公開の置き場は、ログインしていないと読めません</li>
+              <li>Claude Code で、カタログを登録する（〈持ち主〉は、配る人の GitHub の名前）</li>
+            </ol>
+            ${box(`/plugin marketplace add 〈持ち主〉/portal-kit`)}
+            <p><strong>Successfully added marketplace: portal-tools</strong> と出れば、カタログの登録は成功です。</p>
+            <ol start="4">
+              <li>プラグインを入れる</li>
+            </ol>
+            ${box(`/plugin install portal-kit@portal-tools`)}
+            <ol start="5">
+              <li>くわしい画面が開くので、入れる範囲を選んで <strong>Install</strong> を押す。迷ったら、自分だけ（user）を選ぶ</li>
+              <li>「Run /reload-plugins to apply.」と出たら、<code>/reload-plugins</code> と打つ</li>
+            </ol>
+            <p>プラグインの Skill は、頭にプラグインの名前がつきます。入れた人が、自分のポータルで <code>/portal-kit:news-add</code> を呼べたら成功です。</p>
+            <h3>/plugin の画面の見方</h3>
+            <p><code>/plugin</code> と打つと、4つのタブが出ます。</p>
+            <ul>
+              <li><strong>Discover</strong>：登録したカタログにある、入れられるプラグイン</li>
+              <li><strong>Installed</strong>：入れたもの。止める・新しくする・外す（Uninstall）はここから</li>
+              <li><strong>Marketplaces</strong>：登録したカタログ。自分で作ったカタログは、自動で新しくならないので、直したら Update marketplace を押す</li>
+              <li><strong>Errors</strong>：うまく読めなかったときの理由</li>
+            </ul>
             <div class="callout">人からもらったプラグインは、入れる前に中身を見ます。「このプラグインは何をする？削除や送信をする所はある？」と Claude に聞いてから入れます。</div>
           `,
         was: []
@@ -248,11 +296,18 @@ claude`)}
             </table>
             <h3>やってみる：禁止を登録する</h3>
             <p>前回の権限のページと同じく、絶対にしてほしくないことは設定ファイルに「禁止」として登録します。</p>
-            ${box(`このフォルダの .claude/settings.json に、次を「禁止」として登録してください。
-・GitHub のリポジトリを公開（public）にすること
-・リポジトリを消すこと
+            <p>「公開にするときだけ止める」という細かい決め方は、うまく効かないことがあります。GitHub の置き場を<strong>作る・設定を変える・消す</strong>を、まるごと禁止にするほうが確実です。今日の置き場はもう作り終わっているので、禁止にしても困りません。</p>
+            ${box(`このフォルダの .claude/settings.json に、次の3つを「禁止」（deny）として登録してください。
+・Bash(gh repo create *)　GitHub の置き場を作る
+・Bash(gh repo edit *)　置き場の設定を変える（公開にするのもここ）
+・Bash(gh repo delete *)　置き場を消す
 登録する前に、何を書くかを見せてください。`)}
-            <p>【要確認】登録できたら「shanai-portal を公開にして」と頼んでみて、止められれば成功です（止められたら、そのまま「やめて」と伝えます）。</p>
+            <ol>
+              <li>登録できたら <code>/exit</code> で終わり、<code>claude</code> で起動し直す</li>
+              <li>「shanai-portal を公開にして」と頼む</li>
+              <li>Claude が、禁止されているのでできない、と答えれば成功。github.com で shanai-portal が Private のままか確かめる</li>
+            </ol>
+            <div class="callout">この禁止は「うっかり」を防ぐためのものです。Claude が別の書き方の命令を使うと通ってしまうことがあり、完全な壁ではありません。大事な置き場は、GitHub の側でも、消せる人・公開にできる人を絞っておきます。</div>
             <h3>会社のアカウントでつなぐ前のチェック</h3>
             <ol>
               <li>会社で、そのサービスを Claude とつないでよいか（情報の担当の人に聞く）</li>
