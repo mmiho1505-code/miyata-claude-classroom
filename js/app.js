@@ -786,7 +786,7 @@ ${q}
     applied: ["cover-applied", "使いこなし", "CLAUDE.mdを1枚書き、いつもの手順を登録する。", "desktop"],
     invoice: ["cover-invoice", "請求・経費", "リストから1社1PDF。レシートを科目ごとに集計。", "invoice"],
     crm: ["cover-crm", "CRM", "登録・検索・絞り込みできる、自分専用の台帳。", "crm"],
-    bizapps: ["cover-survey", "3つのアプリ", "仕事の一覧を月の時間に直し、3つに分けて、経理集計から作る。", "survey"],
+    bizapps: ["cover-survey", "3つのアプリ", "仕事の一覧を月の時間に直し、3つに分けて、経理集計から順に作る。", "survey"],
     shop: ["cover-shop", "サイト", "店舗サイトや自己紹介ページを作って公開。", "shop"],
     survey: ["cover-survey", "集計・分析", "アンケート集計、ABC分析、競合の料金比較。", "survey"],
     snspost: ["cover-snspost", "SNS", "ネタから投稿文。反応から伸びた投稿の傾向。", "snspost"],
