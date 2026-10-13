@@ -479,8 +479,7 @@ ${q}
     zenbu: "zenbu",
     ぜんぶ: "zenbu",
     all: "zenbu",
-    全部: "zenbu",
-    hsk1013: "kougi"
+    全部: "zenbu"
   };
 
   const decodeGate = (raw) => {
