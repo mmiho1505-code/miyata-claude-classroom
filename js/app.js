@@ -1493,7 +1493,7 @@ ${q}
         </div>
       </section>
       <div class="page">
-        ${section("今日の講義", lectureLead, TODAY_IDS)}
+        ${section("今日の講義", lectureLead, TODAY_IDS.filter((id) => canSeeCourse(id)))}
         ${hasClosedBox() ? unlockFormHTML("home") : ""}
         ${LECTURE_IDS.length > TODAY_COUNT ? section("これまでの講義", "過去の講義の資料です。受講コードなしで開けます。", LECTURE_IDS.slice(TODAY_COUNT)) : ""}
         ${section("はじめて", "受講コードなしで読めます。はじめての人はここから。上から順で大丈夫です。", STARTER_IDS.concat(["faq"]))}
