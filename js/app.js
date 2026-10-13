@@ -1812,6 +1812,7 @@ ${q}
 
   const bindCopies = () => {
     document.querySelectorAll(".lesson-body .code-wrap, .prompt-item .code-wrap").forEach((wrap) => {
+      if (wrap.closest(".talk")) return;
       const prev = wrap.previousElementSibling;
       if (prev && prev.classList.contains("paste-hint")) return;
       const hint = document.createElement("p");

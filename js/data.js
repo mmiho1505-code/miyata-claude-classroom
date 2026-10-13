@@ -92,3 +92,23 @@ window.CLASSROOM = {
     }
   ]
 };
+
+// 講座の中の会話。右が自分（コピーして貼れる）、左が Claude の返事の見本。
+// 使い方：${CLASSROOM.talk([{ do: "ファイルを入力欄にドラッグ" }, { me: "縦書きにしたい。", file: "請求書.xlsx" }, { ai: "承知しました。\n\n漢数字にしますか？" }])}
+CLASSROOM.talk = (turns, note = "Claude の返事は見本です。毎回少しずつ言い方がちがいます。") => {
+  const paras = (text) =>
+    text
+      .trim()
+      .split(/\n{2,}/)
+      .map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`)
+      .join("");
+  const rows = turns
+    .map((t) => {
+      if (t.do) return `<p class="talk-do">${t.do}</p>`;
+      if (t.ai) return `<div class="talk-ai"><span class="talk-who">Claude</span>${paras(t.ai)}</div>`;
+      const file = t.file ? `<span class="talk-file">📎 ${t.file}</span>` : "";
+      return `<div class="talk-me"><span class="talk-who">あなた</span>${file}<div class="code-wrap"><button class="copy" type="button">コピー</button><pre>${t.me.trim()}</pre></div></div>`;
+    })
+    .join("");
+  return `<div class="talk">${rows}${note ? `<p class="talk-note">${note}</p>` : ""}</div>`;
+};

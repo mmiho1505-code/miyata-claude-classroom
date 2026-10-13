@@ -674,3 +674,77 @@ details.fold-inline[open] > summary { margin-bottom: 12px; }
 .files-h:first-of-type {
   margin-top: 8px;
 }
+
+/* 講座の中の会話（CLASSROOM.talk） */
+.talk {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 24px;
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #faf9f5;
+}
+.talk-who {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: #8a7f6c;
+  margin-bottom: 4px;
+}
+.talk-me {
+  justify-self: end;
+  max-width: 88%;
+}
+.talk-me .talk-who { text-align: right; }
+.talk-file {
+  display: block;
+  width: fit-content;
+  margin: 0 0 6px auto;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+}
+.talk .talk-me .code-wrap {
+  border: 0 !important;
+  border-radius: 16px !important;
+  background: #efece3 !important;
+}
+.talk .talk-me .code-wrap pre {
+  color: var(--ink) !important;
+  white-space: pre-wrap;
+  font-family: inherit;
+  padding-right: 76px;
+}
+.talk .talk-me .code-wrap .copy {
+  background: #fff !important;
+  border: 1px solid var(--line) !important;
+}
+.talk-ai {
+  max-width: 92%;
+}
+.talk-ai .talk-who { color: #c4622d; }
+.talk-ai .talk-who::before { content: "✳︎ "; }
+.talk-ai p { margin: 0 0 8px; }
+.talk-ai p:last-child { margin-bottom: 0; }
+.talk-do {
+  justify-self: center;
+  margin: 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px dashed var(--line);
+  font-size: 14px;
+  color: #5f5a50;
+}
+.talk-note {
+  margin: 0;
+  font-size: 13px;
+  color: #8a7f6c;
+}
+@media (max-width: 640px) {
+  .talk { padding: 14px 10px; }
+  .talk-me, .talk-ai { max-width: 100%; }
+}
