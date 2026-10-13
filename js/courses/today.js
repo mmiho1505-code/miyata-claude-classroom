@@ -21,10 +21,10 @@
             <h1>コワークで作った社内ポータルを、任せられる形にする</h1>
             <p>前回コワークで作った社内ポータルを、今日は Claude Code で直していきます。同じ説明をしない、勝手に動かせない、お知らせの追加は呼ぶだけにする。そのための仕組みを、手を動かして学びます。</p>
             <div class="ops">
-              <article class="op"><span class="num">1</span><h3>CLAUDE.md</h3><p>毎回の説明を、ファイルに書いて省く</p></article>
-              <article class="op"><span class="num">2</span><h3>文脈・権限・Git</h3><p>会話の中身と、勝手に動かない範囲を管理し、失敗しても戻せるようにする</p></article>
-              <article class="op"><span class="num">3</span><h3>Skill・点検係・フック</h3><p>くり返す作業を名前で呼び、点検と記録は自動にする</p></article>
-              <article class="op"><span class="num">4</span><h3>自分の仕事</h3><p>最後の20分で、自分用を1つずつ作る</p></article>
+              <article class="op"><span class="num">1</span><h3>メモを渡しておく（CLAUDE.md）</h3><p>毎回同じことを説明しなくていいように、「うちのルール」を1枚のメモに書いて渡しておきます。</p></article>
+              <article class="op"><span class="num">2</span><h3>任せる範囲を決める（文脈・権限・Git）</h3><p>話が長くなったら整理し、「ここまでは勝手にやってOK」の線を引きます。失敗しても元に戻せるように、保存しながら進めます。</p></article>
+              <article class="op"><span class="num">3</span><h3>いつもの仕事に名前をつける（Skill・点検係・フック）</h3><p>よく頼む作業は「月末チェックして」のように一言で頼めるようにします。見直しや記録は、言わなくても自動でやってもらいます。</p></article>
+              <article class="op"><span class="num">4</span><h3>自分用を1つ作る（実習）</h3><p>最後の20分で、ご自分の仕事に合わせたものを1つ作ってみます。</p></article>
             </div>
             <div class="callout"><strong>最後の20分で、自分の仕事用を1つ作ります</strong><br>今のうちに、毎回同じ説明をしている仕事や、くり返している作業を1つ思いうかべておいてください。（例：毎月の請求書、会議のメモのまとめ、お客さんへの返信）</div>
             <h3>ポータルをフォルダに入れる</h3>
