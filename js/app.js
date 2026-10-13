@@ -317,9 +317,15 @@ ${q}
 
   // 講義の日に先生と開く資料。先頭から TODAY_COUNT 個が「今日の講義」、残りは「これまでの講義」に並ぶ。
   // 新しい講義を足すときは、js/courses/ に講座ファイルを足し、ここの先頭に id を入れる。
-  const LECTURE_IDS = ["bizapps", "today", "connect"];
-  const TODAY_COUNT = 2;
+  const LECTURE_IDS = ["tosou", "bizapps", "today", "connect"];
+  const TODAY_COUNT = 3;
   const TODAY_IDS = LECTURE_IDS.slice(0, TODAY_COUNT);
+
+  // 生徒さん専用の講座。中身は名前＋パスワードで暗号化して js/locked/ に置く（鍵のかけ方は tools/lock-course.mjs）。
+  // 開けるまでは CLASSROOM.courses に無いので、一覧にも出ない。
+  const LOCKED = CLASSROOM.locked || {};
+  // チャットで作業する講義（パンくずや見出しを「チャットで作業」にする）
+  const CHAT_LECTURE_IDS = ["tosou"];
 
   const HOME_ORDER = LECTURE_IDS.concat([
     "claudebase",
@@ -443,7 +449,7 @@ ${q}
   };
 
   const toolOf = (courseId) => {
-    if (COWORK_IDS.includes(courseId)) return "cowork";
+    if (COWORK_IDS.includes(courseId) || CHAT_LECTURE_IDS.includes(courseId)) return "cowork";
     if (STARTER_IDS.includes(courseId) || courseId === "faq") return "starter";
     return "code";
   };
@@ -459,7 +465,7 @@ ${q}
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
     zenbu: { label: "全部", ids: HOME_ORDER.slice() },
-    kougi: { label: "今日の講義", ids: TODAY_IDS.slice() }
+    kougi: { label: "今日の講義", ids: TODAY_IDS.filter((id) => !LOCKED[id]) }
   };
   const GATE_ALIASES = {
     jimu: "jimu",
@@ -507,11 +513,145 @@ ${q}
   };
 
   const canSeeCourse = (courseId) => {
+    if (courseId && LOCKED[courseId]) return !!CLASSROOM.courses[courseId];
     if (!courseId || OPEN_COURSE_IDS.includes(courseId)) return true;
     if (!CLASSROOM.courses[courseId]) return true;
     const gates = loadGates();
     if (gates.includes("zenbu")) return true;
     return gates.some((g) => (GATE_PACKS[g] || {}).ids && GATE_PACKS[g].ids.includes(courseId));
+  };
+
+  // 名前とパスワードで、生徒さん専用の講座を開く。鍵の作り方は tools/lock-course.mjs と同じにしておく。
+  // 開けた講座の鍵は、このブラウザにだけ残す（進度とは別の場所。進度報告には入らない）。
+  const KEYS_STORAGE = "claude-classroom-keys-v1";
+  const loadKeys = () => {
+    try {
+      return JSON.parse(localStorage.getItem(KEYS_STORAGE)) || {};
+    } catch {
+      return {};
+    }
+  };
+  const saveKey = (id, raw) => {
+    try {
+      localStorage.setItem(KEYS_STORAGE, JSON.stringify(Object.assign(loadKeys(), { [id]: raw })));
+    } catch {
+      /* 保存できなくても、この画面では開けている */
+    }
+  };
+  const canUnlock = () => !!(window.crypto && window.crypto.subtle && window.TextEncoder);
+  const fromB64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  const toB64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
+
+  const openBox = async (id, key) => {
+    const box = LOCKED[id];
+    const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: fromB64(box.iv) }, key, fromB64(box.data));
+    new Function(new TextDecoder().decode(plain))();
+    return !!CLASSROOM.courses[id];
+  };
+
+  const unlockCourse = async (rawName, rawPass) => {
+    const name = String(rawName || "").normalize("NFKC").trim().toLowerCase().replace(/\s+/g, "");
+    const pass = String(rawPass || "").normalize("NFKC");
+    if (!name || !pass || !canUnlock()) return [];
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(`${name}\n${pass}`), "PBKDF2", false, ["deriveKey"]);
+    const opened = [];
+    for (const id of Object.keys(LOCKED)) {
+      if (CLASSROOM.courses[id]) continue;
+      const box = LOCKED[id];
+      const key = await crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt: fromB64(box.salt), iterations: box.iter, hash: "SHA-256" },
+        base,
+        { name: "AES-GCM", length: 256 },
+        true,
+        ["decrypt"]
+      );
+      try {
+        if (await openBox(id, key)) {
+          opened.push(id);
+          saveKey(id, toB64(await crypto.subtle.exportKey("raw", key)));
+        }
+      } catch {
+        /* この講座の鍵ではない */
+      }
+    }
+    return opened;
+  };
+
+  // 前に開けた講座は、残した鍵で開き直す。鍵をかけ直した講座は開かないので、名前とパスワードを入れ直してもらう
+  const reopenSaved = async () => {
+    if (!canUnlock()) return false;
+    const keys = loadKeys();
+    let any = false;
+    for (const id of Object.keys(keys)) {
+      if (!LOCKED[id] || CLASSROOM.courses[id]) continue;
+      try {
+        const key = await crypto.subtle.importKey("raw", fromB64(keys[id]), "AES-GCM", false, ["decrypt"]);
+        if (await openBox(id, key)) any = true;
+      } catch {
+        /* 開かなければ、そのまま */
+      }
+    }
+    return any;
+  };
+
+  const hasClosedBox = () => Object.keys(LOCKED).some((id) => !CLASSROOM.courses[id]);
+
+  const unlockFormHTML = (where) => `
+        <form class="member-form card unlock-form">
+          <h2>生徒さん専用の講座</h2>
+          <p class="easy-meta">先生から案内された名前とパスワードを入れると、自分の講座が開きます。</p>
+          <label for="unlock-name-${where}">名前</label>
+          <div class="member-row">
+            <input id="unlock-name-${where}" name="who" type="text" maxlength="40" autocomplete="username" placeholder="案内された名前" />
+          </div>
+          <label for="unlock-pass-${where}">パスワード</label>
+          <div class="member-row">
+            <input id="unlock-pass-${where}" name="pass" type="password" maxlength="100" autocomplete="current-password" />
+            <button class="primary" type="submit">開ける</button>
+          </div>
+          <p class="easy-meta unlock-msg" role="status" hidden></p>
+        </form>`;
+
+  const unlockView = () => `
+      <div class="page">
+        ${crumbs([
+          { href: "#/", label: "ホーム" },
+          { href: "#/me", label: "マイページ" }
+        ])}
+        <p class="kicker">鍵</p>
+        <h1>この講座は、名前とパスワードで開きます</h1>
+        <p class="lede">先生から案内された名前とパスワードを入れてください。</p>
+        ${unlockFormHTML("page")}
+        <p><a class="btn-dark" href="#/" data-link>ホームへ</a></p>
+      </div>`;
+
+  const bindUnlock = () => {
+    document.querySelectorAll(".unlock-form").forEach((form) => {
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        const msg = form.querySelector(".unlock-msg");
+        const btn = form.querySelector("button");
+        const show = (text) => {
+          msg.textContent = text;
+          msg.hidden = false;
+        };
+        if (!canUnlock()) {
+          show("このブラウザでは開けません。教室のサイト（https で始まるアドレス）から開いてください。");
+          return;
+        }
+        btn.disabled = true;
+        show("確かめています…");
+        const opened = await unlockCourse(form.who.value, form.pass.value).catch(() => []);
+        btn.disabled = false;
+        if (!opened.length) {
+          show("名前かパスワードがちがいます。先生の案内を見てください。");
+          return;
+        }
+        const hash = (location.hash || "").split("?")[0];
+        if (/^#\/(course|cert)\//.test(hash)) render({ keepScroll: true });
+        else location.hash = `#/course/${opened[0]}`;
+      };
+    });
   };
 
   const applyKeyFromUrl = () => {
@@ -870,7 +1010,7 @@ ${q}
         ["請求書：取引先リスト（Excel）", "materials/practice/clients.xlsx", "cowork invoice"],
         ["請求書：ひな形（Excel）", "materials/practice/invoice_template.xlsx", "cowork invoice"],
         ["請求書：ひな形（テキスト）", "materials/invoice-template.txt"],
-        ["見積：外壁塗装の単価表（Excel）", "materials/practice/tanka-gaiheki.xlsx", "invoicemake"],
+        ["見積：外壁塗装の単価表（Excel）", "materials/practice/tanka-gaiheki.xlsx", "invoicemake tosou"],
         ["給料：出退勤のサンプル", "materials/salary-attend-sample.csv", "attend"],
         ["給料：給与条件のサンプル", "materials/salary-rates-sample.csv", "attend"],
         ["経費のサンプルCSV", "materials/expense-sample.csv"],
@@ -1270,7 +1410,7 @@ ${q}
       .filter((id) => CLASSROOM.courses[id] && (COURSE_META[id] || LECTURE_IDS.includes(id)))
       .map((id) => {
         const course = CLASSROOM.courses[id];
-        const [cover, label, blurb, pic] = COURSE_META[id] || ["cover-applied", course.title, escapeHtml(course.subtitle || ""), "docs"];
+        const [cover, label, blurb, pic] = COURSE_META[id] || ["cover-applied", course.short || course.title, escapeHtml(course.subtitle || ""), "docs"];
         const held = heldLabel(course);
         return classCard(
           `#/course/${id}`,
@@ -1322,10 +1462,10 @@ ${q}
       next.lesson
           ? `${escapeHtml(nextShort)}　${escapeHtml(next.lesson.title)}`
           : escapeHtml(nextShort);
-    const lectureHeld = heldLabel(CLASSROOM.courses[LECTURE_IDS[0]]);
+    const lectureHeld = heldLabel(CLASSROOM.courses[LECTURE_IDS.find((id) => CLASSROOM.courses[id])]);
     const lectureLead = `${
       lectureHeld ? `${lectureHeld}の講義です。` : "講義の日に、先生と一緒に開く資料です。"
-    }中級（Claude Code を起動できる人向け）。はじめての人は、下の「はじめて」からどうぞ。`;
+    }受講コード、または名前とパスワードで開きます。はじめての人は、下の「はじめて」からどうぞ。`;
     const section = (title, lead, ids) => `
         <section class="home-catalog">
           <div class="section-head"><h2>${title}</h2></div>
@@ -1354,6 +1494,7 @@ ${q}
       </section>
       <div class="page">
         ${section("今日の講義", lectureLead, TODAY_IDS)}
+        ${hasClosedBox() ? unlockFormHTML("home") : ""}
         ${LECTURE_IDS.length > TODAY_COUNT ? section("これまでの講義", "過去の講義の資料です。受講コードなしで開けます。", LECTURE_IDS.slice(TODAY_COUNT)) : ""}
         ${section("はじめて", "受講コードなしで読めます。はじめての人はここから。上から順で大丈夫です。", STARTER_IDS.concat(["faq"]))}
         ${section("事務（チャットで作業）", "画面で日本語のお願い。黒い画面は使いません。書類づくりは、下書きまでが Claude、確かめて出すのは人です。", COWORK_IDS)}
@@ -1881,6 +2022,7 @@ ${q}
           </div>
           <p class="easy-meta" id="gate-err" hidden>コードが違います。塾の案内を見てください。</p>
         </form>
+        ${hasClosedBox() ? unlockFormHTML("me") : ""}
         ${
           isTeacher()
             ? `<div class="card teach-card">
@@ -2473,7 +2615,9 @@ ${lines.join("\n")}
       return;
     }
     if ((parts[0] === "course" || parts[0] === "cert") && parts[1] && !canSeeCourse(parts[1])) {
-      html = lockedView(TODAY_IDS.includes(parts[1]) ? "kougi" : toolOf(parts[1]) === "code" ? "dougu" : "jimu");
+      html = LOCKED[parts[1]]
+        ? unlockView()
+        : lockedView(TODAY_IDS.includes(parts[1]) ? "kougi" : toolOf(parts[1]) === "code" ? "dougu" : "jimu");
     }
     else if (parts.length === 0) html = home();
     else if (parts[0] === "course" && parts[1] && !CLASSROOM.courses[parts[1]]) html = notFound();
@@ -2503,6 +2647,7 @@ ${lines.join("\n")}
     bindComplete();
     bindTeachMarks();
     bindMember();
+    bindUnlock();
     bindWorks();
     bindReport();
     bindFolds();
@@ -2550,6 +2695,7 @@ ${lines.join("\n")}
 
   window.addEventListener("hashchange", render);
   render();
+  reopenSaved().then((any) => any && render({ keepScroll: true }));
   if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js?v=phone1", { updateViaCache: "none" }).catch(() => {});
   }
