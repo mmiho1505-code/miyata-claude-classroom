@@ -4,6 +4,7 @@
               <button class="copy" type="button">コピー</button>
               <pre>${text}</pre>
             </div>`;
+  const talk = CLASSROOM.talk;
 
   CLASSROOM.courses.skillbase = {
     id: "skillbase",
@@ -83,8 +84,13 @@
             <p class="kicker">作り方　5／6　練習</p>
             <h1>いつもの手順を日本語で頼む</h1>
             <p>ファイルの置き場所や書き方は覚えなくてよいです。下のように頼み、次からは入力欄で呼びます。</p>
-            ${box(`よく使う「請求書チェックの手順」を Skill にまとめて。次回から /invoice-check と打てば、同じ手順を実行できるようにして。`)}
-            ${box(`よく使う「ホームページの文章チェック」を Skill にまとめて。次回から /hp-check と打てば、専門用語の説明・スマホで読めるか・消す前の確認、を同じ順で見るようにして。`)}
+            ${talk([
+              { me: `よく使う「請求書チェックの手順」を Skill にまとめて。次回から /invoice-check と打てば、同じ手順を実行できるようにして。` },
+              { ai: `Skill にまとめました。次からは入力欄に /invoice-check と打つと、同じ手順で請求書のチェックを始めます。` }
+            ])}
+            ${talk([
+              { me: `よく使う「ホームページの文章チェック」を Skill にまとめて。次回から /hp-check と打てば、専門用語の説明・スマホで読めるか・消す前の確認、を同じ順で見るようにして。` }
+            ], "")}
             ${box(`/invoice-check`)}
             <p>出てこないときは「Skillとして保存して、スラッシュで呼べるようにして」と足します。一覧は <code>/help</code> で見られることがあります。</p>
           `

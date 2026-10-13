@@ -726,7 +726,8 @@ details.fold-inline[open] > summary { margin-bottom: 12px; }
   max-width: 92%;
 }
 .talk-ai .talk-who { color: #c4622d; }
-.talk-ai .talk-who::before { content: "✳︎ "; }
+.talk-ai:not(.is-other) .talk-who::before { content: "✳︎ "; }
+.talk-ai.is-other .talk-who { color: #3d6b5a; }
 .talk-ai p { margin: 0 0 8px; }
 .talk-ai p:last-child { margin-bottom: 0; }
 .talk-do {
