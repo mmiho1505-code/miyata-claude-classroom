@@ -317,15 +317,15 @@ ${q}
 
   // 講義の日に先生と開く資料。先頭から TODAY_COUNT 個が「今日の講義」、残りは「これまでの講義」に並ぶ。
   // 新しい講義を足すときは、js/courses/ に講座ファイルを足し、ここの先頭に id を入れる。
-  const LECTURE_IDS = ["tosou", "bizapps", "today", "connect"];
-  const TODAY_COUNT = 3;
+  const LECTURE_IDS = ["tosou", "portalfix", "bizapps", "today", "connect"];
+  const TODAY_COUNT = 4;
   const TODAY_IDS = LECTURE_IDS.slice(0, TODAY_COUNT);
 
   // 生徒さん専用の講座。中身は名前＋パスワードで暗号化して js/locked/ に置く（鍵のかけ方は tools/lock-course.mjs）。
   // 開けるまでは CLASSROOM.courses に無いので、一覧にも出ない。
   const LOCKED = CLASSROOM.locked || {};
   // チャットで作業する講義（パンくずや見出しを「チャットで作業」にする）
-  const CHAT_LECTURE_IDS = ["tosou"];
+  const CHAT_LECTURE_IDS = ["tosou", "portalfix"];
 
   const HOME_ORDER = LECTURE_IDS.concat([
     "claudebase",
@@ -393,7 +393,6 @@ ${q}
     slacksum: "minutes",
     salescsv: "salesrep",
     mdbase: "skillbase",
-    portalfix: "portalmake",
     salary: "attend",
     codemac: "code",
     nodejs: "code",
@@ -460,7 +459,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -913,6 +912,7 @@ ${q}
     aisub: ["cover-expense", "補助", "旧IT導入補助金。会計・勤怠・AI。支援事業者と一緒に申請。", "expense"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
+    portalfix: ["cover-cowork", "ポータル直し", "作ったポータルを、会話の続きで直す。新しい社員のパスワードも。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
     invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
     manualmake: ["cover-applied", "手順書", "メモ・写真・話した内容から、新人が1人でできる手順書に。", "steps"],
@@ -951,6 +951,7 @@ ${q}
     aisub: ["AI補助", "💴"],
     cowork: ["Cowork", "💬"],
     portalmake: ["ポータル", "🏠"],
+    portalfix: ["ポータル直し", "🔧"],
     attend: ["出退勤と給料", "⏰"],
     invoicemake: ["請求書", "📄"],
     manualmake: ["手順書", "📋"],
@@ -992,7 +993,7 @@ ${q}
         ["基本設定編", "materials/claudebase.pdf"],
         ["頼み方編", "materials/promptskill.pdf"],
         ["社内ポータル 作り方編", "materials/portal-make.pdf", "portalmake"],
-        ["社内ポータル 直し方編", "materials/portal-fix.pdf", "portalmake"],
+        ["社内ポータル 直し方編", "materials/portal-fix.pdf", "portalfix"],
         ["出退勤管理編", "materials/attend.pdf", "attend"],
         ["給料計算編", "materials/salary.pdf", "attend"],
         ["請求書編", "materials/invoicemake.pdf", "invoicemake"]
