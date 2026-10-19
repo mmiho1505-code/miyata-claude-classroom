@@ -990,7 +990,8 @@ ${q}
     [
       "読みもの（PDF）",
       [
-        ["AIエージェントのセキュリティ：権限を渡す前の確認ガイド", "materials/agent-security.pdf"]
+        ["AIエージェントのセキュリティ：権限を渡す前の確認ガイド", "materials/agent-security.pdf"],
+        ["AIで作る採用PR動画：企画から公開までの実践ガイド", "materials/recruit-video.pdf"]
       ]
     ],
     [
