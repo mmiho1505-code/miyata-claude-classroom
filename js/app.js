@@ -346,6 +346,7 @@ ${q}
     "invoicemake",
     "manualmake",
     "replyfaq",
+    "recruitvideo",
     "proposal",
     "contractcheck",
     "bizplan",
@@ -373,7 +374,7 @@ ${q}
   };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["cowork", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
+  const COWORK_IDS = ["cowork", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -459,7 +460,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -917,6 +918,7 @@ ${q}
     invoicemake: ["cover-invoice", "請求書", "ひな形を一度作れば、毎月は宛先と明細を伝えるだけ。", "invoice"],
     manualmake: ["cover-applied", "手順書", "メモ・写真・話した内容から、新人が1人でできる手順書に。", "steps"],
     replyfaq: ["cover-chat", "返信", "問い合わせ・クレームへの返信の下書きと、よくある質問集。送るのは人。", "mail"],
+    recruitvideo: ["cover-snspost", "採用動画", "企画と台本は人、素材はAI。外注せずに60秒の採用PR動画。", "snspost"],
     proposal: ["cover-poster", "提案書", "相手の課題から骨子。A4・1枚の提案書とスライドに。", "briefing"],
     contractcheck: ["cover-faq", "契約書", "気をつける条項を洗い出し、質問と相談メモを用意。判断は専門家と人。", "eyecheck"],
     bizplan: ["cover-survey", "事業計画", "壁打ちで考えを出し、数字の表とA4・1枚に。数字は自分で入れる。", "plan"],
@@ -956,6 +958,7 @@ ${q}
     invoicemake: ["請求書", "📄"],
     manualmake: ["手順書", "📋"],
     replyfaq: ["返信とFAQ", "✉️"],
+    recruitvideo: ["採用動画", "🎬"],
     proposal: ["提案書", "📑"],
     contractcheck: ["契約書", "🔍"],
     bizplan: ["事業計画", "🧭"],
@@ -991,7 +994,7 @@ ${q}
       "読みもの（PDF）",
       [
         ["AIエージェントのセキュリティ：権限を渡す前の確認ガイド", "materials/agent-security.pdf"],
-        ["AIで作る採用PR動画：企画から公開までの実践ガイド", "materials/recruit-video.pdf"]
+        ["AIで作る採用PR動画：企画から公開までの実践ガイド", "materials/recruit-video.pdf", "recruitvideo"]
       ]
     ],
     [
