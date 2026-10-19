@@ -5,7 +5,7 @@
     id: "aipick",
     title: "ChatGPT・Gemini・Claudeの使い分け",
     subtitle: "この用途だからこのAI、を自分の早見表にする",
-    duration: "約15分",
+    duration: "約20分",
     audience: "名前は知っているが、どれを使うか決まっていない人",
     lessons: [
       {
@@ -13,7 +13,7 @@
         title: "用途で選ぶ",
         was: ["aipick/goal", "aipick/caution"],
         body: `
-            <p class="kicker">GOAL　1／5</p>
+            <p class="kicker">GOAL　1／6</p>
             <h1>名前ではなく、用途で選ぶ</h1>
             <p>ブラウザに ChatGPT、Gemini、Claude のタブが並んでいます。どれを開くか、名前だけで決めがちです。今日は早見表を作り、自分に合う1つに絞ります。</p>
             <div class="ops">
@@ -28,7 +28,7 @@
         title: "講義のまとめ（参考）",
         was: ["aipick/read"],
         body: `
-            <p class="kicker">参考　2／5</p>
+            <p class="kicker">参考　2／6</p>
             <h1>文章まわりは、3つとも近い</h1>
             <p>講義で出たまとめです。正解ではなく、見比べ用です。</p>
             <ul>
@@ -40,12 +40,41 @@
           `
       },
       {
+        id: "news",
+        title: "最近のAIニュース（参考）",
+        body: `
+            <p class="kicker">参考　3／6</p>
+            <h1>9月下旬〜10月中旬の主なAIニュース</h1>
+            <div class="callout warn">性能や価格の数字は、多くが各社の自己申告（会社が自分で言っている数字）です。目安として読み、使う前に公式の案内で確かめてください。</div>
+            <h2>新しいモデル</h2>
+            <p>モデルは、AIの頭脳にあたる部分です。</p>
+            <ul>
+              <li><strong>Anthropic（Claude）</strong> … Opus 5.5（9/22）、Sonnet 5.5（9/28）、Haiku 5.5（10/7）を続けて公開しました。Opus 5.5は最上位モデル並みの性能を、Opus 5より約40%安く使えるとされています。Haiku 5.5は前の世代より約75%安くなりました。</li>
+              <li><strong>OpenAI（ChatGPT）</strong> … GPT-6.1 Sol（9/29）を公開しました。10/7からは、回答の中に図やボタン、入力フォームを表示する「Intelligent UI」が全プランで使えるようになりました。10/9には速度を重視した「Sol Ultrafast」も出ています。</li>
+              <li><strong>Google</strong> … Gemini 3.8 Flash（9月）とGemini 4 Argon（10/14）を発表しました。Argonは複雑な仕事向けで、金融や法務でも高い性能をうたっています。</li>
+              <li><strong>その他</strong> … xAIのGrok 4.7、Mistral Large 4などが出ました。性能の高いオープンモデル（中身が公開されていて、だれでも使えるモデル）の発表も相次いでいます。</li>
+            </ul>
+            <h2>仕事で使う機能</h2>
+            <ul>
+              <li><strong>Claude</strong> … GoogleドキュメントやスプレッドシートでClaudeを使える機能（有料プラン向けのベータ版＝試しに出している版）が始まりました。データからグラフを作る「Dashboards」と、資料を動画にする「Motion」も公開されています。</li>
+              <li><strong>Google</strong> … 自分専用のGmailとDriveを持って動く、職場向けのAIエージェント（頼んだ作業を自分で進めるAI）を発表しました。</li>
+              <li><strong>Microsoft Copilot</strong> … 大きく作り直され、Office文書を直接編集する機能や、常に動き続けるエージェント「Autopilot」が発表されました。</li>
+            </ul>
+            <h2>仕事への影響</h2>
+            <ul>
+              <li><strong>高性能なAIが安く速くなった</strong> … 要約や分類、問い合わせへの最初の返答など、量の多い作業にかかる費用が下がっています。</li>
+              <li><strong>古いモデルが使えなくなる</strong> … OpenAIは2026年10月23日、12月11日、2027年1月14日の順に、GPT-4o系などの古いモデルを止めます。API（アプリにAIを組みこむためのしくみ）を組み込んだアプリを運用している場合は、どのモデルを使っているか確認が必要です。</li>
+              <li><strong>AIが「作業を代わりにする」方向へ進んでいる</strong> … 文書やメールを直接扱うエージェント型の機能が、各社で増えています。</li>
+            </ul>
+          `
+      },
+      {
         id: "w1",
         title: "ワーク1：一般の表",
         practice: true,
         was: ["aipick/w1"],
         body: `
-            <p class="kicker">知る　3／5　練習</p>
+            <p class="kicker">知る　4／6　練習</p>
             <h1>今日の日付を入れて貼る</h1>
             <ol>
               <li>使っているAIの入力欄に下を貼る</li>
@@ -73,7 +102,7 @@ ChatGPT、Gemini、Claude のよくある使い方を19項目、次の列の表�
         practice: true,
         was: ["aipick/w2"],
         body: `
-            <p class="kicker">近づける　4／5　練習</p>
+            <p class="kicker">近づける　5／6　練習</p>
             <h1>状況を具体的に書いて、1つに絞る</h1>
             <ol>
               <li>ワーク1の続きの会話に下を貼る</li>
@@ -99,7 +128,7 @@ ChatGPT、Gemini、Claude のよくある使い方を19項目、次の列の表�
         title: "まとめ",
         was: ["aipick/summary"],
         body: `
-            <p class="kicker">まとめ　5／5</p>
+            <p class="kicker">まとめ　6／6</p>
             <h1>合う1つを、自分の言葉で</h1>
             <ol>
               <li>用途で選ぶ。日付を入れて検索させる</li>
