@@ -988,6 +988,12 @@ ${q}
       ]
     ],
     [
+      "読みもの（PDF）",
+      [
+        ["AIエージェントのセキュリティ：権限を渡す前の確認ガイド", "materials/agent-security.pdf"]
+      ]
+    ],
+    [
       "スライド（PDF）",
       [
         ["基本設定編", "materials/claudebase.pdf"],
