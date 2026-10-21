@@ -126,7 +126,7 @@
               </tbody>
             </table>
             <p>まとめ表：<a href="materials/cowork-skill-make.xlsx" download>スキルを作成して呼び出す（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkproject" data-link>次へ：プロジェクトを作って業務単位で使う</a>
             <a class="btn-dark" href="#/course/coworkskill" data-link>スキルとはへ</a></p>
           `
       }
