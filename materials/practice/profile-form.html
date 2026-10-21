@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>講師プロフィール入力フォーム（練習用）</title>
+<style>
+  :root { --main: #2f5d8a; --bg: #f4f6f9; --line: #d6dde6; --text: #1f2833; --card: #fff; --muted: #5b6876; --warn-bg: #fff4e5; --warn-line: #f0b65a; }
+  @media (prefers-color-scheme: dark) {
+    :root { --main: #8fb8e0; --bg: #161b22; --line: #2f3a46; --text: #e6edf3; --card: #1f262f; --muted: #9aa7b4; --warn-bg: #3a2c14; --warn-line: #b88a3a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.7 "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  header { background: var(--main); color: #fff; padding: 18px 16px; }
+  @media (prefers-color-scheme: dark) { header { color: #161b22; } }
+  header h1 { margin: 0; font-size: 1.25rem; }
+  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  .note { background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; }
+  form { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+  .field { margin-bottom: 18px; }
+  label.title, legend { display: block; font-weight: bold; margin-bottom: 4px; }
+  fieldset { border: 0; padding: 0; margin: 0 0 18px; }
+  input[type="text"], select, textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; font: inherit; background: var(--card); color: var(--text); }
+  textarea { min-height: 140px; }
+  .choices { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .hint { color: var(--muted); font-size: .9em; }
+  button { padding: 10px 22px; border: 0; border-radius: 8px; background: var(--main); color: #fff; font: inherit; cursor: pointer; }
+  @media (prefers-color-scheme: dark) { button { color: #161b22; } }
+  #done { margin-top: 12px; font-weight: bold; }
+</style>
+</head>
+<body>
+<header><h1>講師プロフィール入力フォーム（練習用）</h1></header>
+<main>
+  <p class="note">これは練習用のフォームです。送信ボタンを押しても、どこにも送られません。本物の名前や連絡先は入れないでください。</p>
+  <form id="f" autocomplete="off">
+    <div class="field">
+      <label class="title" for="name">氏名</label>
+      <input type="text" id="name" name="name">
+    </div>
+    <div class="field">
+      <label class="title" for="roman">氏名（ローマ字）</label>
+      <input type="text" id="roman" name="roman" placeholder="例：Taro Yamada">
+    </div>
+    <div class="field">
+      <label class="title" for="job">職業</label>
+      <select id="job" name="job">
+        <option value="">選んでください</option>
+        <option>経理・会計</option>
+        <option>営業</option>
+        <option>デザイナー</option>
+        <option>エンジニア</option>
+        <option>講師・コンサルタント</option>
+        <option>その他</option>
+      </select>
+    </div>
+    <fieldset>
+      <legend>関わったプロジェクト（いくつでも）</legend>
+      <div class="choices">
+        <label><input type="checkbox" name="project" value="社内の業務改善"> 社内の業務改善</label>
+        <label><input type="checkbox" name="project" value="システム導入"> システム導入</label>
+        <label><input type="checkbox" name="project" value="新人研修"> 新人研修</label>
+        <label><input type="checkbox" name="project" value="Webサイト制作"> Webサイト制作</label>
+        <label><input type="checkbox" name="project" value="イベント運営"> イベント運営</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>活動先（いくつでも）</legend>
+      <div class="choices">
+        <label><input type="checkbox" name="place" value="オンライン講座"> オンライン講座</label>
+        <label><input type="checkbox" name="place" value="YouTube"> YouTube</label>
+        <label><input type="checkbox" name="place" value="地域のセミナー"> 地域のセミナー</label>
+        <label><input type="checkbox" name="place" value="企業研修"> 企業研修</label>
+        <label><input type="checkbox" name="place" value="ブログ"> ブログ</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>実務の経験</legend>
+      <div class="choices">
+        <label><input type="radio" name="years" value="5年未満"> 5年未満</label>
+        <label><input type="radio" name="years" value="5〜10年"> 5〜10年</label>
+        <label><input type="radio" name="years" value="10〜20年"> 10〜20年</label>
+        <label><input type="radio" name="years" value="20年以上"> 20年以上</label>
+      </div>
+    </fieldset>
+    <div class="field">
+      <label class="title" for="motto">モットー（ひと言）</label>
+      <input type="text" id="motto" name="motto">
+    </div>
+    <div class="field">
+      <label class="title" for="detail">プロフィール詳細</label>
+      <textarea id="detail" name="detail"></textarea>
+      <p class="hint">200〜400字くらい</p>
+    </div>
+    <button type="submit">送信</button>
+    <p id="done" hidden>練習用なので、送信はされません。入力した内容を上から見て確かめましょう。</p>
+  </form>
+</main>
+<script>
+  document.getElementById("f").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("done").hidden = false;
+  });
+</script>
+</body>
+</html>

@@ -104,7 +104,7 @@
               <li>Cowork の報告で、変更前後の名前と付け方のルールを見る</li>
             </ol>
             <p>まとめ表：<a href="materials/cowork-downloads.xlsx" download>ダウンロードしたファイルを整理する（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkform" data-link>次へ：フォームを自動入力する</a>
             <a class="btn-dark" href="#/course/coworkfolders" data-link>日付フォルダを一括作成するへ</a></p>
           `
       }
