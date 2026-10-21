@@ -85,7 +85,7 @@
               <li>かんたんな作業は自動承認。慎重に進めたい作業は手動承認</li>
             </ol>
             <p>まとめ表：<a href="materials/cowork-folders.xlsx" download>日付フォルダを一括作成する（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkdownloads" data-link>次へ：ダウンロードしたファイルを整理する</a>
             <a class="btn-dark" href="#/course/coworkprompt" data-link>プロンプトの書き方を見直す</a></p>
           `
       }
