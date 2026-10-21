@@ -23,16 +23,20 @@
             </div>
             <h2>まず、1分くらいの短い1本</h2>
             <p>はじめから10分の動画を全部 AI で作るのは大変です。まず<strong>15秒〜1分</strong>の短いものを1本、最後まで作りきります。完璧でなくてかまいません。数秒の未完成でも、1本通して作ると、どこがむずかしいかが分かります。</p>
+            <h2>迷ったら、この組み合わせ</h2>
             <table>
-              <thead><tr><th>使う道具の種類</th><th>例</th></tr></thead>
+              <thead><tr><th>やること</th><th>まずはこれ</th><th>理由</th></tr></thead>
               <tbody>
-                <tr><td>文章（企画・台本）</td><td>Claude、ChatGPT、Gemini</td></tr>
-                <tr><td>画像と動画</td><td>ChatGPT の画像づくり、Magnific（いろいろな動画 AI をまとめて使えるサービス）、Kling、Seedance、MiniMax</td></tr>
-                <tr><td>声・効果音・BGM</td><td>ElevenLabs（声と効果音）、Suno（曲）、無料の効果音サイト</td></tr>
-                <tr><td>編集</td><td>Premiere Pro、CapCut</td></tr>
+                <tr><td>企画・台本</td><td>ChatGPT か Claude（今使っているほう）</td><td>同じ会話の中で企画から画像まで頼むと、話の流れを分かってくれる</td></tr>
+                <tr><td>画像</td><td>ChatGPT の画像づくり</td><td>きれいに作れる。ChatGPT を契約しているなら、ほかで点数（クレジット）を使うより得</td></tr>
+                <tr><td>動画</td><td><strong>Magnific を1つだけ</strong></td><td>中で動画の AI（Kling・MiniMax・Seedance など）を選んで切りかえられる。1つずつ契約しなくてすむ</td></tr>
+                <tr><td>声・効果音</td><td>ElevenLabs（効果音は無料の効果音サイトでも可）</td><td>キャラクターの声を1つに決めて固定できる</td></tr>
+                <tr><td>BGM</td><td>Suno</td><td>秒数を決めて曲を作れる（有料プラン）</td></tr>
+                <tr><td>編集</td><td><strong>ふだん使っている編集アプリ</strong>（CapCut など）</td><td>新しく覚えなくてよい。本格的にやるなら Premiere Pro</td></tr>
               </tbody>
             </table>
-            <div class="callout">道具の名前は例です。動画の AI は、月ごとに「どれがよいか」が変わります。1つに決めつけず、そのときに使いやすいものを選びます。</div>
+            <p>いちばん大事なのは、<strong>動画は Magnific、編集はいつものアプリ</strong>と決めてしまうことです。道具をあちこち試すより、1本を作りきる方が先です。</p>
+            <div class="callout">この表は 2026年10月の時点のものです。動画の AI は、月ごとに「どれがよいか」や料金が変わります。契約は月ごとにして、作る前に画面の表示（使う点数、無制限かどうか）を確かめます。</div>
           `
       },
       {
@@ -131,6 +135,17 @@
                 <tr><td>AI の選び方</td><td>まず安い・無制限で使えるもので試し、うまくいかなければ上の AI に変える</td></tr>
               </tbody>
             </table>
+            <h2>どの動画の AI を選ぶか（Magnific の中で）</h2>
+            <table>
+              <thead><tr><th>こんなとき</th><th>選び方</th></tr></thead>
+              <tbody>
+                <tr><td>まず試す</td><td>プランで無制限になっている AI（Kling の古い版など）。何度作り直してもお金が増えない</td></tr>
+                <tr><td>動きがおかしい・手や食べる動作がくずれる</td><td>同じ会社の新しい版（Kling 3.0 など）や、MiniMax・Seedance に変える</td></tr>
+                <tr><td>「0〜2秒はこう」と秒ごとに動かしたい</td><td>秒数の指定がきく AI（MiniMax など）</td></tr>
+                <tr><td>口を動かしてしゃべらせたい</td><td>画面上の「機能」で「リップシンク」を選び、対応している AI だけを表示して選ぶ</td></tr>
+              </tbody>
+            </table>
+            <p>途中で AI を変えると、絵のタッチが変わります。1本の動画の中では、なるべく同じ AI を使います。</p>
             <div class="callout warn">有料のサービスでは、「無制限で使える AI」が予告なく変わることがあります。作るボタンの近くに出る「無制限」の表示や、使う点数を、毎回見てから押します。</div>
           `
       },

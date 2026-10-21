@@ -376,6 +376,7 @@ ${q}
     "bcp",
     "code",
     "ccbasics",
+    "ccwork",
     "snspost",
     "survey",
     "invoice",
@@ -398,7 +399,7 @@ ${q}
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
   const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "aivideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
-  const CODE_SETUP_IDS = ["code", "ccbasics"];
+  const CODE_SETUP_IDS = ["code", "ccbasics", "ccwork"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
   const BEGINNER_IDS = STARTER_IDS.concat(COWORK_IDS, CODE_SETUP_IDS);
@@ -483,7 +484,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "apptips", "ccbasics", "tosou", "portalfix", "recruitvideo", "aivideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "apptips", "ccbasics", "ccwork", "tosou", "portalfix", "recruitvideo", "aivideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -971,6 +972,7 @@ ${q}
     bcp: ["cover-crm", "BCP", "止まると困る仕事から。連絡と復旧の段取りを1枚に。", "safety"],
     skillbase: ["cover-applied", "MD・Skills", "CLAUDE.mdは業務マニュアル、Skillsはよく使う手順。", "docs"],
     ccbasics: ["cover-code", "Codeの基本", "頼み方・直し方、公開、GitHub、鍵の守り方、CLAUDE.md、仕事の自動化。", "desktop"],
+    ccwork: ["cover-code", "Codeで仕事", "資料をまとめて直す、画像をまとめて作る、スマホで動くアプリを作る。", "desktop"],
     code: ["cover-code", "Code", "Windows・Macに入れて、使える状態まで。", "powershell"],
     applied: ["cover-applied", "使いこなし", "CLAUDE.mdを1枚書き、いつもの手順を登録する。", "desktop"],
     invoice: ["cover-invoice", "請求・経費", "リストから1社1PDF。レシートを科目ごとに集計。", "invoice"],
@@ -1036,6 +1038,7 @@ ${q}
     skillbase: ["MDとSkills", "📘"],
     code: ["Code準備", "💻"],
     ccbasics: ["Codeの基本", "🔑"],
+    ccwork: ["Codeで仕事", "🧰"],
     applied: ["使いこなし", "🧩"],
     invoice: ["請求と経費", "📄"],
     crm: ["CRM", "📒"],
