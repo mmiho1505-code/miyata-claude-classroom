@@ -91,7 +91,7 @@
             </ol>
             <div class="callout warn">パスワード・カード番号・マイナンバーなどは入力させません。お客様の個人情報を貼るときは、会社のルールを確かめます。</div>
             <p>まとめ表：<a href="materials/cowork-form.xlsx" download>フォームを自動入力する（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkextract" data-link>次へ：演習：ファイルからデータを抜き出す</a>
             <a class="btn-dark" href="#/course/coworkdownloads" data-link>ダウンロードしたファイルを整理するへ</a></p>
           `
       }
