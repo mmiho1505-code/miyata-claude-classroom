@@ -96,7 +96,7 @@
               <li>1つのスキルに1つの作業</li>
             </ol>
             <p>まとめ表：<a href="materials/cowork-skill.xlsx" download>スキルとは（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkskillmake" data-link>次へ：スキルを作成して呼び出す</a>
             <a class="btn-dark" href="#/course/coworkextract" data-link>演習：ファイルからデータを抜き出すへ</a></p>
           `
       }
