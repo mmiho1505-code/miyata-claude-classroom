@@ -333,14 +333,18 @@ ${q}
     "aiwords",
     "promptskill",
     "promptwrite",
+    "aithink",
     "webwords",
     "skillbase",
     "poster",
+    "imagerule",
     "market",
     "peoplejob",
     "minutes",
     "officeai",
+    "aiknow",
     "salesrep",
+    "numread",
     "aicopy",
     "aisafety",
     "aisub",
@@ -401,7 +405,7 @@ ${q}
     return m ? `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日` : "";
   };
 
-  const STARTER_IDS = ["claudebase", "aipick", "aiwords", "promptskill", "promptwrite", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "officeai", "salesrep", "aicopy", "aisafety", "aisub"];
+  const STARTER_IDS = ["claudebase", "aipick", "aiwords", "promptskill", "promptwrite", "aithink", "webwords", "skillbase", "poster", "imagerule", "market", "peoplejob", "minutes", "officeai", "aiknow", "salesrep", "numread", "aicopy", "aisafety", "aisub"];
   const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "aivideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code", "ccbasics", "ccwork"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
@@ -934,6 +938,10 @@ ${q}
     webwords: ["cover-intro", "ことば", "HTML・CSS・JavaScriptの意味と、作る前の工程。コードは書かない。", "site"],
     promptskill: ["cover-chat", "頼み方", "チャットに1回頼む。目的・前提・形式。先に自分の仮説。", "webchat"],
     promptwrite: ["cover-chat", "頼み方の続き", "ブレる原因、用途別の型、論点に分ける、AI の文の直し方。", "webchat"],
+    aithink: ["cover-chat", "考える力", "先に自分の答え。AI の答えは確かめる。厳しい上司役で想定質問。", "webchat"],
+    imagerule: ["cover-poster", "見た目をそろえる", "ルールを1枚書いて、バナーやサムネの見た目をそろえる。", "poster"],
+    aiknow: ["cover-survey", "知恵袋とニュース", "規程やマニュアルに出典つきで答える相談役と、毎朝のニュースまとめ。", "briefing"],
+    numread: ["cover-invoice", "数字を読む", "どこがどう変わったか、なぜか。予算と実績のズレを1枚に。", "excel"],
     poster: ["cover-poster", "ポスター", "Claudeで原稿、Canvaで仕上げ。A4を1枚。", "poster"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
     peoplejob: ["cover-crm", "人の仕事", "AIに任せる仕事と、人が残す判断。人事の例つき。", "crm"],
@@ -1003,6 +1011,10 @@ ${q}
     webwords: ["作る前の基礎", "🧱"],
     promptskill: ["頼み方", "✏️"],
     promptwrite: ["頼み方の続き", "🖊️"],
+    aithink: ["考える力", "🧠"],
+    imagerule: ["見た目", "🖼️"],
+    aiknow: ["知恵袋", "📚"],
+    numread: ["数字を読む", "📈"],
     poster: ["ポスター", "🎨"],
     market: ["マーケ", "📣"],
     peoplejob: ["人の仕事", "🤝"],
