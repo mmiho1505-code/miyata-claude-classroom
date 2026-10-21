@@ -126,7 +126,7 @@
             <p>プロジェクトの中のチャットで「/会議後処理」（作ったスキルの名前）＋スペース＋文字起こし。</p>
             <div class="callout warn">本物の会議の文字起こしを使うときは、社外の人の名前や、話してはいけない内容が入っていないかを先に見ます。議事録は、出席者に確かめてもらってから配ります。</div>
             <p>まとめ表：<a href="materials/cowork-meeting.xlsx" download>演習の内容と答えの例（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkvoice" data-link>次へ：音声入力から日報を作成する</a>
             <a class="btn-dark" href="#/course/coworkskillproject" data-link>スキルとプロジェクトの使い分けへ</a></p>
           `
       }

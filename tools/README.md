@@ -26,3 +26,5 @@ python3 tools/practice/make_practice.py materials/practice
 - すべて架空のデータです。会社名・人名・金額は作りものです
 - 乱数の種を固定しているので、作り直しても同じ中身になります
 - 作り直したら `materials/practice/practice-all.zip` も作り直します
+- 進捗管理表2つ（講座「複数プロジェクトの進捗を管理・分析する」）：`python3 tools/practice/make_progress.py materials/practice`
+- レシート画像10枚（講座「演習：レシートから経費精算を自動化する」）：`python3 tools/practice/make_receipts.py materials/practice/receipts`（Google Chrome と Pillow を使う。エラーになるのは 03・08・09 の3枚）

@@ -354,6 +354,12 @@ ${q}
     "coworkproject",
     "coworkskillproject",
     "coworkmeeting",
+    "coworkvoice",
+    "coworkprogress",
+    "coworkreceipt",
+    "coworkschedule",
+    "coworkslack",
+    "coworkads",
     "portalmake",
     "attend",
     "invoicemake",
@@ -387,7 +393,7 @@ ${q}
   };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
+  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -473,7 +479,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -938,6 +944,12 @@ ${q}
     coworkproject: ["cover-cowork", "プロジェクト", "仕事ごとの部屋に、共通のお願いと資料。月次報告をPDFに。", "docs"],
     coworkskillproject: ["cover-applied", "使い分け", "手順はスキル、文脈はプロジェクト。両方なら組み合わせる。", "compare"],
     coworkmeeting: ["cover-survey", "演習：会議", "文字起こしから、議事録とタスク一覧を一度に。スキルとプロジェクトで。", "steps"],
+    coworkvoice: ["cover-chat", "音声で日報", "話すだけで報告メール。「〇〇スキルを使って」で、/ なしで呼ぶ。", "mail"],
+    coworkprogress: ["cover-crm", "進捗の分析", "進捗管理表を読ませて、プロジェクトごとの週の報告書に。", "excel"],
+    coworkreceipt: ["cover-expense", "演習：レシート", "写真をフォルダに入れるだけで、経費精算シートに書き写し、仕分け。", "expense"],
+    coworkschedule: ["cover-cowork", "定期実行", "毎朝・毎週の決まった作業を、決めた時間に自動で動かす。", "calendar"],
+    coworkslack: ["cover-applied", "Slack巡回", "自分あての依頼をチェックできる一覧に。平日2時間ごとに更新。", "briefing"],
+    coworkads: ["cover-survey", "演習：競合広告", "Meta 広告ライブラリを毎週見に行かせ、広告を一覧にためる。", "steps"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
     portalfix: ["cover-cowork", "ポータル直し", "作ったポータルを、会話の続きで直す。新しい社員のパスワードも。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
@@ -991,6 +1003,12 @@ ${q}
     coworkproject: ["プロジェクト", "🗄️"],
     coworkskillproject: ["スキルとPJ", "🔗"],
     coworkmeeting: ["演習：会議", "🗒️"],
+    coworkvoice: ["音声で日報", "🎙️"],
+    coworkprogress: ["進捗の分析", "📊"],
+    coworkreceipt: ["演習：レシート", "🧾"],
+    coworkschedule: ["定期実行", "⏰"],
+    coworkslack: ["Slack巡回", "💬"],
+    coworkads: ["演習：競合広告", "📣"],
     portalmake: ["ポータル", "🏠"],
     portalfix: ["ポータル直し", "🔧"],
     attend: ["出退勤と給料", "⏰"],
@@ -1052,7 +1070,14 @@ ${q}
         ["スキルを作成して呼び出す：手順と直し方", "materials/cowork-skill-make.xlsx"],
         ["プロジェクトを作って業務単位で使う：作り方と使い方", "materials/cowork-project.xlsx"],
         ["スキルとプロジェクトの使い分け：比べる表と3つの問い", "materials/cowork-skill-vs-project.xlsx"],
-        ["演習：会議のあとの仕事をまとめて片づける（課題と答えの例）", "materials/cowork-meeting.xlsx"]
+        ["演習：会議のあとの仕事をまとめて片づける（課題と答えの例）", "materials/cowork-meeting.xlsx"],
+        ["音声入力から日報を作成する：手順と台本", "materials/cowork-voice.xlsx"],
+        ["複数プロジェクトの進捗を管理・分析する：手順と指示文", "materials/cowork-progress.xlsx"],
+        ["演習：レシートから経費精算を自動化する（課題）", "materials/cowork-receipt.xlsx"],
+        ["演習：レシートから経費精算を自動化する（解説）", "materials/cowork-receipt-answer.xlsx"],
+        ["スケジュール実行で定期タスク化する：設定項目と管理", "materials/cowork-schedule.xlsx"],
+        ["Slack を定期巡回してタスクを洗い出す：つなぎ方と指示文", "materials/cowork-slack.xlsx"],
+        ["演習：競合広告の出稿状況を定期収集する（課題と答えの例）", "materials/cowork-ads.xlsx"]
       ]
     ],
     [
@@ -1090,6 +1115,18 @@ ${q}
         ["会議：過去の議事録（9月）", "materials/practice/meeting-minutes-2026-09.txt"],
         ["会議：社内用語集（CSV）", "materials/practice/company-glossary.csv"],
         ["会議：文字起こし（10月5日）", "materials/practice/meeting-transcript-2026-10-05.txt"],
+        ["進捗管理表：コーポレートサイト刷新・展示会PJ（Excel）", "materials/practice/progress-corporate-site.xlsx"],
+        ["進捗管理表：新商品プロモーションPJ（Excel）", "materials/practice/progress-new-product.xlsx"],
+        ["レシート画像 1（1／10）", "materials/practice/receipts/receipt-01.jpg"],
+        ["レシート画像 2（2／10）", "materials/practice/receipts/receipt-02.jpg"],
+        ["レシート画像 3（3／10）", "materials/practice/receipts/receipt-03.jpg"],
+        ["レシート画像 4（4／10）", "materials/practice/receipts/receipt-04.jpg"],
+        ["レシート画像 5（5／10）", "materials/practice/receipts/receipt-05.jpg"],
+        ["レシート画像 6（6／10）", "materials/practice/receipts/receipt-06.jpg"],
+        ["レシート画像 7（7／10）", "materials/practice/receipts/receipt-07.jpg"],
+        ["レシート画像 8（8／10）", "materials/practice/receipts/receipt-08.jpg"],
+        ["レシート画像 9（9／10）", "materials/practice/receipts/receipt-09.jpg"],
+        ["レシート画像 10（10／10）", "materials/practice/receipts/receipt-10.jpg"],
         ["ABC分析：商品別の売上（Excel）", "materials/practice/sales.xlsx", "survey"],
         ["ABC分析のサンプルCSV", "materials/abc-sample.csv"],
         ["SNS：投稿と反応（40件）", "materials/practice/posts.csv", "snspost"],
