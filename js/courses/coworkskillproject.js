@@ -85,7 +85,7 @@
               <li>慣れるまでは、この3つの問いで決める</li>
             </ol>
             <p>まとめ表：<a href="materials/cowork-skill-vs-project.xlsx" download>スキルとプロジェクトの使い分け（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkmeeting" data-link>次へ：演習：会議のあとの仕事をまとめて片づける</a>
             <a class="btn-dark" href="#/course/coworkproject" data-link>プロジェクトを作って業務単位で使うへ</a></p>
           `
       }
