@@ -349,6 +349,7 @@ ${q}
     "coworkdownloads",
     "coworkform",
     "coworkextract",
+    "coworkskill",
     "portalmake",
     "attend",
     "invoicemake",
@@ -382,7 +383,7 @@ ${q}
   };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
+  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -468,7 +469,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -928,6 +929,7 @@ ${q}
     coworkdownloads: ["cover-expense", "ファイル整理", "種類ごとに分けて、中身がわかる英語の名前に。まず画像だけ。", "docs"],
     coworkform: ["cover-chat", "フォーム入力", "Claude in Chrome に元の情報を渡して、Webのフォームを埋める。", "webchat"],
     coworkextract: ["cover-survey", "演習：抽出", "アンケートのPDFから、スプレッドシートの一覧表へ。解答と解説つき。", "compare"],
+    coworkskill: ["cover-applied", "スキル", "毎回同じお願いを書かなくてよくする、作業手順の型。", "steps"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
     portalfix: ["cover-cowork", "ポータル直し", "作ったポータルを、会話の続きで直す。新しい社員のパスワードも。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
@@ -976,6 +978,7 @@ ${q}
     coworkdownloads: ["ファイル整理", "🗂️"],
     coworkform: ["フォーム入力", "⌨️"],
     coworkextract: ["演習：抽出", "📊"],
+    coworkskill: ["スキル", "🧰"],
     portalmake: ["ポータル", "🏠"],
     portalfix: ["ポータル直し", "🔧"],
     attend: ["出退勤と給料", "⏰"],
@@ -1032,7 +1035,8 @@ ${q}
         ["ダウンロードしたファイルを整理する：流れとお願いの文", "materials/cowork-downloads.xlsx"],
         ["フォームを自動入力する：導入手順と流れ", "materials/cowork-form.xlsx"],
         ["演習：ファイルからデータを抜き出す（課題）", "materials/cowork-extract.xlsx"],
-        ["演習：ファイルからデータを抜き出す（解説）", "materials/cowork-extract-answer.xlsx"]
+        ["演習：ファイルからデータを抜き出す（解説）", "materials/cowork-extract-answer.xlsx"],
+        ["スキルとは：3つの要点と書き方のコツ", "materials/cowork-skill.xlsx"]
       ]
     ],
     [

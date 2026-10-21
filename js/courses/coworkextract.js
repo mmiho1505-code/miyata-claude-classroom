@@ -146,7 +146,7 @@ Googleスプレッドシートを新規作成し、1行1件の一覧表にして
               <li>読めない所は空欄。推測で埋めさせない</li>
             </ol>
             <p>まとめ表：<a href="materials/cowork-extract.xlsx" download>演習の内容（Excel）</a>　<a href="materials/cowork-extract-answer.xlsx" download>解説（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkskill" data-link>次へ：スキルとは</a>
             <a class="btn-dark" href="#/course/coworkform" data-link>フォームを自動入力するへ</a></p>
           `
       }
