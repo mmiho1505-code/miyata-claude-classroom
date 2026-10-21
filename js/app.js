@@ -360,6 +360,8 @@ ${q}
     "coworkschedule",
     "coworkslack",
     "coworkads",
+    "coworkmobile",
+    "coworkjudge",
     "portalmake",
     "attend",
     "invoicemake",
@@ -393,7 +395,7 @@ ${q}
   };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
+  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -479,7 +481,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -950,6 +952,8 @@ ${q}
     coworkschedule: ["cover-cowork", "定期実行", "毎朝・毎週の決まった作業を、決めた時間に自動で動かす。", "calendar"],
     coworkslack: ["cover-applied", "Slack巡回", "自分あての依頼をチェックできる一覧に。平日2時間ごとに更新。", "briefing"],
     coworkads: ["cover-survey", "演習：競合広告", "Meta 広告ライブラリを毎週見に行かせ、広告を一覧にためる。", "steps"],
+    coworkmobile: ["cover-chat", "スマホから", "外出先からスマホで頼み、終わったら通知で知る。", "phone"],
+    coworkjudge: ["cover-applied", "任せる判断", "やり方が決まっていて、何度もくり返す仕事から任せる。", "compare"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
     portalfix: ["cover-cowork", "ポータル直し", "作ったポータルを、会話の続きで直す。新しい社員のパスワードも。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
@@ -1009,6 +1013,8 @@ ${q}
     coworkschedule: ["定期実行", "⏰"],
     coworkslack: ["Slack巡回", "💬"],
     coworkads: ["演習：競合広告", "📣"],
+    coworkmobile: ["スマホから", "📱"],
+    coworkjudge: ["任せる判断", "🧭"],
     portalmake: ["ポータル", "🏠"],
     portalfix: ["ポータル直し", "🔧"],
     attend: ["出退勤と給料", "⏰"],
@@ -1077,7 +1083,10 @@ ${q}
         ["演習：レシートから経費精算を自動化する（解説）", "materials/cowork-receipt-answer.xlsx"],
         ["スケジュール実行で定期タスク化する：設定項目と管理", "materials/cowork-schedule.xlsx"],
         ["Slack を定期巡回してタスクを洗い出す：つなぎ方と指示文", "materials/cowork-slack.xlsx"],
-        ["演習：競合広告の出稿状況を定期収集する（課題と答えの例）", "materials/cowork-ads.xlsx"]
+        ["演習：競合広告の出稿状況を定期収集する（課題）", "materials/cowork-ads.xlsx"],
+        ["演習：競合広告の出稿状況を定期収集する（解説）", "materials/cowork-ads-answer.xlsx"],
+        ["スマホからタスクを依頼する：手順と注意点", "materials/cowork-mobile.xlsx"],
+        ["業務への落とし込みと任せる業務の判断基準：4つのマスと4ステップ", "materials/cowork-judge.xlsx"]
       ]
     ],
     [
