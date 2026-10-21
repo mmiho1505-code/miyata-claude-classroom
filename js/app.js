@@ -352,6 +352,7 @@ ${q}
     "coworkskill",
     "coworkskillmake",
     "coworkproject",
+    "coworkskillproject",
     "portalmake",
     "attend",
     "invoicemake",
@@ -385,7 +386,7 @@ ${q}
   };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
+  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -471,7 +472,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -934,6 +935,7 @@ ${q}
     coworkskill: ["cover-applied", "スキル", "毎回同じお願いを書かなくてよくする、作業手順の型。", "steps"],
     coworkskillmake: ["cover-chat", "スキル作成", "Skill Creator で作り、「/」で呼び、思いどおりでなければ直す。", "mail"],
     coworkproject: ["cover-cowork", "プロジェクト", "仕事ごとの部屋に、共通のお願いと資料。月次報告をPDFに。", "docs"],
+    coworkskillproject: ["cover-applied", "使い分け", "手順はスキル、文脈はプロジェクト。両方なら組み合わせる。", "compare"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
     portalfix: ["cover-cowork", "ポータル直し", "作ったポータルを、会話の続きで直す。新しい社員のパスワードも。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
@@ -985,6 +987,7 @@ ${q}
     coworkskill: ["スキル", "🧰"],
     coworkskillmake: ["スキル作成", "🛠️"],
     coworkproject: ["プロジェクト", "🗄️"],
+    coworkskillproject: ["スキルとPJ", "🔗"],
     portalmake: ["ポータル", "🏠"],
     portalfix: ["ポータル直し", "🔧"],
     attend: ["出退勤と給料", "⏰"],
@@ -1044,7 +1047,8 @@ ${q}
         ["演習：ファイルからデータを抜き出す（解説）", "materials/cowork-extract-answer.xlsx"],
         ["スキルとは：3つの要点と書き方のコツ", "materials/cowork-skill.xlsx"],
         ["スキルを作成して呼び出す：手順と直し方", "materials/cowork-skill-make.xlsx"],
-        ["プロジェクトを作って業務単位で使う：作り方と使い方", "materials/cowork-project.xlsx"]
+        ["プロジェクトを作って業務単位で使う：作り方と使い方", "materials/cowork-project.xlsx"],
+        ["スキルとプロジェクトの使い分け：比べる表と3つの問い", "materials/cowork-skill-vs-project.xlsx"]
       ]
     ],
     [

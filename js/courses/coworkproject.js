@@ -111,7 +111,7 @@
               <li>Cowork なら、まとめた結果をファイルにして保存までできる</li>
             </ol>
             <p>まとめ表：<a href="materials/cowork-project.xlsx" download>プロジェクトを作って業務単位で使う（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>次へ：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkskillproject" data-link>次へ：スキルとプロジェクトの使い分け</a>
             <a class="btn-dark" href="#/course/coworkskillmake" data-link>スキルを作成して呼び出すへ</a></p>
           `
       }
