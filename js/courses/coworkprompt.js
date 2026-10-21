@@ -83,7 +83,7 @@
               <li>空欄や気になる所は、自分の目で確かめる</li>
             </ol>
             <p>まとめ表：<a href="materials/cowork-prompt.xlsx" download>プロンプトの書き方（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/cowork" data-link>Cowork で練習する：はじめての Claude Cowork</a>
+            <p><a class="btn-orange" href="#/course/coworkfolders" data-link>次へ：日付フォルダを一括作成する</a>
             <a class="btn-dark" href="#/course/promptskill" data-link>チャットとお願い文の書き方へ</a></p>
           `
       }

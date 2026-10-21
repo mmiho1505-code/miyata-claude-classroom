@@ -343,7 +343,9 @@ ${q}
     "cowork",
     "coworkintro",
     "aitools",
+    "coworksetup",
     "coworkprompt",
+    "coworkfolders",
     "portalmake",
     "attend",
     "invoicemake",
@@ -377,7 +379,7 @@ ${q}
   };
 
   const STARTER_IDS = ["claudebase", "aipick", "promptskill", "webwords", "skillbase", "poster", "market", "peoplejob", "minutes", "salesrep", "aicopy", "aisub"];
-  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworkprompt", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
+  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
   const CODE_SETUP_IDS = ["code"];
   const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
@@ -463,7 +465,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworkprompt"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "tosou", "portalfix", "recruitvideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -917,7 +919,9 @@ ${q}
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
     coworkintro: ["cover-cowork", "Coworkとは", "チャットは答え、Coworkは仕事を終わらせる。3つの特長。", "cowork"],
     aitools: ["cover-applied", "AIの種類", "生成AI・オールインワン・ワークフロー・Claude Code との違い。", "compare"],
+    coworksetup: ["cover-account", "はじめる", "デスクトップアプリを入れて、承認レベルとモデルを選ぶ。", "signup"],
     coworkprompt: ["cover-chat", "プロンプト", "目的・完成物・範囲・条件の4つ。まず1件だけ試す。", "webchat"],
+    coworkfolders: ["cover-cowork", "日付フォルダ", "1日〜末日のフォルダを、1件試してから一気に作る。", "cowork"],
     portalmake: ["cover-cowork", "ポータル", "社内ポータルを話しかけて作り、会話の続きで直す。", "cowork"],
     portalfix: ["cover-cowork", "ポータル直し", "作ったポータルを、会話の続きで直す。新しい社員のパスワードも。", "cowork"],
     attend: ["cover-expense", "出退勤", "ボタンで出退勤。記録から給料まで。電卓で検算。", "attendapp"],
@@ -960,7 +964,9 @@ ${q}
     cowork: ["Cowork", "💬"],
     coworkintro: ["Coworkとは", "🤖"],
     aitools: ["AIの種類", "🧩"],
+    coworksetup: ["Cowork準備", "🖥️"],
     coworkprompt: ["4つの要素", "🎯"],
+    coworkfolders: ["日付フォルダ", "📁"],
     portalmake: ["ポータル", "🏠"],
     portalfix: ["ポータル直し", "🔧"],
     attend: ["出退勤と給料", "⏰"],
@@ -1011,7 +1017,9 @@ ${q}
       [
         ["Coworkとは：3つの特長と、チャットとの違い", "materials/cowork-intro.xlsx"],
         ["他のAIツールとの違い：ChatGPT・Genspark・Dify・Claude Code との比較", "materials/ai-tools-compare.xlsx"],
-        ["プロンプトの書き方：4つの要素とひな形", "materials/cowork-prompt.xlsx"]
+        ["Coworkを触ってみる：導入手順とおすすめ設定", "materials/cowork-setup.xlsx"],
+        ["プロンプトの書き方：4つの要素とひな形", "materials/cowork-prompt.xlsx"],
+        ["日付フォルダを一括作成する：流れとお願いの文", "materials/cowork-folders.xlsx"]
       ]
     ],
     [

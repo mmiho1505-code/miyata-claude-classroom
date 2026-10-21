@@ -88,7 +88,7 @@
             </ol>
             <div class="callout">ツールの機能はよく変わります。くわしく比べるときは、日付を入れて調べ、公式の説明で確かめます。</div>
             <p>まとめ表：<a href="materials/ai-tools-compare.xlsx" download>他のAIツールとの違い（Excel）</a></p>
-            <p><a class="btn-orange" href="#/course/coworkprompt" data-link>次へ：プロンプトの書き方</a>
+            <p><a class="btn-orange" href="#/course/coworksetup" data-link>次へ：Coworkを触ってみる</a>
             <a class="btn-dark" href="#/course/aipick" data-link>ChatGPT・Gemini・Claudeの使い分けへ</a></p>
           `
       }
