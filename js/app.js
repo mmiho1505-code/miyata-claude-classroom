@@ -334,11 +334,19 @@ ${q}
     "promptskill",
     "promptwrite",
     "aithink",
+    "gpts",
+    "copilot",
+    "googleai",
     "webwords",
     "skillbase",
     "poster",
     "imagerule",
+    "designai",
+    "mangaai",
     "market",
+    "seowrite",
+    "metaad",
+    "lineai",
     "peoplejob",
     "minutes",
     "officeai",
@@ -347,6 +355,7 @@ ${q}
     "numread",
     "aicopy",
     "aisafety",
+    "aiguard",
     "aisub",
     "cowork",
     "coworkintro",
@@ -380,11 +389,14 @@ ${q}
     "proposal",
     "contractcheck",
     "bizplan",
+    "newbiz",
     "subsidydraft",
     "bcp",
     "code",
     "ccbasics",
     "ccwork",
+    "ccapp",
+    "codex",
     "snspost",
     "survey",
     "invoice",
@@ -393,6 +405,8 @@ ${q}
     "secretary",
     "appedit",
     "applied",
+    "dify",
+    "pyapp",
     "faq"
   ]);
 
@@ -405,10 +419,10 @@ ${q}
     return m ? `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日` : "";
   };
 
-  const STARTER_IDS = ["claudebase", "aipick", "aiwords", "promptskill", "promptwrite", "aithink", "webwords", "skillbase", "poster", "imagerule", "market", "peoplejob", "minutes", "officeai", "aiknow", "salesrep", "numread", "aicopy", "aisafety", "aisub"];
-  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "aivideo", "proposal", "contractcheck", "bizplan", "subsidydraft", "bcp"];
-  const CODE_SETUP_IDS = ["code", "ccbasics", "ccwork"];
-  const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied"];
+  const STARTER_IDS = ["claudebase", "aipick", "aiwords", "promptskill", "promptwrite", "aithink", "gpts", "copilot", "googleai", "webwords", "skillbase", "poster", "imagerule", "designai", "mangaai", "market", "seowrite", "metaad", "lineai", "peoplejob", "minutes", "officeai", "aiknow", "salesrep", "numread", "aicopy", "aisafety", "aiguard", "aisub"];
+  const COWORK_IDS = ["cowork", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "portalmake", "attend", "invoicemake", "manualmake", "replyfaq", "recruitvideo", "aivideo", "proposal", "contractcheck", "bizplan", "newbiz", "subsidydraft", "bcp"];
+  const CODE_SETUP_IDS = ["code", "ccbasics", "ccwork", "ccapp", "codex"];
+  const CODE_MAKE_IDS = ["snspost", "survey", "invoice", "crm", "shop", "secretary", "appedit", "applied", "dify", "pyapp"];
   const CODE_IDS = CODE_SETUP_IDS.concat(CODE_MAKE_IDS);
   const BEGINNER_IDS = STARTER_IDS.concat(COWORK_IDS, CODE_SETUP_IDS);
   const ADVANCED_IDS = CODE_MAKE_IDS.slice();
@@ -492,7 +506,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "apptips", "ccbasics", "ccwork", "tosou", "portalfix", "recruitvideo", "aivideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "apptips", "ccbasics", "ccwork", "tosou", "portalfix", "recruitvideo", "aivideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "newbiz", "ccapp", "codex", "dify", "pyapp"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -939,17 +953,26 @@ ${q}
     promptskill: ["cover-chat", "頼み方", "チャットに1回頼む。目的・前提・形式。先に自分の仮説。", "webchat"],
     promptwrite: ["cover-chat", "頼み方の続き", "ブレる原因、用途別の型、論点に分ける、AI の文の直し方。", "webchat"],
     aithink: ["cover-chat", "考える力", "先に自分の答え。AI の答えは確かめる。厳しい上司役で想定質問。", "webchat"],
+    gpts: ["cover-chat", "GPTs", "毎回の説明を GPTs にしまい、変数と自己採点で使い回せるお願い文にする。", "webchat"],
+    copilot: ["cover-chat", "Copilot", "職場の Copilot で、メール・会議・Word・Excel を安全に速く片づける。", "mail"],
+    googleai: ["cover-chat", "Google の AI", "Gemini の確かめ方、Gem、画像づくり、資料から答える NotebookLM。", "compare"],
     imagerule: ["cover-poster", "見た目をそろえる", "ルールを1枚書いて、バナーやサムネの見た目をそろえる。", "poster"],
+    designai: ["cover-poster", "デザイン", "AI と Figma で、バナーと商品紹介ページを企画から仕上げまで。", "canva"],
+    mangaai: ["cover-poster", "漫画・アニメ", "キャラの基準を決め、話を文字で組み立ててから、4コマや短いアニメに。", "poster"],
     aiknow: ["cover-survey", "知恵袋とニュース", "規程やマニュアルに出典つきで答える相談役と、毎朝のニュースまとめ。", "briefing"],
     numread: ["cover-invoice", "数字を読む", "どこがどう変わったか、なぜか。予算と実績のズレを1枚に。", "excel"],
     poster: ["cover-poster", "ポスター", "Claudeで原稿、Canvaで仕上げ。A4を1枚。", "poster"],
     market: ["cover-sns", "マーケ", "誰に・何を・どう届けるか。ChatGPTに5本を同じチャットで。", "sns"],
+    seowrite: ["cover-snspost", "SEO記事", "検索意図とキーワードから、AI と見出しごとに書いて確かめて直す。", "docs"],
+    metaad: ["cover-sns", "Meta広告", "Facebook・Instagram の広告を AI で作り、少ない予算で出して数字で直す。", "sns"],
+    lineai: ["cover-snspost", "LINE", "LINE 公式アカウントの基本と料金の考え方、AI で返事や配信文を作る。", "phone"],
     peoplejob: ["cover-crm", "人の仕事", "AIに任せる仕事と、人が残す判断。人事の例つき。", "crm"],
     minutes: ["cover-chat", "会議", "日程調整・議事録・Slack要約。配る前に人が確認。", "mail"],
     officeai: ["cover-chat", "事務とAI", "議事録・1on1・進み具合・調べもの。AI が下書き、人が確かめる。", "mail"],
     salesrep: ["cover-invoice", "売上", "売上データをグラフ付きレポートに。セル番地は書かない。", "invoice"],
     aicopy: ["cover-faq", "著作", "AIだから大丈夫、ともダメ、とも決めつけない。見て・調べて・確認してから。", "safety"],
     aisafety: ["cover-faq", "安全に使う", "入れてよい情報の線引き、学習オフ、自分ルール、作ったものの権利。", "safety"],
+    aiguard: ["cover-faq", "会社のルール", "会社の担当者向け。リスクの棚卸し、入れてよい情報、社内ルール、確認の流れ。", "safety"],
     aisub: ["cover-expense", "補助", "旧IT導入補助金。会計・勤怠・AI。支援事業者と一緒に申請。", "expense"],
     cowork: ["cover-cowork", "事務", "同じチャットで。資料・整理・連携から請求書と経費まで。", "cowork"],
     coworkintro: ["cover-cowork", "Coworkとは", "チャットは答え、Coworkは仕事を終わらせる。3つの特長。", "cowork"],
@@ -984,13 +1007,18 @@ ${q}
     proposal: ["cover-poster", "提案書", "相手の課題から骨子。A4・1枚の提案書とスライドに。", "briefing"],
     contractcheck: ["cover-faq", "契約書", "気をつける条項を洗い出し、質問と相談メモを用意。判断は専門家と人。", "eyecheck"],
     bizplan: ["cover-survey", "事業計画", "壁打ちで考えを出し、数字の表とA4・1枚に。数字は自分で入れる。", "plan"],
+    newbiz: ["cover-survey", "新しい事業", "困りごとを AI で探して磨き、LP で届けて、行動で確かめる。", "plan"],
     subsidydraft: ["cover-expense", "申請書", "公募要領を読ませ、自社の事実だけで下書き。出すのは人。", "docs"],
     bcp: ["cover-crm", "BCP", "止まると困る仕事から。連絡と復旧の段取りを1枚に。", "safety"],
     skillbase: ["cover-applied", "MD・Skills", "CLAUDE.mdは業務マニュアル、Skillsはよく使う手順。", "docs"],
     ccbasics: ["cover-code", "Codeの基本", "頼み方・直し方、公開、GitHub、鍵の守り方、CLAUDE.md、仕事の自動化。", "desktop"],
     ccwork: ["cover-code", "Codeで仕事", "資料をまとめて直す、画像をまとめて作る、スマホで動くアプリを作る。", "desktop"],
+    ccapp: ["cover-code", "中身のあるアプリ", "設計の紙から、データベース・ログイン・画像・公開まで。", "desktop"],
+    codex: ["cover-code", "Codex", "Codex の頼み方と機能を Claude Code とくらべ、サイトとアプリを公開まで。", "terminal"],
     code: ["cover-code", "Code", "Windows・Macに入れて、使える状態まで。", "powershell"],
     applied: ["cover-applied", "使いこなし", "CLAUDE.mdを1枚書き、いつもの手順を登録する。", "desktop"],
+    dify: ["cover-applied", "Dify", "ブロックをつないで、資料を読んで答えるボットと自動の流れを作る。", "steps"],
+    pyapp: ["cover-applied", "Python", "Python と API で、資料を読んで答える AI アプリ。RAG・エージェントまで。", "terminal"],
     invoice: ["cover-invoice", "請求・経費", "リストから1社1PDF。レシートを科目ごとに集計。", "invoice"],
     crm: ["cover-crm", "CRM", "登録・検索・絞り込みできる、自分専用の台帳。", "crm"],
     apptips: ["cover-applied", "8つのコツ", "前の会話を覚えていない相手に、相談して plan.md に残し、段階ごとに作る。", "desktop"],
@@ -1012,17 +1040,26 @@ ${q}
     promptskill: ["頼み方", "✏️"],
     promptwrite: ["頼み方の続き", "🖊️"],
     aithink: ["考える力", "🧠"],
+    gpts: ["専用GPT", "🧰"],
+    copilot: ["Copilot", "🧭"],
+    googleai: ["Google AI", "🍌"],
     imagerule: ["見た目", "🖼️"],
+    designai: ["デザイン", "🖌️"],
+    mangaai: ["漫画アニメ", "🎬"],
     aiknow: ["知恵袋", "📚"],
     numread: ["数字を読む", "📈"],
     poster: ["ポスター", "🎨"],
     market: ["マーケ", "📣"],
+    seowrite: ["SEO記事", "🔍"],
+    metaad: ["Meta広告", "📣"],
+    lineai: ["LINE活用", "💬"],
     peoplejob: ["人の仕事", "🤝"],
     minutes: ["会議と連絡", "📝"],
     officeai: ["事務とAI", "🗃️"],
     salesrep: ["売上レポート", "📊"],
     aicopy: ["著作", "⚖️"],
     aisafety: ["安全に使う", "🛡️"],
+    aiguard: ["会社の守り", "🏢"],
     aisub: ["AI補助", "💴"],
     cowork: ["Cowork", "💬"],
     coworkintro: ["Coworkとは", "🤖"],
@@ -1057,13 +1094,18 @@ ${q}
     proposal: ["提案書", "📑"],
     contractcheck: ["契約書", "🔍"],
     bizplan: ["事業計画", "🧭"],
+    newbiz: ["小さく売る", "🌱"],
     subsidydraft: ["申請書の下書き", "🖋️"],
     bcp: ["BCP", "🛟"],
     skillbase: ["MDとSkills", "📘"],
     code: ["Code準備", "💻"],
     ccbasics: ["Codeの基本", "🔑"],
     ccwork: ["Codeで仕事", "🧰"],
+    ccapp: ["アプリ完成", "🚀"],
+    codex: ["Codex", "🤖"],
     applied: ["使いこなし", "🧩"],
+    dify: ["Dify", "🧱"],
+    pyapp: ["AIアプリ", "🐍"],
     invoice: ["請求と経費", "📄"],
     crm: ["CRM", "📒"],
     apptips: ["8つのコツ", "💡"],
