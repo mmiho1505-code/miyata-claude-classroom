@@ -317,8 +317,8 @@ ${q}
 
   // 講義の日に先生と開く資料。先頭から TODAY_COUNT 個が「今日の講義」、残りは「これまでの講義」に並ぶ。
   // 新しい講義を足すときは、js/courses/ に講座ファイルを足し、ここの先頭に id を入れる。
-  const LECTURE_IDS = ["apptips", "tosou", "portalfix", "bizapps", "today", "connect"];
-  const TODAY_COUNT = 5;
+  const LECTURE_IDS = ["appbuild", "apptips", "tosou", "portalfix", "bizapps", "today", "connect"];
+  const TODAY_COUNT = 6;
   const TODAY_IDS = LECTURE_IDS.slice(0, TODAY_COUNT);
 
   // 生徒さん専用の講座。中身は名前＋パスワードで暗号化して js/locked/ に置く（鍵のかけ方は tools/lock-course.mjs）。
@@ -506,7 +506,7 @@ ${q}
     toolOf(courseId) === "cowork" ? "チャットで作業" : toolOf(courseId) === "starter" ? "はじめて" : "Claude Code";
 
   // 「今日の講義」の枠（TODAY_IDS）だけは、受講コードで開ける。「これまでの講義」はコードなし。
-  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "apptips", "ccbasics", "ccwork", "tosou", "portalfix", "recruitvideo", "aivideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "newbiz", "ccapp", "codex", "dify", "pyapp"], LECTURE_IDS.slice(TODAY_COUNT));
+  const OPEN_COURSE_IDS = STARTER_IDS.concat(["faq", "appbuild", "apptips", "ccbasics", "ccwork", "tosou", "portalfix", "recruitvideo", "aivideo", "coworkintro", "aitools", "coworksetup", "coworkprompt", "coworkfolders", "coworkdownloads", "coworkform", "coworkextract", "coworkskill", "coworkskillmake", "coworkproject", "coworkskillproject", "coworkmeeting", "coworkvoice", "coworkprogress", "coworkreceipt", "coworkschedule", "coworkslack", "coworkads", "coworkmobile", "coworkjudge", "newbiz", "ccapp", "codex", "dify", "pyapp"], LECTURE_IDS.slice(TODAY_COUNT));
   const GATE_PACKS = {
     jimu: { label: "事務（チャットで作業）", ids: COWORK_IDS.slice() },
     dougu: { label: "道具づくり（Claude Code）", ids: CODE_IDS.slice() },
@@ -1021,6 +1021,7 @@ ${q}
     pyapp: ["cover-applied", "Python", "Python と API で、資料を読んで答える AI アプリ。RAG・エージェントまで。", "terminal"],
     invoice: ["cover-invoice", "請求・経費", "リストから1社1PDF。レシートを科目ごとに集計。", "invoice"],
     crm: ["cover-crm", "CRM", "登録・検索・絞り込みできる、自分専用の台帳。", "crm"],
+    appbuild: ["cover-applied", "はじめの地図", "画面・動き・データに分けて3つ決め、小さく作って見て、1つずつ足す。", "steps"],
     apptips: ["cover-applied", "8つのコツ", "前の会話を覚えていない相手に、相談して plan.md に残し、段階ごとに作る。", "desktop"],
     bizapps: ["cover-survey", "アプリとSkill", "仕事の一覧を月の時間に直して3つに分け、アプリ2つと Skill 1つで減らす。", "survey"],
     shop: ["cover-shop", "サイト", "店舗サイトや自己紹介ページを作って公開。", "shop"],
@@ -1108,6 +1109,7 @@ ${q}
     pyapp: ["AIアプリ", "🐍"],
     invoice: ["請求と経費", "📄"],
     crm: ["CRM", "📒"],
+    appbuild: ["はじめの地図", "🗺️"],
     apptips: ["8つのコツ", "💡"],
     bizapps: ["アプリとSkill", "🗂️"],
     shop: ["サイト公開", "🏪"],
